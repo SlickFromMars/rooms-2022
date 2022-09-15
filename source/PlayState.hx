@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxState;
 
 class PlayState extends FlxState
@@ -11,6 +12,8 @@ class PlayState extends FlxState
 		player = new Player(20, 20);
 
 		add(player);
+
+		FlxG.camera.follow(player, TOPDOWN, 1);
 
 		super.create();
 	}
