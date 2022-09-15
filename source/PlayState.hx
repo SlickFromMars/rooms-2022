@@ -9,6 +9,10 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
+		#if FLX_MOUSE
+		FlxG.mouse.visible = false;
+		#end
+
 		player = new Player(20, 20);
 
 		add(player);
