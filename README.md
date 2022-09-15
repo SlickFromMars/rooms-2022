@@ -10,6 +10,7 @@ Rooms is a puzzle game, that infinately generates based off of predesigned level
 * [Haxe](https://haxe.org/)
 * [Git](https://git-scm.com/)
 * [Ogmo Editor](https://ogmo-editor-3.github.io/)
+* [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Resources
 
