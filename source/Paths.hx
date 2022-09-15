@@ -33,4 +33,9 @@ class Paths
 	{
 		return getPath('images/$key.png');
 	}
+
+	inline static public function font(key:String)
+	{
+		return getPath('fonts/$key.ttf');
+	}
 }
