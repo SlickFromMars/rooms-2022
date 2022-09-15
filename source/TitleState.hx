@@ -3,7 +3,6 @@ package;
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.text.FlxText;
-import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
 import lime.app.Application;
 
@@ -11,7 +10,7 @@ class TitleState extends FlxState
 {
 	var logo:FlxText;
 	var versionText:FlxText;
-	var playButton:FlxButton;
+	var beginText:FlxText;
 
 	override public function create()
 	{
@@ -22,8 +21,9 @@ class TitleState extends FlxState
 		logo = new FlxText(0, 0, 0, "ROOMS", 100);
 		logo.screenCenter();
 
-		playButton = new FlxButton(0, FlxG.height - 100, "Play", clickPlay);
-		playButton.screenCenter(X);
+		beginText = new FlxText(0, FlxG.height - 60, 0, "PRESS ENTER TO BEGIN", 25);
+		beginText.screenCenter(X);
+		add(beginText);
 
 		versionText = new FlxText(12, FlxG.height - 24, 0, "v" + Application.current.meta.get('version'), 12);
 		versionText.scrollFactor.set();
@@ -31,7 +31,7 @@ class TitleState extends FlxState
 
 		add(versionText);
 
-		add(playButton);
+		add(beginText);
 		add(logo);
 
 		super.create();
@@ -41,10 +41,15 @@ class TitleState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
+		if (FlxG.keys.anyJustPressed([ENTER]))
+		{
+			pressStart();
+		}
+
 		super.update(elapsed);
 	}
 
-	function clickPlay()
+	function pressStart()
 	{
 		FlxG.camera.fade(FlxColor.BLACK, 0.33, false, function()
 		{
