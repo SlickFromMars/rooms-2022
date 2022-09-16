@@ -38,4 +38,9 @@ class Paths
 	{
 		return getPath('fonts/$key.ttf');
 	}
+
+	inline static public function character(key:String)
+	{
+		return 'images/characters/$key';
+	}
 }

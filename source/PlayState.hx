@@ -5,6 +5,7 @@ import flixel.FlxState;
 
 class PlayState extends FlxState
 {
+	var roomNumber:Int = 0;
 	var player:Player;
 
 	override public function create()
@@ -17,13 +18,18 @@ class PlayState extends FlxState
 
 		add(player);
 
-		FlxG.camera.follow(player, TOPDOWN, 1);
-
 		super.create();
+
+		startRoom();
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+	}
+
+	public function startRoom()
+	{
+		roomNumber += 1;
 	}
 }

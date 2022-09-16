@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
+import openfl.Assets;
 
 class Player extends FlxSprite
 {
@@ -18,7 +19,11 @@ class Player extends FlxSprite
 	{
 		super(x, y);
 
-		makeGraphic(16, 16, FlxColor.BLUE);
+		loadGraphic(Paths.image('characters/cubee'), true, 16, 16);
+		animation.add('d', [0], 16, false);
+		animation.add('l', [1], 16, false);
+		animation.add('r', [2], 16, false);
+		animation.add('u', [3], 16, false);
 
 		drag.x = drag.y = 1600;
 	}
@@ -67,6 +72,23 @@ class Player extends FlxSprite
 
 			velocity.set(SPEED, 0);
 			velocity.rotate(FlxPoint.weak(0, 0), newAngle);
+		}
+
+		if (right)
+		{
+			animation.play('r');
+		}
+		else if (left)
+		{
+			animation.play('l');
+		}
+		else if (up)
+		{
+			animation.play('u');
+		}
+		else if (down)
+		{
+			animation.play('d');
 		}
 	}
 }
