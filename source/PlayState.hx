@@ -1,10 +1,13 @@
 package;
 
+import RoomData.Room;
 import flixel.FlxG;
 import flixel.FlxState;
 
 class PlayState extends FlxState
 {
+	public static var curRoom:Room;
+
 	var roomNumber:Int = 0;
 	var player:Player;
 
@@ -20,9 +23,9 @@ class PlayState extends FlxState
 
 		FlxG.camera.follow(player, TOPDOWN, 1);
 
-		super.create();
-
 		startRoom();
+
+		super.create();
 	}
 
 	override public function update(elapsed:Float)
@@ -33,5 +36,14 @@ class PlayState extends FlxState
 	public function startRoom()
 	{
 		roomNumber += 1;
+		/*if (roomNumber > 100)
+			{
+				FlxG.switchState(new CompleteState());
+			}
+			else
+			{
+				var levelList:Array<String> = Paths.getText('_levels/$roomNumber.txt').split('\n');
+				curRoom = RoomData.getRoom(levelList[Std.random(levelList.length)]);
+		}*/
 	}
 }

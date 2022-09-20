@@ -1,5 +1,7 @@
 package;
 
+import openfl.Assets;
+
 class Paths
 {
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
@@ -42,5 +44,10 @@ class Paths
 	inline static public function character(key:String)
 	{
 		return 'images/characters/$key';
+	}
+
+	inline static public function getText(key:String)
+	{
+		return Assets.getText('data/$key');
 	}
 }
