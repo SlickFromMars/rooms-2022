@@ -18,6 +18,8 @@ class PlayState extends FlxState
 
 		add(player);
 
+		FlxG.camera.follow(player, TOPDOWN, 1);
+
 		super.create();
 
 		startRoom();

@@ -18,16 +18,16 @@ class TitleState extends FlxState
 		FlxG.mouse.visible = true;
 		#end
 
-		logo = new FlxText(0, 0, 0, "ROOMS", 100);
+		logo = new FlxText(0, 0, 0, "ROOMS", 30);
 		logo.screenCenter();
 
-		beginText = new FlxText(0, FlxG.height - 60, 0, "PRESS ENTER TO BEGIN", 25);
+		beginText = new FlxText(0, FlxG.height - 60, 0, "PRESS ENTER TO BEGIN", 8);
 		beginText.screenCenter(X);
 		add(beginText);
 
 		versionText = new FlxText(12, FlxG.height - 24, 0, "v" + Application.current.meta.get('version'), 12);
 		versionText.scrollFactor.set();
-		versionText.setFormat(Paths.font('sans'), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		versionText.setFormat(Paths.font('sans'), 14, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 
 		add(versionText);
 
