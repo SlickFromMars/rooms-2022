@@ -15,3 +15,7 @@ Rooms is a puzzle game, that infinately generates based off of predesigned level
 ## Resources
 
 * https://haxeflixel.com/documentation/getting-started/
+
+## Royalty Free Music
+* https://www.bensound.com/royalty-free-music/track/november
+* https://www.bensound.com/royalty-free-music/track/funky-suspense

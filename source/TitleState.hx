@@ -2,14 +2,18 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxState;
+import flixel.input.keyboard.FlxKey;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.app.Application;
 
 class TitleState extends FlxState
 {
+	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
+	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
+	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
+
 	var logo:FlxText;
-	var versionText:FlxText;
 	var beginText:FlxText;
 
 	override public function create()
@@ -18,18 +22,17 @@ class TitleState extends FlxState
 		FlxG.mouse.visible = true;
 		#end
 
+		FlxG.game.focusLostFramerate = 60;
+		FlxG.sound.muteKeys = muteKeys;
+		FlxG.sound.volumeDownKeys = volumeDownKeys;
+		FlxG.sound.volumeUpKeys = volumeUpKeys;
+
 		logo = new FlxText(0, 0, 0, "ROOMS", 30);
 		logo.screenCenter();
 
 		beginText = new FlxText(0, FlxG.height - 60, 0, "PRESS ENTER TO BEGIN", 8);
 		beginText.screenCenter(X);
 		add(beginText);
-
-		versionText = new FlxText(12, FlxG.height - 24, 0, "v" + Application.current.meta.get('version'), 12);
-		versionText.scrollFactor.set();
-		versionText.setFormat(Paths.font('sans'), 14, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-
-		add(versionText);
 
 		add(beginText);
 		add(logo);
