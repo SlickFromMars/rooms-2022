@@ -19,7 +19,7 @@ class Player extends FlxSprite
 	var left:Bool = false;
 	var right:Bool = false;
 
-	static inline var SPEED:Float = 175;
+	static inline var SPEED:Float = 150;
 
 	public function new(x:Float = 0, y:Float = 0)
 	{
