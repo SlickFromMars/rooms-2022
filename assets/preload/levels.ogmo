@@ -1,0 +1,79 @@
+{
+  "name": "ROOMS",
+  "ogmoVersion": "3.4.0",
+  "levelPaths": ["."],
+  "backgroundColor": "#282c34ff",
+  "gridColor": "#3c4049cc",
+  "anglesRadians": false,
+  "directoryDepth": 5,
+  "layerGridDefaultSize": {"x": 16, "y": 16},
+  "levelDefaultSize": {"x": 320, "y": 240},
+  "levelMinSize": {"x": 640, "y": 480},
+  "levelMaxSize": {"x": 4096, "y": 4096},
+  "levelValues": [],
+  "defaultExportMode": ".json",
+  "compactExport": false,
+  "externalScript": "",
+  "playCommand": "",
+  "entityTags": [],
+  "layers": [
+    {
+      "definition": "entity",
+      "name": "entites",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "89672039",
+      "requiredTags": [],
+      "excludedTags": []
+    },
+    {
+      "definition": "tile",
+      "name": "walls",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "89675163",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": ""
+    }
+  ],
+  "entities": [
+    {
+      "exportID": "89676077",
+      "name": "player",
+      "limit": 1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": [],
+      "values": []
+    }
+  ],
+  "tilesets": [
+    {"label": "tiles", "path": "images/tileset.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAABACAYAAABcIPRGAAAAAXNSR0IArs4c6QAAAs9JREFUaEPtmb2RAjEMhXdrIKEPEiIaoB86owEiEvogoYa7eZ55O0Jnry3LZveYvYTD/5+lJ8tmHJx/p9PpxzmEq/vo6j0MAwD2+/00zOFwmP5/PB4DvvNTz3W9XkORpT/6nM/n0A//Nwco3RCAEUBDpMZ4Pp8TMPv/OwBaa1UA0oWsFlyFBTaAUrPF2ukoVDqWFHHKAhBtqm5xDQBURhUNPlfHtmizaaDWhXIWyLkiLbSYBbwA7L8YQErEc8KVVllcxDGA0sUDZAOgORdPp70LuN1uZh3NzcnxdJtU+ejN560AmO94PCaj5P1+D3W6Tar8D0Au/rKeIrIA5BZfOrdstyqA3W4X1vZ6vd5YUB4rQ6MsQCq0tbIAXINXRF4T8Rkri5UvCoDFx7LN1KbFymcBStJZqwYoULhF7FLPFCEFhnpZl7VASlgeF2JEqRGt7lMNwJ2yWkCGR+n/c08sfJbRrxjYxGoAjwW4i1oDJbmQblMNUGsBGUmwo9Kfc7cw1ksdTAAl9Nr/0KfGhbppwALRw4W4QTlLyHbVLtQTYC6USi8Il/raO20tgD4Hap5UCDilEp54vAoNEMCymBponY1CzJY5Y/3Hy+Uy/UBhHdAK0RoguJAEQEFPCN6y5A8UHgssAoBUQp4DVgB5EOKO8HEL6FzIAkCXlfflEEZbDFqihx5zTQAyP6/ZlVIAngOt9BYAODn9syeARwOxTfoeF5I5em8LtJwrWEDGZQzeE0DnQt65Ng2URB8Zv1uH7O8SMY94r1+mrCJzIaQBLfKuTQPe9MD7+4RbA950nGGcr8/ysYtuhjCfqnefAy0AdGSyfHdrAAB81+fTnyUIoD923bJo2d7tQtKHLQuP5faWM4Vt3QA1k7bs89H7QMuFv1ngU/eBbgCt85MeC02N+T0a4B21532gh2Xc50CPRVnG/C4XavXUYdlBb9vtHPDuoLf/LwJuW+o7pKxIAAAAAElFTkSuQmCC", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
+  ]
+}

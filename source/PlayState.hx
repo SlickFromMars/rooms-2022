@@ -1,12 +1,14 @@
 package;
 
-import RoomData.Room;
 import flixel.FlxG;
 import flixel.FlxState;
+import flixel.addons.editors.ogmo.FlxOgmo3Loader;
+import flixel.tile.FlxTilemap;
 
 class PlayState extends FlxState
 {
-	public static var curRoom:Room;
+	var map:FlxOgmo3Loader;
+	var walls:FlxTilemap;
 
 	var roomNumber:Int = 0;
 	var player:Player;
@@ -17,7 +19,8 @@ class PlayState extends FlxState
 		FlxG.mouse.visible = false;
 		#end
 
-		player = new Player(20, 20);
+		player = new Player();
+		map.loadEntities(placeEntities, "entities");
 
 		add(player);
 
@@ -31,19 +34,22 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		FlxG.collide(player, walls);
+	}
+
+	function placeEntities(entity:EntityData)
+	{
+		if (entity.name == "player")
+		{
+			player.setPosition(entity.x, entity.y);
+		}
 	}
 
 	public function startRoom()
 	{
 		roomNumber += 1;
-		/*if (roomNumber > 100)
-			{
-				FlxG.switchState(new CompleteState());
-			}
-			else
-			{
-				var levelList:Array<String> = Paths.getText('_levels/$roomNumber.txt').split('\n');
-				curRoom = RoomData.getRoom(levelList[Std.random(levelList.length)]);
-		}*/
+
+		map = new FlxOgmo3Loader('assets/levels.ogmo', Paths.json('_levels/start.json'));
 	}
 }

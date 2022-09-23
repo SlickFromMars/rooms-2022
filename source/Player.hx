@@ -33,6 +33,9 @@ class Player extends FlxSprite
 
 		drag.x = drag.y = 1600;
 
+		setSize(8, 8);
+		offset.set(4, 4);
+
 		animation.play('r');
 	}
 
