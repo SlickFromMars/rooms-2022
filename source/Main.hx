@@ -1,7 +1,9 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
+import flixel.util.FlxSave;
 import openfl.display.Sprite;
 
 class Main extends Sprite
@@ -17,6 +19,15 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
+
+		var save:FlxSave = new FlxSave();
+		save.bind("TurnBasedRPG");
+
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
+
+		if (save.data.volume != null)
+		{
+			FlxG.sound.volume = save.data.volume;
+		}
 	}
 }

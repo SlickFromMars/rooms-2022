@@ -47,10 +47,20 @@ class Player extends FlxSprite
 
 	function updateMovement()
 	{
+		#if FLX_KEYBOARD
 		up = FlxG.keys.anyPressed(upKeys);
 		down = FlxG.keys.anyPressed(downKeys);
 		left = FlxG.keys.anyPressed(leftKeys);
 		right = FlxG.keys.anyPressed(rightKeys);
+		#end
+
+		#if mobile
+		var virtualPad = PlayState.virtualPad;
+		up = up || virtualPad.buttonUp.pressed;
+		down = down || virtualPad.buttonDown.pressed;
+		left = left || virtualPad.buttonLeft.pressed;
+		right = right || virtualPad.buttonRight.pressed;
+		#end
 
 		if (up && down)
 			up = down = false;

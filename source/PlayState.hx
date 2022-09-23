@@ -4,14 +4,20 @@ import flixel.FlxG;
 import flixel.FlxState;
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
 import flixel.tile.FlxTilemap;
+import flixel.ui.FlxVirtualPad;
 
 class PlayState extends FlxState
 {
+	var player:Player;
+
+	public static var roomNumber:Int = 0;
+
 	var map:FlxOgmo3Loader;
 	var walls:FlxTilemap;
 
-	var roomNumber:Int = 0;
-	var player:Player;
+	#if mobile
+	public static var virtualPad:FlxVirtualPad;
+	#end
 
 	override public function create()
 	{
@@ -19,14 +25,19 @@ class PlayState extends FlxState
 		FlxG.mouse.visible = false;
 		#end
 
+		#if mobile
+		virtualPad = new FlxVirtualPad(FULL, NONE);
+		add(virtualPad);
+		#end
+
+		reloadLevel();
+
 		player = new Player();
-		map.loadEntities(placeEntities, "entities");
+		map.loadEntities(placeEntities, "entites");
 
 		add(player);
 
 		FlxG.camera.follow(player, TOPDOWN, 1);
-
-		startRoom();
 
 		super.create();
 	}
@@ -40,16 +51,36 @@ class PlayState extends FlxState
 
 	function placeEntities(entity:EntityData)
 	{
-		if (entity.name == "player")
+		switch (entity.name)
 		{
-			player.setPosition(entity.x, entity.y);
+			case "player":
+				player.x = entity.x;
+				player.y = entity.y;
+			default:
+				throw 'Unrecognized actor type ${entity.name}';
 		}
 	}
 
-	public function startRoom()
+	public function reloadLevel():Void
 	{
 		roomNumber += 1;
 
-		map = new FlxOgmo3Loader('assets/levels.ogmo', Paths.json('_levels/start.json'));
+		map = new FlxOgmo3Loader(Paths.getOgmo(), Paths.json('_levels/start'));
+		walls = map.loadTilemap(Paths.image('tileset'), "walls");
+		walls.follow();
+
+		for (i in 0...CoolData.tileCount)
+		{
+			if (CoolData.doTileCollision.contains(i))
+			{
+				walls.setTileProperties(i, ANY);
+			}
+			else
+			{
+				walls.setTileProperties(i, NONE);
+			}
+		}
+
+		add(walls);
 	}
 }

@@ -43,11 +43,16 @@ class Paths
 
 	inline static public function character(key:String)
 	{
-		return 'images/characters/$key';
+		return getPath('images/characters/$key');
 	}
 
 	inline static public function getText(key:String)
 	{
-		return Assets.getText('data/$key');
+		return Assets.getText(getPath('data/$key'));
+	}
+
+	inline static public function getOgmo()
+	{
+		return getPath('levels.ogmo');
 	}
 }

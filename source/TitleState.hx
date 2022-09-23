@@ -5,7 +5,6 @@ import flixel.FlxState;
 import flixel.input.keyboard.FlxKey;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import lime.app.Application;
 
 class TitleState extends FlxState
 {
