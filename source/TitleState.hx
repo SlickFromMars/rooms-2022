@@ -8,10 +8,6 @@ import flixel.util.FlxColor;
 
 class TitleState extends FlxState
 {
-	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
-	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
-	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
-
 	var logo:FlxText;
 	var beginText:FlxText;
 
@@ -22,9 +18,9 @@ class TitleState extends FlxState
 		#end
 
 		FlxG.game.focusLostFramerate = 60;
-		FlxG.sound.muteKeys = muteKeys;
-		FlxG.sound.volumeDownKeys = volumeDownKeys;
-		FlxG.sound.volumeUpKeys = volumeUpKeys;
+		FlxG.sound.muteKeys = CoolData.muteKeys;
+		FlxG.sound.volumeDownKeys = CoolData.volumeDownKeys;
+		FlxG.sound.volumeUpKeys = CoolData.volumeUpKeys;
 
 		logo = new FlxText(0, 0, 0, "ROOMS", 30);
 		logo.screenCenter();

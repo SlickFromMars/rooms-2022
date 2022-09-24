@@ -9,11 +9,6 @@ import openfl.Assets;
 
 class Player extends FlxSprite
 {
-	public static var upKeys:Array<FlxKey> = [UP, W];
-	public static var downKeys:Array<FlxKey> = [DOWN, S];
-	public static var leftKeys:Array<FlxKey> = [LEFT, A];
-	public static var rightKeys:Array<FlxKey> = [RIGHT, D];
-
 	var up:Bool = false;
 	var down:Bool = false;
 	var left:Bool = false;
@@ -48,10 +43,10 @@ class Player extends FlxSprite
 	function updateMovement()
 	{
 		#if FLX_KEYBOARD
-		up = FlxG.keys.anyPressed(upKeys);
-		down = FlxG.keys.anyPressed(downKeys);
-		left = FlxG.keys.anyPressed(leftKeys);
-		right = FlxG.keys.anyPressed(rightKeys);
+		up = FlxG.keys.anyPressed(CoolData.upKeys);
+		down = FlxG.keys.anyPressed(CoolData.downKeys);
+		left = FlxG.keys.anyPressed(CoolData.leftKeys);
+		right = FlxG.keys.anyPressed(CoolData.rightKeys);
 		#end
 
 		#if mobile
