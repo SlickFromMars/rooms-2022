@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.input.keyboard.FlxKey;
 import flixel.text.FlxText;
@@ -8,7 +9,7 @@ import flixel.util.FlxColor;
 
 class TitleState extends FlxState
 {
-	var logo:FlxText;
+	var logo:FlxSprite;
 	var beginText:FlxText;
 
 	override public function create()
@@ -22,7 +23,9 @@ class TitleState extends FlxState
 		FlxG.sound.volumeDownKeys = CoolData.volumeDownKeys;
 		FlxG.sound.volumeUpKeys = CoolData.volumeUpKeys;
 
-		logo = new FlxText(0, 0, 0, "ROOMS", 30);
+		logo = new FlxSprite();
+		logo.loadGraphic(Paths.image('logo'));
+		logo.antialiasing = true;
 		logo.screenCenter();
 
 		beginText = new FlxText(0, FlxG.height - 60, 0, "PRESS ENTER TO BEGIN", 8);
