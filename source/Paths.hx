@@ -8,7 +8,6 @@ class Paths
 
 	inline public static function getPath(file:String)
 	{
-		trace('Getting an asset - assets/$file');
 		return 'assets/$file';
 	}
 

@@ -9,6 +9,7 @@ class Controls
 	public static var downKeys:Array<FlxKey> = [DOWN, S];
 	public static var leftKeys:Array<FlxKey> = [LEFT, A];
 	public static var rightKeys:Array<FlxKey> = [RIGHT, D];
+	public static var confirmKeys:Array<FlxKey> = [ENTER];
 
 	// VOLUME
 	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];

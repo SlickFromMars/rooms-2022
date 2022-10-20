@@ -42,7 +42,7 @@ class TitleState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		if (FlxG.keys.anyJustPressed([ENTER]))
+		if (FlxG.keys.anyJustPressed(Controls.confirmKeys))
 		{
 			pressStart();
 		}

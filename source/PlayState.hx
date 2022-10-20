@@ -55,7 +55,8 @@ class PlayState extends FlxState
 		super.update(elapsed);
 
 		FlxG.collide(player, walls);
-		FlxG.collide(player, door, completeLevel);
+
+		FlxG.overlap(player, door, completeLevel);
 	}
 
 	function placeEntities(entity:EntityData)
@@ -63,8 +64,8 @@ class PlayState extends FlxState
 		switch (entity.name)
 		{
 			case "player":
-				player.x = entity.x;
-				player.y = entity.y;
+				player.x = entity.x + 4;
+				player.y = entity.y + 4;
 
 			case "door":
 				door = new Prop(DOOR);
@@ -79,9 +80,9 @@ class PlayState extends FlxState
 
 	public function reloadLevel():Void
 	{
-		levelText.text = 'Level $Progress.roomNumber';
+		levelText.text = 'Level ' + Progress.roomNumber;
 
-		var levelList:Array<String> = Paths.getText('_gen/$Progress.roomNumber.txt').split('\n');
+		var levelList:Array<String> = Paths.getText('_gen/' + Progress.roomNumber + '.txt').split('\n');
 		var tempLvl:String = levelList[Std.random(levelList.length)];
 
 		map = new FlxOgmo3Loader(Paths.getOgmo(), Paths.json('_levels/$tempLvl'));
@@ -104,16 +105,16 @@ class PlayState extends FlxState
 
 		player = new Player();
 
-		add(player);
-
 		map.loadEntities(placeEntities, "entites");
+
+		add(player);
 	}
 
 	var stopCompleteSpam:Bool = false;
 
 	function completeLevel(player:Player, door:Prop)
 	{
-		if (!stopCompleteSpam && door.isOpen)
+		if (!stopCompleteSpam && door.isOpen && FlxG.keys.anyJustPressed(Controls.confirmKeys))
 		{
 			stopCompleteSpam = true;
 			Progress.roomNumber += 1;
