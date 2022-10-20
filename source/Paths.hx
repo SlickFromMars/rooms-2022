@@ -8,6 +8,7 @@ class Paths
 
 	inline public static function getPath(file:String)
 	{
+		trace('Getting an asset - assets/$file');
 		return 'assets/$file';
 	}
 
@@ -23,12 +24,12 @@ class Paths
 
 	inline static public function sound(key:String)
 	{
-		return getPath('sounds/$key$SOUND_EXT');
+		return getPath('sounds/$key.$SOUND_EXT');
 	}
 
 	inline static public function music(key:String)
 	{
-		return getPath('music/$key$SOUND_EXT');
+		return getPath('music/$key.$SOUND_EXT');
 	}
 
 	inline static public function image(key:String)

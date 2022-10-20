@@ -19,9 +19,9 @@ class TitleState extends FlxState
 		#end
 
 		FlxG.game.focusLostFramerate = 60;
-		FlxG.sound.muteKeys = CoolData.muteKeys;
-		FlxG.sound.volumeDownKeys = CoolData.volumeDownKeys;
-		FlxG.sound.volumeUpKeys = CoolData.volumeUpKeys;
+		FlxG.sound.muteKeys = Controls.muteKeys;
+		FlxG.sound.volumeDownKeys = Controls.volumeDownKeys;
+		FlxG.sound.volumeUpKeys = Controls.volumeUpKeys;
 
 		logo = new FlxSprite();
 		logo.loadGraphic(Paths.image('logo'));

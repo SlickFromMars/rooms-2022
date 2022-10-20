@@ -107,7 +107,7 @@
       "nodeGhost": true,
       "tags": [],
       "values": [
-        {"name": "isLocked?", "definition": "Boolean", "display": 0, "defaults": false}
+        {"name": "locked", "definition": "Boolean", "display": 2, "defaults": false}
       ]
     }
   ],
