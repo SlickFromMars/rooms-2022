@@ -25,7 +25,10 @@
           "originX": 0,
           "originY": 0,
           "values": {"locked": false}
-        }
+        },
+        {"name": "torch", "id": 2, "_eid": "35666730", "x": 336, "y": 176, "originX": 0, "originY": 0},
+        {"name": "torch", "id": 3, "_eid": "35666730", "x": 160, "y": 80, "originX": 0, "originY": 0},
+        {"name": "torch", "id": 4, "_eid": "35666730", "x": 192, "y": 80, "originX": 0, "originY": 0}
       ]
     },
     {

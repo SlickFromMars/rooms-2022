@@ -29,15 +29,17 @@ class Prop extends FlxSprite
 
 				animation.play('open');
 
-				setSize(16, 32);
+				setSize(32, 32);
+				offset.set(-8, 0);
 
 			case TORCH:
 				loadGraphic(Paths.image('props/torch'), true, 16, 16);
 				animation.add('idle', [1, 2, 3, 4], 4, true);
 
 				animation.play('idle');
+				animation.frameIndex = Std.random(3);
 
-			case _:
+			default:
 				trace('UNKNOWN PROP');
 				kill();
 		}

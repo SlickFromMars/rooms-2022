@@ -4,27 +4,35 @@ import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
+#if mobile
+import flixel.ui.FlxVirtualPad;
+#end
 
 class PlayState extends FlxState
 {
 	var camGame:FlxCamera;
 	var camUI:FlxCamera;
 
-	var player:Player;
-
-	var door:Prop;
-
 	public static var map:FlxOgmo3Loader;
 	public static var walls:FlxTilemap;
+
+	var player:Player;
+	var door:Prop;
+	var propGrp:FlxTypedGroup<Prop>;
 
 	var levelText:FlxText;
 
 	override public function create()
 	{
+		#if mobile
+		public static var virtualPad:FlxVirtualPad;
+		#end
+
 		#if FLX_MOUSE
-		FlxG.mouse.visible = true;
+		FlxG.mouse.visible = false;
 		#end
 
 		camGame = new FlxCamera();
@@ -35,6 +43,12 @@ class PlayState extends FlxState
 		FlxG.cameras.add(camUI, false);
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
+
+		#if mobile
+		virtualPad = new FlxVirtualPad(FULL, NONE);
+		virtualPad.camera = camUI;
+		add(virtualPad);
+		#end
 
 		levelText = new FlxText(0, 5, 0, "LEVEL ???", 10);
 		levelText.camera = camUI;
@@ -47,7 +61,10 @@ class PlayState extends FlxState
 
 		super.create();
 
-		FlxG.sound.playMusic(Paths.music('funkysuspense'), 0.7, true);
+		if (FlxG.sound.music == null)
+		{
+			FlxG.sound.playMusic(Paths.music('funkysuspense'), 0.7, true);
+		}
 	}
 
 	override public function update(elapsed:Float)
@@ -61,6 +78,8 @@ class PlayState extends FlxState
 
 	function placeEntities(entity:EntityData)
 	{
+		propGrp = new FlxTypedGroup<Prop>();
+
 		switch (entity.name)
 		{
 			case "player":
@@ -69,13 +88,20 @@ class PlayState extends FlxState
 
 			case "door":
 				door = new Prop(DOOR);
-				door.x = entity.x;
+				door.x = entity.x - 8;
 				door.y = entity.y;
 				add(door);
+
+			case 'torch':
+				var torch:Prop = new Prop(TORCH);
+				torch.x = entity.x;
+				torch.y = entity.y;
+				propGrp.add(torch);
 
 			default:
 				throw 'Unrecognized actor type ${entity.name}';
 		}
+		add(propGrp);
 	}
 
 	public function reloadLevel():Void
@@ -83,7 +109,8 @@ class PlayState extends FlxState
 		levelText.text = 'Level ' + Progress.roomNumber;
 
 		var levelList:Array<String> = Paths.getText('_gen/' + Progress.roomNumber + '.txt').split('\n');
-		var tempLvl:String = levelList[Std.random(levelList.length)];
+		var tempLvl:String = FlxG.random.getObject(levelList);
+		trace('Chose $tempLvl from $levelList');
 
 		map = new FlxOgmo3Loader(Paths.getOgmo(), Paths.json('_levels/$tempLvl'));
 		walls = map.loadTilemap(Paths.image('tileset'), "walls");
@@ -118,7 +145,14 @@ class PlayState extends FlxState
 		{
 			stopCompleteSpam = true;
 			Progress.roomNumber += 1;
-			FlxG.resetState();
+			if (Paths.fileExists('data/_gen/' + Progress.roomNumber + '.txt'))
+			{
+				FlxG.resetState();
+			}
+			else
+			{
+				FlxG.switchState(new CompleteState());
+			}
 		}
 	}
 }
