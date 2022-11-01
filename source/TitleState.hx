@@ -19,9 +19,9 @@ class TitleState extends FlxState
 		#end
 
 		FlxG.game.focusLostFramerate = 60;
-		FlxG.sound.muteKeys = Controls.muteKeys;
-		FlxG.sound.volumeDownKeys = Controls.volumeDownKeys;
-		FlxG.sound.volumeUpKeys = Controls.volumeUpKeys;
+		FlxG.sound.muteKeys = CoolData.muteKeys;
+		FlxG.sound.volumeDownKeys = CoolData.volumeDownKeys;
+		FlxG.sound.volumeUpKeys = CoolData.volumeUpKeys;
 
 		logo = new FlxSprite();
 		logo.loadGraphic(Paths.image('logo'));
@@ -42,7 +42,7 @@ class TitleState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		if (FlxG.keys.anyJustPressed(Controls.confirmKeys))
+		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
 		{
 			pressStart();
 		}

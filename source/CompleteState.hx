@@ -25,7 +25,7 @@ class CompleteState extends FlxState
 
 	override function update(elapsed:Float)
 	{
-		if (FlxG.keys.anyJustPressed(Controls.confirmKeys))
+		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
 		{
 			pressStart();
 		}
@@ -37,7 +37,7 @@ class CompleteState extends FlxState
 	{
 		FlxG.camera.fade(FlxColor.BLACK, 0.33, false, function()
 		{
-			Progress.roomNumber = 1;
+			CoolData.roomNumber = 1;
 			FlxG.switchState(new PlayState());
 		});
 	}

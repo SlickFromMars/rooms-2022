@@ -7,6 +7,8 @@ import flixel.addons.editors.ogmo.FlxOgmo3Loader;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
+import sprites.Player;
+import sprites.Prop;
 #if mobile
 import flixel.ui.FlxVirtualPad;
 #end
@@ -106,9 +108,9 @@ class PlayState extends FlxState
 
 	public function reloadLevel():Void
 	{
-		levelText.text = 'Level ' + Progress.roomNumber;
+		levelText.text = 'Level ' + CoolData.roomNumber;
 
-		var levelList:Array<String> = Paths.getText('_gen/' + Progress.roomNumber + '.txt').split('\n');
+		var levelList:Array<String> = Paths.getText('_gen/' + CoolData.roomNumber + '.txt').split('\n');
 		var tempLvl:String = FlxG.random.getObject(levelList);
 		trace('Chose $tempLvl from $levelList');
 
@@ -141,11 +143,11 @@ class PlayState extends FlxState
 
 	function completeLevel(player:Player, door:Prop)
 	{
-		if (!stopCompleteSpam && door.isOpen && FlxG.keys.anyJustPressed(Controls.confirmKeys))
+		if (!stopCompleteSpam && door.isOpen && FlxG.keys.anyJustPressed(CoolData.confirmKeys))
 		{
 			stopCompleteSpam = true;
-			Progress.roomNumber += 1;
-			if (Paths.fileExists('data/_gen/' + Progress.roomNumber + '.txt'))
+			CoolData.roomNumber += 1;
+			if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
 			{
 				FlxG.resetState();
 			}

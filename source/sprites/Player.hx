@@ -1,4 +1,4 @@
-package;
+package sprites;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -43,10 +43,10 @@ class Player extends FlxSprite
 	function updateMovement()
 	{
 		#if FLX_KEYBOARD
-		up = FlxG.keys.anyPressed(Controls.upKeys);
-		down = FlxG.keys.anyPressed(Controls.downKeys);
-		left = FlxG.keys.anyPressed(Controls.leftKeys);
-		right = FlxG.keys.anyPressed(Controls.rightKeys);
+		up = FlxG.keys.anyPressed(CoolData.upKeys);
+		down = FlxG.keys.anyPressed(CoolData.downKeys);
+		left = FlxG.keys.anyPressed(CoolData.leftKeys);
+		right = FlxG.keys.anyPressed(CoolData.rightKeys);
 		#end
 
 		#if mobile
