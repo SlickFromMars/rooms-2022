@@ -1,11 +1,8 @@
-package sprites;
+package;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxPoint;
-import flixel.util.FlxColor;
-import openfl.Assets;
 
 class Player extends FlxSprite
 {
@@ -20,7 +17,7 @@ class Player extends FlxSprite
 	{
 		super(x, y);
 
-		loadGraphic(Paths.image('characters/player'), true, 16, 16);
+		loadGraphic(Paths.image('player'), true, 16, 16);
 		animation.add('d', [0], 4, true);
 		animation.add('l', [1], 4, true);
 		animation.add('r', [2], 4, true);

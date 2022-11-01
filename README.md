@@ -4,8 +4,8 @@
 
 Rooms is a puzzle game, that infinately generates based off of predesigned levels.
 
-![](https://github.com/BHS-TSA/video-game-design/blob/main/docs/game.png)
-![](https://github.com/BHS-TSA/video-game-design/blob/main/docs/prison.png)
+![](https://github.com/BHS-TSA/video-game-design/blob/main/docs/img/game.png)
+![](https://github.com/BHS-TSA/video-game-design/blob/main/docs/img/prison.png)
 
 ## Things You'll Be Using
 

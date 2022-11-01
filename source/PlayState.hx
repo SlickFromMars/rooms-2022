@@ -1,5 +1,7 @@
 package;
 
+import Player;
+import Prop;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxState;
@@ -7,8 +9,6 @@ import flixel.addons.editors.ogmo.FlxOgmo3Loader;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
-import sprites.Player;
-import sprites.Prop;
 #if mobile
 import flixel.ui.FlxVirtualPad;
 #end
