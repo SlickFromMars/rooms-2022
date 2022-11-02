@@ -2,6 +2,7 @@ package gameplay;
 
 import flixel.FlxSprite;
 
+// Different prop types
 enum PropType
 {
 	DOOR;
@@ -10,7 +11,7 @@ enum PropType
 
 class Prop extends FlxSprite
 {
-	public var my_type:PropType;
+	public var my_type:PropType; // The prop type
 
 	// DOOR STUFF
 	public var isOpen:Bool = true;
@@ -20,6 +21,7 @@ class Prop extends FlxSprite
 		this.my_type = type;
 		super(x, y);
 
+		// Based off the type, make the prop unique
 		switch (type)
 		{
 			case DOOR:
@@ -40,6 +42,7 @@ class Prop extends FlxSprite
 				animation.frameIndex = Std.random(3);
 
 			default:
+				// Kill the prop as an emergency fallback
 				trace('UNKNOWN PROP');
 				kill();
 		}

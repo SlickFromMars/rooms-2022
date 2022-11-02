@@ -8,20 +8,23 @@ import flixel.util.FlxColor;
 
 class TitleState extends FlxState
 {
+	// UI variables
 	var logo:FlxSprite;
 	var beginText:FlxText;
 
 	override public function create()
 	{
+		// Show the mouse if there is one
 		#if FLX_MOUSE
 		FlxG.mouse.visible = true;
 		#end
 
-		FlxG.game.focusLostFramerate = 60;
+		// Initiate the volume keys
 		FlxG.sound.muteKeys = CoolData.muteKeys;
 		FlxG.sound.volumeDownKeys = CoolData.volumeDownKeys;
 		FlxG.sound.volumeUpKeys = CoolData.volumeUpKeys;
 
+		// Setup the UI
 		logo = new FlxSprite();
 		logo.loadGraphic(Paths.image('logo'));
 		logo.antialiasing = true;
@@ -41,6 +44,7 @@ class TitleState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
+		// Check to see if the player has confirmed
 		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
 		{
 			pressStart();
@@ -51,6 +55,7 @@ class TitleState extends FlxState
 
 	function pressStart()
 	{
+		// Fade to black and then go to PlayState
 		FlxG.camera.fade(FlxColor.BLACK, 0.33, false, function()
 		{
 			FlxG.switchState(new gameplay.PlayState());

@@ -5,11 +5,14 @@ import flixel.FlxGame;
 import flixel.FlxState;
 import flixel.util.FlxSave;
 import openfl.Lib;
-import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.display.StageScaleMode;
 
 using StringTools;
+
+#if !mobile
+import openfl.display.FPS;
+#end
 
 class Main extends Sprite
 {
@@ -23,22 +26,28 @@ class Main extends Sprite
 	var skipSplash:Bool = false; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 
+	// Define the FPS counter variable
+	#if !mobile
 	public static var fpsVar:FPS;
+	#end
 
 	public function new()
 	{
 		super();
 
+		// Create the FlxGame to run the whole thing in
+		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
+
+		// Initiate a save to get the last volume you used
 		var save:FlxSave = new FlxSave();
 		save.bind("TurnBasedRPG");
-
-		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 
 		if (save.data.volume != null)
 		{
 			FlxG.sound.volume = save.data.volume;
 		}
 
+		// Initiate the FPS counter as long as you aren't on mobile
 		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
