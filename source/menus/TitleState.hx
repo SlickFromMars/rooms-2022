@@ -1,4 +1,4 @@
-package;
+package menus;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -53,7 +53,7 @@ class TitleState extends FlxState
 	{
 		FlxG.camera.fade(FlxColor.BLACK, 0.33, false, function()
 		{
-			FlxG.switchState(new PlayState());
+			FlxG.switchState(new gameplay.PlayState());
 		});
 	}
 }

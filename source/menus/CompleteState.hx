@@ -1,4 +1,4 @@
-package;
+package menus;
 
 import flixel.FlxG;
 import flixel.FlxState;
@@ -38,7 +38,7 @@ class CompleteState extends FlxState
 		FlxG.camera.fade(FlxColor.BLACK, 0.33, false, function()
 		{
 			CoolData.roomNumber = 1;
-			FlxG.switchState(new PlayState());
+			FlxG.switchState(new gameplay.PlayState());
 		});
 	}
 }
