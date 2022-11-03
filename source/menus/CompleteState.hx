@@ -5,7 +5,7 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 
-class CompleteState extends FlxState
+class CompleteState extends FrameState
 {
 	// The UI varaibles
 	var winText:FlxText;

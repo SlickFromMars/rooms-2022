@@ -13,7 +13,7 @@ import gameplay.Prop;
 import flixel.ui.FlxVirtualPad;
 #end
 
-class PlayState extends FlxState
+class PlayState extends FrameState
 {
 	// Camera stuff
 	var camGame:FlxCamera;

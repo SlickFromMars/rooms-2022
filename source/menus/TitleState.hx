@@ -6,7 +6,7 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 
-class TitleState extends FlxState
+class TitleState extends FrameState
 {
 	// UI variables
 	var logo:FlxSprite;
