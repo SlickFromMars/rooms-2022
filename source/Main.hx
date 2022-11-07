@@ -38,6 +38,10 @@ class Main extends Sprite
 		// Create the FlxGame to run the whole thing in
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 
+		#if debug
+		FlxG.log.redirectTraces = true;
+		#end
+
 		// Initiate a save to get the last volume you used
 		var save:FlxSave = new FlxSave();
 		save.bind("TurnBasedRPG");

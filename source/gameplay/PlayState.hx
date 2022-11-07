@@ -60,20 +60,18 @@ class PlayState extends FrameState
 		add(virtualPad);
 		#end
 
-		// Setup the level
-		reloadLevel();
-
 		// UI stuffs
 		levelText = new FlxText(0, 5, 0, "LEVEL ???", 10);
 		levelText.camera = camUI;
 
-		add(levelText);
+		// Setup the level
+		reloadLevel();
 
+		// ADD THINGS
+		add(levelText);
 		// Finish setting up the camera
 		camGame.follow(player, TOPDOWN, 1);
-
 		super.create();
-
 		// Play some music
 		if (FlxG.sound.music == null)
 		{
