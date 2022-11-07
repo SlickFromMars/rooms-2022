@@ -2,7 +2,6 @@ package gameplay;
 
 import flixel.FlxCamera;
 import flixel.FlxG;
-import flixel.FlxState;
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
@@ -85,7 +84,34 @@ class PlayState extends FrameState
 
 		// Collision stuff
 		FlxG.collide(player, walls);
-		FlxG.overlap(player, door, completeLevel);
+
+		if (player.overlaps(door))
+		{
+			if (door.isOpen)
+			{
+				door.animation.play('open_s');
+			}
+			else
+			{
+				door.animation.play('closed_s');
+			}
+
+			if (!stopCompleteSpam && door.isOpen && FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+			{
+				FlxG.overlap(player, door, completeLevel);
+			}
+		}
+		else
+		{
+			if (door.isOpen)
+			{
+				door.animation.play('open');
+			}
+			else
+			{
+				door.animation.play('closed');
+			}
+		}
 	}
 
 	function placeEntities(entity:EntityData) // Setup the props
@@ -155,22 +181,19 @@ class PlayState extends FrameState
 
 	function completeLevel(player:Player, door:Prop)
 	{
-		if (!stopCompleteSpam && door.isOpen && FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+		stopCompleteSpam = true;
+
+		// TO THE NEXT LEVEL WOOOOOOOO
+		CoolData.roomNumber += 1;
+
+		// Check to see if a file exists, and then go to the next level if it does
+		if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
 		{
-			stopCompleteSpam = true;
-
-			// TO THE NEXT LEVEL WOOOOOOOO
-			CoolData.roomNumber += 1;
-
-			// Check to see if a file exists, and then go to the next level if it does
-			if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
-			{
-				FlxG.resetState();
-			}
-			else
-			{
-				FlxG.switchState(new menus.CompleteState());
-			}
+			FlxG.resetState();
+		}
+		else
+		{
+			FlxG.switchState(new menus.CompleteState());
 		}
 	}
 }

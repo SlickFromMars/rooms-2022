@@ -27,7 +27,9 @@ class Prop extends FlxSprite
 			case DOOR:
 				loadGraphic(Paths.image('props/door'), true, 16, 16);
 				animation.add('closed', [0], 4, false);
-				animation.add('open', [1], 4, false);
+				animation.add('closed_s', [1], 4, false);
+				animation.add('open', [2], 4, false);
+				animation.add('open_s', [3], 4, false);
 
 				animation.play('open');
 
