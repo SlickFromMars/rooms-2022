@@ -82,6 +82,20 @@ class PlayState extends FrameState
 	{
 		super.update(elapsed);
 
+		// If debug is enabled, check to see if skip keys are pressed and then skip the current level
+		#if debug
+		if (FlxG.keys.anyJustPressed(CoolData.skipKeys))
+		{
+			completeLevel();
+		}
+		#end
+
+		// Check if reset keys are pressed and then reset the current level
+		if (FlxG.keys.anyJustPressed(CoolData.resetKeys))
+		{
+			FlxG.resetState();
+		}
+
 		// Collision stuff
 		FlxG.collide(player, walls);
 
@@ -98,7 +112,7 @@ class PlayState extends FrameState
 
 			if (!stopCompleteSpam && door.isOpen && FlxG.keys.anyJustPressed(CoolData.confirmKeys))
 			{
-				FlxG.overlap(player, door, completeLevel);
+				completeLevel();
 			}
 		}
 		else
@@ -179,7 +193,7 @@ class PlayState extends FrameState
 
 	var stopCompleteSpam:Bool = false; // Stop people from breaking the level
 
-	function completeLevel(player:Player, door:Prop)
+	function completeLevel()
 	{
 		stopCompleteSpam = true;
 
