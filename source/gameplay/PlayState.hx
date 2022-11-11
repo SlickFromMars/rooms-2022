@@ -6,6 +6,7 @@ import flixel.addons.editors.ogmo.FlxOgmo3Loader;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
+import flixel.util.FlxColor;
 import gameplay.Player;
 import gameplay.Prop;
 #if mobile
@@ -68,14 +69,19 @@ class PlayState extends FrameState
 
 		// ADD THINGS
 		add(levelText);
+
 		// Finish setting up the camera
 		camGame.follow(player, TOPDOWN, 1);
 		super.create();
+
 		// Play some music
 		if (FlxG.sound.music == null)
 		{
 			FlxG.sound.playMusic(Paths.music('funkysuspense'), 0.7, true);
 		}
+
+		// Epic transition
+		camUI.fade(FlxColor.BLACK, 0.1, true);
 	}
 
 	override public function update(elapsed:Float)
@@ -200,14 +206,18 @@ class PlayState extends FrameState
 		// TO THE NEXT LEVEL WOOOOOOOO
 		CoolData.roomNumber += 1;
 
-		// Check to see if a file exists, and then go to the next level if it does
-		if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
+		// Fade to black and then figure out what to do
+		camUI.fade(FlxColor.BLACK, 0.1, false, function()
 		{
-			FlxG.resetState();
-		}
-		else
-		{
-			FlxG.switchState(new menus.CompleteState());
-		}
+			// Check to see if a file exists, and then go to the next level if it does
+			if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
+			{
+				FlxG.resetState();
+			}
+			else
+			{
+				FlxG.switchState(new menus.CompleteState());
+			}
+		});
 	}
 }

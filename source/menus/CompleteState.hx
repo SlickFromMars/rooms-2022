@@ -40,7 +40,7 @@ class CompleteState extends FrameState
 	function pressStart()
 	{
 		// Fade to black and then go to PlayState again
-		FlxG.camera.fade(FlxColor.BLACK, 0.33, false, function()
+		FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
 		{
 			CoolData.roomNumber = 1;
 			FlxG.switchState(new gameplay.PlayState());

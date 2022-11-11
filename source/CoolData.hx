@@ -4,9 +4,10 @@ import flixel.input.keyboard.FlxKey;
 
 class CoolData
 {
-	// CONTROLS STUFF
+	// PROGRESS STUFF
 	public static var roomNumber:Int = 1; // Room number
 
+	// CONTROLS STUFF
 	public static var upKeys:Array<FlxKey> = [UP, W]; // Control array to move up
 	public static var downKeys:Array<FlxKey> = [DOWN, S]; // Control array to move down
 	public static var leftKeys:Array<FlxKey> = [LEFT, A]; // Control array to move left

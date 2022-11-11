@@ -56,7 +56,7 @@ class TitleState extends FrameState
 	function pressStart()
 	{
 		// Fade to black and then go to PlayState
-		FlxG.camera.fade(FlxColor.BLACK, 0.33, false, function()
+		FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
 		{
 			FlxG.switchState(new gameplay.PlayState());
 		});
