@@ -75,8 +75,9 @@ class PlayState extends FrameState
 		super.create();
 
 		// Play some music
-		if (FlxG.sound.music == null)
+		if (CoolData.roomNumber == 1)
 		{
+			FlxG.sound.music.stop();
 			FlxG.sound.playMusic(Paths.music('funkysuspense'), 0.7, true);
 		}
 

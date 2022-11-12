@@ -39,6 +39,13 @@ class TitleState extends FrameState
 
 		super.create();
 
+		// Play some music
+		if (FlxG.sound.music == null)
+		{
+			FlxG.sound.playMusic(Paths.music('november'), 0.7);
+		}
+
+		// Epic transition
 		FlxG.camera.fade(FlxColor.BLACK, 3, true);
 	}
 
@@ -56,6 +63,8 @@ class TitleState extends FrameState
 	function pressStart()
 	{
 		// Fade to black and then go to PlayState
+		FlxG.sound.music.stop();
+
 		FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
 		{
 			FlxG.switchState(new gameplay.PlayState());
