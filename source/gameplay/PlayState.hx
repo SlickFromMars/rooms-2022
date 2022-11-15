@@ -111,15 +111,15 @@ class PlayState extends FrameState
 			if (door.isOpen)
 			{
 				door.animation.play('open_s');
+
+				if (!stopCompleteSpam && FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+				{
+					completeLevel();
+				}
 			}
 			else
 			{
 				door.animation.play('closed_s');
-			}
-
-			if (!stopCompleteSpam && door.isOpen && FlxG.keys.anyJustPressed(CoolData.confirmKeys))
-			{
-				completeLevel();
 			}
 		}
 		else
