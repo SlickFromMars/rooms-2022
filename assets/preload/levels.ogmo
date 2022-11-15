@@ -1,1 +1,241 @@
-{"name":"ROOMS","ogmoVersion":"3.4.0","levelPaths":["."],"backgroundColor":"#282c34ff","gridColor":"#3c4049cc","anglesRadians":false,"directoryDepth":5,"layerGridDefaultSize":{"x":16,"y":16},"levelDefaultSize":{"x":320,"y":240},"levelMinSize":{"x":640,"y":480},"levelMaxSize":{"x":4096,"y":4096},"levelValues":[],"defaultExportMode":".json","compactExport":true,"externalScript":"","playCommand":"","entityTags":["decor","utils"],"layers":[{"definition":"entity","name":"utils","gridSize":{"x":16,"y":16},"exportID":"89672039","requiredTags":["utils"],"excludedTags":[]},{"definition":"entity","name":"decor","gridSize":{"x":4,"y":4},"exportID":"53614381","requiredTags":["decor"],"excludedTags":[]},{"definition":"tile","name":"walls","gridSize":{"x":16,"y":16},"exportID":"89675163","exportMode":0,"arrayMode":0,"defaultTileset":"tiles"}],"entities":[{"exportID":"35666730","name":"torch","limit":-1,"size":{"x":16,"y":16},"origin":{"x":0,"y":0},"originAnchored":true,"shape":{"label":"Rectangle","points":[{"x":-1,"y":-1},{"x":1,"y":-1},{"x":-1,"y":1},{"x":1,"y":-1},{"x":-1,"y":1},{"x":1,"y":1}]},"color":"#00e5ffff","tileX":false,"tileY":false,"tileSize":{"x":16,"y":16},"resizeableX":false,"resizeableY":false,"rotatable":false,"rotationDegrees":360,"canFlipX":false,"canFlipY":false,"canSetColor":false,"hasNodes":false,"nodeLimit":0,"nodeDisplay":0,"nodeGhost":true,"tags":["decor"],"values":[],"texture":"images/torchstatic.png","textureImage":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACMSURBVDhPY6ANSGn4D2URBExQGgFAmjXtiTaEEUpDAEwzDFw/yMAwpwFVDUEAMqR3/39SvIEJKNKMDEAGETAMMxDRAYEAxW0ASBNygOIA2A0gIQxwu4AI20EAqwGuBxugLAhA5yMDrInEVZUB7AVrOQaGo4/AQgy7b2NXi9UF6IpxaQYB3GFAH8DAAADa8ij5wjYYEQAAAABJRU5ErkJggg=="},{"exportID":"02731243","name":"door","limit":-1,"size":{"x":16,"y":16},"origin":{"x":0,"y":0},"originAnchored":true,"shape":{"label":"Rectangle","points":[{"x":-1,"y":-1},{"x":1,"y":-1},{"x":-1,"y":1},{"x":1,"y":-1},{"x":-1,"y":1},{"x":1,"y":1}]},"color":"#00ff06ff","tileX":false,"tileY":false,"tileSize":{"x":16,"y":16},"resizeableX":false,"resizeableY":false,"rotatable":false,"rotationDegrees":360,"canFlipX":false,"canFlipY":false,"canSetColor":false,"hasNodes":false,"nodeLimit":0,"nodeDisplay":0,"nodeGhost":true,"tags":["utils"],"values":[{"name":"locked","definition":"Boolean","display":2,"defaults":false}],"texture":"images/doorstatic.png","textureImage":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD1SURBVDhPlZIxDsIwDEUN6t4VujJ1ZEe5CmfjAtyBiJ2xE2vhAsyQ7+QnboFIfVIUx/75beKsJOCce2P23usa2BxjC7UNioeNl90WyyI87r3cHyEIdcbXp5O5Vt0hABDFYoRrNQow5gzDdSwVKLZYU8JcNrBfWUI2+Lfx1x/Z3NcRSO2PbG7SonLDEZhwzfh0czGRyAZ938swDJqsAR2gVo+A5DiO0ratxpjB5ex1ANagw6CRGiDRdZ0OxsorjYStIQZqwI01fn4gMLlE/CaKtbvgMajLTxm3jKcJ5k/btnTehSbNqV2ljdwErIltNcwmR1iOyAcVm4uHOA6odQAAAABJRU5ErkJggg=="},{"exportID":"89676077","name":"player","limit":1,"size":{"x":16,"y":16},"origin":{"x":0,"y":0},"originAnchored":true,"shape":{"label":"Rectangle","points":[{"x":-1,"y":-1},{"x":1,"y":-1},{"x":-1,"y":1},{"x":1,"y":-1},{"x":-1,"y":1},{"x":1,"y":1}]},"color":"#ff0000ff","tileX":false,"tileY":false,"tileSize":{"x":16,"y":16},"resizeableX":false,"resizeableY":false,"rotatable":false,"rotationDegrees":360,"canFlipX":false,"canFlipY":false,"canSetColor":false,"hasNodes":false,"nodeLimit":0,"nodeDisplay":0,"nodeGhost":true,"tags":["utils"],"values":[],"texture":"images/playerstatic.png","textureImage":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABCSURBVDhPY7zGwPCfgRIANYAsDNLLBGRQBIaAATAPwwA6f2C9cAuIh0AgEgIEDWCEYhhA5w+DMMCbnUHxjB8wMAAANyUbFw7/ygIAAAAASUVORK5CYII="},{"exportID":"52732148","name":"shapelock","limit":1,"size":{"x":16,"y":16},"origin":{"x":0,"y":0},"originAnchored":true,"shape":{"label":"Rectangle","points":[{"x":-1,"y":-1},{"x":1,"y":-1},{"x":-1,"y":1},{"x":1,"y":-1},{"x":-1,"y":1},{"x":1,"y":1}]},"color":"#fcff00ff","tileX":false,"tileY":false,"tileSize":{"x":16,"y":16},"resizeableX":false,"resizeableY":false,"rotatable":false,"rotationDegrees":360,"canFlipX":false,"canFlipY":false,"canSetColor":false,"hasNodes":false,"nodeLimit":0,"nodeDisplay":0,"nodeGhost":true,"tags":["utils"],"values":[]},{"exportID":"53596075","name":"crate","limit":-1,"size":{"x":16,"y":16},"origin":{"x":0,"y":0},"originAnchored":true,"shape":{"label":"Rectangle","points":[{"x":-1,"y":-1},{"x":1,"y":-1},{"x":-1,"y":1},{"x":1,"y":-1},{"x":-1,"y":1},{"x":1,"y":1}]},"color":"#9fa100ff","tileX":false,"tileY":false,"tileSize":{"x":16,"y":16},"resizeableX":false,"resizeableY":false,"rotatable":false,"rotationDegrees":360,"canFlipX":false,"canFlipY":false,"canSetColor":false,"hasNodes":false,"nodeLimit":0,"nodeDisplay":0,"nodeGhost":true,"tags":["decor"],"values":[],"texture":"images/props/misc.png","textureImage":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAMFJREFUOE9jZKAQMIL06+rq/ifHnMuXLzPCDQgODmZ4/Pgxg+T7uQzqUgwMN58xYKUPfE9mkJWVZVi7di0DigFmZmYMDpxzcWpENvC5YDLDqVOnUA3wV72M12Z0F3Ud1KWyCygOgzxL0ryQvRbNCy4uLuBY4Hy1Bm9YXPgTAo6FPXv2oIaBuro6gwHLGqJi4btYCMPNmzdRDTAQJM0LK6+ieWHgDQDlhXDty0SFwYX3uuCsA0/K5GQokGaQPjBBCQAAtJ/jEYwEHQ8AAAAASUVORK5CYIIA"}],"tilesets":[{"label":"tiles","path":"images/tileset.png","image":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABBFJREFUeF7tmz1uwkAQhUFCygFoUnCLNFRcgDISHCI9nAH6HAIkSi5AlYZbpEjDASIhET0rz5pM1j+zs8YxIQ2w3lnvfJ55++f0e86/yWRycTbRqnnfe3cAeHx8zJt5enrKvx+Pxx5+81Pfa7/fZ0UWe9hMp9PMLsZe9gH2yQHUBQowdEBDKGrj4+MjBybtJUDr/TsHgM7eFADPE6yKns/Pz97Dw8OvwCDAPxEBTQCA4/z7lwDgPCF0FgBEryg6Oq8BeEJS1XWSll1j3Tp1WDekBbC/WQ3QQDWA1kWwKgKqxnM+/apRQEYAvks9aDUCigC8v79nfR6NRlUMfqRQleqHGmsVQEjELM4XiWDRuK8BtJ4C2gGL83Cm86NAUQTUCf0/B6AyWWtUOJ/Pea3BYFDDIk2VqGGwbA/gcDhkbeo6ReXSDdZJ49rvVtCn8XicX3h7e7PPA3Qj+jZoFH/yRvhdVC7tUadJCG4AVc6neHJNQmBUyg0VUwpUARgOhxmD0+n0gwXKQ2Whuk0DQGQyGnF/NwA0RqJokLs8oTJc1+WhVGkqDZKnAJwPrdaKVnGhcpRpYfrTAChwCOvQpiSulwHAdQmNAGR7TQKQAm0eBRhCModSCB/bYH42CSCpBsj8L9ui5ra43gXmbLBTKaA7q8O5an9Pp0cnNUCOoxqAznGZIqE1PMr0QUeTKaA1LGoYvGvA92MtGwbLIoFRwYi4GQ3Q4V5HD/S64RozQfYzahjUOVTkZNmWNucKcviTC6amNQCag6l5FAA9jv77eYA3hEPzc0sEeN9PiBoF9BreI2KLxeLHCxZWDQAAhjTTiMMqw7zsehIAnnE8BQD9ACy/zQDkkpaEPXN5AOA+AqfKlhSAPaLG4rSsbwJAR3XeeVJAtmVxvKgvVlGOAiBv4hUxa4dT108G4Brr+dTOo70kADwa0IRTljaTAPBogKWzTdS9A/BSlSLIZXKMmnv7EWufJALuGqDO2/5dBNxFcDzu3ecB3yfC1tVcrHilsut719OpOsJ2rO8XePUmA+BZT/NwhKe/8rCkznpcA7S+X7Ber10jWQYgdinJDQiPvTeC3AC86+mUEGLeL1gul/4I8D4Fr73n/QK3Blg6H0oX2HvmAbPZLN8T3G63/c1mc5nP56Wfu90u7zZsLD7ouiZjjhh0WApW7DyA/3T1/Pzcq3JcXie4qwMoOxeIOd8n1JeXl9oA8BRfX1+zh9n5FFitVhcIWZ3QZwTAcXyn7VVTQOd7Cg2om/saANLg6ilAh2XOa02whCWdiImAVgA0oQEAZgGAV24wAYJ+WGCHUsU8ClwrBTBBg5MhMDcJQDtc9rtVAAgjeb4e0gRLWDKP6XCdT9yz1RQoekcodh4AYHUch9M8TE0F4AtucE5BspwHQgAAAABJRU5ErkJgggAA","tileWidth":16,"tileHeight":16,"tileSeparationX":0,"tileSeparationY":0,"tileMarginX":0,"tileMarginY":0}]}
+{
+  "name": "ROOMS",
+  "ogmoVersion": "3.4.0",
+  "levelPaths": ["."],
+  "backgroundColor": "#282c34ff",
+  "gridColor": "#3c4049cc",
+  "anglesRadians": false,
+  "directoryDepth": 5,
+  "layerGridDefaultSize": {"x": 16, "y": 16},
+  "levelDefaultSize": {"x": 320, "y": 240},
+  "levelMinSize": {"x": 640, "y": 480},
+  "levelMaxSize": {"x": 4096, "y": 4096},
+  "levelValues": [],
+  "defaultExportMode": ".json",
+  "compactExport": false,
+  "externalScript": "",
+  "playCommand": "",
+  "entityTags": ["decor", "utils"],
+  "layers": [
+    {
+      "definition": "entity",
+      "name": "utils",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "89672039",
+      "requiredTags": ["utils"],
+      "excludedTags": []
+    },
+    {
+      "definition": "entity",
+      "name": "decor",
+      "gridSize": {"x": 4, "y": 4},
+      "exportID": "53614381",
+      "requiredTags": ["decor"],
+      "excludedTags": []
+    },
+    {
+      "definition": "tile",
+      "name": "walls",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "89675163",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": "tiles"
+    }
+  ],
+  "entities": [
+    {
+      "exportID": "35666730",
+      "name": "torch",
+      "limit": -1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#00e5ffff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["decor"],
+      "values": [],
+      "texture": "images/torchstatic.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACMSURBVDhPY6ANSGn4D2URBExQGgFAmjXtiTaEEUpDAEwzDFw/yMAwpwFVDUEAMqR3/39SvIEJKNKMDEAGETAMMxDRAYEAxW0ASBNygOIA2A0gIQxwu4AI20EAqwGuBxugLAhA5yMDrInEVZUB7AVrOQaGo4/AQgy7b2NXi9UF6IpxaQYB3GFAH8DAAADa8ij5wjYYEQAAAABJRU5ErkJggg=="
+    },
+    {
+      "exportID": "02731243",
+      "name": "door",
+      "limit": -1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#00ff06ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["utils"],
+      "values": [
+        {"name": "locked", "definition": "Boolean", "display": 2, "defaults": false}
+      ],
+      "texture": "images/doorstatic.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD1SURBVDhPlZIxDsIwDEUN6t4VujJ1ZEe5CmfjAtyBiJ2xE2vhAsyQ7+QnboFIfVIUx/75beKsJOCce2P23usa2BxjC7UNioeNl90WyyI87r3cHyEIdcbXp5O5Vt0hABDFYoRrNQow5gzDdSwVKLZYU8JcNrBfWUI2+Lfx1x/Z3NcRSO2PbG7SonLDEZhwzfh0czGRyAZ938swDJqsAR2gVo+A5DiO0ratxpjB5ex1ANagw6CRGiDRdZ0OxsorjYStIQZqwI01fn4gMLlE/CaKtbvgMajLTxm3jKcJ5k/btnTehSbNqV2ljdwErIltNcwmR1iOyAcVm4uHOA6odQAAAABJRU5ErkJggg=="
+    },
+    {
+      "exportID": "89676077",
+      "name": "player",
+      "limit": 1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["utils"],
+      "values": [],
+      "texture": "images/playerstatic.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABCSURBVDhPY7zGwPCfgRIANYAsDNLLBGRQBIaAATAPwwA6f2C9cAuIh0AgEgIEDWCEYhhA5w+DMMCbnUHxjB8wMAAANyUbFw7/ygIAAAAASUVORK5CYII="
+    },
+    {
+      "exportID": "52732148",
+      "name": "shapelock",
+      "limit": 1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#fcff00ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["utils"],
+      "values": []
+    },
+    {
+      "exportID": "53596075",
+      "name": "crate",
+      "limit": -1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#9fa100ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["decor"],
+      "values": [],
+      "texture": "images/props/misc.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAMFJREFUOE9jZKAQMIL06+rq/ifHnMuXLzPCDQgODmZ4/Pgxg+T7uQzqUgwMN58xYKUPfE9mkJWVZVi7di0DigFmZmYMDpxzcWpENvC5YDLDqVOnUA3wV72M12Z0F3Ud1KWyCygOgzxL0ryQvRbNCy4uLuBY4Hy1Bm9YXPgTAo6FPXv2oIaBuro6gwHLGqJi4btYCMPNmzdRDTAQJM0LK6+ieWHgDQDlhXDty0SFwYX3uuCsA0/K5GQokGaQPjBBCQAAtJ/jEYwEHQ8AAAAASUVORK5CYIIA"
+    }
+  ],
+  "tilesets": [
+    {"label": "tiles", "path": "images/tileset.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABBFJREFUeF7tmz1uwkAQhUFCygFoUnCLNFRcgDISHCI9nAH6HAIkSi5AlYZbpEjDASIhET0rz5pM1j+zs8YxIQ2w3lnvfJ55++f0e86/yWRycTbRqnnfe3cAeHx8zJt5enrKvx+Pxx5+81Pfa7/fZ0UWe9hMp9PMLsZe9gH2yQHUBQowdEBDKGrj4+MjBybtJUDr/TsHgM7eFADPE6yKns/Pz97Dw8OvwCDAPxEBTQCA4/z7lwDgPCF0FgBEryg6Oq8BeEJS1XWSll1j3Tp1WDekBbC/WQ3QQDWA1kWwKgKqxnM+/apRQEYAvks9aDUCigC8v79nfR6NRlUMfqRQleqHGmsVQEjELM4XiWDRuK8BtJ4C2gGL83Cm86NAUQTUCf0/B6AyWWtUOJ/Pea3BYFDDIk2VqGGwbA/gcDhkbeo6ReXSDdZJ49rvVtCn8XicX3h7e7PPA3Qj+jZoFH/yRvhdVC7tUadJCG4AVc6neHJNQmBUyg0VUwpUARgOhxmD0+n0gwXKQ2Whuk0DQGQyGnF/NwA0RqJokLs8oTJc1+WhVGkqDZKnAJwPrdaKVnGhcpRpYfrTAChwCOvQpiSulwHAdQmNAGR7TQKQAm0eBRhCModSCB/bYH42CSCpBsj8L9ui5ra43gXmbLBTKaA7q8O5an9Pp0cnNUCOoxqAznGZIqE1PMr0QUeTKaA1LGoYvGvA92MtGwbLIoFRwYi4GQ3Q4V5HD/S64RozQfYzahjUOVTkZNmWNucKcviTC6amNQCag6l5FAA9jv77eYA3hEPzc0sEeN9PiBoF9BreI2KLxeLHCxZWDQAAhjTTiMMqw7zsehIAnnE8BQD9ACy/zQDkkpaEPXN5AOA+AqfKlhSAPaLG4rSsbwJAR3XeeVJAtmVxvKgvVlGOAiBv4hUxa4dT108G4Brr+dTOo70kADwa0IRTljaTAPBogKWzTdS9A/BSlSLIZXKMmnv7EWufJALuGqDO2/5dBNxFcDzu3ecB3yfC1tVcrHilsut719OpOsJ2rO8XePUmA+BZT/NwhKe/8rCkznpcA7S+X7Ber10jWQYgdinJDQiPvTeC3AC86+mUEGLeL1gul/4I8D4Fr73n/QK3Blg6H0oX2HvmAbPZLN8T3G63/c1mc5nP56Wfu90u7zZsLD7ouiZjjhh0WApW7DyA/3T1/Pzcq3JcXie4qwMoOxeIOd8n1JeXl9oA8BRfX1+zh9n5FFitVhcIWZ3QZwTAcXyn7VVTQOd7Cg2om/saANLg6ilAh2XOa02whCWdiImAVgA0oQEAZgGAV24wAYJ+WGCHUsU8ClwrBTBBg5MhMDcJQDtc9rtVAAgjeb4e0gRLWDKP6XCdT9yz1RQoekcodh4AYHUch9M8TE0F4AtucE5BspwHQgAAAABJRU5ErkJgggAA", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
+  ]
+}
