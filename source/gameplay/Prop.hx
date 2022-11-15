@@ -1,5 +1,6 @@
 package gameplay;
 
+import flixel.util.FlxColor;
 import flixel.FlxSprite;
 
 // Different prop types
@@ -7,14 +8,15 @@ enum PropType
 {
 	DOOR;
 	TORCH;
+	SHAPELOCK;
 }
 
 class Prop extends FlxSprite
 {
 	public var my_type:PropType; // The prop type
 
-	// DOOR STUFF
-	public var isOpen:Bool = true;
+	// UNIQUE VARIABLES
+	public var isOpen:Bool = true; // For the door
 
 	public function new(type:PropType)
 	{
@@ -42,6 +44,16 @@ class Prop extends FlxSprite
 
 				animation.play('idle');
 				animation.frameIndex = Std.random(3);
+
+			case SHAPELOCK:
+				loadGraphic(Paths.image('props/shapepanel'), true, 16, 16);
+				animation.add('normal', [0], 4, false);
+				animation.add('hover', [1], 4, false);
+
+				animation.play('normal');
+
+				setSize(32, 32);
+				offset.set(-8, 0);
 
 			default:
 				// Kill the prop as an emergency fallback

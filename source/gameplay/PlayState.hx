@@ -1,5 +1,6 @@
 package gameplay;
 
+import flixel.tweens.FlxTween;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
@@ -22,7 +23,9 @@ class PlayState extends FrameState
 	// The world variables
 	public static var map:FlxOgmo3Loader;
 	public static var walls:FlxTilemap;
+
 	public static var door:Prop;
+	public static var shapeLock:Prop;
 	public static var propGrp:FlxTypedGroup<Prop>;
 
 	// The player variable
@@ -30,6 +33,7 @@ class PlayState extends FrameState
 
 	// The UI stuff
 	var levelText:FlxText;
+	var denyText:FlxText;
 
 	override public function create()
 	{
@@ -62,13 +66,20 @@ class PlayState extends FrameState
 
 		// UI stuffs
 		levelText = new FlxText(0, 5, 0, "LEVEL ???", 10);
-		levelText.camera = camUI;
+		levelText.cameras = [camUI];
+
+		denyText = new FlxText(0, FlxG.height * 0.8, "Denied.", 10);
+		denyText.alignment = FlxTextAlign.CENTER;
+		denyText.screenCenter(X);
+		denyText.cameras = [camUI];
+		denyText.alpha = 0;
 
 		// Setup the level
 		reloadLevel();
 
 		// ADD THINGS
 		add(levelText);
+		add(denyText);
 
 		// Finish setting up the camera
 		camGame.follow(player, TOPDOWN, 1);
@@ -106,6 +117,23 @@ class PlayState extends FrameState
 		// Collision stuff
 		FlxG.collide(player, walls);
 
+		if (shapeLock != null)
+		{
+			if (player.overlaps(shapeLock))
+			{
+				shapeLock.animation.play('hover');
+
+				if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+				{
+					openSubState(new ShapePuzzleSubstate());
+				}
+			}
+			else
+			{
+				shapeLock.animation.play('normal');
+			}
+		}
+
 		if (player.overlaps(door))
 		{
 			if (door.isOpen)
@@ -120,6 +148,15 @@ class PlayState extends FrameState
 			else
 			{
 				door.animation.play('closed_s');
+
+				if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+				{
+					trace("DOOR IS LOCKED BOZO!!!");
+					denyText.text = 'This door is locked.';
+					denyText.screenCenter(X);
+					denyText.alpha = 1;
+					FlxTween.tween(denyText, {alpha: 0}, 2, {startDelay: 1});
+				}
 			}
 		}
 		else
@@ -149,6 +186,7 @@ class PlayState extends FrameState
 				door = new Prop(DOOR);
 				door.x = entity.x - 8;
 				door.y = entity.y;
+				door.isOpen = !entity.values.locked;
 				add(door);
 
 			case 'torch':
@@ -156,6 +194,12 @@ class PlayState extends FrameState
 				torch.x = entity.x;
 				torch.y = entity.y;
 				propGrp.add(torch);
+
+			case 'shapelock':
+				shapeLock = new Prop(SHAPELOCK);
+				shapeLock.x = entity.x - 8;
+				shapeLock.y = entity.y;
+				add(shapeLock);
 
 			default:
 				throw 'Unrecognized actor type ${entity.name}';

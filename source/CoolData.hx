@@ -14,6 +14,7 @@ class CoolData
 	public static var rightKeys:Array<FlxKey> = [RIGHT, D]; // Control array to move right
 
 	public static var confirmKeys:Array<FlxKey> = [ENTER]; // Control array to confirm
+	public static var backKeys:Array<FlxKey> = [ESCAPE]; // Control array to go back
 	public static var resetKeys:Array<FlxKey> = [R]; // Control array to reset
 	#if debug
 	public static var skipKeys:Array<FlxKey> = [ONE]; // To skip levels in debug only
