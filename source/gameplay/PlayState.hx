@@ -201,8 +201,14 @@ class PlayState extends FrameState
 				shapeLock.y = entity.y;
 				add(shapeLock);
 
+			case 'crate':
+				var crate:Prop = new Prop(CRATE);
+				crate.x = entity.x + 4;
+				crate.y = entity.y + 4;
+				propGrp.add(crate);
+
 			default:
-				throw 'Unrecognized actor type ${entity.name}';
+				trace('Unrecognized actor type ' + entity.name);
 		}
 		add(propGrp);
 	}
@@ -238,7 +244,8 @@ class PlayState extends FrameState
 		// Finalize and add stuff
 		add(walls);
 		player = new Player();
-		map.loadEntities(placeEntities, "entites");
+		map.loadEntities(placeEntities, "decor");
+		map.loadEntities(placeEntities, "utils");
 		add(player);
 	}
 

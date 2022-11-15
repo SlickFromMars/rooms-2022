@@ -3,14 +3,6 @@ package gameplay;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
 
-// Different prop types
-enum PropType
-{
-	DOOR;
-	TORCH;
-	SHAPELOCK;
-}
-
 class Prop extends FlxSprite
 {
 	public var my_type:PropType; // The prop type
@@ -55,10 +47,25 @@ class Prop extends FlxSprite
 				setSize(32, 32);
 				offset.set(-8, 0);
 
+			case CRATE:
+				loadGraphic(Paths.image('props/crate'));
+
+				setSize(8, 8);
+				offset.set(4, 4);
+
 			default:
 				// Kill the prop as an emergency fallback
 				trace('UNKNOWN PROP');
 				kill();
 		}
 	}
+}
+
+// Different prop types
+enum PropType
+{
+	DOOR;
+	TORCH;
+	SHAPELOCK;
+	CRATE;
 }
