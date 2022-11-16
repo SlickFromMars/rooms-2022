@@ -79,7 +79,7 @@
       "nodeGhost": true,
       "tags": ["decor"],
       "values": [],
-      "texture": "images/torchstatic.png",
+      "texture": "../../docs/img/torchstatic.png",
       "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACMSURBVDhPY6ANSGn4D2URBExQGgFAmjXtiTaEEUpDAEwzDFw/yMAwpwFVDUEAMqR3/39SvIEJKNKMDEAGETAMMxDRAYEAxW0ASBNygOIA2A0gIQxwu4AI20EAqwGuBxugLAhA5yMDrInEVZUB7AVrOQaGo4/AQgy7b2NXi9UF6IpxaQYB3GFAH8DAAADa8ij5wjYYEQAAAABJRU5ErkJggg=="
     },
     {
@@ -119,7 +119,7 @@
       "values": [
         {"name": "locked", "definition": "Boolean", "display": 2, "defaults": false}
       ],
-      "texture": "images/doorstatic.png",
+      "texture": "../../docs/img/doorstatic.png",
       "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD1SURBVDhPlZIxDsIwDEUN6t4VujJ1ZEe5CmfjAtyBiJ2xE2vhAsyQ7+QnboFIfVIUx/75beKsJOCce2P23usa2BxjC7UNioeNl90WyyI87r3cHyEIdcbXp5O5Vt0hABDFYoRrNQow5gzDdSwVKLZYU8JcNrBfWUI2+Lfx1x/Z3NcRSO2PbG7SonLDEZhwzfh0czGRyAZ938swDJqsAR2gVo+A5DiO0ratxpjB5ex1ANagw6CRGiDRdZ0OxsorjYStIQZqwI01fn4gMLlE/CaKtbvgMajLTxm3jKcJ5k/btnTehSbNqV2ljdwErIltNcwmR1iOyAcVm4uHOA6odQAAAABJRU5ErkJggg=="
     },
     {
@@ -157,7 +157,7 @@
       "nodeGhost": true,
       "tags": ["utils"],
       "values": [],
-      "texture": "images/playerstatic.png",
+      "texture": "../../docs/img/playerstatic.png",
       "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABCSURBVDhPY7zGwPCfgRIANYAsDNLLBGRQBIaAATAPwwA6f2C9cAuIh0AgEgIEDWCEYhhA5w+DMMCbnUHxjB8wMAAANyUbFw7/ygIAAAAASUVORK5CYII="
     },
     {
@@ -194,7 +194,9 @@
       "nodeDisplay": 0,
       "nodeGhost": true,
       "tags": ["utils"],
-      "values": []
+      "values": [],
+      "texture": "../../docs/img/shapepanelstatic.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACQSURBVDhPYxhwwGhoaPgfyiYLMIGICJNwMIYBUvhgAygBowYADTAwMIAyyQNMEhISUCZ2wMHBAWVhB0wfPnyAMhkYHBwcoCwIUFBQYMBnAUgeIwxAgjDw48cPFAMsLCygLAgQEBBgYPT09PwPYoBcAtIA0wTCIMNu3LjB8OLFCwYNDQ0wDVILU0/I+/QADAwAlVsqMzxtCp8AAAAASUVORK5CYII="
     },
     {
       "exportID": "53596075",
