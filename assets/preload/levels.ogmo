@@ -235,6 +235,44 @@
       "values": [],
       "texture": "images/props/misc.png",
       "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAMFJREFUOE9jZKAQMIL06+rq/ifHnMuXLzPCDQgODmZ4/Pgxg+T7uQzqUgwMN58xYKUPfE9mkJWVZVi7di0DigFmZmYMDpxzcWpENvC5YDLDqVOnUA3wV72M12Z0F3Ud1KWyCygOgzxL0ryQvRbNCy4uLuBY4Hy1Bm9YXPgTAo6FPXv2oIaBuro6gwHLGqJi4btYCMPNmzdRDTAQJM0LK6+ieWHgDQDlhXDty0SFwYX3uuCsA0/K5GQokGaQPjBBCQAAtJ/jEYwEHQ8AAAAASUVORK5CYIIA"
+    },
+    {
+      "exportID": "61301332",
+      "name": "barrel",
+      "limit": -1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#00ffefff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["decor"],
+      "values": [],
+      "texture": "images/props/barrel.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAANlJREFUOE9jZMACdHV1/2MTB4ldvnyZEVkOhQOSAGlu9bwMVvPxG0QpPxdCS/V2XRRDUAwAaS6zvwzWcOcFphtUJCBiyIZgGACyHZtmmHGifAwMXQcRrsBqAMjprz9hdwFIDq8BDtKXGVz1EJrRw2H3JQaGA0/xuCDR8DLD/Ve44oCBQVGMgWH+eTwGmJmZMWj/novThKusyQynTp2CxwRGGIC88JwnBKcBkl/WDGsvwJIyKBxwAeQoBKnByAswQ0DRiQ6Qow8mh9UAmCHoBqDnRJwuwJ2MMGUAlbGDEfzSM6UAAAAASUVORK5CYIIA"
     }
   ],
   "tilesets": [

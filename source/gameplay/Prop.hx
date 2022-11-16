@@ -53,6 +53,12 @@ class Prop extends FlxSprite
 				setSize(8, 8);
 				offset.set(4, 4);
 
+			case BARREL:
+				loadGraphic(Paths.image('props/barrel'));
+
+				setSize(8, 8);
+				offset.set(4, 4);
+
 			default:
 				// Kill the prop as an emergency fallback
 				trace('UNKNOWN PROP');
@@ -68,4 +74,5 @@ enum PropType
 	TORCH;
 	SHAPELOCK;
 	CRATE;
+	BARREL;
 }

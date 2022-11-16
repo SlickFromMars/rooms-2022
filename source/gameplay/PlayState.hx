@@ -207,6 +207,12 @@ class PlayState extends FrameState
 				crate.y = entity.y + 4;
 				propGrp.add(crate);
 
+			case 'barrel':
+				var barrel:Prop = new Prop(BARREL);
+				barrel.x = entity.x + 4;
+				barrel.y = entity.y + 4;
+				propGrp.add(barrel);
+
 			default:
 				trace('Unrecognized actor type ' + entity.name);
 		}

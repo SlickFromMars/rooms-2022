@@ -42,13 +42,18 @@
         {"name": "torch", "id": 2, "_eid": "35666730", "x": 352, "y": 80, "originX": 0, "originY": 0},
         {"name": "crate", "id": 3, "_eid": "53596075", "x": 400, "y": 92, "originX": 0, "originY": 0},
         {"name": "crate", "id": 4, "_eid": "53596075", "x": 396, "y": 100, "originX": 0, "originY": 0},
-        {"name": "crate", "id": 5, "_eid": "53596075", "x": 340, "y": 100, "originX": 0, "originY": 0},
         {"name": "crate", "id": 6, "_eid": "53596075", "x": 340, "y": 220, "originX": 0, "originY": 0},
         {"name": "crate", "id": 7, "_eid": "53596075", "x": 336, "y": 224, "originX": 0, "originY": 0},
-        {"name": "crate", "id": 8, "_eid": "53596075", "x": 392, "y": 184, "originX": 0, "originY": 0},
         {"name": "crate", "id": 9, "_eid": "53596075", "x": 348, "y": 132, "originX": 0, "originY": 0},
         {"name": "crate", "id": 10, "_eid": "53596075", "x": 400, "y": 312, "originX": 0, "originY": 0},
-        {"name": "crate", "id": 11, "_eid": "53596075", "x": 396, "y": 320, "originX": 0, "originY": 0}
+        {"name": "barrel", "id": 12, "_eid": "61301332", "x": 388, "y": 176, "originX": 0, "originY": 0},
+        {"name": "barrel", "id": 13, "_eid": "61301332", "x": 392, "y": 180, "originX": 0, "originY": 0},
+        {"name": "barrel", "id": 14, "_eid": "61301332", "x": 340, "y": 164, "originX": 0, "originY": 0},
+        {"name": "barrel", "id": 15, "_eid": "61301332", "x": 348, "y": 96, "originX": 0, "originY": 0},
+        {"name": "crate", "id": 16, "_eid": "53596075", "x": 340, "y": 100, "originX": 0, "originY": 0},
+        {"name": "barrel", "id": 20, "_eid": "61301332", "x": 336, "y": 312, "originX": 0, "originY": 0},
+        {"name": "barrel", "id": 21, "_eid": "61301332", "x": 340, "y": 316, "originX": 0, "originY": 0},
+        {"name": "barrel", "id": 22, "_eid": "61301332", "x": 400, "y": 232, "originX": 0, "originY": 0}
       ]
     },
     {
