@@ -18,5 +18,12 @@ class FrameState extends FlxState
 		{
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}
+
+		#if !mobile
+		if (Main.fpsVar != null && FlxG.keys.anyJustPressed(CoolData.framesKeys))
+		{
+			Main.fpsVar.visible = !Main.fpsVar.visible;
+		}
+		#end
 	}
 }
