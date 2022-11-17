@@ -9,6 +9,9 @@ import flixel.tweens.FlxTween;
 
 class ShapePuzzleSubstate extends FlxSubState
 {
+	// Important variables and things
+	public static var puzzleCombo:Array<Int> = [1, 2, 3, 4];
+
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
 	var funnyText:FlxSprite; // the title thingy
@@ -16,11 +19,10 @@ class ShapePuzzleSubstate extends FlxSubState
 	public function new()
 	{
 		super();
-		trace('Setting up the wacky shape puzzle');
+		trace('Setting up the wacky shape puzzle.');
 
 		// setup the UI
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-		bg.alpha = 0;
 		bg.scrollFactor.set();
 		add(bg);
 
@@ -30,6 +32,7 @@ class ShapePuzzleSubstate extends FlxSubState
 		add(funnyText);
 
 		// set alphas
+		bg.alpha = 0;
 		funnyText.alpha = 0;
 
 		// tween things
@@ -49,5 +52,14 @@ class ShapePuzzleSubstate extends FlxSubState
 			trace('Closing the wacky shape puzzle');
 			close();
 		}
+	}
+
+	public static function shuffleCombo()
+	{
+		for (i in 0...4)
+		{
+			puzzleCombo[i] = Std.random(3);
+		}
+		trace('The combo is ' + puzzleCombo);
 	}
 }

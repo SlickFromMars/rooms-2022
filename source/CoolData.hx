@@ -16,11 +16,11 @@ class CoolData
 	public static var confirmKeys:Array<FlxKey> = [ENTER]; // Control array to confirm
 	public static var backKeys:Array<FlxKey> = [ESCAPE]; // Control array to go back
 	public static var resetKeys:Array<FlxKey> = [R]; // Control array to reset
-	public static var skipKeys:Array<FlxKey> = [ONE]; // To skip levels in debug only
 	public static var fullscreenKeys:Array<FlxKey> = [F]; // Control array to toggle fullscreen
-	public static var framesKeys:Array<FlxKey> = [TWO]; // Control array to toggle FPS counter
+	public static var skipKeys:Array<FlxKey> = [NUMPADONE, ONE]; // To skip levels in debug only
+	public static var framesKeys:Array<FlxKey> = [NUMPADTWO, TWO]; // Control array to toggle FPS counter
 
-	public static var muteKeys:Array<FlxKey> = [ZERO]; // Control array to mute
+	public static var muteKeys:Array<FlxKey> = [NUMPADZERO, ZERO]; // Control array to mute
 	public static var volumeDownKeys:Array<FlxKey> = [NUMPADMINUS, MINUS]; // Control array to lower volume
 	public static var volumeUpKeys:Array<FlxKey> = [NUMPADPLUS, PLUS]; // Control array to raise volume
 

@@ -119,7 +119,7 @@ class PlayState extends FrameState
 		FlxG.collide(player, walls);
 		FlxG.collide(player, propGrp);
 
-		if (shapeLock != null)
+		if (shapeLock != null && door.isOpen == false)
 		{
 			if (player.overlaps(shapeLock))
 			{
@@ -200,6 +200,8 @@ class PlayState extends FrameState
 				shapeLock.x = entity.x - 8;
 				shapeLock.y = entity.y;
 				add(shapeLock);
+
+				ShapePuzzleSubstate.shuffleCombo();
 
 			case 'crate':
 				var crate:Prop = new Prop(CRATE);
