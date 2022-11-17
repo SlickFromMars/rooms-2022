@@ -63,6 +63,12 @@ class Prop extends FlxSprite
 				setSize(8, 12);
 				offset.set(4, 2);
 
+			case VASE:
+				loadGraphic(Paths.image('props/vase'));
+
+				setSize(5, 5);
+				offset.set(5, 5);
+
 			default:
 				// Kill the prop as an emergency fallback
 				trace('UNKNOWN PROP');
@@ -79,4 +85,5 @@ enum PropType
 	SHAPELOCK;
 	CRATE;
 	BARREL;
+	VASE;
 }

@@ -53,7 +53,11 @@
         {"name": "crate", "id": 16, "_eid": "53596075", "x": 340, "y": 100, "originX": 0, "originY": 0},
         {"name": "barrel", "id": 20, "_eid": "61301332", "x": 336, "y": 312, "originX": 0, "originY": 0},
         {"name": "barrel", "id": 21, "_eid": "61301332", "x": 340, "y": 316, "originX": 0, "originY": 0},
-        {"name": "barrel", "id": 22, "_eid": "61301332", "x": 400, "y": 232, "originX": 0, "originY": 0}
+        {"name": "barrel", "id": 22, "_eid": "61301332", "x": 400, "y": 232, "originX": 0, "originY": 0},
+        {"name": "vase", "id": 23, "_eid": "70750249", "x": 344, "y": 168, "originX": 0, "originY": 0},
+        {"name": "vase", "id": 24, "_eid": "70750249", "x": 340, "y": 136, "originX": 0, "originY": 0},
+        {"name": "vase", "id": 25, "_eid": "70750249", "x": 348, "y": 104, "originX": 0, "originY": 0},
+        {"name": "vase", "id": 26, "_eid": "70750249", "x": 396, "y": 316, "originX": 0, "originY": 0}
       ]
     },
     {
