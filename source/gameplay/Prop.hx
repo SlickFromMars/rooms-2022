@@ -15,6 +15,10 @@ class Prop extends FlxSprite
 		this.my_type = type;
 		super(x, y);
 
+		// Stop it from slipping and sliding around
+		immovable = true;
+		solid = true;
+
 		// Based off the type, make the prop unique
 		switch (type)
 		{
@@ -50,14 +54,14 @@ class Prop extends FlxSprite
 			case CRATE:
 				loadGraphic(Paths.image('props/crate'));
 
-				setSize(8, 8);
-				offset.set(4, 4);
+				setSize(14, 14);
+				offset.set(1, 1);
 
 			case BARREL:
 				loadGraphic(Paths.image('props/barrel'));
 
-				setSize(8, 8);
-				offset.set(4, 4);
+				setSize(8, 12);
+				offset.set(4, 2);
 
 			default:
 				// Kill the prop as an emergency fallback

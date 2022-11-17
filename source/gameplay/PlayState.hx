@@ -83,6 +83,7 @@ class PlayState extends FrameState
 
 		// Finish setting up the camera
 		camGame.follow(player, TOPDOWN, 1);
+
 		super.create();
 
 		// Play some music
@@ -116,6 +117,7 @@ class PlayState extends FrameState
 
 		// Collision stuff
 		FlxG.collide(player, walls);
+		FlxG.collide(player, propGrp);
 
 		if (shapeLock != null)
 		{
@@ -174,8 +176,6 @@ class PlayState extends FrameState
 
 	function placeEntities(entity:EntityData) // Setup the props
 	{
-		propGrp = new FlxTypedGroup<Prop>();
-
 		switch (entity.name)
 		{
 			case "player":
@@ -232,7 +232,7 @@ class PlayState extends FrameState
 		// Build the level
 		map = new FlxOgmo3Loader(Paths.getOgmo(), Paths.json('_levels/$tempLvl'));
 		walls = map.loadTilemap(Paths.image('tileset'), "walls");
-		walls.follow();
+		walls.follow(camGame);
 
 		// Setup the collision
 		for (i in 0...CoolData.doTileCollision.length)
@@ -250,6 +250,7 @@ class PlayState extends FrameState
 		// Finalize and add stuff
 		add(walls);
 		player = new Player();
+		propGrp = new FlxTypedGroup<Prop>();
 		map.loadEntities(placeEntities, "decor");
 		map.loadEntities(placeEntities, "utils");
 		add(player);

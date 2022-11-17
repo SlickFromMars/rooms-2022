@@ -25,6 +25,5 @@ class CoolData
 	public static var volumeUpKeys:Array<FlxKey> = [NUMPADPLUS, PLUS]; // Control array to raise volume
 
 	// TILE STUFF
-	public static var tileCount:Int = 15; // Amount of tiles
 	public static var doTileCollision:Array<Int> = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // ID for each tile that the player should collide with
 }
