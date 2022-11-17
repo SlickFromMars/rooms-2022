@@ -41,11 +41,6 @@ class Paths
 		return getPath('fonts/$key.ttf');
 	}
 
-	inline static public function character(key:String):String
-	{
-		return getPath('images/characters/$key');
-	}
-
 	inline static public function getText(key:String):String
 	{
 		return OpenFlAssets.getText(getPath('data/$key'));

@@ -1,6 +1,5 @@
 package gameplay;
 
-import flixel.util.FlxColor;
 import flixel.FlxSprite;
 
 class Prop extends FlxSprite
