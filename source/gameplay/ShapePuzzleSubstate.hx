@@ -1,5 +1,6 @@
 package gameplay;
 
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -10,11 +11,14 @@ import flixel.tweens.FlxTween;
 class ShapePuzzleSubstate extends FlxSubState
 {
 	// Important variables and things
+	public static var curWacky:Int = 0;
 	public static var puzzleCombo:Array<Int> = [1, 2, 3, 4];
+	public static var currentEntry:Array<Int> = [0, 0, 0, 0];
 
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
 	var funnyText:FlxSprite; // the title thingy
+	var keyGrp:FlxTypedGroup<ShapePuzzleKey>; // All of the key thingies
 
 	public function new()
 	{
@@ -31,11 +35,22 @@ class ShapePuzzleSubstate extends FlxSubState
 		funnyText.scrollFactor.set();
 		add(funnyText);
 
+		keyGrp = new FlxTypedGroup<ShapePuzzleKey>();
+		add(keyGrp);
+
+		for (i in 0...4)
+		{
+			var key = new ShapePuzzleKey(i);
+			key.x = (i * 64) + 32;
+			key.screenCenter(Y);
+			keyGrp.add(key);
+		}
+
 		// set alphas
 		bg.alpha = 0;
 		funnyText.alpha = 0;
 
-		// tween things
+		// tween things and cameras
 		FlxTween.tween(bg, {alpha: 0.6}, 0.3);
 		FlxTween.tween(funnyText, {alpha: 1}, 0.5);
 
@@ -49,16 +64,75 @@ class ShapePuzzleSubstate extends FlxSubState
 		// Check to see if the player wants to exit
 		if (FlxG.keys.anyJustPressed(CoolData.backKeys))
 		{
-			trace('Closing the wacky shape puzzle');
+			trace('Closing the wacky shape puzzle.');
 			close();
+		}
+
+		// Do the changing thingy
+		if (FlxG.keys.anyJustPressed(CoolData.leftKeys) && PlayState.door.isOpen == false)
+		{
+			curWacky -= 1;
+			if (curWacky < 0)
+			{
+				curWacky = 3;
+			}
+			changeAllKeys();
+		}
+		else if (FlxG.keys.anyJustPressed(CoolData.rightKeys) && PlayState.door.isOpen == false)
+		{
+			curWacky += 1;
+			if (curWacky > 3)
+			{
+				curWacky = 0;
+			}
+			changeAllKeys();
+		}
+		else if (FlxG.keys.anyJustPressed(CoolData.downKeys) && PlayState.door.isOpen == false)
+		{
+			currentEntry[curWacky] -= 1;
+			if (currentEntry[curWacky] < 0)
+			{
+				currentEntry[curWacky] = 3;
+			}
+
+			changeAllKeys();
+			trace('Current combo is ' + ShapePuzzleSubstate.currentEntry);
+		}
+		else if (FlxG.keys.anyJustPressed(CoolData.upKeys) && PlayState.door.isOpen == false)
+		{
+			currentEntry[curWacky] += 1;
+			if (currentEntry[curWacky] > 3)
+			{
+				currentEntry[curWacky] = 0;
+			}
+
+			changeAllKeys();
+			trace('Current entry is ' + ShapePuzzleSubstate.currentEntry);
+		}
+	}
+
+	function changeAllKeys()
+	{
+		keyGrp.forEach(function(key:ShapePuzzleKey)
+		{
+			key.updateAnim();
+		});
+
+		// Open the door if the combo is correct
+		if (puzzleCombo[0] == currentEntry[0] && puzzleCombo[1] == currentEntry[1] && puzzleCombo[2] == currentEntry[2] && puzzleCombo[3] == currentEntry[3])
+		{
+			PlayState.door.isOpen = true;
+			close(); // bozo
 		}
 	}
 
 	public static function shuffleCombo()
 	{
+		currentEntry = [0, 0, 0, 0];
+
 		for (i in 0...4)
 		{
-			puzzleCombo[i] = Std.random(3);
+			puzzleCombo[i] = Std.random(4);
 		}
 		trace('The combo is ' + puzzleCombo);
 	}

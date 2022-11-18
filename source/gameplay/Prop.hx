@@ -44,6 +44,7 @@ class Prop extends FlxSprite
 				loadGraphic(Paths.image('props/shapepanel'), true, 16, 16);
 				animation.add('normal', [0], 4, false);
 				animation.add('hover', [1], 4, false);
+				animation.add('complete', [2], 4, false);
 
 				animation.play('normal');
 

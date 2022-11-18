@@ -25,7 +25,7 @@ class TitleState extends FrameState
 
 		// Setup the UI
 		logo = new FlxSprite();
-		logo.loadGraphic(Paths.image('logo'));
+		logo.loadGraphic(Paths.image('ui/logo'));
 		logo.antialiasing = true;
 		logo.screenCenter();
 

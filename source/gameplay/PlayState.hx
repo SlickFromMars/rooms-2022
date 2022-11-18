@@ -119,9 +119,9 @@ class PlayState extends FrameState
 		FlxG.collide(player, walls);
 		FlxG.collide(player, propGrp);
 
-		if (shapeLock != null && door.isOpen == false)
+		if (shapeLock != null)
 		{
-			if (player.overlaps(shapeLock))
+			if (player.overlaps(shapeLock) && door.isOpen == false)
 			{
 				shapeLock.animation.play('hover');
 
@@ -132,7 +132,14 @@ class PlayState extends FrameState
 			}
 			else
 			{
-				shapeLock.animation.play('normal');
+				if (door.isOpen == true)
+				{
+					shapeLock.animation.play('complete');
+				}
+				else
+				{
+					shapeLock.animation.play('normal');
+				}
 			}
 		}
 
@@ -235,7 +242,10 @@ class PlayState extends FrameState
 		// Randomize the level
 		var levelList:Array<String> = Paths.getText('_gen/' + CoolData.roomNumber + '.txt').split('\n');
 		var tempLvl:String = FlxG.random.getObject(levelList);
-		trace('Chose $tempLvl from $levelList');
+		if (levelList.length > 1)
+		{
+			trace('Chose $tempLvl from $levelList');
+		}
 
 		// Build the level
 		map = new FlxOgmo3Loader(Paths.getOgmo(), Paths.json('_levels/$tempLvl'));
