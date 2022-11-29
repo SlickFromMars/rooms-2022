@@ -1,9 +1,7 @@
 package;
 
-import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
-import flixel.util.FlxSave;
 import openfl.Lib;
 import openfl.display.Sprite;
 import openfl.display.StageScaleMode;
@@ -41,15 +39,6 @@ class Main extends Sprite
 		#if debug
 		FlxG.log.redirectTraces = true;
 		#end
-
-		// Initiate a save to get the last volume you used
-		var save:FlxSave = new FlxSave();
-		save.bind("TurnBasedRPG");
-
-		if (save.data.volume != null)
-		{
-			FlxG.sound.volume = save.data.volume;
-		}
 
 		// Initiate the FPS counter as long as you aren't on mobile
 		#if !mobile
