@@ -1,8 +1,8 @@
 package;
 
-import flixel.FlxState;
+import flixel.FlxSubState;
 
-class FrameState extends FlxState
+class FrameSubState extends FlxSubState
 {
 	override function update(elapsed:Float)
 	{

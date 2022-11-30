@@ -5,10 +5,9 @@ import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
-import flixel.FlxSubState;
 import flixel.tweens.FlxTween;
 
-class ShapePuzzleSubstate extends FlxSubState
+class ShapePuzzleSubstate extends FrameSubState
 {
 	// Important variables and things
 	public static var curWacky:Int = 0;
