@@ -1,7 +1,6 @@
 package;
 
 import flixel.input.keyboard.FlxKey;
-import flixel.FlxG;
 
 class CoolData
 {
@@ -15,10 +14,10 @@ class CoolData
 	public static var rightKeys:Array<FlxKey> = [RIGHT, D]; // Control array to move right
 
 	public static var confirmKeys:Array<FlxKey> = [ENTER, Z]; // Control array to confirm
-	public static var secondaryKeys:Array<FlxKey> = [TAB]; // Control array for the secondary confirm
+	public static var helpKeys:Array<FlxKey> = [TAB]; // Control array for the help screen
 	public static var backKeys:Array<FlxKey> = [ESCAPE, X]; // Control array to go back
 	public static var resetKeys:Array<FlxKey> = [R]; // Control array to reset
-	public static var fullscreenKeys:Array<FlxKey> = [F, NUMPADONE, ONE]; // Control array to toggle fullscreen
+	public static var fullscreenKeys:Array<FlxKey> = [F, NUMPADONE, ONE, F11]; // Control array to toggle fullscreen
 	public static var framesKeys:Array<FlxKey> = [NUMPADTWO, TWO]; // Control array to toggle FPS counter
 	public static var skipKeys:Array<FlxKey> = [NUMPADTHREE, THREE]; // To skip levels in debug only
 

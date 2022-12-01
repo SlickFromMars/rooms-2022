@@ -22,7 +22,6 @@ class ShapePuzzleSubstate extends FrameSubState
 	public function new()
 	{
 		super();
-		trace('Setting up the wacky shape puzzle.');
 
 		// setup the UI
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -50,7 +49,7 @@ class ShapePuzzleSubstate extends FrameSubState
 		funnyText.alpha = 0;
 
 		// tween things and cameras
-		FlxTween.tween(bg, {alpha: 0.6}, 0.3);
+		FlxTween.tween(bg, {alpha: 0.7}, 0.3);
 		FlxTween.tween(funnyText, {alpha: 1}, 0.5);
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
@@ -63,7 +62,6 @@ class ShapePuzzleSubstate extends FrameSubState
 		// Check to see if the player wants to exit
 		if (FlxG.keys.anyJustPressed(CoolData.backKeys))
 		{
-			trace('Closing the wacky shape puzzle.');
 			close();
 		}
 
@@ -119,7 +117,7 @@ class ShapePuzzleSubstate extends FrameSubState
 		{
 			// OPEN THE DOOR PLEASE
 			PlayState.door.isOpen = true;
-			trace('OPENING THE DOOOOOOORRRR');
+			trace('Shape puzzle complete.');
 
 			// update to show that you got it
 			updateAnims();

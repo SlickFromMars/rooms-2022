@@ -2,5 +2,9 @@ Use the WASD or Arrow Keys To Move
 Use ENTER or X to Interact or Confirm
 Use ESCAPE or Z to Go Back
 Use R to Try a Level Again
+
 Use F or ONE to Toggle Fullscreen
-Use TWO to Toggle the FPS Counter
+Use PLUS and MINUS to Adjust Volume
+Use ZERO to Mute Volume
+
+Use TAB to Access This Screen At Any Time

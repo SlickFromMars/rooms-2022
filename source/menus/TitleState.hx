@@ -38,7 +38,7 @@ class TitleState extends FrameState
 		beginText.screenCenter(X);
 		add(beginText);
 
-		versionText = new FlxText(2, FlxG.height - 10, 0, Application.current.meta.get('version'), 8);
+		versionText = new FlxText(2, FlxG.height - 12, 0, Application.current.meta.get('version'), 8);
 		add(versionText);
 
 		add(beginText);
@@ -61,12 +61,6 @@ class TitleState extends FrameState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		// Check to see if the player needs help
-		if (FlxG.keys.anyJustPressed(CoolData.secondaryKeys))
-		{
-			openSubState(new InstructionsSubstate());
-		}
 
 		// Check to see if the player has confirmed
 		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys) && stopSpam == false)

@@ -11,6 +11,12 @@ class FrameState extends FlxState
 
 		// Check keys
 		backgroundKeys();
+
+		// Check to see if the player needs help
+		if (FlxG.keys.anyJustPressed(CoolData.helpKeys))
+		{
+			openSubState(new menus.InstructionsSubstate());
+		}
 	}
 
 	// Checking important keys for frame states
