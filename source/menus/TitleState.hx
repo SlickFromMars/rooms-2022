@@ -1,5 +1,6 @@
 package menus;
 
+import lime.app.Application;
 import flixel.effects.FlxFlicker;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -9,8 +10,9 @@ import flixel.util.FlxColor;
 class TitleState extends FrameState
 {
 	// UI variables
-	var logo:FlxSprite;
-	var beginText:FlxText;
+	var logo:FlxSprite; // The wacky logo
+	var beginText:FlxText; // The prompt to press start
+	var versionText:FlxText; // The version
 
 	override public function create()
 	{
@@ -35,6 +37,9 @@ class TitleState extends FrameState
 		beginText.text = Paths.getText('start.txt');
 		beginText.screenCenter(X);
 		add(beginText);
+
+		versionText = new FlxText(2, FlxG.height - 10, 0, Application.current.meta.get('version'), 8);
+		add(versionText);
 
 		add(beginText);
 		add(logo);

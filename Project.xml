@@ -4,7 +4,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="ROOMS" file="ROOMS" main="Main" version="0.1" company="BabcockTSA" package="com.babcocktsa.rooms" />
+	<app title="ROOMS" file="ROOMS" main="Main" version="BETA" company="BabcockTSA" package="com.babcocktsa.rooms" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
