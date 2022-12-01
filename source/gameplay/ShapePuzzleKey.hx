@@ -28,11 +28,18 @@ class ShapePuzzleKey extends FlxSprite
 
 	public function updateAnim()
 	{
+		// Do the actual updating
 		var suffix = '';
-		if (id == ShapePuzzleSubstate.curWacky && PlayState.door.isOpen == false)
+
+		if (PlayState.door.isOpen == true)
+		{
+			suffix = '_sel'; // temporary til I make a new anim
+		}
+		else if (id == ShapePuzzleSubstate.curWacky)
 		{
 			suffix = '_sel';
 		}
+
 		animation.play(Std.string(ShapePuzzleSubstate.currentEntry[id]) + suffix);
 	}
 }

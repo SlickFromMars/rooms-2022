@@ -1,5 +1,6 @@
 package menus;
 
+import flixel.effects.FlxFlicker;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
@@ -29,7 +30,8 @@ class TitleState extends FrameState
 		logo.antialiasing = true;
 		logo.screenCenter();
 
-		beginText = new FlxText(0, FlxG.height - 60, 0, "PRESS ENTER TO BEGIN", 8);
+		beginText = new FlxText(0, FlxG.height - 60, 0, "PRESS ENTER TO BEGIN \n PRESS TAB FOR INSTRUCTIONS", 8);
+		beginText.alignment = CENTER;
 		beginText.screenCenter(X);
 		add(beginText);
 
@@ -48,25 +50,34 @@ class TitleState extends FrameState
 		FlxG.camera.fade(FlxColor.BLACK, 3, true);
 	}
 
+	var stopSpam:Bool = false;
+
 	override public function update(elapsed:Float)
 	{
-		// Check to see if the player has confirmed
-		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+		super.update(elapsed);
+
+		// Check to see if the player needs help
+		if (FlxG.keys.anyJustPressed(CoolData.secondaryKeys))
 		{
-			pressStart();
+			openSubState(new InstructionsSubstate());
 		}
 
-		super.update(elapsed);
-	}
-
-	function pressStart()
-	{
-		// Fade to black and then go to PlayState
-		FlxG.sound.music.stop();
-
-		FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
+		// Check to see if the player has confirmed
+		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys) && stopSpam == false)
 		{
-			FlxG.switchState(new gameplay.PlayState());
-		});
+			// Stop people from spamming the button
+			stopSpam = true;
+
+			// Do Funky Effects and then go to PlayState
+			FlxG.sound.music.fadeOut(1.1);
+
+			FlxFlicker.flicker(beginText, 1.1, 0.15, false, true, function(flick:FlxFlicker)
+			{
+				FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
+				{
+					FlxG.switchState(new gameplay.PlayState());
+				});
+			});
+		}
 	}
 }

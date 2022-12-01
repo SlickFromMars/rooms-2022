@@ -10,9 +10,6 @@ import flixel.tile.FlxTilemap;
 import flixel.util.FlxColor;
 import gameplay.Player;
 import gameplay.Prop;
-#if mobile
-import flixel.ui.FlxVirtualPad;
-#end
 
 class PlayState extends FrameState
 {
@@ -37,11 +34,6 @@ class PlayState extends FrameState
 
 	override public function create()
 	{
-		// Initialize virtual pad if on mobile
-		#if mobile
-		public static var virtualPad:FlxVirtualPad;
-		#end
-
 		// Hide the mouse if there is one
 		#if FLX_MOUSE
 		FlxG.mouse.visible = false;
@@ -56,13 +48,6 @@ class PlayState extends FrameState
 		FlxG.cameras.add(camUI, false);
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
-
-		// Finish setting up the virtual pad if on mobile
-		#if mobile
-		virtualPad = new FlxVirtualPad(FULL, NONE);
-		virtualPad.camera = camUI;
-		add(virtualPad);
-		#end
 
 		// UI stuffs
 		levelText = new FlxText(0, 5, 0, "LEVEL ???", 10);
@@ -253,7 +238,7 @@ class PlayState extends FrameState
 		walls.follow(camGame);
 
 		// Setup the collision
-		for (i in 0...CoolData.doTileCollision.length)
+		for (i in 0...CoolData.tileCount)
 		{
 			if (CoolData.doTileCollision.contains(i))
 			{

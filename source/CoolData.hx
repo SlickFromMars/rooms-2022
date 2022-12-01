@@ -15,6 +15,7 @@ class CoolData
 	public static var rightKeys:Array<FlxKey> = [RIGHT, D]; // Control array to move right
 
 	public static var confirmKeys:Array<FlxKey> = [ENTER, Z]; // Control array to confirm
+	public static var secondaryKeys:Array<FlxKey> = [TAB]; // Control array for the secondary confirm
 	public static var backKeys:Array<FlxKey> = [ESCAPE, X]; // Control array to go back
 	public static var resetKeys:Array<FlxKey> = [R]; // Control array to reset
 	public static var fullscreenKeys:Array<FlxKey> = [F, NUMPADONE, ONE]; // Control array to toggle fullscreen
@@ -26,7 +27,8 @@ class CoolData
 	public static var volumeUpKeys:Array<FlxKey> = [NUMPADPLUS, PLUS]; // Control array to raise volume
 
 	// TILE STUFF
-	public static var doTileCollision:Array<Int> = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // ID for each tile that the player should collide with
+	public static var doTileCollision:Array<Int> = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; // ID for each tile that the player should collide with
+	public static var tileCount:Int = 25;
 
 	// Checking important keys for frame states
 	public static function backgroundKeys()

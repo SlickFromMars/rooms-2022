@@ -106,23 +106,31 @@ class ShapePuzzleSubstate extends FrameSubState
 			}
 
 			changeAllKeys();
-			trace('Current entry is ' + ShapePuzzleSubstate.currentEntry);
 		}
 	}
 
 	function changeAllKeys()
 	{
-		keyGrp.forEach(function(key:ShapePuzzleKey)
-		{
-			key.updateAnim();
-		});
+		// Update wacky anims
+		updateAnims();
 
 		// Open the door if the combo is correct
 		if (puzzleCombo[0] == currentEntry[0] && puzzleCombo[1] == currentEntry[1] && puzzleCombo[2] == currentEntry[2] && puzzleCombo[3] == currentEntry[3])
 		{
+			// OPEN THE DOOR PLEASE
 			PlayState.door.isOpen = true;
-			close(); // bozo
+
+			// update to show that you got it
+			updateAnims();
 		}
+	}
+
+	function updateAnims()
+	{
+		keyGrp.forEach(function(key:ShapePuzzleKey)
+		{
+			key.updateAnim();
+		});
 	}
 
 	public static function shuffleCombo()

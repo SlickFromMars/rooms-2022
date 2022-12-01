@@ -1,0 +1,4 @@
+Use the WASD/Arrow Keys To Move
+Use ENTER/X to Interact or Confirm
+Use ESCAPE/Z to Go Back
+Use F/ONE to Toggle Fullscreen

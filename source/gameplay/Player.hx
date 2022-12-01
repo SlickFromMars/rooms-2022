@@ -52,15 +52,6 @@ class Player extends FlxSprite
 		right = FlxG.keys.anyPressed(CoolData.rightKeys);
 		#end
 
-		// If on mobile, check the virtual pad
-		#if mobile
-		var virtualPad = PlayState.virtualPad;
-		up = up || virtualPad.buttonUp.pressed;
-		down = down || virtualPad.buttonDown.pressed;
-		left = left || virtualPad.buttonLeft.pressed;
-		right = right || virtualPad.buttonRight.pressed;
-		#end
-
 		// Diagonal movement math
 		if (up && down)
 			up = down = false;
