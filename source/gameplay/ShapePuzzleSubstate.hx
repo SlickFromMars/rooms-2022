@@ -95,7 +95,6 @@ class ShapePuzzleSubstate extends FrameSubState
 			}
 
 			changeAllKeys();
-			trace('Current combo is ' + ShapePuzzleSubstate.currentEntry);
 		}
 		else if (FlxG.keys.anyJustPressed(CoolData.upKeys) && PlayState.door.isOpen == false)
 		{

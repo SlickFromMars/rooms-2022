@@ -213,6 +213,12 @@ class PlayState extends FrameState
 				vase.y = entity.y + 5;
 				propGrp.add(vase);
 
+			case 'bookshelf':
+				var bookshelf:Prop = new Prop(BOOKSHELF);
+				bookshelf.x = entity.x;
+				bookshelf.y = entity.y;
+				propGrp.add(bookshelf);
+
 			default:
 				trace('Unrecognized actor type ' + entity.name);
 		}

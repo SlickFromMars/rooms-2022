@@ -69,6 +69,11 @@ class Prop extends FlxSprite
 				setSize(5, 5);
 				offset.set(5, 5);
 
+			case BOOKSHELF:
+				loadGraphic(Paths.image('props/bookshelf'));
+
+				setSize(16, 16);
+
 			default:
 				// Kill the prop as an emergency fallback
 				trace('UNKNOWN PROP');
@@ -86,4 +91,5 @@ enum PropType
 	CRATE;
 	BARREL;
 	VASE;
+	BOOKSHELF;
 }
