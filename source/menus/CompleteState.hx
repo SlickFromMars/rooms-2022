@@ -12,11 +12,10 @@ class CompleteState extends FrameState
 	override function create()
 	{
 		// Setup the UI
-		winText = new FlxText();
-		winText.text = 'To Be Continued... \n You have completed all avalible levels. \n Press Enter to play again.';
+		winText = new FlxText(0, 0, 0, '', 8);
 		winText.alignment = CENTER;
+		winText.text = Paths.getText('complete.txt');
 		winText.screenCenter();
-
 		add(winText);
 
 		super.create();
