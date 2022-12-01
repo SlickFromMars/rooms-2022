@@ -115,10 +115,12 @@ class ShapePuzzleSubstate extends FrameSubState
 		updateAnims();
 
 		// Open the door if the combo is correct
-		if (puzzleCombo[0] == currentEntry[0] && puzzleCombo[1] == currentEntry[1] && puzzleCombo[2] == currentEntry[2] && puzzleCombo[3] == currentEntry[3])
+		if (puzzleCombo[0] == currentEntry[0] && puzzleCombo[1] == currentEntry[1] && puzzleCombo[2] == currentEntry[2]
+			&& puzzleCombo[3] == currentEntry[3] && PlayState.door.isOpen == false)
 		{
 			// OPEN THE DOOR PLEASE
 			PlayState.door.isOpen = true;
+			trace('OPENING THE DOOOOOOORRRR');
 
 			// update to show that you got it
 			updateAnims();
