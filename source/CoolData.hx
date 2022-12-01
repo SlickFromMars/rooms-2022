@@ -29,18 +29,4 @@ class CoolData
 	// TILE STUFF
 	public static var doTileCollision:Array<Int> = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; // ID for each tile that the player should collide with
 	public static var tileCount:Int = 25;
-
-	// Checking important keys for frame states
-	public static function backgroundKeys()
-	{
-		if (Main.fpsVar != null && FlxG.keys.anyJustPressed(framesKeys))
-		{
-			Main.fpsVar.visible = !Main.fpsVar.visible;
-		}
-
-		if (FlxG.keys.anyJustPressed(fullscreenKeys))
-		{
-			FlxG.fullscreen = !FlxG.fullscreen;
-		}
-	}
 }

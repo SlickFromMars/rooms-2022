@@ -9,6 +9,6 @@ class FrameSubState extends FlxSubState
 		super.update(elapsed);
 
 		// Check keys
-		CoolData.backgroundKeys();
+		FrameState.backgroundKeys();
 	}
 }
