@@ -1,4 +1,6 @@
-Use the WASD/Arrow Keys To Move
-Use ENTER/X to Interact or Confirm
-Use ESCAPE/Z to Go Back
-Use F/ONE to Toggle Fullscreen
+Use the WASD or Arrow Keys To Move
+Use ENTER or X to Interact or Confirm
+Use ESCAPE or Z to Go Back
+Use R to Try a Level Again
+Use F or ONE to Toggle Fullscreen
+Use TWO to Toggle the FPS Counter
