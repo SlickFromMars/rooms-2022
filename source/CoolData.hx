@@ -32,5 +32,5 @@ class CoolData
 
 	// TILE STUFF
 	public static var doTileCollision:Array<Int> = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; // ID for each tile that the player should collide with
-	public static var tileCount:Int = 25;
+	public static var tileCount:Int = 27;
 }

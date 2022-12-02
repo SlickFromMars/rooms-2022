@@ -234,7 +234,7 @@ class PlayState extends FrameState
 	public function reloadLevel():Void
 	{
 		// Reload the UI
-		levelText.text = 'Level ' + CoolData.roomNumber;
+		levelText.text = 'Room ' + CoolData.roomNumber;
 
 		// Randomize the level
 		var levelList:Array<String> = Paths.getText('_gen/' + CoolData.roomNumber + '.txt').split('\n');
