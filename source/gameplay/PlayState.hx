@@ -26,9 +26,11 @@ class PlayState extends FrameState
 	public static var propGrp:FlxTypedGroup<Prop>;
 
 	// The player variable
-	var player:Player;
+	public static var player:Player;
 
 	// The UI stuff
+	public static var overlay:Overlay;
+
 	var levelText:FlxText;
 	var denyText:FlxText;
 
@@ -50,6 +52,9 @@ class PlayState extends FrameState
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		// UI stuffs
+		overlay = new Overlay();
+		overlay.cameras = [camUI];
+
 		levelText = new FlxText(0, 5, 0, "LEVEL ???", 10);
 		levelText.cameras = [camUI];
 
@@ -63,6 +68,7 @@ class PlayState extends FrameState
 		reloadLevel();
 
 		// ADD THINGS
+		add(overlay);
 		add(levelText);
 		add(denyText);
 

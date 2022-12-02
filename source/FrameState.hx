@@ -31,5 +31,10 @@ class FrameState extends FlxState
 		{
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}
+
+		if (gameplay.PlayState.overlay != null && FlxG.keys.anyJustPressed(CoolData.overlayKeys))
+		{
+			gameplay.PlayState.overlay.visible = !gameplay.PlayState.overlay.visible;
+		}
 	}
 }
