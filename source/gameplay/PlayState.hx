@@ -10,6 +10,7 @@ import flixel.tile.FlxTilemap;
 import flixel.util.FlxColor;
 import gameplay.Player;
 import gameplay.Prop;
+import flixel.FlxSprite;
 
 class PlayState extends FrameState
 {
@@ -29,8 +30,7 @@ class PlayState extends FrameState
 	public static var player:Player;
 
 	// The UI stuff
-	public static var overlay:Overlay;
-
+	var overlay:FlxSprite;
 	var levelText:FlxText;
 	var denyText:FlxText;
 
@@ -52,7 +52,8 @@ class PlayState extends FrameState
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		// UI stuffs
-		overlay = new Overlay();
+		overlay = new FlxSprite();
+		overlay.loadGraphic(Paths.image('ui/overlay'));
 		overlay.cameras = [camUI];
 
 		levelText = new FlxText(0, 5, 0, "- LEVEL ??? -", 10);
@@ -107,6 +108,18 @@ class PlayState extends FrameState
 		{
 			FlxG.resetState();
 		}
+
+		// Update the overlay position
+		if (PlayState.player != null)
+		{
+			overlay.x = player.getScreenPosition().x - overlay.width / 2;
+			overlay.y = player.getScreenPosition().y - overlay.height / 2;
+		}
+		else
+		{
+			overlay.screenCenter();
+		}
+		overlay.visible = CoolData.overlayShown;
 
 		// Collision stuff
 		FlxG.collide(player, walls);
