@@ -192,8 +192,8 @@ class PlayState extends FrameState
 		switch (entity.name)
 		{
 			case "player":
-				player.x = entity.x + 4;
-				player.y = entity.y + 4;
+				player.x = entity.x + (16 - Player.physicsJSON.hitbox) / 2;
+				player.y = entity.y + (16 - Player.physicsJSON.hitbox) / 2;
 
 			case "door":
 				door = new Prop(DOOR);

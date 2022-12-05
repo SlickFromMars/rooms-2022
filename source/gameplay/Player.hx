@@ -13,8 +13,8 @@ class Player extends FlxSprite
 	var left:Bool = false;
 	var right:Bool = false;
 
-	// Basic moddable variables
-	var speed:Float;
+	// Physics stuff
+	public static var physicsJSON:PhysicsData;
 
 	public function new(x:Float = 0, y:Float = 0)
 	{
@@ -28,13 +28,12 @@ class Player extends FlxSprite
 		animation.add('u', [3], 4, true);
 
 		// Setup the physics
-		var physicsJSON:PhysicsData = Json.parse(Paths.getText('physics.json'));
+		physicsJSON = Json.parse(Paths.getText('physics.json'));
 
-		speed = physicsJSON.speed;
 		drag.x = drag.y = physicsJSON.drag;
 
-		setSize(8, 8);
-		offset.set(4, 4);
+		setSize(physicsJSON.hitbox, physicsJSON.hitbox);
+		offset.set((16 - physicsJSON.hitbox) / 2, (16 - physicsJSON.hitbox) / 2);
 
 		animation.play('r');
 	}
@@ -87,7 +86,7 @@ class Player extends FlxSprite
 			else if (right)
 				newAngle = 0;
 
-			velocity.set(speed, 0);
+			velocity.set(physicsJSON.speed, 0);
 			velocity.rotate(FlxPoint.weak(0, 0), newAngle);
 		}
 
@@ -114,5 +113,6 @@ class Player extends FlxSprite
 typedef PhysicsData =
 {
 	speed:Float,
-	drag:Float
+	drag:Float,
+	hitbox:Int
 }

@@ -1,4 +1,5 @@
 {
     "speed": 150,
-    "drag": 1600
+    "drag": 1600,
+    "hitbox": 8
 }
