@@ -55,7 +55,9 @@ class PlayState extends FrameState
 		overlay = new Overlay();
 		overlay.cameras = [camUI];
 
-		levelText = new FlxText(0, 5, 0, "LEVEL ???", 10);
+		levelText = new FlxText(0, 5, 0, "- LEVEL ??? -", 10);
+		levelText.alignment = CENTER;
+		levelText.screenCenter(X);
 		levelText.cameras = [camUI];
 
 		denyText = new FlxText(0, FlxG.height * 0.8, "Denied.", 10);
@@ -234,7 +236,8 @@ class PlayState extends FrameState
 	public function reloadLevel():Void
 	{
 		// Reload the UI
-		levelText.text = 'Room ' + CoolData.roomNumber;
+		levelText.text = '- Room ' + CoolData.roomNumber + ' -';
+		levelText.screenCenter(X);
 
 		// Randomize the level
 		var levelList:Array<String> = Paths.getText('_gen/' + CoolData.roomNumber + '.txt').split('\n');
