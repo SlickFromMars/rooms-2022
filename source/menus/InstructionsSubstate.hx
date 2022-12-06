@@ -21,9 +21,8 @@ class InstructionsSubstate extends FrameSubState
 		bg.scrollFactor.set();
 		add(bg);
 
-		helpText = new FlxText(0, 0, 0, '', 8);
+		helpText = new FlxText(0, 0, 0, Paths.getText('instructions.txt'), 8);
 		helpText.alignment = CENTER;
-		helpText.text = Paths.getText('instructions.txt');
 		helpText.screenCenter();
 		add(helpText);
 
@@ -47,7 +46,12 @@ class InstructionsSubstate extends FrameSubState
 		// Check to see if the player wants to exit
 		if (FlxG.keys.anyJustPressed(CoolData.backKeys) || FlxG.keys.anyJustPressed(CoolData.helpKeys))
 		{
-			close();
+			FlxTween.tween(helpText, {alpha: 0}, 0.3, {
+				onComplete: function(twn:FlxTween)
+				{
+					close();
+				}
+			});
 		}
 	}
 }

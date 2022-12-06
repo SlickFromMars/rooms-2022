@@ -1,4 +1,4 @@
-Use the WASD or Arrow Keys To Move
+Use the Arrow Keys To Move
 Use ENTER or X to Interact or Confirm
 Use ESCAPE or Z to Go Back
 Use R to Try a Level Again

@@ -11,10 +11,10 @@ class CoolData
 	public static var overlayShown:Bool = true;
 
 	// CONTROLS STUFF
-	public static var upKeys:Array<FlxKey> = [UP, W]; // Control array to move up
-	public static var downKeys:Array<FlxKey> = [DOWN, S]; // Control array to move down
-	public static var leftKeys:Array<FlxKey> = [LEFT, A]; // Control array to move left
-	public static var rightKeys:Array<FlxKey> = [RIGHT, D]; // Control array to move right
+	public static var upKeys:Array<FlxKey> = [UP]; // Control array to move up
+	public static var downKeys:Array<FlxKey> = [DOWN]; // Control array to move down
+	public static var leftKeys:Array<FlxKey> = [LEFT]; // Control array to move left
+	public static var rightKeys:Array<FlxKey> = [RIGHT]; // Control array to move right
 
 	public static var confirmKeys:Array<FlxKey> = [ENTER, Z]; // Control array to confirm
 	public static var helpKeys:Array<FlxKey> = [TAB]; // Control array for the help screen

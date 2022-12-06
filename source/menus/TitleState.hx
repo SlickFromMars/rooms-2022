@@ -32,9 +32,8 @@ class TitleState extends FrameState
 		logo.antialiasing = true;
 		logo.screenCenter();
 
-		beginText = new FlxText(0, FlxG.height - 60, 0, "", 8);
+		beginText = new FlxText(0, FlxG.height - 60, 0, Paths.getText('start.txt'), 8);
 		beginText.alignment = CENTER;
-		beginText.text = Paths.getText('start.txt');
 		beginText.screenCenter(X);
 		add(beginText);
 
