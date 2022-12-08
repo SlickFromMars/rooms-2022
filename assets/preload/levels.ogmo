@@ -20,7 +20,7 @@
     {
       "definition": "entity",
       "name": "utils",
-      "gridSize": {"x": 16, "y": 16},
+      "gridSize": {"x": 4, "y": 4},
       "exportID": "89672039",
       "requiredTags": ["utils"],
       "excludedTags": []
@@ -349,6 +349,46 @@
       "values": [],
       "texture": "images/props/bookshelf.png",
       "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAQVJREFUOE9j1NXV/c9AAWAEGZDldZnh4QvSTJGXYGCYtk2XAWyAt9FlnLpBCtEBzLKt55AM6DBbzKDQXQtWW/SgmaFPAcEGiYH4D0qbwfIgdRH2DxjgBuhIXWZY7keaAZbqDxiuPIO6AGyAUQuDwvI5GC4If5DCIM0gD3FBZArEBcvnMKAYAAqDDimEASBNKxUghoHYIADiIxuA4gWYAZHnasCK5Xa2MDxyR7BBYiA+yJUgAFIHClyUQCQtEiGqUQxYcVABJfSRQxwWM8ixUXEqlgYGIAce2AVPHsJjBj0wK57VYLoAxQCkKMMWGxgGgJIncugjhzgsZpBjA8MAimKBHM0wPQDXJc5xWaDSPAAAAABJRU5ErkJgggAA"
+    },
+    {
+      "exportID": "52185542",
+      "name": "hint",
+      "limit": -1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["utils"],
+      "values": [
+        {"name": "hintType", "definition": "String", "display": 1, "defaults": "solution", "maxLength": 0, "trimWhitespace": true}
+      ],
+      "texture": "../../docs/img/hintstatic.png",
+      "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACQSURBVDhP3ZHBDYAgDEXrBOzEBszDmQ3Yg23YgAGYQPMJJVUq0aO+pNEe/vsE6BvEGHdMX9+BYCmlTQhhkmz9O8GNzrm2g1orpZTIez9yqgBhGZRcJSeB1qohJUOwapWoJ0DYWkvGGKwqCILbO8AN4wSahFuBDE9AknMez4Z/jPZ8zGTjk4BHrRqQrFp/BdEBuZhxOv+X3IkAAAAASUVORK5CYII="
     }
   ],
   "tilesets": [

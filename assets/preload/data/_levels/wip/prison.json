@@ -10,10 +10,10 @@
       "_eid": "89672039",
       "offsetX": 0,
       "offsetY": 0,
-      "gridCellWidth": 16,
-      "gridCellHeight": 16,
-      "gridCellsX": 40,
-      "gridCellsY": 30,
+      "gridCellWidth": 4,
+      "gridCellHeight": 4,
+      "gridCellsX": 160,
+      "gridCellsY": 120,
       "entities": [
         {"name": "player", "id": 13, "_eid": "89676077", "x": 64, "y": 240, "originX": 0, "originY": 0},
         {"name": "shapelock", "id": 18, "_eid": "52732148", "x": 304, "y": 64, "originX": 0, "originY": 0},
@@ -26,6 +26,26 @@
           "originX": 0,
           "originY": 0,
           "values": {"locked": true}
+        },
+        {
+          "name": "hint",
+          "id": 21,
+          "_eid": "52185542",
+          "x": 92,
+          "y": 272,
+          "originX": 0,
+          "originY": 0,
+          "values": {"hintType": "solution"}
+        },
+        {
+          "name": "hint",
+          "id": 22,
+          "_eid": "52185542",
+          "x": 208,
+          "y": 80,
+          "originX": 0,
+          "originY": 0,
+          "values": {"hintType": "shapes"}
         }
       ]
     },

@@ -1,5 +1,6 @@
 package;
 
+import gameplay.Prop.PropType;
 import flixel.input.keyboard.FlxKey;
 
 class CoolData
@@ -30,7 +31,8 @@ class CoolData
 	public static var volumeDownKeys:Array<FlxKey> = [NUMPADMINUS, MINUS]; // Control array to lower volume
 	public static var volumeUpKeys:Array<FlxKey> = [NUMPADPLUS, PLUS]; // Control array to raise volume
 
-	// TILE STUFF
+	// COLLISION STUFF
 	public static var doTileCollision:Array<Int> = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; // ID for each tile that the player should collide with
-	public static var tileCount:Int = 27;
+	public static var tileCount:Int = 27; // Amount of tiles in the tileset
+	public static var allowPropCollision:Array<PropType> = [SHAPELOCK, HINT]; // Props that ignore collision
 }

@@ -23,7 +23,6 @@ class PlayState extends FrameState
 	public static var walls:FlxTilemap;
 
 	public static var door:Prop;
-	public static var shapeLock:Prop;
 	public static var propGrp:FlxTypedGroup<Prop>;
 
 	// The player variable
@@ -123,31 +122,56 @@ class PlayState extends FrameState
 
 		// Collision stuff
 		FlxG.collide(player, walls);
-		FlxG.collide(player, propGrp);
 
-		if (shapeLock != null)
+		propGrp.forEach(function(spr:Prop)
 		{
-			if (player.overlaps(shapeLock) && door.isOpen == false)
+			// If this prop is to be ignored, ignore it
+			if (!CoolData.allowPropCollision.contains(spr.my_type))
 			{
-				shapeLock.animation.play('hover');
-
-				if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
-				{
-					openSubState(new ShapePuzzleSubstate());
-				}
+				FlxG.collide(player, spr);
 			}
-			else
+
+			// Check for overlaps
+			if (spr.my_type == SHAPELOCK)
 			{
-				if (door.isOpen == true)
+				if (player.overlaps(spr) && door.isOpen == false)
 				{
-					shapeLock.animation.play('complete');
+					spr.animation.play('hover');
+
+					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+					{
+						openSubState(new ShapePuzzleSubstate());
+					}
 				}
 				else
 				{
-					shapeLock.animation.play('normal');
+					if (door.isOpen == true)
+					{
+						spr.animation.play('complete');
+					}
+					else
+					{
+						spr.animation.play('normal');
+					}
 				}
 			}
-		}
+			else if (spr.my_type == HINT)
+			{
+				if (player.overlaps(spr) && door.isOpen == false)
+				{
+					spr.animation.play('hover');
+
+					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+					{
+						openSubState(new HintSubstate(spr.hintType));
+					}
+				}
+				else
+				{
+					spr.animation.play('normal');
+				}
+			}
+		});
 
 		if (player.overlaps(door))
 		{
@@ -209,10 +233,10 @@ class PlayState extends FrameState
 				propGrp.add(torch);
 
 			case 'shapelock':
-				shapeLock = new Prop(SHAPELOCK);
+				var shapeLock = new Prop(SHAPELOCK);
 				shapeLock.x = entity.x - 8;
 				shapeLock.y = entity.y;
-				add(shapeLock);
+				propGrp.add(shapeLock);
 
 				ShapePuzzleSubstate.shuffleCombo();
 
@@ -239,6 +263,13 @@ class PlayState extends FrameState
 				bookshelf.x = entity.x;
 				bookshelf.y = entity.y;
 				propGrp.add(bookshelf);
+
+			case 'hint':
+				var hint:Prop = new Prop(HINT);
+				hint.x = entity.x - 8;
+				hint.y = entity.y - 8;
+				hint.hintType = entity.values.hintType;
+				propGrp.add(hint);
 
 			default:
 				trace('Unrecognized actor type ' + entity.name);

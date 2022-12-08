@@ -8,6 +8,7 @@ class Prop extends FlxSprite
 
 	// UNIQUE VARIABLES
 	public var isOpen:Bool = true; // For the door
+	public var hintType:String = "solution"; // For the hint
 
 	public function new(type:PropType)
 	{
@@ -74,6 +75,16 @@ class Prop extends FlxSprite
 
 				setSize(16, 16);
 
+			case HINT:
+				loadGraphic(Paths.image('props/hint'), true, 16, 16);
+				animation.add('normal', [0], 4, false);
+				animation.add('hover', [1], 4, false);
+
+				animation.play('normal');
+
+				setSize(32, 32);
+				offset.set(-8, -8);
+
 			default:
 				// Kill the prop as an emergency fallback
 				trace('UNKNOWN PROP');
@@ -92,4 +103,5 @@ enum PropType
 	BARREL;
 	VASE;
 	BOOKSHELF;
+	HINT;
 }
