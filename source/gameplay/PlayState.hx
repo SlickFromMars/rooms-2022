@@ -102,12 +102,6 @@ class PlayState extends FrameState
 		}
 		#end
 
-		// Check if reset keys are pressed and then reset the current level
-		if (FlxG.keys.anyJustPressed(CoolData.resetKeys))
-		{
-			FlxG.resetState();
-		}
-
 		// Update the overlay position
 		if (PlayState.player != null)
 		{

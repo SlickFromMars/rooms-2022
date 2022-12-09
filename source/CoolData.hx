@@ -20,7 +20,6 @@ class CoolData
 	public static var confirmKeys:Array<FlxKey> = [ENTER, Z]; // Control array to confirm
 	public static var helpKeys:Array<FlxKey> = [TAB]; // Control array for the help screen
 	public static var backKeys:Array<FlxKey> = [ESCAPE, X]; // Control array to go back
-	public static var resetKeys:Array<FlxKey> = [R]; // Control array to reset
 
 	public static var fullscreenKeys:Array<FlxKey> = [F, NUMPADONE, ONE, F11]; // Control array to toggle fullscreen
 	public static var framesKeys:Array<FlxKey> = [NUMPADTWO, TWO]; // Control array to toggle FPS counter
