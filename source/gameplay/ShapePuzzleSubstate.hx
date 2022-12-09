@@ -16,6 +16,7 @@ class ShapePuzzleSubstate extends FrameSubState
 
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
+	var tipText:FlxText; // Keybinds for bozos
 	var funnyText:FlxSprite; // the title thingy
 	var keyGrp:FlxTypedGroup<ShapePuzzleKey>; // All of the key thingies
 
@@ -35,6 +36,12 @@ class ShapePuzzleSubstate extends FrameSubState
 
 		keyGrp = new FlxTypedGroup<ShapePuzzleKey>();
 		add(keyGrp);
+
+		tipText = new FlxText(0, 0, 0, Paths.getText('shapePuzzleTip.txt'), 8);
+		tipText.y = FlxG.height - (tipText.height + 2);
+		tipText.alignment = CENTER;
+		tipText.screenCenter(X);
+		add(tipText);
 
 		for (i in 0...4)
 		{

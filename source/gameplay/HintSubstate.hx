@@ -11,7 +11,6 @@ class HintSubstate extends FrameSubState
 {
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
-	var bg2:FlxSprite; // The paper bg
 	var decorGrp:FlxSpriteGroup; // group for paper stuff
 
 	public function new(hintType:String)
@@ -23,13 +22,12 @@ class HintSubstate extends FrameSubState
 		bg.scrollFactor.set();
 		add(bg);
 
-		bg2 = new FlxSprite().loadGraphic(Paths.image('ui/paper'));
-		bg2.scrollFactor.set();
-		bg2.screenCenter();
-		add(bg2);
-
-		decorGrp = new FlxSpriteGroup();
+		decorGrp = new FlxSpriteGroup(0, 0);
 		add(decorGrp);
+
+		var paper = new FlxSprite().loadGraphic(Paths.image('ui/paper'));
+		paper.screenCenter();
+		decorGrp.add(paper);
 
 		switch (hintType)
 		{
@@ -46,7 +44,8 @@ class HintSubstate extends FrameSubState
 			case 'shapes':
 				for (i in 0...5)
 				{
-					var spr:PaperEquals = new PaperEquals();
+					var spr:FlxSprite = new FlxSprite();
+					spr.loadGraphic(Paths.image('ui/paperequals'));
 					spr.screenCenter(X);
 					spr.y = (i * 34) + 32;
 					decorGrp.add(spr);
@@ -64,23 +63,33 @@ class HintSubstate extends FrameSubState
 				}
 		}
 
-		// set alphas
+		// set alpha and position
 		bg.alpha = 0;
+		decorGrp.y = FlxG.height;
 
 		// tween things and cameras
-		FlxTween.tween(bg, {alpha: 0.7}, 0.3);
-
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+
+		FlxTween.tween(bg, {alpha: 0.7}, 0.3);
+		FlxTween.tween(decorGrp, {y: 0}, 0.3);
 	}
+
+	var stopSpam:Bool = false;
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
 		// Check to see if the player wants to exit
-		if (FlxG.keys.anyJustPressed(CoolData.backKeys))
+		if (FlxG.keys.anyJustPressed(CoolData.backKeys) && stopSpam == false)
 		{
-			close();
+			stopSpam = true;
+			FlxTween.tween(decorGrp, {y: 0 - FlxG.height}, 0.3, {
+				onComplete: function(twn:FlxTween)
+				{
+					close();
+				}
+			});
 		}
 	}
 }
@@ -100,15 +109,5 @@ class PaperShapeKey extends FlxSprite
 		animation.add('4', [4], 1, true);
 
 		animation.play(Std.string(iteration));
-	}
-}
-
-class PaperEquals extends FlxSprite
-{
-	public function new()
-	{
-		super(x, y);
-
-		loadGraphic(Paths.image('ui/paperequals'));
 	}
 }
