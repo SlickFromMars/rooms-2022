@@ -37,7 +37,7 @@ class ShapePuzzleSubstate extends FrameSubState
 		keyGrp = new FlxTypedGroup<ShapePuzzleKey>();
 		add(keyGrp);
 
-		tipText = new FlxText(0, 0, 0, Paths.getText('shapePuzzleTip.txt'), 8);
+		tipText = new FlxText(0, 0, 0, Paths.getText('en_us/shapePuzzleTip.txt'), 8);
 		tipText.y = FlxG.height - (tipText.height + 2);
 		tipText.alignment = CENTER;
 		tipText.screenCenter(X);

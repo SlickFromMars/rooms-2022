@@ -26,7 +26,7 @@ class InstructionsSubstate extends FrameSubState
 		helpMaster = new FlxSpriteGroup(0, 0);
 		add(helpMaster);
 
-		helpText = new FlxText(0, 0, 0, Paths.getText('instructions.txt'), 8);
+		helpText = new FlxText(0, 0, 0, Paths.getText('en_us/keybinds.txt'), 8);
 		helpText.alignment = CENTER;
 		helpText.screenCenter();
 		helpMaster.add(helpText);
