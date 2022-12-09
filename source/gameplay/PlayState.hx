@@ -12,6 +12,8 @@ import gameplay.Player;
 import gameplay.Prop;
 import flixel.FlxSprite;
 
+using StringTools;
+
 class PlayState extends FrameState
 {
 	// Camera stuff
@@ -94,8 +96,8 @@ class PlayState extends FrameState
 	{
 		super.update(elapsed);
 
-		// If debug is enabled, check to see if skip keys are pressed and then skip the current level
 		#if debug
+		// If debug is enabled, check to see if skip keys are pressed and then skip the current level
 		if (FlxG.keys.anyJustPressed(CoolData.skipKeys))
 		{
 			completeLevel();
@@ -271,21 +273,26 @@ class PlayState extends FrameState
 		add(propGrp);
 	}
 
-	public function reloadLevel():Void
+	public function chooseLevel():String
+	{
+		var fullText:String = Paths.getText('_gen/' + Std.string(CoolData.roomNumber) + '.txt').trim();
+		var swagArray:Array<String> = fullText.split('--');
+		// var swagItem:String = FlxG.random.getObject(swagArray);
+		var swagItem:String = swagArray[0]; // until i fix this stupid
+		trace('Chose $swagItem from $swagArray');
+
+		return swagItem;
+	}
+
+	public function reloadLevel()
 	{
 		// Reload the UI
 		levelText.text = '- Room ' + CoolData.roomNumber + ' -';
 		levelText.screenCenter(X);
 
-		// Randomize the level
-		var levelList:Array<String> = Paths.getText('_gen/' + CoolData.roomNumber + '.txt').split('\n');
-		var tempLvl:String = FlxG.random.getObject(levelList);
-		if (levelList.length > 1)
-		{
-			trace('Chose $tempLvl from $levelList');
-		}
-
 		// Build the level
+		var tempLvl:String = chooseLevel();
+
 		map = new FlxOgmo3Loader(Paths.getOgmo(), Paths.json('_levels/$tempLvl'));
 		walls = map.loadTilemap(Paths.image('tileset'), "walls");
 		walls.follow(camGame);
