@@ -277,8 +277,7 @@ class PlayState extends FrameState
 	{
 		var fullText:String = Paths.getText('_gen/' + Std.string(CoolData.roomNumber) + '.txt').trim();
 		var swagArray:Array<String> = fullText.split('--');
-		// var swagItem:String = FlxG.random.getObject(swagArray);
-		var swagItem:String = swagArray[0]; // until i fix this stupid
+		var swagItem:String = FlxG.random.getObject(swagArray);
 		trace('Chose $swagItem from $swagArray');
 
 		return swagItem;
