@@ -167,6 +167,29 @@ class PlayState extends FrameState
 					spr.animation.play('normal');
 				}
 			}
+			else if (spr.my_type == KEY)
+			{
+				if (player.overlaps(spr) && door.isOpen == false)
+				{
+					spr.animation.play('hover');
+
+					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+					{
+						door.isOpen = true;
+						spr.kill();
+
+						trace("KEY LOCATED!!!!!!");
+						denyText.text = 'Door has been unlocked.';
+						denyText.screenCenter(X);
+						denyText.alpha = 1;
+						FlxTween.tween(denyText, {alpha: 0}, 2, {startDelay: 1});
+					}
+				}
+				else
+				{
+					spr.animation.play('normal');
+				}
+			}
 		});
 
 		if (player.overlaps(door))
@@ -266,6 +289,12 @@ class PlayState extends FrameState
 				hint.y = entity.y - 8;
 				hint.hintType = entity.values.hintType;
 				propGrp.add(hint);
+
+			case 'key':
+				var key:Prop = new Prop(KEY);
+				key.x = entity.x - 8;
+				key.y = entity.y - 8;
+				propGrp.add(key);
 
 			default:
 				trace('Unrecognized actor type ' + entity.name);

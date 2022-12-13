@@ -85,6 +85,16 @@ class Prop extends FlxSprite
 				setSize(32, 32);
 				offset.set(-8, -8);
 
+			case KEY:
+				loadGraphic(Paths.image('props/key'), true, 16, 16);
+				animation.add('normal', [0], 4, false);
+				animation.add('hover', [1], 4, false);
+
+				animation.play('normal');
+
+				setSize(32, 32);
+				offset.set(-8, -8);
+
 			default:
 				// Kill the prop as an emergency fallback
 				trace('UNKNOWN PROP');
@@ -104,4 +114,5 @@ enum PropType
 	VASE;
 	BOOKSHELF;
 	HINT;
+	KEY;
 }

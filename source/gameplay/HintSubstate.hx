@@ -22,6 +22,8 @@ class HintSubstate extends FrameSubState
 		bg.scrollFactor.set();
 		add(bg);
 
+		var textColor:FlxColor = FlxColor.fromRGB(64, 60, 60);
+
 		decorGrp = new FlxSpriteGroup(0, 0);
 		add(decorGrp);
 
@@ -37,7 +39,7 @@ class HintSubstate extends FrameSubState
 				{
 					spr.text += i;
 				}
-				spr.color = FlxColor.fromRGB(64, 60, 60);
+				spr.color = textColor;
 				spr.screenCenter();
 				decorGrp.add(spr);
 
@@ -56,11 +58,31 @@ class HintSubstate extends FrameSubState
 					decorGrp.add(spr2);
 
 					var spr3:FlxText = new FlxText(0, 0, 0, Std.string(i), 26);
-					spr3.color = FlxColor.fromRGB(64, 60, 60);
+					spr3.color = textColor;
 					spr3.x = spr.x + 80;
 					spr3.y = spr.y + 3;
 					decorGrp.add(spr3);
 				}
+			case 'shape_inst':
+				var spr:FlxText = new FlxText(0, 0, 0, 'FIND OTHER HINTS\nMATCH SHAPES\nTO NUMBERS\nOPEN THE LOCK', 16);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				decorGrp.add(spr);
+
+			case 'key_inst':
+				var spr:FlxText = new FlxText(0, 0, 0, 'FIND THE KEY\nTO OPEN THE DOOR', 20);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				decorGrp.add(spr);
+
+			default:
+				var spr:FlxText = new FlxText(0, 0, 0, 'UNKNOWN\nHINT', 20);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				decorGrp.add(spr);
 		}
 
 		// set alpha and position

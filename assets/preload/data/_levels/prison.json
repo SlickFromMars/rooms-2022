@@ -29,16 +29,6 @@
         },
         {
           "name": "hint",
-          "id": 21,
-          "_eid": "52185542",
-          "x": 92,
-          "y": 272,
-          "originX": 0,
-          "originY": 0,
-          "values": {"hintType": "solution"}
-        },
-        {
-          "name": "hint",
           "id": 22,
           "_eid": "52185542",
           "x": 208,
@@ -46,6 +36,26 @@
           "originX": 0,
           "originY": 0,
           "values": {"hintType": "shapes"}
+        },
+        {
+          "name": "hint",
+          "id": 23,
+          "_eid": "52185542",
+          "x": 96,
+          "y": 80,
+          "originX": 0,
+          "originY": 0,
+          "values": {"hintType": "solution"}
+        },
+        {
+          "name": "hint",
+          "id": 24,
+          "_eid": "52185542",
+          "x": 96,
+          "y": 272,
+          "originX": 0,
+          "originY": 0,
+          "values": {"hintType": "shape_inst"}
         }
       ]
     },
