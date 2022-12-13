@@ -78,11 +78,7 @@ class HintSubstate extends FrameSubState
 				decorGrp.add(spr);
 
 			default:
-				var spr:FlxText = new FlxText(0, 0, 0, 'UNKNOWN\nHINT', 20);
-				spr.color = textColor;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
+				trace('Couldnt find the hint :(');
 		}
 
 		// set alpha and position
