@@ -102,6 +102,12 @@ class PlayState extends FrameState
 		{
 			completeLevel();
 		}
+
+		// If debug is enabled, check to see if overlay keys are pressed and toggle overlay
+		if (FlxG.keys.anyJustPressed(CoolData.overlayKeys))
+		{
+			CoolData.overlayShown = !CoolData.overlayShown;
+		}
 		#end
 
 		// Collision stuff

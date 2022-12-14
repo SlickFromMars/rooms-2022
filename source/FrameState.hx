@@ -31,12 +31,5 @@ class FrameState extends FlxState
 		{
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}
-
-		#if debug
-		if (FlxG.keys.anyJustPressed(CoolData.overlayKeys))
-		{
-			CoolData.overlayShown = !CoolData.overlayShown;
-		}
-		#end
 	}
 }
