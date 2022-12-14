@@ -162,7 +162,7 @@ class ShapePuzzleKey extends FlxSprite
 		super(x, y);
 
 		// load the sprites
-		loadGraphic(Paths.image('ui/shapekey'), true, 64, 64);
+		loadGraphic(Paths.image('shapekey'), true, 64, 64);
 		animation.add('0', [0], 1, true);
 		animation.add('0_sel', [1], 1, true);
 		animation.add('0_com', [2], 1, true);

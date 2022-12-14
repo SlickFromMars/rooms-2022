@@ -54,7 +54,7 @@ class PlayState extends FrameState
 
 		// UI stuffs
 		overlay = new FlxSprite();
-		overlay.loadGraphic(Paths.image('ui/overlay'));
+		overlay.loadGraphic(Paths.image('overlay'));
 		overlay.cameras = [camUI];
 
 		levelText = new FlxText(0, 5, 0, "- LEVEL ??? -", 10);
@@ -104,7 +104,10 @@ class PlayState extends FrameState
 		}
 		#end
 
-		// Update the overlay position
+		// Collision stuff
+		FlxG.collide(player, walls);
+
+		// Update the overlay
 		if (PlayState.player != null)
 		{
 			overlay.x = player.getScreenPosition().x - overlay.width / 2;
@@ -115,9 +118,6 @@ class PlayState extends FrameState
 			overlay.screenCenter();
 		}
 		overlay.visible = CoolData.overlayShown;
-
-		// Collision stuff
-		FlxG.collide(player, walls);
 
 		propGrp.forEach(function(spr:Prop)
 		{

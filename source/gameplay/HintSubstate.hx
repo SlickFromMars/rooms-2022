@@ -27,7 +27,7 @@ class HintSubstate extends FrameSubState
 		decorGrp = new FlxSpriteGroup(0, 0);
 		add(decorGrp);
 
-		var paper = new FlxSprite().loadGraphic(Paths.image('ui/paper'));
+		var paper = new FlxSprite().loadGraphic(Paths.image('hint/paper'));
 		paper.screenCenter();
 		decorGrp.add(paper);
 
@@ -47,7 +47,7 @@ class HintSubstate extends FrameSubState
 				for (i in 0...5)
 				{
 					var spr:FlxSprite = new FlxSprite();
-					spr.loadGraphic(Paths.image('ui/paperequals'));
+					spr.loadGraphic(Paths.image('hint/paperequals'));
 					spr.screenCenter(X);
 					spr.y = (i * 34) + 32;
 					decorGrp.add(spr);
@@ -119,7 +119,7 @@ class PaperShapeKey extends FlxSprite
 		super(x, y);
 
 		// load the sprites
-		loadGraphic(Paths.image('ui/papershapes'), true, 32, 32);
+		loadGraphic(Paths.image('hint/papershapes'), true, 32, 32);
 		animation.add('0', [0], 1, true);
 		animation.add('1', [1], 1, true);
 		animation.add('2', [2], 1, true);
