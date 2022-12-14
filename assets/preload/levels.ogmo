@@ -2,7 +2,7 @@
   "name": "ROOMS",
   "ogmoVersion": "3.4.0",
   "levelPaths": ["."],
-  "backgroundColor": "#282c34ff",
+  "backgroundColor": "#000000ff",
   "gridColor": "#3c4049cc",
   "anglesRadians": false,
   "directoryDepth": 5,
@@ -161,7 +161,7 @@
     {
       "exportID": "02731243",
       "name": "door",
-      "limit": -1,
+      "limit": 1,
       "size": {"x": 16, "y": 16},
       "origin": {"x": 0, "y": 0},
       "originAnchored": true,
@@ -193,7 +193,7 @@
       "nodeGhost": true,
       "tags": ["utils"],
       "values": [
-        {"name": "locked", "definition": "Boolean", "display": 2, "defaults": false}
+        {"name": "locked", "definition": "Boolean", "display": 1, "defaults": false}
       ],
       "texture": "../../docs/img/doorstatic.png",
       "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD1SURBVDhPlZIxDsIwDEUN6t4VujJ1ZEe5CmfjAtyBiJ2xE2vhAsyQ7+QnboFIfVIUx/75beKsJOCce2P23usa2BxjC7UNioeNl90WyyI87r3cHyEIdcbXp5O5Vt0hABDFYoRrNQow5gzDdSwVKLZYU8JcNrBfWUI2+Lfx1x/Z3NcRSO2PbG7SonLDEZhwzfh0czGRyAZ938swDJqsAR2gVo+A5DiO0ratxpjB5ex1ANagw6CRGiDRdZ0OxsorjYStIQZqwI01fn4gMLlE/CaKtbvgMajLTxm3jKcJ5k/btnTehSbNqV2ljdwErIltNcwmR1iOyAcVm4uHOA6odQAAAABJRU5ErkJggg=="
@@ -216,7 +216,7 @@
           {"x": 1, "y": 1}
         ]
       },
-      "color": "#fcff00ff",
+      "color": "#f800ffff",
       "tileX": false,
       "tileY": false,
       "tileSize": {"x": 16, "y": 16},
@@ -393,7 +393,7 @@
     {
       "exportID": "95315633",
       "name": "key",
-      "limit": -1,
+      "limit": 1,
       "size": {"x": 16, "y": 16},
       "origin": {"x": 0, "y": 0},
       "originAnchored": true,
