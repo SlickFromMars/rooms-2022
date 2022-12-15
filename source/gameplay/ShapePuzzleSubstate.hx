@@ -143,11 +143,21 @@ class ShapePuzzleSubstate extends FrameSubState
 	{
 		currentEntry = [0, 0, 0, 0];
 
+		shuffleComboFunc();
+		while (puzzleCombo[0] == puzzleCombo[1] && puzzleCombo[0] == puzzleCombo[2] && puzzleCombo[0] == puzzleCombo[3])
+		{
+			trace('Improper combo ' + puzzleCombo);
+			shuffleComboFunc();
+		}
+		trace('The combo is ' + puzzleCombo);
+	}
+
+	static function shuffleComboFunc()
+	{
 		for (i in 0...4)
 		{
 			puzzleCombo[i] = Std.random(5);
 		}
-		trace('The combo is ' + puzzleCombo);
 	}
 }
 
