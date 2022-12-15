@@ -56,7 +56,7 @@ class TitleState extends FrameState
 				emitter.scale.set(0.25, 0.25, 0.5, 0.5, 0.25, 0.25, 0.37, 0.37);
 				emitter.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
 				emitter.width = FlxG.width;
-				emitter.alpha.set(1, 1, 0, 0);
+				emitter.alpha.set(0.7, 0.7, 0, 0);
 				emitter.lifespan.set(1, 3);
 				emitter.loadParticles(Paths.image('particles/P0'), 500, 16, true);
 
@@ -67,6 +67,7 @@ class TitleState extends FrameState
 
 		screen = FlxGradient.createGradientFlxSprite(FlxG.width, Std.int(FlxG.height * 0.2), [FlxColor.TRANSPARENT, FlxColor.WHITE]);
 		screen.y = FlxG.height - screen.height;
+		screen.alpha = 0.7;
 
 		add(emitterGrp);
 		add(screen);
