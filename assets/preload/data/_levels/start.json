@@ -25,6 +25,16 @@
           "originX": 0,
           "originY": 0,
           "values": {"locked": false}
+        },
+        {
+          "name": "hint",
+          "id": 7,
+          "_eid": "52185542",
+          "x": 380,
+          "y": 316,
+          "originX": 0,
+          "originY": 0,
+          "values": {"hintType": "game_inst"}
         }
       ]
     },

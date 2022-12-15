@@ -65,14 +65,21 @@ class HintSubstate extends FrameSubState
 					decorGrp.add(spr3);
 				}
 			case 'shape_inst':
-				var spr:FlxText = new FlxText(0, 0, 0, Paths.getText('en_us/shapeInstructions.txt'), 16);
+				var spr:FlxText = new FlxText(0, 0, 0, Paths.getText('en_us/shape_inst.txt'), 16);
 				spr.color = textColor;
 				spr.alignment = CENTER;
 				spr.screenCenter();
 				decorGrp.add(spr);
 
 			case 'key_inst':
-				var spr:FlxText = new FlxText(0, 0, 0, Paths.getText('en_us/keyInstructions.txt'), 20);
+				var spr:FlxText = new FlxText(0, 0, 0, Paths.getText('en_us/key_inst.txt'), 20);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				decorGrp.add(spr);
+
+			case 'game_inst':
+				var spr:FlxText = new FlxText(0, 0, 0, Paths.getText('en_us/game_inst.txt'), 16);
 				spr.color = textColor;
 				spr.alignment = CENTER;
 				spr.screenCenter();

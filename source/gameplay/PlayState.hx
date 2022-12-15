@@ -159,7 +159,7 @@ class PlayState extends FrameState
 			}
 			else if (spr.my_type == HINT)
 			{
-				if (player.overlaps(spr) && door.isOpen == false)
+				if (player.overlaps(spr) && (door.isOpen == false || CoolData.roomNumber == 1))
 				{
 					spr.animation.play('hover');
 
