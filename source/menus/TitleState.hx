@@ -1,5 +1,6 @@
 package menus;
 
+import flixel.util.FlxGradient;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import lime.app.Application;
 import flixel.effects.FlxFlicker;
@@ -15,15 +16,16 @@ class TitleState extends FrameState
 	var logo:FlxSprite; // The wacky logo
 	var beginText:FlxText; // The prompt to press start
 	var versionText:FlxText; // The version
+	var screen:FlxSprite; // Funky gradient
 
 	var emitterGrp:FlxTypedGroup<FlxEmitter>; // Particle group yaaaay
 	var doParticles:Bool = true; // Just for testing
 
 	override public function create()
 	{
-		// Show the mouse if there is one
+		// Hide the mouse if there is one
 		#if FLX_MOUSE
-		FlxG.mouse.visible = true;
+		FlxG.mouse.visible = false;
 		#end
 
 		// Initiate the volume keys
@@ -63,12 +65,17 @@ class TitleState extends FrameState
 			}
 		}
 
+		screen = FlxGradient.createGradientFlxSprite(FlxG.width, Std.int(FlxG.height * 0.2), [FlxColor.TRANSPARENT, FlxColor.WHITE]);
+		screen.y = FlxG.height - screen.height;
+
 		add(emitterGrp);
+		add(screen);
 		add(beginText);
 		add(logo);
 
 		#if debug
-		versionText = new FlxText(2, FlxG.height - 12, 0, Application.current.meta.get('version'), 8);
+		versionText = new FlxText(0, 12, 0, Application.current.meta.get('version'), 8);
+		versionText.x = FlxG.width - (versionText.width + 2);
 		add(versionText);
 		#end
 

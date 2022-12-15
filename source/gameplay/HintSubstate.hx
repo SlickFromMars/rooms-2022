@@ -37,8 +37,9 @@ class HintSubstate extends FrameSubState
 				var spr:FlxText = new FlxText(0, 0, 0, '', 26);
 				for (i in ShapePuzzleSubstate.puzzleCombo)
 				{
-					spr.text += i;
+					spr.text += '$i-';
 				}
+				spr.text = spr.text.substring(0, spr.text.length - 1);
 				spr.color = textColor;
 				spr.screenCenter();
 				decorGrp.add(spr);

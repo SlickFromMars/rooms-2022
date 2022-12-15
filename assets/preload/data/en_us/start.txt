@@ -1,2 +1,2 @@
-PRESS ENTER TO BEGIN
-PRESS TAB FOR INSTRUCTIONS
+Press ENTER to Begin
+Press TAB for Instructions
