@@ -1,11 +1,13 @@
 package menus;
 
+import flixel.group.FlxGroup.FlxTypedGroup;
 import lime.app.Application;
 import flixel.effects.FlxFlicker;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.effects.particles.FlxEmitter;
 
 class TitleState extends FrameState
 {
@@ -13,6 +15,9 @@ class TitleState extends FrameState
 	var logo:FlxSprite; // The wacky logo
 	var beginText:FlxText; // The prompt to press start
 	var versionText:FlxText; // The version
+
+	var emitterGrp:FlxTypedGroup<FlxEmitter>; // Particle group yaaaay
+	var doParticles:Bool = true; // Just for testing
 
 	override public function create()
 	{
@@ -27,6 +32,8 @@ class TitleState extends FrameState
 		FlxG.sound.volumeUpKeys = CoolData.volumeUpKeys;
 
 		// Setup the UI
+		emitterGrp = new FlxTypedGroup<FlxEmitter>();
+
 		logo = new FlxSprite();
 		logo.loadGraphic(Paths.image('logo'));
 		logo.antialiasing = true;
@@ -35,13 +42,35 @@ class TitleState extends FrameState
 		beginText = new FlxText(0, FlxG.height - 60, 0, Paths.getText('en_us/start.txt'), 8);
 		beginText.alignment = CENTER;
 		beginText.screenCenter(X);
-		add(beginText);
 
-		versionText = new FlxText(2, FlxG.height - 12, 0, Application.current.meta.get('version'), 8);
-		add(versionText);
+		if (doParticles)
+		{
+			// Based off code from VSRetro, thanks guys
+			for (i in 0...3)
+			{
+				var emitter:FlxEmitter = new FlxEmitter(0, FlxG.height);
+				emitter.launchMode = FlxEmitterMode.SQUARE;
+				emitter.velocity.set(-25, -75, 25, -100, -50, 0, 50, -50);
+				emitter.scale.set(0.25, 0.25, 0.5, 0.5, 0.25, 0.25, 0.37, 0.37);
+				emitter.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+				emitter.width = FlxG.width;
+				emitter.alpha.set(1, 1, 0, 0);
+				emitter.lifespan.set(1, 3);
+				emitter.loadParticles(Paths.image('particles/P0'), 500, 16, true);
 
+				emitter.start(false, FlxG.random.float(0.4, 0.5), 100000);
+				emitterGrp.add(emitter);
+			}
+		}
+
+		add(emitterGrp);
 		add(beginText);
 		add(logo);
+
+		#if debug
+		versionText = new FlxText(2, FlxG.height - 12, 0, Application.current.meta.get('version'), 8);
+		add(versionText);
+		#end
 
 		super.create();
 
@@ -72,7 +101,7 @@ class TitleState extends FrameState
 
 			FlxFlicker.flicker(beginText, 1.1, 0.15, false, true, function(flick:FlxFlicker)
 			{
-				FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
+				FlxG.camera.fade(FlxColor.BLACK, 0.5, false, function()
 				{
 					FlxG.switchState(new gameplay.PlayState());
 				});
