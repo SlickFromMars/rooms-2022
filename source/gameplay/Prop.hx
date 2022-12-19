@@ -10,7 +10,7 @@ class Prop extends FlxSprite
 	public var isOpen:Bool = true; // For the door
 	public var hintType:String = "solution"; // For the hint
 
-	public function new(type:PropType)
+	public function new(x:Float, y:Float, type:PropType)
 	{
 		this.my_type = type;
 		super(x, y);

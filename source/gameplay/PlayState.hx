@@ -238,69 +238,45 @@ class PlayState extends FrameState
 
 	function placeEntities(entity:EntityData) // Setup the props
 	{
+		var x = entity.x;
+		var y = entity.y;
+
 		switch (entity.name)
 		{
 			case "player":
-				player.x = entity.x + (16 - Player.physicsJSON.hitbox) / 2;
-				player.y = entity.y + (16 - Player.physicsJSON.hitbox) / 2;
+				player.setPosition(x + (16 - Player.physicsJSON.hitbox) / 2, y + (16 - Player.physicsJSON.hitbox) / 2);
 
 			case "door":
-				door = new Prop(DOOR);
-				door.x = entity.x - 8;
-				door.y = entity.y;
+				door = new Prop(x - 8, y, DOOR);
 				door.isOpen = !entity.values.locked;
 				add(door);
 
 			case 'torch':
-				var torch:Prop = new Prop(TORCH);
-				torch.x = entity.x;
-				torch.y = entity.y;
-				propGrp.add(torch);
+				propGrp.add(new Prop(x, y, TORCH));
 
 			case 'shapelock':
-				var shapeLock = new Prop(SHAPELOCK);
-				shapeLock.x = entity.x - 8;
-				shapeLock.y = entity.y;
-				propGrp.add(shapeLock);
-
+				propGrp.add(new Prop(x - 8, y, SHAPELOCK));
 				ShapePuzzleSubstate.shuffleCombo();
 
 			case 'crate':
-				var crate:Prop = new Prop(CRATE);
-				crate.x = entity.x + 1;
-				crate.y = entity.y + 1;
-				propGrp.add(crate);
+				propGrp.add(new Prop(x + 1, y + 1, CRATE));
 
 			case 'barrel':
-				var barrel:Prop = new Prop(BARREL);
-				barrel.x = entity.x + 4;
-				barrel.y = entity.y + 2;
-				propGrp.add(barrel);
+				propGrp.add(new Prop(x + 4, y + 2, BARREL));
 
 			case 'vase':
-				var vase:Prop = new Prop(VASE);
-				vase.x = entity.x + 5;
-				vase.y = entity.y + 5;
-				propGrp.add(vase);
+				propGrp.add(new Prop(x + 5, y + 5, VASE));
 
 			case 'bookshelf':
-				var bookshelf:Prop = new Prop(BOOKSHELF);
-				bookshelf.x = entity.x;
-				bookshelf.y = entity.y;
-				propGrp.add(bookshelf);
+				propGrp.add(new Prop(x, y, BOOKSHELF));
 
 			case 'hint':
-				var hint:Prop = new Prop(HINT);
-				hint.x = entity.x - 8;
-				hint.y = entity.y - 8;
+				var hint:Prop = new Prop(x - 8, y - 8, HINT);
 				hint.hintType = entity.values.hintType;
 				propGrp.add(hint);
 
 			case 'key':
-				var key:Prop = new Prop(KEY);
-				key.x = entity.x - 8;
-				key.y = entity.y - 8;
-				propGrp.add(key);
+				propGrp.add(new Prop(x - 8, y - 8, KEY));
 
 			default:
 				trace('Unrecognized actor type ' + entity.name);
