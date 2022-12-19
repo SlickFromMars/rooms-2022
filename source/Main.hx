@@ -3,9 +3,11 @@ package;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
+import lime.app.Application;
 import openfl.Lib;
 import openfl.display.Sprite;
 import openfl.display.StageScaleMode;
+import openfl.events.UncaughtErrorEvent;
 
 using StringTools;
 
@@ -47,6 +49,25 @@ class Main extends Sprite
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
+		#end
+
+		#if html5
+		FlxG.autoPause = false;
+		#end
+
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+	}
+
+	// Based off of code by squirra-rng
+	function onCrash(e:UncaughtErrorEvent):Void
+	{
+		var errMsg:String = "";
+		// add crash logging here at some point
+
+		errMsg += "Uncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/BHS-TSA/video-game-design";
+		Application.current.window.alert(errMsg, "Error!");
+		#if desktop
+		Sys.exit(1);
 		#end
 	}
 }
