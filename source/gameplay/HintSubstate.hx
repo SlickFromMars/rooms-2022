@@ -11,7 +11,7 @@ class HintSubstate extends FrameSubState
 {
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
-	var decorGrp:FlxSpriteGroup; // group for paper stuff
+	var decorGrp:HintSpriteGroup; // group for paper stuff
 
 	public function new(hintType:String)
 	{
@@ -22,72 +22,8 @@ class HintSubstate extends FrameSubState
 		bg.scrollFactor.set();
 		add(bg);
 
-		var textColor:FlxColor = FlxColor.fromRGB(64, 60, 60);
-
-		decorGrp = new FlxSpriteGroup(0, 0);
+		decorGrp = new HintSpriteGroup(hintType);
 		add(decorGrp);
-
-		var paper = new FlxSprite().loadGraphic(Paths.image('hint/paper'));
-		paper.screenCenter();
-		decorGrp.add(paper);
-
-		switch (hintType)
-		{
-			case 'solution':
-				var spr:FlxText = new FlxText(0, 0, 0, '', 26);
-				for (i in ShapePuzzleSubstate.puzzleCombo)
-				{
-					spr.text += '$i-';
-				}
-				spr.text = spr.text.substring(0, spr.text.length - 1);
-				spr.color = textColor;
-				spr.screenCenter();
-				decorGrp.add(spr);
-
-			case 'shapes':
-				for (i in 0...5)
-				{
-					var spr:FlxSprite = new FlxSprite();
-					spr.loadGraphic(Paths.image('hint/paperequals'));
-					spr.screenCenter(X);
-					spr.y = (i * 34) + 32;
-					decorGrp.add(spr);
-
-					var spr2:PaperShapeKey = new PaperShapeKey(i);
-					spr2.x = spr.x - 60;
-					spr2.y = spr.y;
-					decorGrp.add(spr2);
-
-					var spr3:FlxText = new FlxText(0, 0, 0, Std.string(i), 26);
-					spr3.color = textColor;
-					spr3.x = spr.x + 80;
-					spr3.y = spr.y + 3;
-					decorGrp.add(spr3);
-				}
-			case 'shape_inst':
-				var spr:FlxText = new FlxText(0, 0, 0, Paths.getLang('shapeInst'), 16);
-				spr.color = textColor;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
-
-			case 'key_inst':
-				var spr:FlxText = new FlxText(0, 0, 0, Paths.getLang('keyInst'), 20);
-				spr.color = textColor;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
-
-			case 'game_inst':
-				var spr:FlxText = new FlxText(0, 0, 0, Paths.getLang('gameInst'), 16);
-				spr.color = textColor;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
-
-			default:
-				trace('Couldnt find the hint :(');
-		}
 
 		// set alpha and position
 		bg.alpha = 0;
@@ -116,6 +52,78 @@ class HintSubstate extends FrameSubState
 					close();
 				}
 			});
+		}
+	}
+}
+
+class HintSpriteGroup extends FlxSpriteGroup
+{
+	public function new(hintType:String)
+	{
+		super(x, y);
+
+		var paper = new FlxSprite().loadGraphic(Paths.image('hint/paper'));
+		paper.screenCenter();
+		add(paper);
+
+		var textColor:FlxColor = FlxColor.fromRGB(64, 60, 60);
+
+		switch (hintType)
+		{
+			case 'solution':
+				var spr:FlxText = new FlxText(0, 0, 0, '', 26);
+				for (i in ShapePuzzleSubstate.puzzleCombo)
+				{
+					spr.text += '$i-';
+				}
+				spr.text = spr.text.substring(0, spr.text.length - 1);
+				spr.color = textColor;
+				spr.screenCenter();
+				add(spr);
+
+			case 'shapes':
+				for (i in 0...5)
+				{
+					var spr:FlxSprite = new FlxSprite();
+					spr.loadGraphic(Paths.image('hint/paperequals'));
+					spr.screenCenter(X);
+					spr.y = (i * 34) + 32;
+					add(spr);
+
+					var spr2:PaperShapeKey = new PaperShapeKey(i);
+					spr2.x = spr.x - 60;
+					spr2.y = spr.y;
+					add(spr2);
+
+					var spr3:FlxText = new FlxText(0, 0, 0, Std.string(i), 26);
+					spr3.color = textColor;
+					spr3.x = spr.x + 80;
+					spr3.y = spr.y + 3;
+					add(spr3);
+				}
+			case 'shape_inst':
+				var spr:FlxText = new FlxText(0, 0, 0, Paths.getLang('shapeInst'), 16);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
+			case 'key_inst':
+				var spr:FlxText = new FlxText(0, 0, 0, Paths.getLang('keyInst'), 20);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
+			case 'game_inst':
+				var spr:FlxText = new FlxText(0, 0, 0, Paths.getLang('gameInst'), 16);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
+			default:
+				trace('Couldnt find the hint :(');
 		}
 	}
 }
