@@ -58,7 +58,7 @@ class TitleState extends FrameState
 				emitter.width = FlxG.width;
 				emitter.alpha.set(0.7, 0.7, 0, 0);
 				emitter.lifespan.set(1, 3);
-				emitter.loadParticles(Paths.image('particles/P0'), 500, 16, true);
+				emitter.loadParticles(Paths.image('particles/P$i'), 500, 16, true);
 
 				emitter.start(false, FlxG.random.float(0.4, 0.5), 100000);
 				emitterGrp.add(emitter);
