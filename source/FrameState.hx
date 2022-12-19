@@ -1,7 +1,7 @@
 package;
 
-import flixel.FlxState;
 import flixel.FlxG;
+import flixel.FlxState;
 
 class FrameState extends FlxState
 {

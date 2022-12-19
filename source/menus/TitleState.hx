@@ -1,14 +1,14 @@
 package menus;
 
-import flixel.util.FlxGradient;
-import flixel.group.FlxGroup.FlxTypedGroup;
-import lime.app.Application;
-import flixel.effects.FlxFlicker;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.effects.FlxFlicker;
+import flixel.effects.particles.FlxEmitter;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import flixel.effects.particles.FlxEmitter;
+import flixel.util.FlxGradient;
+import lime.app.Application;
 
 class TitleState extends FrameState
 {

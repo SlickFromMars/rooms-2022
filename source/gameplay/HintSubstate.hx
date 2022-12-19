@@ -1,11 +1,11 @@
 package gameplay;
 
-import flixel.text.FlxText;
-import flixel.group.FlxSpriteGroup;
-import flixel.FlxSprite;
 import flixel.FlxG;
-import flixel.util.FlxColor;
+import flixel.FlxSprite;
+import flixel.group.FlxSpriteGroup;
+import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
 
 class HintSubstate extends FrameSubState
 {

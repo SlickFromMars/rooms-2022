@@ -1,11 +1,11 @@
 package menus;
 
+import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
 import flixel.text.FlxText;
-import flixel.FlxSprite;
-import flixel.FlxG;
-import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
 
 class InstructionsSubstate extends FrameSubState
 {

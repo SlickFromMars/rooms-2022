@@ -1,10 +1,10 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 import openfl.Lib;
 import openfl.display.Sprite;
-import flixel.FlxG;
 import openfl.display.StageScaleMode;
 
 using StringTools;

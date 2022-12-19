@@ -1,11 +1,11 @@
 package gameplay;
 
-import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.util.FlxColor;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
 
 class ShapePuzzleSubstate extends FrameSubState
 {

@@ -1,7 +1,7 @@
 package;
 
-import gameplay.Prop.PropType;
 import flixel.input.keyboard.FlxKey;
+import gameplay.Prop.PropType;
 
 class CoolData
 {

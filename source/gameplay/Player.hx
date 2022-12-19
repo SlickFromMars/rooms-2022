@@ -1,9 +1,9 @@
 package gameplay;
 
-import haxe.Json;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
+import haxe.Json;
 
 class Player extends FlxSprite
 {
