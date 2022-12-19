@@ -28,7 +28,7 @@ class Player extends FlxSprite
 		animation.add('u', [3], 4, true);
 
 		// Setup the physics
-		physicsJSON = Json.parse(Paths.getText('physics.json'));
+		physicsJSON = Json.parse(Paths.getText('data/physics.json'));
 
 		drag.x = drag.y = physicsJSON.drag;
 

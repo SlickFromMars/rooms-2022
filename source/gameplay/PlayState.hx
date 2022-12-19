@@ -286,7 +286,7 @@ class PlayState extends FrameState
 
 	public function chooseLevel():String
 	{
-		var fullText:String = Paths.getText('_gen/' + Std.string(CoolData.roomNumber) + '.txt').trim();
+		var fullText:String = Paths.getText('data/_gen/' + Std.string(CoolData.roomNumber) + '.txt').trim();
 		var swagArray:Array<String> = fullText.split('--');
 		var swagItem:String = FlxG.random.getObject(swagArray);
 		trace('Chose $swagItem from $swagArray');
