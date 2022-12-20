@@ -19,13 +19,13 @@
 	<!-- ____________________________ Window Settings ___________________________ -->
 
 	<!--These window settings apply to all targets-->
-	<window width="1280" height="720" fps="" background="#000000" hardware="true" vsync="false" />
+	<window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="false" />
 
 	<!--HTML5-specific-->
 	<window if="html5" resizable="true" fullscreen="false"/>
 
 	<!--Desktop-specific-->
-	<window if="desktop" orientation="landscape" fullscreen="true" resizable="true" vsync="false"/>
+	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -91,5 +91,5 @@
 	<icon path="docs/icon16.png" size='16'/>
 	<icon path="docs/icon32.png" size='32'/>
 	<icon path="docs/icon64.png" size='64'/>
-	<icon path="docs/iconOG.png" />
+	<icon path="docs/icon.png" />
 </project>
