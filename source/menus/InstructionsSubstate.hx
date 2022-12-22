@@ -12,7 +12,6 @@ class InstructionsSubstate extends FrameSubState
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
 	var helpMaster:FlxSpriteGroup; // The sprite group that contains all stuff
-	var helpText:FlxText; // The text that teaches you things
 
 	public function new()
 	{
@@ -26,7 +25,7 @@ class InstructionsSubstate extends FrameSubState
 		helpMaster = new FlxSpriteGroup(0, 0);
 		add(helpMaster);
 
-		helpText = new FlxText(0, 0, 0, Paths.getLang('keybinds'), 8);
+		var helpText:FlxText = new FlxText(0, 0, 0, Paths.getLang('keybinds'), 8);
 		helpText.alignment = CENTER;
 		helpText.screenCenter();
 		helpMaster.add(helpText);
