@@ -55,19 +55,26 @@ class Main extends Sprite
 		FlxG.autoPause = false;
 		#end
 
+		// Add event listners
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+		Application.current.window.onClose.add(onClose);
 	}
 
 	// Based off of code by squirra-rng
 	function onCrash(e:UncaughtErrorEvent):Void
 	{
-		var errMsg:String = "";
-		// add crash logging here at some point
-
-		errMsg += "Uncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/BHS-TSA/video-game-design";
+		var errMsg:String = "Uncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/BHS-TSA/video-game-design";
 		Application.current.window.alert(errMsg, "Error!");
-		#if desktop
+		onClose(); // save some things
+		#if sys
 		Sys.exit(1);
 		#end
+	}
+
+	// do things when closing
+	function onClose():Void
+	{
+		FlxG.save.data.fullscreen = FlxG.fullscreen;
+		FlxG.save.flush();
 	}
 }

@@ -33,6 +33,20 @@ class TitleState extends FrameState
 		FlxG.sound.volumeDownKeys = CoolData.volumeDownKeys;
 		FlxG.sound.volumeUpKeys = CoolData.volumeUpKeys;
 
+		// do the save stuff
+		if (FlxG.save.data.volume != null)
+		{
+			FlxG.sound.volume = FlxG.save.data.volume;
+		}
+		if (FlxG.save.data.mute != null)
+		{
+			FlxG.sound.muted = FlxG.save.data.mute;
+		}
+		if (FlxG.save.data.fullscreen != null)
+		{
+			FlxG.fullscreen = FlxG.save.data.fullscreen;
+		}
+
 		// Setup the UI
 		emitterGrp = new FlxTypedGroup<FlxEmitter>();
 
