@@ -131,7 +131,7 @@ class Paths
 	 */
 	inline static public function getLang(key:String):String
 	{
-		var path = 'data/en_us/$key.txt';
+		var path = 'lang/en_us/$key.txt';
 		if (OpenFlAssets.exists(getPath(path)))
 		{
 			if (!currentTrackedLang.exists(path))
