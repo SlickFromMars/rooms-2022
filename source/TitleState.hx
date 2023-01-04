@@ -1,14 +1,14 @@
-package menus;
+package;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
-import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import lime.app.Application;
+import particles.TitleEmitter;
 
 class TitleState extends FrameState
 {
@@ -18,7 +18,7 @@ class TitleState extends FrameState
 	var versionText:FlxText; // The version
 	var screen:FlxSprite; // Funky gradient
 
-	var emitterGrp:FlxTypedGroup<FlxEmitter>; // Particle group yaaaay
+	var emitterGrp:FlxTypedGroup<TitleEmitter>; // Particle group yaaaay
 	var doParticles:Bool = true; // Just for testing
 
 	override public function create()
@@ -48,7 +48,7 @@ class TitleState extends FrameState
 		}
 
 		// Setup the UI
-		emitterGrp = new FlxTypedGroup<FlxEmitter>();
+		emitterGrp = new FlxTypedGroup<TitleEmitter>();
 
 		logo = new FlxSprite();
 		logo.loadGraphic(Paths.image('logo'));
@@ -65,15 +65,7 @@ class TitleState extends FrameState
 			// Based off code from VSRetro, thanks guys
 			for (i in 0...3)
 			{
-				var emitter:FlxEmitter = new FlxEmitter(0, FlxG.height);
-				emitter.launchMode = FlxEmitterMode.SQUARE;
-				emitter.velocity.set(-25, -75, 25, -100, -50, 0, 50, -50);
-				emitter.scale.set(0.25, 0.25, 0.5, 0.5, 0.25, 0.25, 0.37, 0.37);
-				emitter.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
-				emitter.width = FlxG.width;
-				emitter.alpha.set(0.7, 0.7, 0, 0);
-				emitter.lifespan.set(1, 3);
-				emitter.loadParticles(Paths.image('particles/P$i'), 500, 16, true);
+				var emitter:TitleEmitter = new TitleEmitter('P$i');
 
 				emitter.start(false, FlxG.random.float(0.4, 0.5), 100000);
 				emitterGrp.add(emitter);
@@ -89,11 +81,9 @@ class TitleState extends FrameState
 		add(beginText);
 		add(logo);
 
-		#if debug
 		versionText = new FlxText(0, 12, 0, Application.current.meta.get('version'), 8);
 		versionText.x = FlxG.width - (versionText.width + 2);
 		add(versionText);
-		#end
 
 		super.create();
 
@@ -126,7 +116,7 @@ class TitleState extends FrameState
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 0.5, false, function()
 				{
-					FlxG.switchState(new gameplay.PlayState());
+					FlxG.switchState(new PlayState());
 				});
 			});
 		}

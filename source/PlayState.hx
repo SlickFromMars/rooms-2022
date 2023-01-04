@@ -1,5 +1,7 @@
-package gameplay;
+package;
 
+import Player;
+import Prop;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -9,8 +11,6 @@ import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import gameplay.Player;
-import gameplay.Prop;
 
 using StringTools;
 
@@ -352,7 +352,7 @@ class PlayState extends FrameState
 			}
 			else
 			{
-				FlxG.switchState(new menus.CompleteState());
+				FlxG.switchState(new CompleteState());
 			}
 		});
 	}

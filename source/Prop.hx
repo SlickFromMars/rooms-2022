@@ -1,4 +1,4 @@
-package gameplay;
+package;
 
 import flixel.FlxSprite;
 
