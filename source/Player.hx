@@ -48,7 +48,7 @@ class Player extends FlxSprite
 
 	function updateMovement()
 	{
-		// If on desktop, check the keybids
+		// If on desktop, check the keybinds
 		#if FLX_KEYBOARD
 		up = FlxG.keys.anyPressed(CoolData.upKeys);
 		down = FlxG.keys.anyPressed(CoolData.downKeys);
