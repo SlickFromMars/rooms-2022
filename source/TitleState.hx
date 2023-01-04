@@ -65,7 +65,7 @@ class TitleState extends FrameState
 			// Based off code from VSRetro, thanks guys
 			for (i in 0...3)
 			{
-				var emitter:TitleEmitter = new TitleEmitter('P$i');
+				var emitter:TitleEmitter = new TitleEmitter('title$i');
 
 				emitter.start(false, FlxG.random.float(0.4, 0.5), 100000);
 				emitterGrp.add(emitter);

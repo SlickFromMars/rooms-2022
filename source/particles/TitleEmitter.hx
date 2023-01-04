@@ -5,7 +5,7 @@ import flixel.effects.particles.FlxEmitter;
 
 class TitleEmitter extends FlxEmitter
 {
-	public function new(texture:String = 'P0')
+	public function new(texture:String)
 	{
 		super(0, FlxG.height);
 
