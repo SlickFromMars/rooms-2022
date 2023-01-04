@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://lime.software/project/1.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://lime.software/project/1.0.2 http://lime.software/xsd/project-1.0.2.xsd">
+	xsi:schemaLocation="http://lime.software/project/1.0.2">
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="ROOMS" file="ROOMS" main="Main"  packageName="com.slickfrommars.rooms" package="com.slickfrommars.rooms" version="BETA" company="SlickFromMars" />
+	<app title="ROOMS" file="ROOMS" main="Main" package="com.slickfrommars.rooms" packageName="com.slickfrommars.rooms" version="BETA" company="SlickFromMars" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
