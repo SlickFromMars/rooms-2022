@@ -302,7 +302,15 @@ class PlayState extends FrameState
 	public function reloadLevel()
 	{
 		// Reload the UI
-		levelText.text = '- Room ' + CoolData.roomNumber + ' -';
+		if (CoolData.roomNumber == 1)
+		{
+			levelText.text = '- Entrance -';
+		}
+		else
+		{
+			levelText.text = '- Room ' + (CoolData.roomNumber - 1) + ' -';
+		}
+
 		levelText.screenCenter(X);
 
 		// Build the level
