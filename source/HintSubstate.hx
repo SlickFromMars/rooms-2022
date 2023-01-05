@@ -123,7 +123,7 @@ class HintSpriteGroup extends FlxSpriteGroup
 				add(spr);
 
 			default:
-				trace('Couldnt find the hint :(');
+				FlxG.log.warn('Could not find ui for $hintType hint');
 		}
 	}
 }

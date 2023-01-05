@@ -142,7 +142,7 @@ class Paths
 			}
 			return (currentTrackedLang.get(path));
 		}
-		trace('Could not find $path');
+		FlxG.log.warn('Could not find $path');
 		return path; // use this as a placeholder
 	}
 
@@ -161,7 +161,7 @@ class Paths
 			}
 			return currentTrackedAssets.get(path);
 		}
-		trace('null return waaaaaaaaaaaaah');
+		FlxG.log.warn('null return waaaaaaaaaaaaah');
 		return null;
 	}
 

@@ -280,7 +280,7 @@ class PlayState extends FrameState
 				propGrp.add(new Prop(x - 8, y - 8, KEY));
 
 			default:
-				trace('Unrecognized actor type ' + entity.name);
+				FlxG.log.warn('Unrecognized actor type ' + entity.name);
 		}
 		add(propGrp);
 	}
