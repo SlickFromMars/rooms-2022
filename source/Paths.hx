@@ -122,6 +122,7 @@ class Paths
 		return false;
 	}
 
+	public static var localization:String = 'en_us';
 	public static var currentTrackedLang:Map<String, String> = [];
 
 	/**
@@ -131,7 +132,7 @@ class Paths
 	 */
 	inline static public function getLang(key:String):String
 	{
-		var path = 'lang/en_us/$key.txt';
+		var path = 'lang/$localization/$key.txt';
 		if (OpenFlAssets.exists(getPath(path)))
 		{
 			if (!currentTrackedLang.exists(path))
@@ -141,8 +142,8 @@ class Paths
 			}
 			return (currentTrackedLang.get(path));
 		}
-		trace('null return waaaaaaaaaaaaah');
-		return null;
+		trace('Could not find $path');
+		return path; // use this as a placeholder
 	}
 
 	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
