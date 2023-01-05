@@ -23,6 +23,7 @@ class PlayState extends FrameState
 	// The world variables
 	public static var map:FlxOgmo3Loader;
 	public static var walls:FlxTilemap;
+	public static var walls2:FlxTilemap;
 
 	public static var door:Prop;
 	public static var propGrp:FlxTypedGroup<Prop>;
@@ -310,6 +311,7 @@ class PlayState extends FrameState
 		map = new FlxOgmo3Loader(Paths.getOgmo(), Paths.json('_levels/$tempLvl'));
 		walls = map.loadTilemap(Paths.image('tileset'), "walls");
 		walls.follow(camGame);
+		walls2 = map.loadTilemap(Paths.image('tileset'), "no_collision");
 
 		// Setup the collision
 		for (i in 0...CoolData.tileCount)
@@ -326,6 +328,7 @@ class PlayState extends FrameState
 
 		// Finalize and add stuff
 		add(walls);
+		add(walls2);
 		player = new Player();
 		propGrp = new FlxTypedGroup<Prop>();
 		map.loadEntities(placeEntities, "decor");
