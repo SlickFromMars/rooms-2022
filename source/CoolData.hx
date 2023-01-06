@@ -17,9 +17,9 @@ class CoolData
 	public static var leftKeys:Array<FlxKey> = [LEFT]; // Control array to move left
 	public static var rightKeys:Array<FlxKey> = [RIGHT]; // Control array to move right
 
-	public static var confirmKeys:Array<FlxKey> = [ENTER, Z]; // Control array to confirm
+	public static var confirmKeys:Array<FlxKey> = [ENTER]; // Control array to confirm
 	public static var helpKeys:Array<FlxKey> = [TAB]; // Control array for the help screen
-	public static var backKeys:Array<FlxKey> = [ESCAPE, X]; // Control array to go back
+	public static var backKeys:Array<FlxKey> = [ESCAPE]; // Control array to go back
 
 	public static var fullscreenKeys:Array<FlxKey> = [F, NUMPADONE, ONE, F11]; // Control array to toggle fullscreen
 	public static var framesKeys:Array<FlxKey> = [NUMPADTWO, TWO]; // Control array to toggle FPS counter
