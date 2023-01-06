@@ -74,6 +74,7 @@ class Main extends Sprite
 	function onClose():Void
 	{
 		FlxG.save.data.fullscreen = FlxG.fullscreen;
+		FlxG.save.data.fps = fpsVar.visible;
 		FlxG.save.flush();
 	}
 }
