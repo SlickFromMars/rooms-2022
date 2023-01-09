@@ -11,22 +11,11 @@ class FrameState extends FlxState
 
 		// Check keys
 		backgroundKeys();
-
-		// Check to see if the player needs help
-		if (FlxG.keys.anyJustPressed(CoolData.helpKeys))
-		{
-			openSubState(new InstructionsSubstate());
-		}
 	}
 
 	// Checking important keys for frame states
 	public static function backgroundKeys()
 	{
-		if (Main.fpsVar != null && FlxG.keys.anyJustPressed(CoolData.framesKeys))
-		{
-			Main.fpsVar.visible = !Main.fpsVar.visible;
-		}
-
 		if (FlxG.keys.anyJustPressed(CoolData.fullscreenKeys))
 		{
 			FlxG.fullscreen = !FlxG.fullscreen;

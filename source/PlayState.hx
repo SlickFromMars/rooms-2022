@@ -32,7 +32,8 @@ class PlayState extends FrameState
 	public static var player:Player;
 
 	// The UI stuff
-	var overlay:FlxSprite;
+	public static var overlay:FlxSprite;
+
 	var levelText:FlxText;
 	var denyText:FlxText;
 
@@ -81,6 +82,7 @@ class PlayState extends FrameState
 		camGame.follow(player, TOPDOWN, 1);
 
 		super.create();
+		stopCompleteSpam = false;
 
 		// Play some music
 		if (CoolData.roomNumber == 1)
@@ -97,19 +99,11 @@ class PlayState extends FrameState
 	{
 		super.update(elapsed);
 
-		#if debug
-		// If debug is enabled, check to see if skip keys are pressed and then skip the current level
-		if (FlxG.keys.anyJustPressed(CoolData.skipKeys))
+		// Check to see if the player needs help
+		if (FlxG.keys.anyJustPressed(CoolData.pauseKeys))
 		{
-			completeLevel();
+			openSubState(new PauseSubState());
 		}
-
-		// If debug is enabled, check to see if overlay keys are pressed and toggle overlay
-		if (FlxG.keys.anyJustPressed(CoolData.overlayKeys))
-		{
-			CoolData.overlayShown = !CoolData.overlayShown;
-		}
-		#end
 
 		// Collision stuff
 		FlxG.collide(player, walls);
@@ -124,7 +118,6 @@ class PlayState extends FrameState
 		{
 			overlay.screenCenter();
 		}
-		overlay.visible = CoolData.overlayShown;
 
 		propGrp.forEach(function(spr:Prop)
 		{
@@ -336,9 +329,9 @@ class PlayState extends FrameState
 		add(player);
 	}
 
-	var stopCompleteSpam:Bool = false; // Stop people from breaking the level
+	static var stopCompleteSpam:Bool = false; // Stop people from breaking the level
 
-	function completeLevel()
+	public static function completeLevel()
 	{
 		stopCompleteSpam = true;
 
@@ -346,7 +339,7 @@ class PlayState extends FrameState
 		CoolData.roomNumber += 1;
 
 		// Fade to black and then figure out what to do
-		camUI.fade(FlxColor.BLACK, 0.1, false, function()
+		FlxG.cameras.list[FlxG.cameras.list.length - 1].fade(FlxColor.BLACK, 0.1, false, function()
 		{
 			// Check to see if a file exists, and then go to the next level if it does
 			if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))

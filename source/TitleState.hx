@@ -107,6 +107,12 @@ class TitleState extends FrameState
 	{
 		super.update(elapsed);
 
+		// Check to see if the player needs help
+		if (FlxG.keys.anyJustPressed(CoolData.helpKeys))
+		{
+			openSubState(new InstructionsSubstate());
+		}
+
 		// Check to see if the player has confirmed
 		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys) && stopSpam == false)
 		{

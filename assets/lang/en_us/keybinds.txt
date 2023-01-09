@@ -1,9 +1,8 @@
 Use the Arrow Keys To Move
 Use ENTER to Interact or Confirm
-Use ESCAPE to Go Back
+Use ESCAPE to Close Something
 
+Use P or ESCAPE to Pause
 Use F or ONE to Toggle Fullscreen
 Use PLUS and MINUS to Adjust Volume
 Use ZERO to Mute Volume
-
-Use TAB to Access This Screen At Any Time
