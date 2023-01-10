@@ -48,7 +48,7 @@ class InstructionsSubstate extends FrameSubState
 		super.update(elapsed);
 
 		// Check to see if the player wants to exit
-		if (FlxG.keys.anyJustPressed(CoolData.backKeys) || FlxG.keys.anyJustPressed(CoolData.helpKeys))
+		if (FlxG.keys.anyJustPressed(CoolData.backKeys) || FlxG.keys.anyJustPressed([TAB]))
 		{
 			stopSpam = true;
 			FlxTween.tween(helpMaster, {alpha: 0}, 0.3, {

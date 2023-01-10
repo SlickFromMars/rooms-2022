@@ -108,7 +108,7 @@ class TitleState extends FrameState
 		super.update(elapsed);
 
 		// Check to see if the player needs help
-		if (FlxG.keys.anyJustPressed(CoolData.helpKeys))
+		if (FlxG.keys.anyJustPressed([TAB]))
 		{
 			openSubState(new InstructionsSubstate());
 		}
