@@ -64,7 +64,7 @@ class PlayState extends FrameState
 		levelText.screenCenter(X);
 		levelText.cameras = [camUI];
 
-		denyText = new FlxText(0, FlxG.height * 0.8, "Denied.", 10);
+		denyText = new FlxText(0, FlxG.height * 0.8, 0, "Denied.", 10);
 		denyText.alignment = FlxTextAlign.CENTER;
 		denyText.screenCenter(X);
 		denyText.cameras = [camUI];
