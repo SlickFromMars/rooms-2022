@@ -14,7 +14,6 @@ class PauseSubState extends FrameSubState
 	var menuItems:Array<String> = [];
 	var menuItemsOG:Array<String> = ['Resume', 'Options', 'Exit To Menu'];
 	var optionItemsOG:Array<String> = ['Toggle Fullscreen', 'Toggle FPS Counter'];
-	var difficultyChoices = [];
 	var curSelected:Int = 0;
 
 	public function new()
@@ -43,7 +42,7 @@ class PauseSubState extends FrameSubState
 		grpMenu = new FlxTypedGroup<FlxText>();
 		add(grpMenu);
 
-		regenMenu('Base');
+		regenMenu();
 	}
 
 	var stopSpam:Bool = false;
@@ -57,7 +56,7 @@ class PauseSubState extends FrameSubState
 		{
 			if (menuItems.contains('Back'))
 			{
-				regenMenu('Base');
+				regenMenu();
 			}
 			else
 			{
@@ -94,7 +93,7 @@ class PauseSubState extends FrameSubState
 					case 'Toggle Show Overlay':
 						PlayState.overlay.visible = !PlayState.overlay.visible;
 					case 'Back':
-						regenMenu('Base');
+						regenMenu();
 				}
 			}
 		}
@@ -104,7 +103,7 @@ class PauseSubState extends FrameSubState
 		}
 	}
 
-	function regenMenu(type:String)
+	function regenMenu(type:String = 'Base')
 	{
 		trace('Loading $type menu');
 
