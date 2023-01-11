@@ -38,8 +38,10 @@
 	<assets path="assets/preload" rename="assets" exclude="*.mp3"  unless="web"/>
 
 	<assets path="assets/lang"/>
-
 	<assets path="assets/fonts" embed='true'/>
+
+	<assets path="docs/README.txt" rename="readme.txt"/>
+	<assets path="README.md" rename="donotreadme.txt"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
