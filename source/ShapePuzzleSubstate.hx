@@ -15,9 +15,6 @@ class ShapePuzzleSubstate extends FrameSubState
 	public static var currentEntry:Array<Int> = [0, 0, 0, 0];
 
 	// UI STUFF
-	var bg:FlxSprite; // The bg for the state
-	var tipText:FlxText; // Keybinds for bozos
-	var funnyText:FlxSprite; // the title thingy
 	var keyGrp:FlxTypedGroup<ShapePuzzleKey>; // All of the key thingies
 
 	public function new()
@@ -25,11 +22,11 @@ class ShapePuzzleSubstate extends FrameSubState
 		super();
 
 		// setup the UI
-		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.scrollFactor.set();
 		add(bg);
 
-		funnyText = new FlxText(0, 5, 0, "Shape Puzzle", 10);
+		var funnyText:FlxText = new FlxText(0, 5, 0, "Shape Puzzle", 10);
 		funnyText.screenCenter(X);
 		funnyText.scrollFactor.set();
 		add(funnyText);
@@ -37,7 +34,7 @@ class ShapePuzzleSubstate extends FrameSubState
 		keyGrp = new FlxTypedGroup<ShapePuzzleKey>();
 		add(keyGrp);
 
-		tipText = new FlxText(0, 0, 0, Paths.getLang('shapePuzzleTip'), 8);
+		var tipText:FlxText = new FlxText(0, 0, 0, Paths.getLang('shapePuzzleTip'), 8);
 		tipText.y = FlxG.height - (tipText.height + 2);
 		tipText.alignment = CENTER;
 		tipText.screenCenter(X);
@@ -124,7 +121,6 @@ class ShapePuzzleSubstate extends FrameSubState
 		{
 			// OPEN THE DOOR PLEASE
 			PlayState.door.isOpen = true;
-			trace('Shape puzzle complete.');
 
 			// update to show that you got it
 			updateAnims();
@@ -146,7 +142,6 @@ class ShapePuzzleSubstate extends FrameSubState
 		shuffleComboFunc();
 		while (puzzleCombo[0] == puzzleCombo[1] && puzzleCombo[0] == puzzleCombo[2] && puzzleCombo[0] == puzzleCombo[3])
 		{
-			trace('Improper combo ' + puzzleCombo);
 			shuffleComboFunc();
 		}
 		trace('The combo is ' + puzzleCombo);

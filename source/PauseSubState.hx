@@ -105,8 +105,6 @@ class PauseSubState extends FrameSubState
 
 	function regenMenu(type:String = 'Base')
 	{
-		trace('Loading $type menu');
-
 		switch (type)
 		{
 			case 'Base':

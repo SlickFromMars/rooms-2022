@@ -97,7 +97,7 @@ class Prop extends FlxSprite
 
 			default:
 				// Kill the prop as an emergency fallback
-				trace('UNKNOWN PROP');
+				trace('Unrecognized prop type ' + type);
 				kill();
 		}
 	}

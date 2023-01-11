@@ -178,7 +178,6 @@ class PlayState extends FrameState
 						door.isOpen = true;
 						spr.kill();
 
-						trace("KEY LOCATED!!!!!!");
 						denyText.text = 'Door has been unlocked.';
 						denyText.screenCenter(X);
 						denyText.alpha = 1;
@@ -209,7 +208,6 @@ class PlayState extends FrameState
 
 				if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
 				{
-					trace("DOOR IS LOCKED BOZO!!!");
 					denyText.text = 'This door is locked.';
 					denyText.screenCenter(X);
 					denyText.alpha = 1;

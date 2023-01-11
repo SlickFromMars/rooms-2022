@@ -161,7 +161,7 @@ class Paths
 			}
 			return currentTrackedAssets.get(path);
 		}
-		trace('null return waaaaaaaaaaaaah');
+		trace('Could not find $path');
 		return null;
 	}
 
@@ -180,7 +180,7 @@ class Paths
 			}
 			return currentTrackedSounds.get(gottenPath);
 		}
-		trace('null return waaaaaaaaaaaaah');
+		trace('Could not find $gottenPath');
 		return null;
 	}
 }
