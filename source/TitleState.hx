@@ -19,7 +19,6 @@ class TitleState extends FrameState
 	var screen:FlxSprite; // Funky gradient
 
 	var emitterGrp:FlxTypedGroup<TitleEmitter>; // Particle group yaaaay
-	var doParticles:Bool = true; // Just for testing
 
 	override public function create()
 	{
@@ -70,18 +69,14 @@ class TitleState extends FrameState
 		beginText.screenCenter(X);
 		beginText.y -= beginText.height;
 
-		if (doParticles)
+		// Based off code from VSRetro, thanks guys
+		for (i in 0...3)
 		{
-			// Based off code from VSRetro, thanks guys
-			for (i in 0...3)
-			{
-				var emitter:TitleEmitter = new TitleEmitter('title$i');
+			var emitter:TitleEmitter = new TitleEmitter('title$i');
 
-				emitter.start(false, FlxG.random.float(0.4, 0.5), 100000);
-				emitterGrp.add(emitter);
-			}
+			emitter.start(false, FlxG.random.float(0.4, 0.5), 100000);
+			emitterGrp.add(emitter);
 		}
-
 		screen = FlxGradient.createGradientFlxSprite(FlxG.width, Std.int(FlxG.height * 0.2), [FlxColor.TRANSPARENT, FlxColor.WHITE]);
 		screen.y = FlxG.height - screen.height;
 		screen.alpha = 0.7;
