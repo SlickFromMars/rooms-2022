@@ -102,21 +102,21 @@ class HintSpriteGroup extends FlxSpriteGroup
 					add(spr3);
 				}
 			case 'shape_inst':
-				var spr:FlxText = new FlxText(0, 0, 0, Paths.getLang('shapeInst'), 16);
+				var spr:FlxText = new FlxText(0, 0, 0, Lang.text('shapeInst'), 16);
 				spr.color = textColor;
 				spr.alignment = CENTER;
 				spr.screenCenter();
 				add(spr);
 
 			case 'key_inst':
-				var spr:FlxText = new FlxText(0, 0, 0, Paths.getLang('keyInst'), 20);
+				var spr:FlxText = new FlxText(0, 0, 0, Lang.text('keyInst'), 20);
 				spr.color = textColor;
 				spr.alignment = CENTER;
 				spr.screenCenter();
 				add(spr);
 
 			case 'game_inst':
-				var spr:FlxText = new FlxText(0, 0, 0, Paths.getLang('gameInst'), 16);
+				var spr:FlxText = new FlxText(0, 0, 0, Lang.text('gameInst'), 16);
 				spr.color = textColor;
 				spr.alignment = CENTER;
 				spr.screenCenter();

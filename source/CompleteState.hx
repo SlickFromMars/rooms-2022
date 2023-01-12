@@ -12,7 +12,7 @@ class CompleteState extends FrameState
 	override function create()
 	{
 		// Setup the UI
-		winText = new FlxText(0, 0, 0, Paths.getLang('complete'), 8);
+		winText = new FlxText(0, 0, 0, Lang.text('complete'), 8);
 		winText.alignment = CENTER;
 		winText.screenCenter();
 		add(winText);
