@@ -119,6 +119,7 @@ class PlayState extends FrameState
 			overlay.screenCenter();
 		}
 
+		var isTouching:Bool = false;
 		propGrp.forEach(function(spr:Prop)
 		{
 			// If this prop is to be ignored, ignore it
@@ -132,6 +133,7 @@ class PlayState extends FrameState
 			{
 				if (player.overlaps(spr) && door.isOpen == false)
 				{
+					isTouching = true;
 					spr.animation.play('hover');
 
 					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
@@ -155,6 +157,7 @@ class PlayState extends FrameState
 			{
 				if (player.overlaps(spr) && (door.isOpen == false || CoolData.roomNumber == 1))
 				{
+					isTouching = true;
 					spr.animation.play('hover');
 
 					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
@@ -171,6 +174,7 @@ class PlayState extends FrameState
 			{
 				if (player.overlaps(spr) && door.isOpen == false)
 				{
+					isTouching = true;
 					spr.animation.play('hover');
 
 					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
@@ -191,7 +195,7 @@ class PlayState extends FrameState
 			}
 		});
 
-		if (player.overlaps(door))
+		if (player.overlaps(door) && isTouching == false)
 		{
 			if (door.isOpen)
 			{
