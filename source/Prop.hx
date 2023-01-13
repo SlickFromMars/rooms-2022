@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 
 class Prop extends FlxSprite
@@ -97,7 +98,7 @@ class Prop extends FlxSprite
 
 			default:
 				// Kill the prop as an emergency fallback
-				trace('Unrecognized prop type ' + type);
+				FlxG.log.warn('Unrecognized prop type ' + type);
 				kill();
 		}
 	}

@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import openfl.utils.Assets as OpenFlAssets;
 
 class Lang
@@ -24,7 +25,7 @@ class Lang
 			}
 			return (currentTrackedLang.get(path));
 		}
-		trace('Could not find $path');
+		FlxG.log.warn('Could not find lang file $path');
 		return path; // use this as a placeholder
 	}
 }

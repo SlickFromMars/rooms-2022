@@ -115,7 +115,7 @@ class HintSpriteGroup extends FlxSpriteGroup
 				}
 				else
 				{
-					trace('Couldnt find the hint :(');
+					FlxG.log.warn('No listed ui for hint ' + hintType);
 				}
 		}
 	}

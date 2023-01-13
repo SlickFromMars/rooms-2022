@@ -136,7 +136,7 @@ class Paths
 			}
 			return currentTrackedAssets.get(path);
 		}
-		trace('Could not find $path');
+		FlxG.log.warn('Could not find image at $path');
 		return null;
 	}
 
@@ -155,7 +155,7 @@ class Paths
 			}
 			return currentTrackedSounds.get(gottenPath);
 		}
-		trace('Could not find $gottenPath');
+		FlxG.log.warn('Could not find sound at $gottenPath');
 		return null;
 	}
 }

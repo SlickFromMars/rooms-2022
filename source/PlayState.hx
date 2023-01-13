@@ -70,10 +70,45 @@ class PlayState extends FrameState
 		denyText.cameras = [camUI];
 		denyText.alpha = 0;
 
-		// Setup the level
-		reloadLevel();
+		levelText.text = '- Room ' + CoolData.roomNumber + ' -';
+		levelText.screenCenter(X);
 
-		// ADD THINGS
+		// Build the level
+		var fullText:String = Paths.getText('data/_gen/' + Std.string(CoolData.roomNumber) + '.txt').trim();
+		var swagArray:Array<String> = fullText.split('\n');
+		for (i in 0...swagArray.length)
+		{
+			swagArray[i] = swagArray[i].trim();
+		}
+		var swagItem:String = FlxG.random.getObject(swagArray);
+		trace('Chose $swagItem from $swagArray');
+
+		map = new FlxOgmo3Loader(Paths.getOgmo(), Paths.json('_levels/$swagItem'));
+		walls = map.loadTilemap(Paths.image('tileset'), "walls");
+		walls.follow(camGame);
+		walls2 = map.loadTilemap(Paths.image('tileset'), "no_collision");
+
+		// Setup the collision
+		for (i in 0...CoolData.tileCount)
+		{
+			if (CoolData.doTileCollision.contains(i))
+			{
+				walls.setTileProperties(i, ANY);
+			}
+			else
+			{
+				walls.setTileProperties(i, NONE);
+			}
+		}
+
+		// Finalize and add stuff
+		add(walls);
+		add(walls2);
+		player = new Player();
+		propGrp = new FlxTypedGroup<Prop>();
+		map.loadEntities(placeEntities, "decor");
+		map.loadEntities(placeEntities, "utils");
+		add(player);
 		add(overlay);
 		add(levelText);
 		add(denyText);
@@ -234,101 +269,50 @@ class PlayState extends FrameState
 
 	function placeEntities(entity:EntityData) // Setup the props
 	{
-		var x = entity.x;
-		var y = entity.y;
+		var startX = entity.x;
+		var startY = entity.y;
 
 		switch (entity.name)
 		{
 			case "player":
-				player.setPosition(x + (16 - Player.physicsJSON.hitbox) / 2, y + (16 - Player.physicsJSON.hitbox) / 2);
+				player.setPosition(startX + (16 - Player.physicsJSON.hitbox) / 2, startY + (16 - Player.physicsJSON.hitbox) / 2);
 
 			case "door":
-				door = new Prop(x - 8, y, DOOR);
+				door = new Prop(startX - 8, startY, DOOR);
 				door.isOpen = !entity.values.locked;
 				add(door);
 
 			case 'torch':
-				propGrp.add(new Prop(x, y, TORCH));
+				propGrp.add(new Prop(startX, startY, TORCH));
 
 			case 'shapelock':
-				propGrp.add(new Prop(x - 8, y, SHAPELOCK));
+				propGrp.add(new Prop(startX - 8, startY, SHAPELOCK));
 				ShapePuzzleSubstate.shuffleCombo();
 
 			case 'crate':
-				propGrp.add(new Prop(x + 1, y + 1, CRATE));
+				propGrp.add(new Prop(startX + 1, startY + 1, CRATE));
 
 			case 'barrel':
-				propGrp.add(new Prop(x + 4, y + 2, BARREL));
+				propGrp.add(new Prop(startX + 4, startY + 2, BARREL));
 
 			case 'vase':
-				propGrp.add(new Prop(x + 5, y + 5, VASE));
+				propGrp.add(new Prop(startX + 5, startY + 5, VASE));
 
 			case 'bookshelf':
-				propGrp.add(new Prop(x, y, BOOKSHELF));
+				propGrp.add(new Prop(startX, startY, BOOKSHELF));
 
 			case 'hint':
-				var hint:Prop = new Prop(x - 8, y - 8, HINT);
+				var hint:Prop = new Prop(startX - 8, startY - 8, HINT);
 				hint.hintType = entity.values.hintType;
 				propGrp.add(hint);
 
 			case 'key':
-				propGrp.add(new Prop(x - 8, y - 8, KEY));
+				propGrp.add(new Prop(startX - 8, startY - 8, KEY));
 
 			default:
-				trace('Unrecognized actor type ' + entity.name);
+				FlxG.log.warn('Unrecognized actor type ' + entity.name);
 		}
 		add(propGrp);
-	}
-
-	public function chooseLevel():String
-	{
-		var fullText:String = Paths.getText('data/_gen/' + Std.string(CoolData.roomNumber) + '.txt').trim();
-		var swagArray:Array<String> = fullText.split('\n');
-		for (i in 0...swagArray.length)
-		{
-			swagArray[i] = swagArray[i].trim();
-		}
-		var swagItem:String = FlxG.random.getObject(swagArray);
-		trace('Chose $swagItem from $swagArray');
-
-		return swagItem;
-	}
-
-	public function reloadLevel()
-	{
-		// Reload the UI
-		levelText.text = '- Room ' + CoolData.roomNumber + ' -';
-		levelText.screenCenter(X);
-
-		// Build the level
-		var tempLvl:String = chooseLevel();
-
-		map = new FlxOgmo3Loader(Paths.getOgmo(), Paths.json('_levels/$tempLvl'));
-		walls = map.loadTilemap(Paths.image('tileset'), "walls");
-		walls.follow(camGame);
-		walls2 = map.loadTilemap(Paths.image('tileset'), "no_collision");
-
-		// Setup the collision
-		for (i in 0...CoolData.tileCount)
-		{
-			if (CoolData.doTileCollision.contains(i))
-			{
-				walls.setTileProperties(i, ANY);
-			}
-			else
-			{
-				walls.setTileProperties(i, NONE);
-			}
-		}
-
-		// Finalize and add stuff
-		add(walls);
-		add(walls2);
-		player = new Player();
-		propGrp = new FlxTypedGroup<Prop>();
-		map.loadEntities(placeEntities, "decor");
-		map.loadEntities(placeEntities, "utils");
-		add(player);
 	}
 
 	static var stopCompleteSpam:Bool = false; // Stop people from breaking the level
