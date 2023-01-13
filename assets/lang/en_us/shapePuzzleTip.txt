@@ -1,3 +1,3 @@
-Use LEFT And RIGHT Arrow Keys to Select Shapes
-Use UP and DOWN Arrow Keys to Cycle Shapes
+Use LEFT And RIGHT to Select Shapes
+Use UP and DOWN to Cycle Shapes
 If Your Entry Is Correct The Shapes Will Become Green

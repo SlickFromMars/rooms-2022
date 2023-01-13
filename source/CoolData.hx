@@ -9,13 +9,13 @@ class CoolData
 	public static var roomNumber:Int = 1; // Room number
 
 	// CONTROLS STUFF
-	public static var upKeys:Array<FlxKey> = [UP]; // Control array to move up
-	public static var downKeys:Array<FlxKey> = [DOWN]; // Control array to move down
-	public static var leftKeys:Array<FlxKey> = [LEFT]; // Control array to move left
-	public static var rightKeys:Array<FlxKey> = [RIGHT]; // Control array to move right
+	public static var upKeys:Array<FlxKey> = [UP, W]; // Control array to move up
+	public static var downKeys:Array<FlxKey> = [DOWN, S]; // Control array to move down
+	public static var leftKeys:Array<FlxKey> = [LEFT, A]; // Control array to move left
+	public static var rightKeys:Array<FlxKey> = [RIGHT, D]; // Control array to move right
 
-	public static var confirmKeys:Array<FlxKey> = [ENTER]; // Control array to confirm
-	public static var backKeys:Array<FlxKey> = [ESCAPE]; // Control array to go back
+	public static var confirmKeys:Array<FlxKey> = [ENTER, E]; // Control array to confirm
+	public static var backKeys:Array<FlxKey> = [ESCAPE, SPACE]; // Control array to go back
 	public static var pauseKeys:Array<FlxKey> = [P, ESCAPE]; // Control array to pause
 
 	public static var fullscreenKeys:Array<FlxKey> = [F, NUMPADONE, ONE, F11]; // Control array to toggle fullscreen

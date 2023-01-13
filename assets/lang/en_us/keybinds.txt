@@ -1,6 +1,6 @@
-Use the Arrow Keys To Move
-Use ENTER to Interact or Confirm
-Use ESCAPE to Close Something
+Use the Arrow Keys or WASD To Move
+Use ENTER or E to Interact or Confirm
+Use ESCAPE or SPACE to Go Back
 
 Use P or ESCAPE to Pause
 Use F or ONE to Toggle Fullscreen
