@@ -27,14 +27,11 @@ jobs:
         with:
           haxe-version: 4.2.5
       # Runs a set of commands using the runners shell
-      - name: Setup Haxelib
+      - name: Install Haxelib
         run: |
           haxelib setup C:/haxelib
           haxelib install hxcpp > /dev/null --quiet
-        shell: cmd
-      - name: HMM Install
-        run: |
-          haxelib install hmm
+          haxelib install hmm --quiet
           haxelib run hmm install
         shell: cmd
       - name: Compile
