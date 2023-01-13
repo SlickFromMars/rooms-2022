@@ -40,7 +40,7 @@ class CompleteState extends FrameState
 		FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
 		{
 			CoolData.roomNumber = 1;
-			FlxG.switchState(new PlayState());
+			FlxG.switchState(new TitleState());
 		});
 	}
 }
