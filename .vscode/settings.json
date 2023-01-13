@@ -12,6 +12,7 @@
 	"haxe.enableExtendedIndentation": true,
 	"files.exclude": {
 		"art/": true,
-		"export/": true
+		"export/": true,
+		".haxelib/": true
 	}
 }
