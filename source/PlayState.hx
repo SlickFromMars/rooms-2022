@@ -1,10 +1,10 @@
 package;
 
+import Overlay;
 import Player;
 import Prop;
 import flixel.FlxCamera;
 import flixel.FlxG;
-import flixel.FlxSprite;
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
@@ -32,7 +32,7 @@ class PlayState extends FrameState
 	public static var player:Player;
 
 	// The UI stuff
-	public static var overlay:FlxSprite;
+	public static var overlay:Overlay;
 
 	var levelText:FlxText;
 	var denyText:FlxText;
@@ -55,8 +55,7 @@ class PlayState extends FrameState
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		// UI stuffs
-		overlay = new FlxSprite();
-		overlay.loadGraphic(Paths.image('overlay'));
+		overlay = new Overlay();
 		overlay.cameras = [camUI];
 
 		levelText = new FlxText(0, 5, 0, "- LEVEL ??? -", 10);
@@ -144,15 +143,7 @@ class PlayState extends FrameState
 		FlxG.collide(player, walls);
 
 		// Update the overlay
-		if (PlayState.player != null)
-		{
-			overlay.x = player.getScreenPosition().x - overlay.width / 2;
-			overlay.y = player.getScreenPosition().y - overlay.height / 2;
-		}
-		else
-		{
-			overlay.screenCenter();
-		}
+		overlay.updateScreenPos();
 
 		var isTouching:Bool = false;
 		propGrp.forEach(function(spr:Prop)
