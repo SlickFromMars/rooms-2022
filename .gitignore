@@ -1,1 +1,5 @@
+# Don't include any builds
 export/*
+
+# Don't include local library installations. If you want them, run hmm install
+.haxelib/*
