@@ -70,7 +70,7 @@ class TitleState extends FrameState
 		beginText.y -= beginText.height;
 
 		// Based off code from VSRetro, thanks guys
-		for (i in 0...3)
+		for (i in 0...2)
 		{
 			var emitter:TitleEmitter = new TitleEmitter('title$i');
 

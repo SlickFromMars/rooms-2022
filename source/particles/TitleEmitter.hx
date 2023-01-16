@@ -15,7 +15,7 @@ class TitleEmitter extends FlxEmitter
 		drag.set(0, 0, 0, 0, 5, 5, 10, 10);
 		width = FlxG.width;
 		alpha.set(0.7, 0.7, 0, 0);
-		lifespan.set(1, 3);
-		loadParticles(Paths.image('particles/$texture'), 500, 16, true);
+		lifespan.set(1, 2.5);
+		loadParticles(Paths.image('particles/$texture'), 700, 16, true);
 	}
 }
