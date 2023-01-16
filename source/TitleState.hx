@@ -9,6 +9,9 @@ import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import lime.app.Application;
 import particles.TitleEmitter;
+#if DISCORD_RPC
+import Discord.DiscordClient;
+#end
 
 class TitleState extends FrameState
 {
@@ -25,6 +28,11 @@ class TitleState extends FrameState
 		// Hide the mouse if there is one
 		#if FLX_MOUSE
 		FlxG.mouse.visible = false;
+		#end
+
+		#if DISCORD_RPC
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
 		#end
 
 		// Initiate the volume keys

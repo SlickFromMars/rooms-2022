@@ -14,6 +14,10 @@ import flixel.util.FlxColor;
 
 using StringTools;
 
+#if DISCORD_RPC
+import Discord.DiscordClient;
+#end
+
 class PlayState extends FrameState
 {
 	// Camera stuff
@@ -114,6 +118,21 @@ class PlayState extends FrameState
 
 		// Finish setting up the camera
 		camGame.follow(player, TOPDOWN, 1);
+
+		#if DISCORD_RPC
+		// Updating Discord Rich Presence.
+		var stateText:String = '';
+		switch (CoolData.puzzleType)
+		{
+			case 'none':
+				stateText = 'Just Exploring';
+			case 'shapelock':
+				stateText = 'Solving A Shape Puzzle';
+			case 'key':
+				stateText = 'Finding A Key';
+		}
+		DiscordClient.changePresence('On Room ' + CoolData.roomNumber, stateText);
+		#end
 
 		super.create();
 		stopCompleteSpam = false;
@@ -279,6 +298,7 @@ class PlayState extends FrameState
 			case 'shapelock':
 				propGrp.add(new Prop(startX - 8, startY, SHAPELOCK));
 				ShapePuzzleSubstate.shuffleCombo();
+				CoolData.puzzleType = "shapelock";
 
 			case 'crate':
 				propGrp.add(new Prop(startX + 1, startY + 1, CRATE));
@@ -299,6 +319,7 @@ class PlayState extends FrameState
 
 			case 'key':
 				propGrp.add(new Prop(startX - 8, startY - 8, KEY));
+				CoolData.puzzleType = "key";
 
 			default:
 				FlxG.log.warn('Unrecognized actor type ' + entity.name);
@@ -314,6 +335,7 @@ class PlayState extends FrameState
 
 		// TO THE NEXT LEVEL WOOOOOOOO
 		CoolData.roomNumber += 1;
+		CoolData.puzzleType = "none";
 
 		// Fade to black and then figure out what to do
 		FlxG.cameras.list[FlxG.cameras.list.length - 1].fade(FlxColor.BLACK, 0.1, false, function()

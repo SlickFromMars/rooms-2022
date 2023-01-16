@@ -29,6 +29,13 @@
         "name": "flixel-ui",
         "type": "haxelib",
         "version": null
+      },
+      {
+        "name": "discord_rpc",
+        "type": "git",
+        "dir": null,
+        "ref": "master",
+        "url": "https://github.com/Aidan63/linc_discord-rpc"
       }
     ]
   }

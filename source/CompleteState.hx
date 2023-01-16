@@ -3,6 +3,9 @@ package;
 import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+#if DISCORD_RPC
+import Discord.DiscordClient;
+#end
 
 class CompleteState extends FrameState
 {
@@ -11,6 +14,16 @@ class CompleteState extends FrameState
 
 	override function create()
 	{
+		// Hide the mouse if there is one
+		#if FLX_MOUSE
+		FlxG.mouse.visible = false;
+		#end
+
+		#if DISCORD_RPC
+		// Updating Discord Rich Presence.
+		DiscordClient.changePresence('In The Completed Screen', null);
+		#end
+
 		// Setup the UI
 		winText = new FlxText(0, 0, 0, Lang.text('complete'), 8);
 		winText.alignment = CENTER;

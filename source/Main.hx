@@ -14,6 +14,9 @@ using StringTools;
 #if !mobile
 import openfl.display.FPS;
 #end
+#if DISCORD_RPC
+import Discord.DiscordClient;
+#end
 
 class Main extends Sprite
 {
@@ -57,6 +60,17 @@ class Main extends Sprite
 		// Add event listners
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		Application.current.window.onClose.add(onClose);
+
+		#if DISCORD_RPC
+		if (!DiscordClient.isInitialized)
+		{
+			DiscordClient.initialize();
+			Application.current.window.onClose.add(function()
+			{
+				DiscordClient.shutdown();
+			});
+		}
+		#end
 	}
 
 	// Based off of code by squirra-rng
@@ -67,6 +81,9 @@ class Main extends Sprite
 		onClose(); // save some things
 		#if sys
 		Sys.exit(1);
+		#end
+		#if DISCORD_RPC
+		DiscordClient.shutdown();
 		#end
 	}
 

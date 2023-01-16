@@ -7,6 +7,7 @@ class CoolData
 {
 	// PROGRESS STUFF
 	public static var roomNumber:Int = 1; // Room number
+	public static var puzzleType:String = "none"; // The type of puzzle
 
 	// PREFS STUFF
 	public static var overlayVisible:Bool = true; // overlay visible thingy
