@@ -91,7 +91,7 @@ class PauseSubState extends FrameSubState
 					case 'Toggle FPS Counter':
 						Main.fpsVar.visible = !Main.fpsVar.visible;
 					case 'Toggle Show Overlay':
-						PlayState.overlay.visible = !PlayState.overlay.visible;
+						CoolData.overlayVisible = !CoolData.overlayVisible;
 					case 'Back':
 						regenMenu();
 				}

@@ -78,6 +78,11 @@ class FPS extends TextField
 		var currentCount = times.length;
 		currentFPS = Math.round((currentCount + cacheCount) / 2);
 
+		if (currentFPS > Main.framerate)
+		{
+			currentFPS = Main.framerate;
+		}
+
 		if (currentCount != cacheCount /*&& visible*/)
 		{
 			text = "FPS: " + currentFPS;

@@ -8,6 +8,9 @@ class CoolData
 	// PROGRESS STUFF
 	public static var roomNumber:Int = 1; // Room number
 
+	// PREFS STUFF
+	public static var overlayVisible:Bool = true; // overlay visible thingy
+
 	// CONTROLS STUFF
 	public static var upKeys:Array<FlxKey> = [UP, W]; // Control array to move up
 	public static var downKeys:Array<FlxKey> = [DOWN, S]; // Control array to move down

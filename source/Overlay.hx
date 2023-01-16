@@ -21,5 +21,6 @@ class Overlay extends FlxSprite
 		{
 			screenCenter();
 		}
+		visible = CoolData.overlayVisible;
 	}
 }

@@ -55,11 +55,8 @@ class PlayState extends FrameState
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		// UI stuffs
-		if (overlay == null)
-		{
-			overlay = new Overlay();
-			overlay.cameras = [camUI];
-		}
+		overlay = new Overlay();
+		overlay.cameras = [camUI];
 
 		levelText = new FlxText(0, 5, 0, "- LEVEL ??? -", 10);
 		levelText.alignment = CENTER;
