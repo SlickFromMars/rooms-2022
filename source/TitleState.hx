@@ -122,6 +122,7 @@ class TitleState extends FrameState
 
 			// Do Funky Effects and then go to PlayState
 			FlxG.sound.music.fadeOut(1.1);
+			FlxG.sound.music.stop();
 
 			FlxFlicker.flicker(beginText, 1.1, 0.15, false, true, function(flick:FlxFlicker)
 			{
