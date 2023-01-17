@@ -117,7 +117,7 @@ class PlayState extends FrameState
 		add(denyText);
 
 		// Finish setting up the camera
-		camGame.follow(player, TOPDOWN, 1);
+		camGame.follow(player, TOPDOWN_TIGHT, 1);
 
 		#if DISCORD_RPC
 		// Updating Discord Rich Presence.
