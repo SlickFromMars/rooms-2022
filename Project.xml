@@ -34,7 +34,7 @@
 	
 	<classpath name="source" />
 
-	<!-- PSYCH ENGINE CUSTOMIZATION -->
+	<!-- ROOMS CUSTOMIZATION -->
 	<define name="DISCORD_RPC" if="desktop" />
 	
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
