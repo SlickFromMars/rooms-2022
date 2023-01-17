@@ -1,2 +1,3 @@
 Welcome To ROOMS!
-Good luck, player.
+Proceed to the door
+to begin.
