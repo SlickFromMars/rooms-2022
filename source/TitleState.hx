@@ -49,16 +49,6 @@ class TitleState extends FrameState
 		{
 			FlxG.sound.muted = FlxG.save.data.mute;
 		}
-		if (FlxG.save.data.fps != null)
-		{
-			Main.fpsVar.visible = FlxG.save.data.fps;
-		}
-		else
-		{
-			#if !debug
-			Main.fpsVar.visible = false;
-			#end
-		}
 		if (FlxG.save.data.fullscreen != null)
 		{
 			FlxG.fullscreen = FlxG.save.data.fullscreen;
