@@ -13,6 +13,8 @@ class Player extends FlxSprite
 	var left:Bool = false;
 	var right:Bool = false;
 
+	public var lockMovement:Bool = false;
+
 	// Physics stuff
 	public static var physicsJSON:PhysicsData;
 
@@ -36,12 +38,17 @@ class Player extends FlxSprite
 		offset.set((16 - physicsJSON.hitbox) / 2, (16 - physicsJSON.hitbox) / 2);
 
 		animation.play('r');
+
+		angle = 0;
 	}
 
 	override function update(elapsed:Float)
 	{
 		// Update the movement
-		updateMovement();
+		if (!lockMovement)
+		{
+			updateMovement();
+		}
 
 		super.update(elapsed);
 	}

@@ -7,7 +7,6 @@ class CoolData
 {
 	// PROGRESS STUFF
 	public static var roomNumber:Int = 1; // Room number
-	public static var puzzleType:String = "none"; // The type of puzzle
 
 	// PREFS STUFF
 	public static var overlayVisible:Bool = true; // overlay visible thingy
@@ -31,5 +30,5 @@ class CoolData
 	// COLLISION STUFF
 	public static var doTileCollision:Array<Int> = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; // ID for each tile that the player should collide with
 	public static var tileCount:Int = 27; // Amount of tiles in the tileset
-	public static var allowPropCollision:Array<PropType> = [SHAPELOCK, HINT, KEY]; // Props that ignore collision
+	public static var allowPropCollision:Array<PropType> = [SHAPELOCK, HINT, KEY, ARROW]; // Props that ignore collision
 }

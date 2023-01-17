@@ -125,6 +125,13 @@ class HintSpriteGroup extends FlxSpriteGroup
 				spr.screenCenter();
 				add(spr);
 
+			case 'jumpInst':
+				var spr:FlxText = new FlxText(0, 0, 0, 'Interact With Red Arrows\nTo Fly Across The Chasms\nOnly One Path Will Lead\n You To The Door', 14);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
 			case _:
 				FlxG.log.warn('No listed ui for hint ' + hintType);
 		}

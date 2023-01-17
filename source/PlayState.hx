@@ -122,14 +122,16 @@ class PlayState extends FrameState
 		#if DISCORD_RPC
 		// Updating Discord Rich Presence.
 		var stateText:String = '';
-		switch (CoolData.puzzleType)
+		switch (CoolData.roomNumber)
 		{
-			case 'none':
+			case 1:
 				stateText = 'Just Exploring';
-			case 'shapelock':
+			case 2:
 				stateText = 'Solving A Shape Puzzle';
-			case 'key':
+			case 3:
 				stateText = 'Finding A Key';
+			case 4:
+				stateText = 'Crossing The Chasm';
 		}
 		DiscordClient.changePresence('On Room ' + CoolData.roomNumber, stateText);
 		#end
@@ -159,11 +161,21 @@ class PlayState extends FrameState
 		}
 
 		// Collision stuff
-		FlxG.collide(player, walls);
+		if (player.lockMovement == false)
+		{
+			checkPlayerCollision();
+		}
 
 		// Update the overlay
 		overlay.updateScreenPos();
+	}
 
+	function checkPlayerCollision()
+	{
+		// walls blah blah blah
+		FlxG.collide(player, walls);
+
+		// props blah blah blah
 		var isTouching:Bool = false;
 		propGrp.forEach(function(spr:Prop)
 		{
@@ -174,7 +186,55 @@ class PlayState extends FrameState
 			}
 
 			// Check for overlaps
-			if (spr.my_type == SHAPELOCK)
+			if (spr.my_type == ARROW)
+			{
+				if (player.overlaps(spr) && isTouching == false && player.lockMovement == false)
+				{
+					isTouching = true;
+					spr.animation.play(spr.launchDirection + '_sel');
+
+					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+					{
+						trace('Launching player ' + spr.launchDistance + ' in ' + spr.launchDirection);
+						player.lockMovement = true;
+
+						// set the player position to the center of the arrow
+						player.x = spr.getPosition().x + player.offset.x;
+						player.y = spr.getPosition().y + player.offset.y;
+						player.animation.play(spr.launchDirection);
+
+						// do the movement stuff
+						var xChange:Float = 0;
+						var yChange:Float = 0;
+						var spin:Float = 360;
+						switch (spr.launchDirection)
+						{
+							case 'u':
+								yChange = spr.launchDistance * -16;
+								spin *= -1;
+							case 'l':
+								xChange = spr.launchDistance * -16;
+								spin *= -1;
+							case 'd':
+								yChange = spr.launchDistance * 16;
+							case 'r':
+								xChange = spr.launchDistance * 16;
+						}
+						FlxTween.tween(player, {x: (player.x + xChange), y: (player.y + yChange), angle: spin}, spr.launchDistance / 10, {
+							onComplete: function(twn:FlxTween)
+							{
+								player.angle = 0;
+								player.lockMovement = false;
+							}
+						});
+					}
+				}
+				else
+				{
+					spr.animation.play(spr.launchDirection);
+				}
+			}
+			else if (spr.my_type == SHAPELOCK)
 			{
 				if (player.overlaps(spr) && door.isOpen == false)
 				{
@@ -200,7 +260,7 @@ class PlayState extends FrameState
 			}
 			else if (spr.my_type == HINT)
 			{
-				if (player.overlaps(spr) && (door.isOpen == false || CoolData.roomNumber == 1))
+				if (player.overlaps(spr))
 				{
 					isTouching = true;
 					spr.animation.play('hover');
@@ -298,7 +358,6 @@ class PlayState extends FrameState
 			case 'shapelock':
 				propGrp.add(new Prop(startX - 8, startY, SHAPELOCK));
 				ShapePuzzleSubstate.shuffleCombo();
-				CoolData.puzzleType = "shapelock";
 
 			case 'crate':
 				propGrp.add(new Prop(startX + 1, startY + 1, CRATE));
@@ -319,7 +378,15 @@ class PlayState extends FrameState
 
 			case 'key':
 				propGrp.add(new Prop(startX - 8, startY - 8, KEY));
-				CoolData.puzzleType = "key";
+
+			case 'barrier':
+				propGrp.add(new Prop(startX, startY, BARRIER));
+
+			case 'arrowU' | 'arrowL' | 'arrowD' | 'arrowR':
+				var arrow:Prop = new Prop(startX, startY, ARROW);
+				arrow.launchDirection = entity.name.charAt(5).toLowerCase();
+				arrow.launchDistance = entity.values.launch;
+				propGrp.add(arrow);
 
 			default:
 				FlxG.log.warn('Unrecognized actor type ' + entity.name);
@@ -335,7 +402,6 @@ class PlayState extends FrameState
 
 		// TO THE NEXT LEVEL WOOOOOOOO
 		CoolData.roomNumber += 1;
-		CoolData.puzzleType = "none";
 
 		// Fade to black and then figure out what to do
 		FlxG.cameras.list[FlxG.cameras.list.length - 1].fade(FlxColor.BLACK, 0.1, false, function()

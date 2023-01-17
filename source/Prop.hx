@@ -10,6 +10,8 @@ class Prop extends FlxSprite
 	// UNIQUE VARIABLES
 	public var isOpen:Bool = true; // For the door
 	public var hintType:String = "solution"; // For the hint
+	public var launchDirection:String = "r"; // For the arrows
+	public var launchDistance:Int = 5; // For the arrows
 
 	public function new(x:Float, y:Float, type:PropType)
 	{
@@ -96,6 +98,31 @@ class Prop extends FlxSprite
 				setSize(32, 32);
 				offset.set(-8, -8);
 
+			case BARRIER:
+				loadGraphic(Paths.image('props/utils/barrier'));
+				#if debug
+				alpha = 0.1;
+				#else
+				alpha = 0;
+				#end
+
+				setSize(16, 16);
+
+			case ARROW:
+				loadGraphic(Paths.image('props/utils/arrows'), true, 16, 16);
+				animation.add('u', [0], 4, false);
+				animation.add('u_sel', [1], 4, false);
+				animation.add('l', [2], 4, false);
+				animation.add('l_sel', [3], 4, false);
+				animation.add('d', [4], 4, false);
+				animation.add('d_sel', [5], 4, false);
+				animation.add('r', [6], 4, false);
+				animation.add('r_sel', [7], 4, false);
+
+				animation.play('u'); // Just for testing and stuff
+
+				setSize(16, 16);
+
 			default:
 				// Kill the prop as an emergency fallback
 				FlxG.log.warn('Unrecognized prop type ' + type);
@@ -116,4 +143,6 @@ enum PropType
 	BOOKSHELF;
 	HINT;
 	KEY;
+	BARRIER;
+	ARROW;
 }
