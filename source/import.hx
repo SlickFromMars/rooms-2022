@@ -1,2 +1,2 @@
-// Import the paths module to all scripts
+// Import the modules to all scripts
 import Paths;

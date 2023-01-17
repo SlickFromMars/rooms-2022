@@ -62,7 +62,7 @@ class TitleState extends FrameState
 		logo.antialiasing = true;
 		logo.screenCenter();
 
-		beginText = new FlxText(0, FlxG.height - 10, 0, Lang.text('start'), 8);
+		beginText = new FlxText(0, FlxG.height - 10, 0, 'CONFIRM to Begin\nPress TAB for Controls', 8);
 		beginText.alignment = CENTER;
 		beginText.screenCenter(X);
 		beginText.y -= beginText.height;

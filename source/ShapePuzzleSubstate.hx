@@ -34,7 +34,8 @@ class ShapePuzzleSubstate extends FrameSubState
 		keyGrp = new FlxTypedGroup<ShapePuzzleKey>();
 		add(keyGrp);
 
-		var tipText:FlxText = new FlxText(0, 0, 0, Lang.text('shapePuzzleTip'), 8);
+		var tipText:FlxText = new FlxText(0, 0, 0,
+			'Use LEFT And RIGHT to Select Shapes\nUse UP and DOWN to Cycle Shapes\nIf Your Entry Is Correct The Shapes Will Become Green', 8);
 		tipText.y = FlxG.height - (tipText.height + 2);
 		tipText.alignment = CENTER;
 		tipText.screenCenter(X);

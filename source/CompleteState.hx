@@ -25,7 +25,7 @@ class CompleteState extends FrameState
 		#end
 
 		// Setup the UI
-		winText = new FlxText(0, 0, 0, Lang.text('complete'), 8);
+		winText = new FlxText(0, 0, 0, 'To Be Continued...\nYou have completed all available levels.\nPress ENTER to return to the menu.', 8);
 		winText.alignment = CENTER;
 		winText.screenCenter();
 		add(winText);

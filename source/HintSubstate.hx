@@ -104,19 +104,29 @@ class HintSpriteGroup extends FlxSpriteGroup
 					add(spr3);
 				}
 
+			case 'gameInst':
+				var spr:FlxText = new FlxText(0, 0, 0, 'Welcome To ROOMS!\nProceed to the door\nto begin.', 16);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
+			case 'shapeInst':
+				var spr:FlxText = new FlxText(0, 0, 0, 'Find Other Hints.\nMatch Shapes And\nNumbers To Discover\nThe Combination', 16);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
+			case 'keyInst':
+				var spr:FlxText = new FlxText(0, 0, 0, 'Find The Key\nAnd The Door\nWill Open', 16);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
 			case _:
-				if (hintType.endsWith('Inst'))
-				{
-					var spr:FlxText = new FlxText(0, 0, 0, Lang.text(hintType), 16);
-					spr.color = textColor;
-					spr.alignment = CENTER;
-					spr.screenCenter();
-					add(spr);
-				}
-				else
-				{
-					FlxG.log.warn('No listed ui for hint ' + hintType);
-				}
+				FlxG.log.warn('No listed ui for hint ' + hintType);
 		}
 	}
 }
