@@ -35,6 +35,7 @@
 	<classpath name="source" />
 
 	<!-- ROOMS CUSTOMIZATION -->
+	<define name="FPS_COUNTER" unless="mobile" />
 	<define name="DISCORD_RPC" if="desktop" />
 	
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>

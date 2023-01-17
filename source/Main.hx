@@ -11,7 +11,7 @@ import openfl.events.UncaughtErrorEvent;
 
 using StringTools;
 
-#if !mobile
+#if FPS_COUNTER
 import openfl.display.FPS;
 #end
 #if DISCORD_RPC
@@ -30,7 +30,7 @@ class Main extends Sprite
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 
 	// Define the FPS counter variable
-	#if !mobile
+	#if FPS_COUNTER
 	public static var fpsVar:FPS;
 	#end
 
@@ -46,7 +46,7 @@ class Main extends Sprite
 		#end
 
 		// Initiate the FPS counter as long as you aren't on mobile
-		#if !mobile
+		#if FPS_COUNTER
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
