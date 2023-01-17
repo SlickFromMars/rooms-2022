@@ -4,8 +4,6 @@
 
 Rooms is a puzzle game, that infinately generates based off of predesigned levels.
 
-## [Play The Game](https://bhs-tsa.github.io/video-game-design/) (Coming Soon)
-
 ## Things You'll Be Using
 
 * [Haxe (Installation Required)](https://haxe.org/)
