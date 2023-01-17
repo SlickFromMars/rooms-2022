@@ -93,16 +93,19 @@ class Main extends Sprite
 		#if sys
 		Sys.exit(1);
 		#end
-		#if DISCORD_RPC
-		DiscordClient.shutdown();
-		#end
 	}
 
 	// do things when closing
 	function onClose():Void
 	{
 		FlxG.save.data.fullscreen = FlxG.fullscreen;
+		#if FPS_COUNTER
 		FlxG.save.data.fps = fpsVar.visible;
+		#end
 		FlxG.save.flush();
+
+		#if DISCORD_RPC
+		DiscordClient.shutdown();
+		#end
 	}
 }
