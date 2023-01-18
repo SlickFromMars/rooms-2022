@@ -195,7 +195,6 @@ class PlayState extends FrameState
 
 					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
 					{
-						trace('Launching player ' + spr.launchDistance + ' in ' + spr.launchDirection);
 						player.lockMovement = true;
 
 						// set the player position to the center of the arrow
