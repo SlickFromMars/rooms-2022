@@ -44,7 +44,7 @@
 	<assets path="assets/fonts" embed='true'/>
 
 	<assets path="docs/README.txt" rename="readme.txt"/>
-	<assets path="README.md" rename="donotreadme.txt"/>
+	<assets path="LICENSE.md" rename="LICENSE.txt"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
