@@ -2,7 +2,7 @@
 
 ## ROOMS
 
-Rooms is a puzzle game, that infinately generates based off of predesigned levels.
+Cubee has fallen into the Everchanging Dungeon! Each room generates based off of pre-designed levels. Complete them all to help Cubee escape!
 
 ## Things You'll Be Using
 
