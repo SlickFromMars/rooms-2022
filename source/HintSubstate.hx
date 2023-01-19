@@ -132,7 +132,7 @@ class HintSpriteGroup extends FlxSpriteGroup
 				spr.screenCenter();
 				add(spr);
 
-			case _:
+			default:
 				FlxG.log.warn('No listed ui for hint ' + hintType);
 		}
 	}
