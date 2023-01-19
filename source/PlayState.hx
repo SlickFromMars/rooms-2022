@@ -6,11 +6,13 @@ import Prop;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
+import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import particles.JumpEmitter;
 
 using StringTools;
 
@@ -31,6 +33,7 @@ class PlayState extends FrameState
 
 	public static var door:Prop;
 	public static var propGrp:FlxTypedGroup<Prop>;
+	public static var particleGrp:FlxTypedGroup<FlxEmitter>;
 
 	// The player variable
 	public static var player:Player;
@@ -109,8 +112,10 @@ class PlayState extends FrameState
 		add(walls2);
 		player = new Player();
 		propGrp = new FlxTypedGroup<Prop>();
+		particleGrp = new FlxTypedGroup<FlxEmitter>();
 		map.loadEntities(placeEntities, "decor");
 		map.loadEntities(placeEntities, "utils");
+		add(particleGrp);
 		add(player);
 		add(overlay);
 		add(levelText);
@@ -197,9 +202,14 @@ class PlayState extends FrameState
 					{
 						player.lockMovement = true;
 
+						// start the funky particles
+						var emitter:JumpEmitter = new JumpEmitter(spr.x + player.offset.x, spr.y + player.offset.y);
+						emitter.start(true);
+						particleGrp.add(emitter);
+
 						// set the player position to the center of the arrow
-						player.x = spr.getPosition().x + player.offset.x;
-						player.y = spr.getPosition().y + player.offset.y;
+						player.x = spr.x + player.offset.x;
+						player.y = spr.y + player.offset.y;
 						player.animation.play(spr.launchDirection);
 
 						// do the movement stuff
