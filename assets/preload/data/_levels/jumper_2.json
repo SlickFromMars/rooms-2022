@@ -145,7 +145,7 @@
           "y": 48,
           "originX": 0,
           "originY": 0,
-          "values": {"locked": false}
+          "values": {"locked": true}
         },
         {
           "name": "arrowD",
