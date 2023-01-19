@@ -74,7 +74,13 @@ class Prop extends FlxSprite
 				offset.set(5, 5);
 
 			case BOOKSHELF:
-				loadGraphic(Paths.image('props/decor/bookshelf'));
+				var skinCount:Int = 2; // For easy addition
+				loadGraphic(Paths.image('props/decor/bookshelf'), true, 16, 16);
+				for (i in 0...skinCount)
+				{
+					animation.add(Std.string(i), [i], 4, true);
+				}
+				animation.play(Std.string(FlxG.random.int(0, skinCount - 1)));
 
 				setSize(16, 16);
 
