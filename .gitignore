@@ -3,3 +3,6 @@ export/*
 
 # Don't include local library installations. If you want them, run hmm install
 .haxelib/*
+
+# Don't include these assets either
+assets/wip/*
