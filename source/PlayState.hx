@@ -33,7 +33,6 @@ class PlayState extends FrameState
 
 	public static var door:Prop;
 	public static var propGrp:FlxTypedGroup<Prop>;
-	public static var particleGrp:FlxTypedGroup<FlxEmitter>;
 
 	// The player variable
 	public static var player:Player;
@@ -112,10 +111,8 @@ class PlayState extends FrameState
 		add(walls2);
 		player = new Player();
 		propGrp = new FlxTypedGroup<Prop>();
-		particleGrp = new FlxTypedGroup<FlxEmitter>();
 		map.loadEntities(placeEntities, "decor");
 		map.loadEntities(placeEntities, "utils");
-		add(particleGrp);
 		add(player);
 		add(overlay);
 		add(levelText);
@@ -166,10 +163,7 @@ class PlayState extends FrameState
 		}
 
 		// Collision stuff
-		if (player.lockMovement == false)
-		{
-			checkPlayerCollision();
-		}
+		checkPlayerCollision();
 
 		// Update the overlay
 		overlay.updateScreenPos();
@@ -185,7 +179,7 @@ class PlayState extends FrameState
 		propGrp.forEach(function(spr:Prop)
 		{
 			// If this prop is to be ignored, ignore it
-			if (!CoolData.allowPropCollision.contains(spr.my_type))
+			if (!CoolData.allowPropCollision.contains(spr.my_type) && player.lockMovement == false)
 			{
 				FlxG.collide(player, spr);
 			}
@@ -202,38 +196,41 @@ class PlayState extends FrameState
 					{
 						player.lockMovement = true;
 
-						// start the funky particles
-						var emitter:JumpEmitter = new JumpEmitter(spr.x + player.offset.x, spr.y + player.offset.y);
-						emitter.start(true);
-						particleGrp.add(emitter);
-
-						// set the player position to the center of the arrow
-						player.x = spr.x + player.offset.x;
-						player.y = spr.y + player.offset.y;
-						player.animation.play(spr.launchDirection);
-
-						// do the movement stuff
-						var xChange:Float = 0;
-						var yChange:Float = 0;
-						var spin:Float = 360;
-						switch (spr.launchDirection)
-						{
-							case 'u':
-								yChange = spr.launchDistance * -16;
-								spin *= -1;
-							case 'l':
-								xChange = spr.launchDistance * -16;
-								spin *= -1;
-							case 'd':
-								yChange = spr.launchDistance * 16;
-							case 'r':
-								xChange = spr.launchDistance * 16;
-						}
-						FlxTween.tween(player, {x: (player.x + xChange), y: (player.y + yChange), angle: spin}, spr.launchDistance / 10, {
+						// smoothly set position and then do the thing
+						FlxTween.tween(player, {x: spr.x + player.offset.x, y: spr.y + player.offset.y}, 0.05, {
 							onComplete: function(twn:FlxTween)
 							{
-								player.angle = 0;
-								player.lockMovement = false;
+								player.animation.play(spr.launchDirection);
+
+								// start the funky particles
+								var emitter:JumpEmitter = new JumpEmitter(spr.x + player.offset.x, spr.y + player.offset.y);
+								emitter.start(true);
+								add(emitter);
+
+								// do the movement stuff
+								var xChange:Float = 0;
+								var yChange:Float = 0;
+								var spin:Float = 360;
+								switch (spr.launchDirection)
+								{
+									case 'u':
+										yChange = spr.launchDistance * -16;
+										spin *= -1;
+									case 'l':
+										xChange = spr.launchDistance * -16;
+										spin *= -1;
+									case 'd':
+										yChange = spr.launchDistance * 16;
+									case 'r':
+										xChange = spr.launchDistance * 16;
+								}
+								FlxTween.tween(player, {x: (player.x + xChange), y: (player.y + yChange), angle: spin}, spr.launchDistance / 10, {
+									onComplete: function(twn:FlxTween)
+									{
+										player.angle = 0;
+										player.lockMovement = false;
+									}
+								});
 							}
 						});
 					}
@@ -245,7 +242,7 @@ class PlayState extends FrameState
 			}
 			else if (spr.my_type == SHAPELOCK)
 			{
-				if (player.overlaps(spr) && door.isOpen == false)
+				if (player.overlaps(spr) && door.isOpen == false && player.lockMovement == false)
 				{
 					isTouching = true;
 					spr.animation.play('hover');
@@ -269,7 +266,7 @@ class PlayState extends FrameState
 			}
 			else if (spr.my_type == HINT)
 			{
-				if (player.overlaps(spr))
+				if (player.overlaps(spr) && player.lockMovement == false)
 				{
 					isTouching = true;
 					spr.animation.play('hover');
@@ -286,7 +283,7 @@ class PlayState extends FrameState
 			}
 			else if (spr.my_type == KEY)
 			{
-				if (player.overlaps(spr) && door.isOpen == false)
+				if (player.overlaps(spr) && door.isOpen == false && player.lockMovement == false)
 				{
 					isTouching = true;
 					spr.animation.play('hover');
