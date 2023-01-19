@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import lime.app.Application;
@@ -65,7 +66,7 @@ class TitleState extends FrameState
 		beginText = new FlxText(0, FlxG.height - 10, 0, 'CONFIRM to Begin\nPress TAB for Controls', 8);
 		beginText.alignment = CENTER;
 		beginText.screenCenter(X);
-		beginText.y -= beginText.height;
+		beginText.alpha = 0;
 
 		// Based off code from VSRetro, thanks guys
 		for (i in 0...2)
@@ -98,6 +99,7 @@ class TitleState extends FrameState
 
 		// Epic transition
 		FlxG.camera.fade(FlxColor.BLACK, 3, true);
+		FlxTween.tween(beginText, {alpha: 1, y: beginText.y - beginText.height}, 3);
 	}
 
 	var stopSpam:Bool = false;
@@ -113,7 +115,7 @@ class TitleState extends FrameState
 		}
 
 		// Check to see if the player has confirmed
-		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys) && stopSpam == false)
+		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys) && stopSpam == false && beginText.alpha == 1)
 		{
 			// Stop people from spamming the button
 			stopSpam = true;
