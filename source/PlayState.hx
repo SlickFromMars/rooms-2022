@@ -6,7 +6,6 @@ import Prop;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
-import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
