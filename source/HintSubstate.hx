@@ -126,7 +126,7 @@ class HintSpriteGroup extends FlxSpriteGroup
 				add(spr);
 
 			case 'jumpInst':
-				var spr:FlxText = new FlxText(0, 0, 0, 'Interact With Red Arrows\nTo Fly Across The Chasms\nOnly One Path Will Lead\n You To The Door', 14);
+				var spr:FlxText = new FlxText(0, 0, 0, 'Interact With Red Arrows\nTo Fly Across The Chasm.\nFirst Find The Key\nThen Locate\nThe Door', 14);
 				spr.color = textColor;
 				spr.alignment = CENTER;
 				spr.screenCenter();
