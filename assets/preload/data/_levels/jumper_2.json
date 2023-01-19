@@ -168,7 +168,10 @@
       "gridCellHeight": 4,
       "gridCellsX": 160,
       "gridCellsY": 120,
-      "entities": []
+      "entities": [
+        {"name": "torch", "id": 0, "_eid": "35666730", "x": 496, "y": 160, "originX": 0, "originY": 0},
+        {"name": "torch", "id": 1, "_eid": "35666730", "x": 528, "y": 160, "originX": 0, "originY": 0}
+      ]
     },
     {
       "name": "no_collision",
