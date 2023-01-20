@@ -1,3 +1,4 @@
 cellar
 prison
+library
 storage
