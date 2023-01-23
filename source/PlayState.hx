@@ -1,10 +1,10 @@
 package;
 
-import Overlay;
 import Player;
 import Prop;
 import flixel.FlxCamera;
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
@@ -37,8 +37,7 @@ class PlayState extends FrameState
 	public static var player:Player;
 
 	// The UI stuff
-	public static var overlay:Overlay;
-
+	var overlay:FlxSprite;
 	var levelText:FlxText;
 	var denyText:FlxText;
 
@@ -60,7 +59,8 @@ class PlayState extends FrameState
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		// UI stuffs
-		overlay = new Overlay();
+		overlay = new FlxSprite();
+		overlay.loadGraphic(Paths.image('overlay'));
 		overlay.cameras = [camUI];
 
 		levelText = new FlxText(0, 5, 0, "- LEVEL ??? -", 10);
@@ -165,7 +165,16 @@ class PlayState extends FrameState
 		checkPlayerCollision();
 
 		// Update the overlay
-		overlay.updateScreenPos();
+		if (PlayState.player != null)
+		{
+			overlay.x = PlayState.player.getScreenPosition().x - overlay.width / 2;
+			overlay.y = PlayState.player.getScreenPosition().y - overlay.height / 2;
+		}
+		else
+		{
+			overlay.screenCenter();
+		}
+		visible = CoolData.overlayVisible;
 	}
 
 	function checkPlayerCollision()
