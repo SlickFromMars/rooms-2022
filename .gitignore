@@ -5,4 +5,4 @@ export/*
 .haxelib/*
 
 # Don't include these assets either
-assets/wip/*
+assets/preload/data/_levels/wip/*
