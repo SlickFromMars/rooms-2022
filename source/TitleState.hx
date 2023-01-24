@@ -91,8 +91,11 @@ class TitleState extends FrameState
 
 		super.create();
 
-		// Play some music
-		FlxG.sound.playMusic(Paths.music('november'), 0.7);
+		if (FlxG.sound.music == null)
+		{
+			// Play some music
+			FlxG.sound.playMusic(Paths.music('newdawn'), 0.7);
+		}
 
 		// Epic transition
 		FlxG.camera.fade(FlxColor.BLACK, 3, true);

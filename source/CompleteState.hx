@@ -34,6 +34,9 @@ class CompleteState extends FrameState
 
 		// Cool fade to make it smoother
 		FlxG.camera.fade(FlxColor.BLACK, 3, true);
+
+		// Play some funky music
+		FlxG.sound.playMusic(Paths.music('littleplanet'), 0.7, true);
 	}
 
 	override function update(elapsed:Float)
@@ -50,6 +53,7 @@ class CompleteState extends FrameState
 	function pressStart()
 	{
 		// Fade to black and then go to PlayState again
+		FlxG.sound.music.fadeOut(0.1);
 		FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
 		{
 			CoolData.roomNumber = 1;

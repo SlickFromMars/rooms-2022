@@ -144,7 +144,7 @@ class PlayState extends FrameState
 		if (CoolData.roomNumber == 1)
 		{
 			FlxG.sound.music.stop();
-			FlxG.sound.playMusic(Paths.music('funkysuspense'), 0.7, true);
+			FlxG.sound.playMusic(Paths.music('november'), 0.7, true);
 		}
 
 		// Epic transition
@@ -418,11 +418,8 @@ class PlayState extends FrameState
 		CoolData.roomNumber += 1;
 
 		// Fade to black and then figure out what to do
-		FlxG.sound.music.fadeOut(0.1);
 		FlxG.cameras.list[FlxG.cameras.list.length - 1].fade(FlxColor.BLACK, 0.1, false, function()
 		{
-			FlxG.sound.music.stop();
-
 			// Check to see if a file exists, and then go to the next level if it does
 			if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
 			{
@@ -430,7 +427,11 @@ class PlayState extends FrameState
 			}
 			else
 			{
-				FlxG.switchState(new CompleteState());
+				FlxG.sound.music.fadeOut(0.1, 0, function(twn:FlxTween)
+				{
+					FlxG.switchState(new CompleteState());
+					FlxG.sound.music.stop();
+				});
 			}
 		});
 	}

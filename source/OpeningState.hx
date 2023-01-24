@@ -32,6 +32,9 @@ class OpeningState extends FrameState
 
 		super.create();
 
+		FlxG.sound.playMusic(Paths.music('newdawn'), 0);
+		FlxG.sound.music.fadeIn(1, 0, 0.7);
+
 		FlxTween.tween(text1, {alpha: 1}, 2, {
 			startDelay: 1,
 			onComplete: function(twn:FlxTween)

@@ -19,3 +19,6 @@ Cubee has fallen into the Everchanging Dungeon! Each room generates based off of
 ## Royalty Free Music
 * https://www.bensound.com/royalty-free-music/track/november
 * https://www.bensound.com/royalty-free-music/track/funky-suspense
+* https://www.bensound.com/royalty-free-music/track/little-planet
+* https://www.bensound.com/royalty-free-music/track/relaxing
+* https://www.bensound.com/royalty-free-music/track/new-dawn
