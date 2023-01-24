@@ -87,7 +87,7 @@ class PauseSubState extends FrameSubState
 					case 'Options':
 						regenMenu('Options');
 					case 'Exit To Menu':
-						FlxG.switchState(new TitleState());
+						FrameState.switchState(new TitleState());
 					case 'Skip Level':
 						PlayState.completeLevel();
 					case 'Toggle Fullscreen':

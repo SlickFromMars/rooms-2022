@@ -112,10 +112,3 @@ class Player extends FlxSprite
 		}
 	}
 }
-
-typedef PhysicsData =
-{
-	speed:Float,
-	drag:Float,
-	hitbox:Int
-}

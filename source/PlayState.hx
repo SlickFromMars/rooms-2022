@@ -6,12 +6,12 @@ import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
+import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import particles.JumpEmitter;
 
 using StringTools;
 
@@ -32,6 +32,8 @@ class PlayState extends FrameState
 
 	public static var door:Prop;
 	public static var propGrp:FlxTypedGroup<Prop>;
+
+	var jumpEmitter:FlxEmitter;
 
 	// The player variable
 	public static var player:Player;
@@ -106,6 +108,14 @@ class PlayState extends FrameState
 			}
 		}
 
+		// Do the particles
+		jumpEmitter = new FlxEmitter();
+		jumpEmitter.launchMode = CIRCLE;
+		jumpEmitter.scale.set(0.1);
+		jumpEmitter.alpha.set(0.7, 0.7, 0, 0);
+		jumpEmitter.lifespan.set(0.5, 1);
+		jumpEmitter.loadParticles(Paths.image('particles/jump'), 25);
+
 		// Finalize and add stuff
 		add(walls);
 		add(walls2);
@@ -113,6 +123,7 @@ class PlayState extends FrameState
 		propGrp = new FlxTypedGroup<Prop>();
 		map.loadEntities(placeEntities, "decor");
 		map.loadEntities(placeEntities, "utils");
+		add(jumpEmitter);
 		add(player);
 		add(overlay);
 		add(levelText);
@@ -212,9 +223,8 @@ class PlayState extends FrameState
 								player.animation.play(spr.launchDirection);
 
 								// start the funky particles
-								var emitter:JumpEmitter = new JumpEmitter(spr.x + player.offset.x, spr.y + player.offset.y);
-								emitter.start(true);
-								add(emitter);
+								jumpEmitter.setPosition(spr.x + player.offset.x, spr.y + player.offset.y);
+								jumpEmitter.start(true);
 
 								// do the movement stuff
 								var xChange:Float = 0;
@@ -432,14 +442,14 @@ class PlayState extends FrameState
 			// Check to see if a file exists, and then go to the next level if it does
 			if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
 			{
-				FlxG.resetState();
+				FrameState.resetState();
 			}
 			else
 			{
 				FlxG.sound.music.fadeOut(0.1, 0, function(twn:FlxTween)
 				{
 					FlxG.sound.music.stop();
-					FlxG.switchState(new CompleteState());
+					FrameState.switchState(new CompleteState());
 				});
 			}
 		});

@@ -11,7 +11,7 @@ class InstructionsSubstate extends FrameSubState
 {
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
-	var helpMaster:FlxSpriteGroup; // The sprite group that contains all stuff
+	var helpText:FlxText; // The sprite group that contains all stuff
 
 	public function new()
 	{
@@ -22,21 +22,18 @@ class InstructionsSubstate extends FrameSubState
 		bg.scrollFactor.set();
 		add(bg);
 
-		helpMaster = new FlxSpriteGroup(0, 0);
-		add(helpMaster);
-
-		var helpText:FlxText = new FlxText(0, 0, 0, Paths.getText('data/keybinds.txt'), 8);
+		helpText = new FlxText(0, 0, 0, Paths.getText('data/keybinds.txt'), 8);
 		helpText.alignment = CENTER;
 		helpText.screenCenter();
-		helpMaster.add(helpText);
+		add(helpText);
 
 		// set alphas
 		bg.alpha = 0;
-		helpMaster.alpha = 0;
+		helpText.alpha = 0;
 
 		// tween things and cameras
 		FlxTween.tween(bg, {alpha: 0.7}, 0.3);
-		FlxTween.tween(helpMaster, {alpha: 1}, 0.3);
+		FlxTween.tween(helpText, {alpha: 1}, 0.3);
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 	}
@@ -51,7 +48,7 @@ class InstructionsSubstate extends FrameSubState
 		if (FlxG.keys.anyJustPressed(CoolData.backKeys) || FlxG.keys.anyJustPressed([TAB]))
 		{
 			stopSpam = true;
-			FlxTween.tween(helpMaster, {alpha: 0}, 0.3, {
+			FlxTween.tween(helpText, {alpha: 0}, 0.3, {
 				onComplete: function(twn:FlxTween)
 				{
 					close();

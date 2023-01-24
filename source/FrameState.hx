@@ -21,4 +21,23 @@ class FrameState extends FlxState
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}
 	}
+
+	// Switch state function
+	public static function switchState(nextState:FlxState)
+	{
+		var curState:FlxState = FlxG.state;
+		if (curState == nextState)
+		{
+			FlxG.resetState();
+		}
+		else
+		{
+			FlxG.switchState(nextState);
+		}
+	}
+
+	public static function resetState()
+	{
+		FrameState.switchState(FlxG.state);
+	}
 }
