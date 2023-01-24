@@ -40,6 +40,7 @@ class PlayState extends FrameState
 	var overlay:FlxSprite;
 	var levelText:FlxText;
 	var denyText:FlxText;
+	var denyTween:FlxTween;
 
 	override public function create()
 	{
@@ -303,8 +304,12 @@ class PlayState extends FrameState
 
 						denyText.text = 'Door has been unlocked.';
 						denyText.screenCenter(X);
+						if (denyTween != null)
+						{
+							denyTween.cancel();
+						}
 						denyText.alpha = 1;
-						FlxTween.tween(denyText, {alpha: 0}, 2, {startDelay: 1});
+						denyTween = FlxTween.tween(denyText, {alpha: 0}, 2, {startDelay: 1});
 					}
 				}
 				else
@@ -333,8 +338,12 @@ class PlayState extends FrameState
 				{
 					denyText.text = 'This door is locked.';
 					denyText.screenCenter(X);
+					if (denyTween != null)
+					{
+						denyTween.cancel();
+					}
 					denyText.alpha = 1;
-					FlxTween.tween(denyText, {alpha: 0}, 2, {startDelay: 1});
+					denyTween = FlxTween.tween(denyText, {alpha: 0}, 2, {startDelay: 1});
 				}
 			}
 		}
