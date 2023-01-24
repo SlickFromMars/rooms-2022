@@ -3,7 +3,6 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
-import haxe.Json;
 
 class Player extends FlxSprite
 {
@@ -16,7 +15,6 @@ class Player extends FlxSprite
 	public var lockMovement:Bool = false;
 
 	// Physics stuff
-	public static var physicsJSON:PhysicsData;
 
 	public function new(x:Float = 0, y:Float = 0)
 	{
@@ -30,12 +28,10 @@ class Player extends FlxSprite
 		animation.add('u', [3], 4, true);
 
 		// Setup the physics
-		physicsJSON = Json.parse(Paths.getText('data/physics.json'));
+		drag.x = drag.y = 1600;
 
-		drag.x = drag.y = physicsJSON.drag;
-
-		setSize(physicsJSON.hitbox, physicsJSON.hitbox);
-		offset.set((16 - physicsJSON.hitbox) / 2, (16 - physicsJSON.hitbox) / 2);
+		setSize(8, 8);
+		offset.set((16 - width) / 2, (16 - height) / 2);
 
 		animation.play('r');
 
@@ -93,7 +89,7 @@ class Player extends FlxSprite
 			else if (right)
 				newAngle = 0;
 
-			velocity.set(physicsJSON.speed, 0);
+			velocity.set(125, 0);
 			velocity.pivotDegrees(FlxPoint.weak(0, 0), newAngle);
 		}
 

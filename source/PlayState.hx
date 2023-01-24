@@ -359,7 +359,7 @@ class PlayState extends FrameState
 		switch (entity.name)
 		{
 			case "player":
-				player.setPosition(startX + (16 - Player.physicsJSON.hitbox) / 2, startY + (16 - Player.physicsJSON.hitbox) / 2);
+				player.setPosition(startX + (16 - player.width) / 2, startY + (16 - player.height) / 2);
 
 			case "door":
 				door = new Prop(startX - 8, startY, DOOR);
