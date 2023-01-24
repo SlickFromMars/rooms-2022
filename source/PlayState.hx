@@ -126,11 +126,11 @@ class PlayState extends FrameState
 		switch (CoolData.roomNumber)
 		{
 			case 1:
-				stateText = 'Just Exploring';
+				stateText = 'Learning How To Play';
 			case 2:
-				stateText = 'Solving A Shape Puzzle';
-			case 3:
 				stateText = 'Finding A Key';
+			case 3:
+				stateText = 'Solving A Shape Puzzle';
 			case 4:
 				stateText = 'Crossing The Chasm';
 		}
