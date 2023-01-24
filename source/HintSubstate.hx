@@ -15,8 +15,6 @@ class HintSubstate extends FrameSubState
 	var bg:FlxSprite; // The bg for the state
 	var decorGrp:FlxSpriteGroup; // group for paper stuff
 
-	var textColor:FlxColor = FlxColor.fromRGB(64, 60, 60);
-
 	public function new(hintType:String)
 	{
 		super();
@@ -35,30 +33,37 @@ class HintSubstate extends FrameSubState
 
 		switch (hintType)
 		{
+			case 'default':
+				var spr:FlxText = new FlxText(0, 0, 0, 'This is a hint.\n:)', 16);
+				spr.color = 0x403C3C;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				decorGrp.add(spr);
+
 			case 'welcome':
 				var spr:FlxText = new FlxText(0, 0, 0, 'Welcome To ROOMS!\nRead the next hint\nup ahead.', 16);
-				spr.color = textColor;
+				spr.color = 0x403C3C;
 				spr.alignment = CENTER;
 				spr.screenCenter();
 				decorGrp.add(spr);
 
 			case 'items':
 				var spr:FlxText = new FlxText(0, 0, 0, 'You can interact with\ncertain items like\nthe key up ahead.', 14);
-				spr.color = textColor;
+				spr.color = 0x403C3C;
 				spr.alignment = CENTER;
 				spr.screenCenter();
 				decorGrp.add(spr);
 
 			case 'ready':
 				var spr:FlxText = new FlxText(0, 0, 0, 'You now know the basics.\nGo to the door to proceed.\nGood luck!', 14);
-				spr.color = textColor;
+				spr.color = 0x403C3C;
 				spr.alignment = CENTER;
 				spr.screenCenter();
 				decorGrp.add(spr);
 
 			case 'keyInst':
 				var spr:FlxText = new FlxText(0, 0, 0, 'Collect The Hidden Key\nThen Proceed To The\nDoor To Continue.', 14);
-				spr.color = textColor;
+				spr.color = 0x403C3C;
 				spr.alignment = CENTER;
 				spr.screenCenter();
 				decorGrp.add(spr);
@@ -66,7 +71,7 @@ class HintSubstate extends FrameSubState
 			case 'shapeInst':
 				var spr:FlxText = new FlxText(0, 0, 0, 'Locate Hints To Decipher\nThe Shape Combination.\nEnter the combo in\nthe terminal near the door.',
 					14);
-				spr.color = textColor;
+				spr.color = 0x403C3C;
 				spr.alignment = CENTER;
 				spr.screenCenter();
 				decorGrp.add(spr);
@@ -78,7 +83,7 @@ class HintSubstate extends FrameSubState
 					spr.text += '$i-';
 				}
 				spr.text = spr.text.substring(0, spr.text.length - 1);
-				spr.color = textColor;
+				spr.color = 0x403C3C;
 				spr.screenCenter();
 				decorGrp.add(spr);
 
@@ -97,7 +102,7 @@ class HintSubstate extends FrameSubState
 					decorGrp.add(spr2);
 
 					var spr3:FlxText = new FlxText(0, 0, 0, Std.string(i), 26);
-					spr3.color = textColor;
+					spr3.color = 0x403C3C;
 					spr3.x = spr.x + 80;
 					spr3.y = spr.y + 3;
 					decorGrp.add(spr3);
@@ -105,7 +110,7 @@ class HintSubstate extends FrameSubState
 
 			case 'jumpInst':
 				var spr:FlxText = new FlxText(0, 0, 0, 'Interact With Red Arrows\nTo Fly Across The Chasm.\nFirst Find The Key\nThen Locate The Door', 14);
-				spr.color = textColor;
+				spr.color = 0x403C3C;
 				spr.alignment = CENTER;
 				spr.screenCenter();
 				decorGrp.add(spr);

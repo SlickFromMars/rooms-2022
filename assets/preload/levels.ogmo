@@ -280,7 +280,7 @@
       "nodeGhost": true,
       "tags": ["utils"],
       "values": [
-        {"name": "hintType", "definition": "String", "display": 1, "defaults": "gameInst", "maxLength": 0, "trimWhitespace": true}
+        {"name": "hintType", "definition": "String", "display": 1, "defaults": "default", "maxLength": 0, "trimWhitespace": true}
       ],
       "texture": "../../docs/img/static/hint.png",
       "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACQSURBVDhP3ZHBDYAgDEXrBOzEBszDmQ3Yg23YgAGYQPMJJVUq0aO+pNEe/vsE6BvEGHdMX9+BYCmlTQhhkmz9O8GNzrm2g1orpZTIez9yqgBhGZRcJSeB1qohJUOwapWoJ0DYWkvGGKwqCILbO8AN4wSahFuBDE9AknMez4Z/jPZ8zGTjk4BHrRqQrFp/BdEBuZhxOv+X3IkAAAAASUVORK5CYII="
