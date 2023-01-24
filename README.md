@@ -4,6 +4,8 @@
 
 Cubee has fallen into the Everchanging Dungeon! Each room generates based off of pre-designed levels. Complete them all to help Cubee escape!
 
+### [Play The Game](http://65.127.189.132:3000/)
+
 ## Things You'll Be Using
 
 * [Haxe (Installation Required)](https://haxe.org/)
