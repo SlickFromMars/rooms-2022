@@ -418,8 +418,11 @@ class PlayState extends FrameState
 		CoolData.roomNumber += 1;
 
 		// Fade to black and then figure out what to do
+		FlxG.sound.music.fadeOut(0.1);
 		FlxG.cameras.list[FlxG.cameras.list.length - 1].fade(FlxColor.BLACK, 0.1, false, function()
 		{
+			FlxG.sound.music.stop();
+
 			// Check to see if a file exists, and then go to the next level if it does
 			if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
 			{
