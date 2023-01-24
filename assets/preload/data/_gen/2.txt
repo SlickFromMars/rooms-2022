@@ -1,4 +1,2 @@
-cellar
-prison
-library
-storage
+simple_1
+simple_2

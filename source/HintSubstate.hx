@@ -72,6 +72,42 @@ class HintSpriteGroup extends FlxSpriteGroup
 
 		switch (hintType)
 		{
+			case 'welcome':
+				var spr:FlxText = new FlxText(0, 0, 0, 'Welcome To ROOMS!\nRead the next hint\nup ahead.', 16);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
+			case 'items':
+				var spr:FlxText = new FlxText(0, 0, 0, 'You can interact with\ncertain items like\nthe key up ahead.', 14);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
+			case 'ready':
+				var spr:FlxText = new FlxText(0, 0, 0, 'You now know the basics.\nGo to the door\nto proceed.\nGood luck!', 14);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
+			case 'keyInst':
+				var spr:FlxText = new FlxText(0, 0, 0, 'Collect The Hidden Key\nThen Proceed To The\nDoor To Continue.', 14);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
+			case 'shapeInst':
+				var spr:FlxText = new FlxText(0, 0, 0, 'Locate Hints To Decipher\nThe Shape Combination.\nEnter the combo in\nthe terminal near the door.',
+					14);
+				spr.color = textColor;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				add(spr);
+
 			case 'solution':
 				var spr:FlxText = new FlxText(0, 0, 0, '', 26);
 				for (i in ShapePuzzleSubstate.puzzleCombo)
@@ -103,27 +139,6 @@ class HintSpriteGroup extends FlxSpriteGroup
 					spr3.y = spr.y + 3;
 					add(spr3);
 				}
-
-			case 'gameInst':
-				var spr:FlxText = new FlxText(0, 0, 0, 'Welcome To ROOMS!\nProceed to the door\nto begin.', 16);
-				spr.color = textColor;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				add(spr);
-
-			case 'shapeInst':
-				var spr:FlxText = new FlxText(0, 0, 0, 'Find Other Hints.\nMatch Shapes And\nNumbers To Discover\nThe Combination', 16);
-				spr.color = textColor;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				add(spr);
-
-			case 'keyInst':
-				var spr:FlxText = new FlxText(0, 0, 0, 'Find The Key\nAnd The Door\nWill Open', 16);
-				spr.color = textColor;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				add(spr);
 
 			case 'jumpInst':
 				var spr:FlxText = new FlxText(0, 0, 0, 'Interact With Red Arrows\nTo Fly Across The Chasm.\nFirst Find The Key\nThen Locate The Door', 14);
