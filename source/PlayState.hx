@@ -429,8 +429,8 @@ class PlayState extends FrameState
 			{
 				FlxG.sound.music.fadeOut(0.1, 0, function(twn:FlxTween)
 				{
-					FlxG.switchState(new CompleteState());
 					FlxG.sound.music.stop();
+					FlxG.switchState(new CompleteState());
 				});
 			}
 		});

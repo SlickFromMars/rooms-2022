@@ -13,6 +13,8 @@ class OpeningState extends FrameState
 
 	override function create()
 	{
+		FlxG.mouse.visible = false;
+
 		text1 = new FlxText(0, FlxG.height / 2, FlxG.width, 'You have fallen into the Everchanging Dungeon.', 10);
 		text1.y -= text1.height * 1.5;
 		text1.alignment = CENTER;
@@ -85,6 +87,7 @@ class OpeningState extends FrameState
 
 			FlxG.camera.fade(FlxColor.BLACK, 0.5, false, function()
 			{
+				FlxG.sound.music.volume = 0.7;
 				FlxG.switchState(new TitleState());
 			});
 		}
