@@ -221,7 +221,7 @@ class PlayState extends FrameState
 					});
 				}
 			}
-			if (spr.my_type == ARROW)
+			else if (spr.my_type == ARROW)
 			{
 				if (player.overlaps(spr) && isTouching == false && player.lockMovement == false)
 				{
