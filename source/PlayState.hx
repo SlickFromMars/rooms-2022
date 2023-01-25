@@ -12,6 +12,7 @@ import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
 
 using StringTools;
 
@@ -34,6 +35,8 @@ class PlayState extends FrameState
 	public static var propGrp:FlxTypedGroup<Prop>;
 
 	var jumpEmitter:FlxEmitter;
+
+	var localEndState:Bool = false;
 
 	// The player variable
 	public static var player:Player;
@@ -205,6 +208,17 @@ class PlayState extends FrameState
 			}
 
 			// Check for overlaps
+			if (spr.my_type == FINALETRIP)
+			{
+				if (player.overlaps(spr) && localEndState == false)
+				{
+					FlxG.sound.music.fadeOut(0.3, 0, function(twn:FlxTween)
+					{
+						FlxG.sound.music.stop();
+						FlxG.sound.playMusic(Paths.music('littleplanet'), 0.7, true);
+					});
+				}
+			}
 			if (spr.my_type == ARROW)
 			{
 				if (player.overlaps(spr) && isTouching == false && player.lockMovement == false)
@@ -215,6 +229,17 @@ class PlayState extends FrameState
 					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
 					{
 						player.lockMovement = true;
+
+						if (CoolData.roomNumber == 5)
+						{
+							FlxG.cameras.list[FlxG.cameras.list.length - 1].fade(FlxColor.WHITE, 5, false, function()
+							{
+								new FlxTimer().start(2, function(tmr:FlxTimer)
+								{
+									completeLevel(true);
+								});
+							});
+						}
 
 						// smoothly set position and then do the thing
 						FlxTween.tween(player, {x: spr.x + player.offset.x, y: spr.y + player.offset.y}, 0.05, {
@@ -421,6 +446,9 @@ class PlayState extends FrameState
 				arrow.launchDistance = entity.values.launch;
 				propGrp.add(arrow);
 
+			case 'finaletrip':
+				propGrp.add(new Prop(startX, startY, FINALETRIP));
+
 			default:
 				FlxG.log.warn('Unrecognized actor type ' + entity.name);
 		}
@@ -429,15 +457,14 @@ class PlayState extends FrameState
 
 	static var stopCompleteSpam:Bool = false; // Stop people from breaking the level
 
-	public static function completeLevel()
+	public static function completeLevel(skipTrans:Bool = false)
 	{
 		stopCompleteSpam = true;
 
 		// TO THE NEXT LEVEL WOOOOOOOO
 		CoolData.roomNumber += 1;
 
-		// Fade to black and then figure out what to do
-		FlxG.cameras.list[FlxG.cameras.list.length - 1].fade(FlxColor.BLACK, 0.1, false, function()
+		if (skipTrans)
 		{
 			// Check to see if a file exists, and then go to the next level if it does
 			if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
@@ -446,12 +473,28 @@ class PlayState extends FrameState
 			}
 			else
 			{
-				FlxG.sound.music.fadeOut(0.1, 0, function(twn:FlxTween)
-				{
-					FlxG.sound.music.stop();
-					FrameState.switchState(new CompleteState());
-				});
+				FrameState.switchState(new CompleteState());
 			}
-		});
+		}
+		else
+		{
+			// Fade to black and then figure out what to do
+			FlxG.cameras.list[FlxG.cameras.list.length - 1].fade(FlxColor.BLACK, 0.1, false, function()
+			{
+				// Check to see if a file exists, and then go to the next level if it does
+				if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
+				{
+					FrameState.resetState();
+				}
+				else
+				{
+					FlxG.sound.music.fadeOut(0.1, 0, function(twn:FlxTween)
+					{
+						FlxG.sound.music.stop();
+						FrameState.switchState(new CompleteState());
+					});
+				}
+			});
+		}
 	}
 }

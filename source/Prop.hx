@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.util.FlxColor;
 
 class Prop extends FlxSprite
 {
@@ -129,6 +130,14 @@ class Prop extends FlxSprite
 
 				setSize(16, 16);
 
+			case FINALETRIP:
+				makeGraphic(48, 16, FlxColor.RED);
+				#if debug
+				alpha = 0.1;
+				#else
+				alpha = 0;
+				#end
+
 			default:
 				// Kill the prop as an emergency fallback
 				FlxG.log.warn('Unrecognized prop type ' + type);
@@ -151,4 +160,5 @@ enum PropType
 	KEY;
 	BARRIER;
 	ARROW;
+	FINALETRIP;
 }

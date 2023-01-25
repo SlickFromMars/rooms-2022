@@ -115,6 +115,13 @@ class HintSubstate extends FrameSubState
 				spr.screenCenter();
 				decorGrp.add(spr);
 
+			case 'ending':
+				var spr:FlxText = new FlxText(0, 0, 0, 'The Exit Is Near.\nContinue Forward, Player!', 14);
+				spr.color = 0x403C3C;
+				spr.alignment = CENTER;
+				spr.screenCenter();
+				decorGrp.add(spr);
+
 			default:
 				FlxG.log.warn('No listed ui for hint ' + hintType);
 		}

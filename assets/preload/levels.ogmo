@@ -634,6 +634,42 @@
       "values": [],
       "texture": "images/props/utils/barrier.png",
       "textureImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAHJJREFUOE+tk1EKACAIQ/X+hy4MEq2ZFvVp7i1sMoHTiBqqMxGvdVeYQtQoQnSvALmMhKur7R2AF/HUXAGskQKq7qhv1CqAqKcEOBmkgOx1R0Am1t8LhwNSF+TB56DibLPjclAVb4DXNIru3zLZAd2scwfPnlAFmIIl6QAAAABJRU5ErkJgggAA"
+    },
+    {
+      "exportID": "65449405",
+      "name": "finaletrip",
+      "limit": 1,
+      "size": {"x": 48, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": ["utils"],
+      "values": []
     }
   ],
   "tilesets": [

@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.text.FlxText;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 #if DISCORD_RPC
 import Discord.DiscordClient;
@@ -25,24 +26,25 @@ class CompleteState extends FrameState
 		#end
 
 		// Setup the UI
-		winText = new FlxText(0, 0, 0, 'To Be Continued...\nYou have completed all available levels.\nPress ENTER to return to the menu.', 8);
+		winText = new FlxText(0, 0, 0, 'To Be Continued...\nYou escaped the dungeon.\nPress ENTER to return to the menu.', 8);
 		winText.alignment = CENTER;
 		winText.screenCenter();
+		winText.alpha = 0;
 		add(winText);
 
 		super.create();
 
 		// Cool fade to make it smoother
-		FlxG.camera.fade(FlxColor.BLACK, 3, true);
-
-		// Play some funky music
-		FlxG.sound.playMusic(Paths.music('littleplanet'), 0.7, true);
+		FlxG.camera.fade(FlxColor.WHITE, 5, true, function()
+		{
+			FlxTween.tween(winText, {alpha: 1}, 3, {startDelay: 1});
+		});
 	}
 
 	override function update(elapsed:Float)
 	{
 		// Check to see if the player has confirmed
-		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys) && winText.alpha == 1)
 		{
 			pressStart();
 		}
