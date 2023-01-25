@@ -22,7 +22,7 @@ class Main extends Sprite
 {
 	var gameWidth:Int = 320; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int = 240; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
-	var initialState:Class<FlxState> = OpeningState; // The FlxState the game starts with.
+	var initialState:Class<FlxState> = CacheState; // The FlxState the game starts with.
 
 	public static var framerate:Int = 60; // How many frames per second the game should run at.
 
