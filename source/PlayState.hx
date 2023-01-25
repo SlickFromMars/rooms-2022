@@ -148,6 +148,8 @@ class PlayState extends FrameState
 				stateText = 'Solving A Shape Puzzle';
 			case 4:
 				stateText = 'Crossing The Chasm';
+			case 5:
+				stateText = 'Approaching The Exit';
 		}
 		DiscordClient.changePresence('On Room ' + CoolData.roomNumber, stateText);
 		#end
