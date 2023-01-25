@@ -41,7 +41,7 @@ class HintSubstate extends FrameSubState
 				decorGrp.add(spr);
 
 			case 'welcome':
-				var spr:FlxText = new FlxText(0, 0, 0, 'Welcome To ROOMS!\nRead the next hint\nup ahead.', 16);
+				var spr:FlxText = new FlxText(0, 0, 0, 'Welcome To ROOMS!\nThis is a hint.\nRead hints to learn\nabout the puzzles.', 16);
 				spr.color = 0x403C3C;
 				spr.alignment = CENTER;
 				spr.screenCenter();
@@ -69,7 +69,7 @@ class HintSubstate extends FrameSubState
 				decorGrp.add(spr);
 
 			case 'shapeInst':
-				var spr:FlxText = new FlxText(0, 0, 0, 'Locate Hints To Decipher\nThe Shape Combination.\nEnter The Combo In\nThe Terminal Near The Door.',
+				var spr:FlxText = new FlxText(0, 0, 0, 'Locate Hints To Decipher\nThe Shape Combination.\nEnter The Combo In The\nTerminal Near The Door.',
 					14);
 				spr.color = 0x403C3C;
 				spr.alignment = CENTER;

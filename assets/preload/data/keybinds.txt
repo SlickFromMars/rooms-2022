@@ -1,8 +1,9 @@
-Use the Arrow Keys or WASD To Move
-Use ENTER or E to Interact or Confirm
-Use ESCAPE or SPACE to Go Back
+Movement - Arrow Keys/WASD
+Interact - ENTER/E
+Interact With Glowing Objects
+Go Back - ESCAPE/SPACE
 
-Use P or ESCAPE to Pause
-Use F or ONE to Toggle Fullscreen
-Use PLUS and MINUS to Adjust Volume
-Use ZERO to Mute Volume
+Pause - P/ESCAPE
+Toggle Fullscreen - F/ONE
+Adjust Volume - PLUS/MINUS
+Toggle Mute Volume - ZERO

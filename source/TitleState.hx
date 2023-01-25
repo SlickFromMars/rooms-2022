@@ -63,7 +63,7 @@ class TitleState extends FrameState
 		logo.antialiasing = true;
 		logo.screenCenter();
 
-		beginText = new FlxText(0, FlxG.height - 10, 0, 'CONFIRM to Begin\nPress TAB for Controls', 8);
+		beginText = new FlxText(0, FlxG.height - 10, 0, 'Press ENTER to Begin\nPress TAB for Instructions', 8);
 		beginText.alignment = CENTER;
 		beginText.screenCenter(X);
 		beginText.alpha = 0;
@@ -71,14 +71,14 @@ class TitleState extends FrameState
 		// Based off code from VSRetro, thanks guys
 		for (i in 0...2)
 		{
-			var emitter:FlxEmitter = new FlxEmitter(0, FlxG.height);
+			var emitter:FlxEmitter = new FlxEmitter(0, FlxG.height + 50);
 			emitter.launchMode = SQUARE;
 			emitter.velocity.set(-25, -75, 25, -100, -50, 0, 50, -50);
 			emitter.scale.set(0.25, 0.25, 0.5, 0.5, 0.25, 0.25, 0.37, 0.37);
 			emitter.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
 			emitter.width = FlxG.width;
 			emitter.alpha.set(0.7, 0.7, 0, 0);
-			emitter.lifespan.set(1, 2.5);
+			emitter.lifespan.set(1.5, 3);
 			emitter.loadParticles(Paths.image('particles/title$i'), 700, 16, true);
 			emitter.start(false, FlxG.random.float(0.4, 0.5), 100000);
 			emitterGrp.add(emitter);

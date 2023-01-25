@@ -39,7 +39,7 @@ class DiscordClient
 	static function onReady()
 	{
 		DiscordRpc.presence({
-			details: "Preparing To Adventure",
+			details: "Preparing For Adventure",
 			state: null,
 			largeImageKey: 'icon',
 			largeImageText: "ROOMS"

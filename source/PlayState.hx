@@ -191,7 +191,6 @@ class PlayState extends FrameState
 		{
 			overlay.screenCenter();
 		}
-		visible = CoolData.overlayVisible;
 	}
 
 	function checkPlayerCollision()

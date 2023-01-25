@@ -26,8 +26,6 @@ class PauseSubState extends FrameSubState
 
 		#if debug
 		menuItemsOG.insert(1, 'Skip Level');
-
-		optionItemsOG.insert(2, 'Toggle Show Overlay');
 		#end
 
 		optionItemsOG.push('Back');
@@ -87,6 +85,7 @@ class PauseSubState extends FrameSubState
 					case 'Options':
 						regenMenu('Options');
 					case 'Exit To Menu':
+						FlxG.sound.music.stop();
 						FrameState.switchState(new TitleState());
 					case 'Skip Level':
 						PlayState.completeLevel();
@@ -96,8 +95,6 @@ class PauseSubState extends FrameSubState
 					case 'Toggle FPS Counter':
 						Main.fpsVar.visible = !Main.fpsVar.visible;
 					#end
-					case 'Toggle Show Overlay':
-						CoolData.overlayVisible = !CoolData.overlayVisible;
 					case 'Back':
 						regenMenu();
 				}
