@@ -69,7 +69,7 @@ class HintSubstate extends FrameSubState
 				decorGrp.add(spr);
 
 			case 'shapeInst':
-				var spr:FlxText = new FlxText(0, 0, 0, 'Locate Hints To Decipher\nThe Shape Combination.\nEnter the combo in\nthe terminal near the door.',
+				var spr:FlxText = new FlxText(0, 0, 0, 'Locate Hints To Decipher\nThe Shape Combination.\nEnter The Combo In\nThe Terminal Near The Door.',
 					14);
 				spr.color = 0x403C3C;
 				spr.alignment = CENTER;
