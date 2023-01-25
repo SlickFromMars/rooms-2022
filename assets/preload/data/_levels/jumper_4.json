@@ -215,7 +215,8 @@
           "originX": 0,
           "originY": 0,
           "values": {"hintType": "jumpInst"}
-        }
+        },
+        {"name": "player", "id": 24, "_eid": "89676077", "x": 320, "y": 320, "originX": 0, "originY": 0}
       ]
     },
     {
