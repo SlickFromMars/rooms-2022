@@ -42,7 +42,6 @@ class CacheState extends FrameState
 				case 'music':
 					Paths.music(key);
 			}
-			trace('Cached $key');
 		}
 
 		// trace(Paths.currentTrackedAssets.toString());
