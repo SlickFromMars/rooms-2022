@@ -8,12 +8,16 @@ import flixel.util.FlxColor;
 
 class EasterEggSubstate extends FrameSubState
 {
+	var eggName:String;
+
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
 	var eggText:FlxText; // The sprite group that contains all stuff
 
 	public function new(name:String)
 	{
+		eggName = name;
+
 		super();
 
 		// setup the UI
@@ -43,8 +47,17 @@ class EasterEggSubstate extends FrameSubState
 	{
 		super.update(elapsed);
 
-		// Check to see if the player wants to exit
-		if (Controls.BACK)
+		// Check stuff
+		if (Controls.CONFIRM)
+		{
+			// trace('CONFIRMED ON $eggName');
+			switch (eggName.toUpperCase())
+			{
+				case 'BENSOUND':
+					FlxG.openURL('https://www.bensound.com/');
+			}
+		}
+		else if (Controls.BACK)
 		{
 			stopSpam = true;
 			FlxTween.tween(eggText, {alpha: 0}, 0.3, {
