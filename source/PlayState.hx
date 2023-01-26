@@ -212,7 +212,7 @@ class PlayState extends FrameState
 		propGrp.forEach(function(spr:Prop)
 		{
 			// If this prop is to be ignored, ignore it
-			if (!CoolData.allowPropCollision.contains(spr.my_type) && player.lockMovement == false)
+			if (!CoolData.allowPropCollision.contains(spr.my_type) && !player.lockMovement)
 			{
 				FlxG.collide(player, spr);
 			}
@@ -220,7 +220,7 @@ class PlayState extends FrameState
 			// Check for overlaps
 			if (spr.my_type == FINALETRIP)
 			{
-				if (player.overlaps(spr) && localEndState == false)
+				if (player.overlaps(spr) && !localEndState)
 				{
 					FlxG.sound.music.fadeOut(0.3, 0, function(twn:FlxTween)
 					{
@@ -231,7 +231,7 @@ class PlayState extends FrameState
 			}
 			else if (spr.my_type == ARROW)
 			{
-				if (player.overlaps(spr) && isTouching == false && player.lockMovement == false)
+				if (player.overlaps(spr) && !isTouching && !player.lockMovement)
 				{
 					isTouching = true;
 					spr.animation.play(spr.launchDirection + '_sel');
@@ -296,7 +296,7 @@ class PlayState extends FrameState
 			}
 			else if (spr.my_type == SHAPELOCK)
 			{
-				if (player.overlaps(spr) && door.isOpen == false && player.lockMovement == false)
+				if (player.overlaps(spr) && !door.isOpen && !player.lockMovement)
 				{
 					isTouching = true;
 					spr.animation.play('hover');
@@ -308,7 +308,7 @@ class PlayState extends FrameState
 				}
 				else
 				{
-					if (door.isOpen == true)
+					if (door.isOpen)
 					{
 						spr.animation.play('complete');
 					}
@@ -320,7 +320,7 @@ class PlayState extends FrameState
 			}
 			else if (spr.my_type == HINT)
 			{
-				if (player.overlaps(spr) && player.lockMovement == false)
+				if (player.overlaps(spr) && !player.lockMovement)
 				{
 					isTouching = true;
 					spr.animation.play('hover');
@@ -342,7 +342,7 @@ class PlayState extends FrameState
 			else if (spr.my_type == KEY)
 			{
 				spr.visible = !localHideKey;
-				if (player.overlaps(spr) && door.isOpen == false && player.lockMovement == false && localHideKey == false)
+				if (player.overlaps(spr) && !door.isOpen && !player.lockMovement && !localHideKey)
 				{
 					isTouching = true;
 					spr.animation.play('hover');
@@ -369,7 +369,7 @@ class PlayState extends FrameState
 			}
 		});
 
-		if (player.overlaps(door) && isTouching == false)
+		if (player.overlaps(door) && !isTouching)
 		{
 			if (door.isOpen)
 			{

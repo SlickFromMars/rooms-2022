@@ -122,7 +122,7 @@ class TitleState extends FrameState
 		}
 
 		// Check to see if the player has confirmed
-		if (Controls.CONFIRM && stopSpam == false && beginText.alpha == 1)
+		if (Controls.CONFIRM && !stopSpam && beginText.alpha == 1)
 		{
 			// Stop people from spamming the button
 			stopSpam = true;

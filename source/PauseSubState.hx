@@ -75,7 +75,7 @@ class PauseSubState extends FrameSubState
 		}
 		else if (Controls.CONFIRM)
 		{
-			if (stopSpam == false)
+			if (!stopSpam)
 			{
 				stopSpam = true;
 				switch (menuItems[curSelected])
@@ -100,7 +100,7 @@ class PauseSubState extends FrameSubState
 				}
 			}
 		}
-		else if (!Controls.CONFIRM && stopSpam == true)
+		else if (!Controls.CONFIRM && stopSpam)
 		{
 			stopSpam = false;
 		}

@@ -81,7 +81,7 @@ class OpeningState extends FrameState
 
 	function skipState():Void
 	{
-		if (stopSpam == false)
+		if (!stopSpam)
 		{
 			stopSpam = true;
 

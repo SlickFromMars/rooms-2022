@@ -71,7 +71,7 @@ class ShapePuzzleSubstate extends FrameSubState
 		}
 
 		// Do the changing thingy
-		if (Controls.LEFT_P && PlayState.door.isOpen == false)
+		if (Controls.LEFT_P && !PlayState.door.isOpen)
 		{
 			curWacky -= 1;
 			if (curWacky < 0)
@@ -80,7 +80,7 @@ class ShapePuzzleSubstate extends FrameSubState
 			}
 			changeAllKeys();
 		}
-		else if (Controls.RIGHT_P && PlayState.door.isOpen == false)
+		else if (Controls.RIGHT_P && !PlayState.door.isOpen)
 		{
 			curWacky += 1;
 			if (curWacky > 3)
@@ -89,7 +89,7 @@ class ShapePuzzleSubstate extends FrameSubState
 			}
 			changeAllKeys();
 		}
-		else if (Controls.DOWN_P && PlayState.door.isOpen == false)
+		else if (Controls.DOWN_P && !PlayState.door.isOpen)
 		{
 			currentEntry[curWacky] -= 1;
 			if (currentEntry[curWacky] < 0)
@@ -99,7 +99,7 @@ class ShapePuzzleSubstate extends FrameSubState
 
 			changeAllKeys();
 		}
-		else if (Controls.UP_P && PlayState.door.isOpen == false)
+		else if (Controls.UP_P && !PlayState.door.isOpen)
 		{
 			currentEntry[curWacky] += 1;
 			if (currentEntry[curWacky] > 4)
@@ -118,7 +118,7 @@ class ShapePuzzleSubstate extends FrameSubState
 
 		// Open the door if the combo is correct
 		if (puzzleCombo[0] == currentEntry[0] && puzzleCombo[1] == currentEntry[1] && puzzleCombo[2] == currentEntry[2]
-			&& puzzleCombo[3] == currentEntry[3] && PlayState.door.isOpen == false)
+			&& puzzleCombo[3] == currentEntry[3] && !PlayState.door.isOpen)
 		{
 			// OPEN THE DOOR PLEASE
 			PlayState.door.isOpen = true;
@@ -193,7 +193,7 @@ class ShapePuzzleKey extends FlxSprite
 		// Do the actual updating
 		var suffix = '';
 
-		if (PlayState.door.isOpen == true)
+		if (PlayState.door.isOpen)
 		{
 			suffix = '_com';
 		}
