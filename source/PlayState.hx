@@ -37,6 +37,7 @@ class PlayState extends FrameState
 	var jumpEmitter:FlxEmitter;
 
 	var localEndState:Bool = false;
+	var localHideKey:Bool = false;
 
 	// The player variable
 	public static var player:Player;
@@ -156,6 +157,14 @@ class PlayState extends FrameState
 
 		super.create();
 		stopCompleteSpam = false;
+		if (CoolData.roomNumber == 1)
+		{
+			localHideKey = true;
+		}
+		else
+		{
+			localHideKey = false;
+		}
 
 		// Play some music
 		if (CoolData.roomNumber == 1)
@@ -318,6 +327,10 @@ class PlayState extends FrameState
 
 					if (Controls.CONFIRM)
 					{
+						if (spr.hintType == 'items')
+						{
+							localHideKey = false;
+						}
 						openSubState(new HintSubstate(spr.hintType));
 					}
 				}
@@ -328,7 +341,8 @@ class PlayState extends FrameState
 			}
 			else if (spr.my_type == KEY)
 			{
-				if (player.overlaps(spr) && door.isOpen == false && player.lockMovement == false)
+				spr.visible = !localHideKey;
+				if (player.overlaps(spr) && door.isOpen == false && player.lockMovement == false && localHideKey == false)
 				{
 					isTouching = true;
 					spr.animation.play('hover');

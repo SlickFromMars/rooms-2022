@@ -48,7 +48,7 @@ class HintSubstate extends FrameSubState
 				decorGrp.add(spr);
 
 			case 'items':
-				var spr:FlxText = new FlxText(0, 0, 0, 'You can interact with\ncertain items like\nthe key up ahead.', 14);
+				var spr:FlxText = new FlxText(0, 0, 0, 'You can interact with\ncertain items like\nthe key up ahead.\nGo collect it.', 14);
 				spr.color = 0x403C3C;
 				spr.alignment = CENTER;
 				spr.screenCenter();
