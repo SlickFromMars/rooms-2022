@@ -29,7 +29,7 @@ class TitleState extends FrameState
 	var emitterGrp:FlxTypedGroup<FlxEmitter>; // Particle group yaaaay
 
 	#if EASTER_EGG
-	var easterEggKey:String = 'SLICK';
+	var easterEggKeys:Array<String> = ['SLICK', 'PATRICK', 'DANNY'];
 	var allowedKeys:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	var easterEggKeysBuffer:String = '';
 	#end
@@ -163,11 +163,15 @@ class TitleState extends FrameState
 					easterEggKeysBuffer = easterEggKeysBuffer.substring(1);
 				}
 				// trace('EASTER EGG BUFFER ' + easterEggKeysBuffer);
-				if (easterEggKeysBuffer.contains(easterEggKey))
+				for (wordRaw in easterEggKeys)
 				{
-					trace('YIPPEE');
-					easterEggKeysBuffer = "";
-					openSubState(new EasterEggSubstate());
+					var word = wordRaw.toUpperCase();
+					if (easterEggKeysBuffer.endsWith(word))
+					{
+						trace('$word is coolswag');
+						easterEggKeysBuffer = "";
+						openSubState(new EasterEggSubstate(wordRaw.toLowerCase()));
+					}
 				}
 			}
 		}

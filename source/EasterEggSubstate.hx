@@ -13,7 +13,7 @@ class EasterEggSubstate extends FrameSubState
 	var bg:FlxSprite; // The bg for the state
 	var eggText:FlxText; // The sprite group that contains all stuff
 
-	public function new()
+	public function new(name:String)
 	{
 		super();
 
@@ -22,7 +22,7 @@ class EasterEggSubstate extends FrameSubState
 		bg.scrollFactor.set();
 		add(bg);
 
-		eggText = new FlxText(0, 0, 0, OpenFlAssets.getText('readme.txt'), 8);
+		eggText = new FlxText(0, 0, 0, Paths.getText('data/_eggs/$name.txt'), 8);
 		eggText.alignment = CENTER;
 		eggText.screenCenter();
 		add(eggText);
