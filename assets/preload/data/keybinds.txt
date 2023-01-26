@@ -4,6 +4,6 @@ Interact With Glowing Objects
 Go Back - ESCAPE/SPACE
 
 Pause - P/ESCAPE
-Toggle Fullscreen - F/ONE
+Toggle Fullscreen - F/F11
 Adjust Volume - PLUS/MINUS
 Toggle Mute Volume - ZERO

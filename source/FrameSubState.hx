@@ -9,6 +9,7 @@ class FrameSubState extends FlxSubState
 		super.update(elapsed);
 
 		// Check keys
+		Controls.updateKeys();
 		FrameState.backgroundKeys();
 	}
 }

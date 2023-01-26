@@ -37,9 +37,9 @@ class TitleState extends FrameState
 		#end
 
 		// Initiate the volume keys
-		FlxG.sound.muteKeys = CoolData.muteKeys;
-		FlxG.sound.volumeDownKeys = CoolData.volumeDownKeys;
-		FlxG.sound.volumeUpKeys = CoolData.volumeUpKeys;
+		FlxG.sound.muteKeys = [NUMPADZERO, ZERO];
+		FlxG.sound.volumeDownKeys = [NUMPADMINUS, MINUS];
+		FlxG.sound.volumeUpKeys = [NUMPADPLUS, PLUS];
 
 		// do the save stuff
 		if (FlxG.save.data.volume != null)
@@ -122,7 +122,7 @@ class TitleState extends FrameState
 		}
 
 		// Check to see if the player has confirmed
-		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys) && stopSpam == false && beginText.alpha == 1)
+		if (Controls.CONFIRM && stopSpam == false && beginText.alpha == 1)
 		{
 			// Stop people from spamming the button
 			stopSpam = true;

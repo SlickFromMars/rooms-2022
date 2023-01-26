@@ -53,10 +53,10 @@ class Player extends FlxSprite
 	{
 		// If on desktop, check the keybinds
 		#if FLX_KEYBOARD
-		up = FlxG.keys.anyPressed(CoolData.upKeys);
-		down = FlxG.keys.anyPressed(CoolData.downKeys);
-		left = FlxG.keys.anyPressed(CoolData.leftKeys);
-		right = FlxG.keys.anyPressed(CoolData.rightKeys);
+		up = Controls.UP;
+		down = Controls.DOWN;
+		left = Controls.LEFT;
+		right = Controls.RIGHT;
 		#end
 
 		// Diagonal movement math

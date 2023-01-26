@@ -144,7 +144,7 @@ class HintSubstate extends FrameSubState
 		super.update(elapsed);
 
 		// Check to see if the player wants to exit
-		if (FlxG.keys.anyJustPressed(CoolData.backKeys) && stopSpam == false)
+		if (Controls.BACK && stopSpam == false)
 		{
 			stopSpam = true;
 			FlxTween.tween(decorGrp, {y: 0 - FlxG.height}, 0.3, {

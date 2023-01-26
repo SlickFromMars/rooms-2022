@@ -10,13 +10,14 @@ class FrameState extends FlxState
 		super.update(elapsed);
 
 		// Check keys
+		Controls.updateKeys();
 		backgroundKeys();
 	}
 
 	// Checking important keys for frame states
 	public static function backgroundKeys()
 	{
-		if (FlxG.keys.anyJustPressed(CoolData.fullscreenKeys))
+		if (Controls.FULLSCREEN)
 		{
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}

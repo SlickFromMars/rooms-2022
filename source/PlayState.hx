@@ -173,7 +173,7 @@ class PlayState extends FrameState
 		super.update(elapsed);
 
 		// Check to see if the player needs help
-		if (FlxG.keys.anyJustPressed(CoolData.pauseKeys))
+		if (Controls.PAUSE)
 		{
 			openSubState(new PauseSubState());
 		}
@@ -227,7 +227,7 @@ class PlayState extends FrameState
 					isTouching = true;
 					spr.animation.play(spr.launchDirection + '_sel');
 
-					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+					if (Controls.CONFIRM)
 					{
 						player.lockMovement = true;
 
@@ -292,7 +292,7 @@ class PlayState extends FrameState
 					isTouching = true;
 					spr.animation.play('hover');
 
-					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+					if (Controls.CONFIRM)
 					{
 						openSubState(new ShapePuzzleSubstate());
 					}
@@ -316,7 +316,7 @@ class PlayState extends FrameState
 					isTouching = true;
 					spr.animation.play('hover');
 
-					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+					if (Controls.CONFIRM)
 					{
 						openSubState(new HintSubstate(spr.hintType));
 					}
@@ -333,7 +333,7 @@ class PlayState extends FrameState
 					isTouching = true;
 					spr.animation.play('hover');
 
-					if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+					if (Controls.CONFIRM)
 					{
 						door.isOpen = true;
 						spr.kill();
@@ -361,7 +361,7 @@ class PlayState extends FrameState
 			{
 				door.animation.play('open_s');
 
-				if (!stopCompleteSpam && FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+				if (!stopCompleteSpam && Controls.CONFIRM)
 				{
 					completeLevel();
 				}
@@ -370,7 +370,7 @@ class PlayState extends FrameState
 			{
 				door.animation.play('closed_s');
 
-				if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+				if (Controls.CONFIRM)
 				{
 					denyText.text = 'This door is locked.';
 					denyText.screenCenter(X);

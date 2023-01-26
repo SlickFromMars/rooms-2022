@@ -54,7 +54,7 @@ class PauseSubState extends FrameSubState
 		super.update(elapsed);
 
 		// Key checking
-		if (FlxG.keys.anyJustPressed(CoolData.backKeys))
+		if (Controls.BACK)
 		{
 			if (menuItems.contains('Back'))
 			{
@@ -65,15 +65,15 @@ class PauseSubState extends FrameSubState
 				close();
 			}
 		}
-		else if (FlxG.keys.anyJustPressed(CoolData.upKeys))
+		else if (Controls.UP_P)
 		{
 			changeSelection(-1);
 		}
-		else if (FlxG.keys.anyJustPressed(CoolData.downKeys))
+		else if (Controls.DOWN_P)
 		{
 			changeSelection(1);
 		}
-		else if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+		else if (Controls.CONFIRM)
 		{
 			if (stopSpam == false)
 			{
@@ -100,7 +100,7 @@ class PauseSubState extends FrameSubState
 				}
 			}
 		}
-		else if (!FlxG.keys.anyJustPressed(CoolData.confirmKeys) && stopSpam == true)
+		else if (!Controls.CONFIRM && stopSpam == true)
 		{
 			stopSpam = false;
 		}

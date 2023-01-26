@@ -44,7 +44,7 @@ class CompleteState extends FrameState
 	override function update(elapsed:Float)
 	{
 		// Check to see if the player has confirmed
-		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys) && winText.alpha == 1)
+		if (Controls.CONFIRM && winText.alpha == 1)
 		{
 			pressStart();
 		}

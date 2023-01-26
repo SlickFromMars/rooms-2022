@@ -65,13 +65,13 @@ class ShapePuzzleSubstate extends FrameSubState
 		super.update(elapsed);
 
 		// Check to see if the player wants to exit
-		if (FlxG.keys.anyJustPressed(CoolData.backKeys))
+		if (Controls.BACK)
 		{
 			close();
 		}
 
 		// Do the changing thingy
-		if (FlxG.keys.anyJustPressed(CoolData.leftKeys) && PlayState.door.isOpen == false)
+		if (Controls.LEFT_P && PlayState.door.isOpen == false)
 		{
 			curWacky -= 1;
 			if (curWacky < 0)
@@ -80,7 +80,7 @@ class ShapePuzzleSubstate extends FrameSubState
 			}
 			changeAllKeys();
 		}
-		else if (FlxG.keys.anyJustPressed(CoolData.rightKeys) && PlayState.door.isOpen == false)
+		else if (Controls.RIGHT_P && PlayState.door.isOpen == false)
 		{
 			curWacky += 1;
 			if (curWacky > 3)
@@ -89,7 +89,7 @@ class ShapePuzzleSubstate extends FrameSubState
 			}
 			changeAllKeys();
 		}
-		else if (FlxG.keys.anyJustPressed(CoolData.downKeys) && PlayState.door.isOpen == false)
+		else if (Controls.DOWN_P && PlayState.door.isOpen == false)
 		{
 			currentEntry[curWacky] -= 1;
 			if (currentEntry[curWacky] < 0)
@@ -99,7 +99,7 @@ class ShapePuzzleSubstate extends FrameSubState
 
 			changeAllKeys();
 		}
-		else if (FlxG.keys.anyJustPressed(CoolData.upKeys) && PlayState.door.isOpen == false)
+		else if (Controls.UP_P && PlayState.door.isOpen == false)
 		{
 			currentEntry[curWacky] += 1;
 			if (currentEntry[curWacky] > 4)

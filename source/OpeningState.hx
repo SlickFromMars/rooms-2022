@@ -63,7 +63,7 @@ class OpeningState extends FrameState
 
 	override function update(elapsed:Float)
 	{
-		if (FlxG.keys.anyJustPressed(CoolData.confirmKeys))
+		if (Controls.CONFIRM)
 		{
 			if (skipText.alpha == 0)
 			{
