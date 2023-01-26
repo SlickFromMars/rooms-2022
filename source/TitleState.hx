@@ -5,11 +5,15 @@ import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
 import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.input.keyboard.FlxKey;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import lime.app.Application;
+
+using StringTools;
+
 #if DISCORD_RPC
 import Discord.DiscordClient;
 #end
@@ -23,6 +27,12 @@ class TitleState extends FrameState
 	var screen:FlxSprite; // Funky gradient
 
 	var emitterGrp:FlxTypedGroup<FlxEmitter>; // Particle group yaaaay
+
+	#if EASTER_EGG
+	var easterEggKey:String = 'SLICK';
+	var allowedKeys:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	var easterEggKeysBuffer:String = '';
+	#end
 
 	override public function create()
 	{
@@ -139,5 +149,28 @@ class TitleState extends FrameState
 				});
 			});
 		}
+		#if EASTER_EGG
+		// the funny little silly secret
+		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
+		{
+			var keyPressed:FlxKey = FlxG.keys.firstJustPressed();
+			var keyName:String = Std.string(keyPressed);
+			if (allowedKeys.contains(keyName))
+			{
+				easterEggKeysBuffer += keyName;
+				if (easterEggKeysBuffer.length >= 32)
+				{
+					easterEggKeysBuffer = easterEggKeysBuffer.substring(1);
+				}
+				// trace('EASTER EGG BUFFER ' + easterEggKeysBuffer);
+				if (easterEggKeysBuffer.contains(easterEggKey))
+				{
+					trace('YIPPEE');
+					easterEggKeysBuffer = "";
+					openSubState(new EasterEggSubstate());
+				}
+			}
+		}
+		#end
 	}
 }

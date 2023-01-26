@@ -37,6 +37,7 @@
 	<!-- ROOMS CUSTOMIZATION -->
 	<define name="FPS_COUNTER" unless="mobile" />
 	<define name="DISCORD_RPC" if="desktop" />
+	<define name="EASTER_EGG" />
 	
 	<assets path="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets" exclude="*.mp3"  unless="web"/>
