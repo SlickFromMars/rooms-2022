@@ -96,7 +96,8 @@ class HintSubstate extends FrameSubState
 					spr.y = (i * 34) + 32;
 					decorGrp.add(spr);
 
-					var spr2:PaperShapeKey = new PaperShapeKey(i);
+					var spr2:FlxSprite = new FlxSprite();
+					spr2.loadGraphic(Paths.image('hint/shape_$i'));
 					spr2.x = spr.x - 60;
 					spr2.y = spr.y;
 					decorGrp.add(spr2);
@@ -154,23 +155,5 @@ class HintSubstate extends FrameSubState
 				}
 			});
 		}
-	}
-}
-
-class PaperShapeKey extends FlxSprite
-{
-	public function new(iteration:Int)
-	{
-		super(x, y);
-
-		// load the sprites
-		loadGraphic(Paths.image('hint/papershapes'), true, 32, 32);
-		animation.add('0', [0], 1, true);
-		animation.add('1', [1], 1, true);
-		animation.add('2', [2], 1, true);
-		animation.add('3', [3], 1, true);
-		animation.add('4', [4], 1, true);
-
-		animation.play(Std.string(iteration));
 	}
 }
