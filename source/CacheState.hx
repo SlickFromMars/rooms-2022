@@ -13,6 +13,8 @@ class CacheState extends FrameState
 
 	override function create()
 	{
+		FlxG.mouse.visible = false;
+
 		infoText = new FlxText(0, 0, FlxG.width, 'CACHING ASSETS', 16);
 		infoText.screenCenter(Y);
 		infoText.alignment = CENTER;
