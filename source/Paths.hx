@@ -5,6 +5,8 @@ import flixel.graphics.FlxGraphic;
 import openfl.media.Sound;
 import openfl.utils.Assets as OpenFlAssets;
 
+using StringTools;
+
 /**
  * `Paths` is the custom pathing system for ROOMS.
  * Has various inlined functions for getting assets easily.
@@ -96,6 +98,18 @@ class Paths
 	inline static public function getText(key:String):String
 	{
 		return OpenFlAssets.getText(getPath('$key'));
+	}
+
+	inline static public function getCoolText(key:String):Array<String>
+	{
+		var daList:Array<String> = getText(key).trim().split('\n');
+
+		for (i in 0...daList.length)
+		{
+			daList[i] = daList[i].trim();
+		}
+
+		return daList;
 	}
 
 	/**

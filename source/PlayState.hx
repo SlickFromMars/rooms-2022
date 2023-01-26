@@ -85,12 +85,7 @@ class PlayState extends FrameState
 		levelText.screenCenter(X);
 
 		// Build the level
-		var fullText:String = Paths.getText('data/_gen/' + Std.string(CoolData.roomNumber) + '.txt').trim();
-		var swagArray:Array<String> = fullText.split('\n');
-		for (i in 0...swagArray.length)
-		{
-			swagArray[i] = swagArray[i].trim();
-		}
+		var swagArray = Paths.getCoolText('data/_gen/' + Std.string(CoolData.roomNumber) + '.txt');
 		var swagItem:String = FlxG.random.getObject(swagArray);
 		trace('Chose $swagItem from $swagArray');
 
