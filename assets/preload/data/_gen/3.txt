@@ -1,4 +1,0 @@
-cellar
-prison
-library
-storage
