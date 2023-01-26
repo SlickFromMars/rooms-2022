@@ -54,7 +54,7 @@ class ShapePuzzleSubstate extends FrameSubState
 		funnyText.alpha = 0;
 
 		// tween things and cameras
-		FlxTween.tween(bg, {alpha: 0.7}, 0.3);
+		FlxTween.tween(bg, {alpha: 1}, 0.3);
 		FlxTween.tween(funnyText, {alpha: 1}, 0.5);
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];

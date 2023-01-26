@@ -31,7 +31,7 @@ class InstructionsSubstate extends FrameSubState
 		helpText.alpha = 0;
 
 		// tween things and cameras
-		FlxTween.tween(bg, {alpha: 0.7}, 0.3);
+		FlxTween.tween(bg, {alpha: 1}, 0.3);
 		FlxTween.tween(helpText, {alpha: 1}, 0.3);
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];

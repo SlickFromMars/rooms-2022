@@ -133,7 +133,7 @@ class HintSubstate extends FrameSubState
 		// tween things and cameras
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
-		FlxTween.tween(bg, {alpha: 0.7}, 0.3);
+		FlxTween.tween(bg, {alpha: 1}, 0.3);
 		FlxTween.tween(decorGrp, {y: 0}, 0.3);
 	}
 

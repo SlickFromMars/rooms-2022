@@ -36,7 +36,7 @@ class PauseSubState extends FrameSubState
 		add(bg);
 
 		// tweens and cameras
-		FlxTween.tween(bg, {alpha: 0.7}, 0.3);
+		FlxTween.tween(bg, {alpha: 1}, 0.3);
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
