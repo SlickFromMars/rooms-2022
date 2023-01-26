@@ -29,7 +29,7 @@ class TitleState extends FrameState
 	var emitterGrp:FlxTypedGroup<FlxEmitter>; // Particle group yaaaay
 
 	#if EASTER_EGG
-	var easterEggKeys:Array<String> = ['SLICK', 'ALPHAMEEP', 'DANNY', 'LOGIC', 'POKIADOKI', 'JADIN', 'WISEGIRL'];
+	var easterEggKeys:Array<String>;
 	var allowedKeys:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	var easterEggKeysBuffer:String = '';
 	#end
@@ -50,6 +50,12 @@ class TitleState extends FrameState
 		FlxG.sound.muteKeys = [NUMPADZERO, ZERO];
 		FlxG.sound.volumeDownKeys = [NUMPADMINUS, MINUS];
 		FlxG.sound.volumeUpKeys = [NUMPADPLUS, PLUS];
+
+		#if EASTER_EGG
+		// get this stuff
+		easterEggKeys = Paths.getCoolText('data/eggList.txt');
+		trace('Loaded eggs ' + easterEggKeys);
+		#end
 
 		// do the save stuff
 		if (FlxG.save.data.volume != null)
