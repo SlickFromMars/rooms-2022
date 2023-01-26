@@ -50,11 +50,12 @@ class EasterEggSubstate extends FrameSubState
 		// Check stuff
 		if (Controls.CONFIRM)
 		{
-			// trace('CONFIRMED ON $eggName');
 			switch (eggName.toUpperCase())
 			{
 				case 'BENSOUND':
 					FlxG.openURL('https://www.bensound.com/');
+				default:
+					trace('CONFIRMED ON $eggName');
 			}
 		}
 		else if (Controls.BACK)
