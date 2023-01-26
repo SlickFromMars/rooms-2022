@@ -29,11 +29,16 @@ class CacheState extends FrameState
 		add(infoText);
 
 		// cache the stuff I think
+		var cacheCap:Int = 0;
+		for (i in precacheList)
+		{
+			cacheCap++;
+		}
 		var cacheCount:Int = 0;
 		for (key => type in precacheList)
 		{
 			cacheCount++;
-			infoText.text = 'CACHING ASSETS ' + cacheCount + '/3';
+			infoText.text = 'CACHING ASSETS ' + cacheCount + '/' + cacheCap;
 			// trace('Key $key is type $type');
 			switch (type)
 			{
