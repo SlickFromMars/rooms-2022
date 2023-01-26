@@ -18,6 +18,8 @@ class CacheState extends FrameState
 		infoText.alignment = CENTER;
 
 		// make the list
+		precacheList.set('player', 'image');
+		precacheList.set('tileset', 'image');
 		precacheList.set('littleplanet', 'music');
 		precacheList.set('newdawn', 'music');
 		precacheList.set('november', 'music');
@@ -44,10 +46,7 @@ class CacheState extends FrameState
 			}
 		}
 
-		// trace(Paths.currentTrackedAssets.toString());
-		// trace(Paths.currentTrackedSounds.toString());
-
-		new FlxTimer().start(2, function(tmr:FlxTimer)
+		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
 			FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
 			{
