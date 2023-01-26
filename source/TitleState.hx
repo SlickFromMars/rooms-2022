@@ -29,7 +29,7 @@ class TitleState extends FrameState
 	var emitterGrp:FlxTypedGroup<FlxEmitter>; // Particle group yaaaay
 
 	#if EASTER_EGG
-	var easterEggKeys:Array<String> = ['SLICK', 'PATRICK', 'DANNY', 'LOGIC'];
+	var easterEggKeys:Array<String> = ['SLICK', 'PATRICK', 'DANNY', 'LOGIC', 'POKI', 'JADIN'];
 	var allowedKeys:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	var easterEggKeysBuffer:String = '';
 	#end
