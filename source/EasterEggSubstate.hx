@@ -5,7 +5,6 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import openfl.utils.Assets as OpenFlAssets;
 
 class EasterEggSubstate extends FrameSubState
 {
