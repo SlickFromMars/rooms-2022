@@ -31,6 +31,6 @@ class Controls
 		CONFIRM = FlxG.keys.anyJustPressed([FlxKey.ENTER, FlxKey.E]);
 		BACK = FlxG.keys.anyJustPressed([FlxKey.ESCAPE, FlxKey.SPACE]);
 		PAUSE = FlxG.keys.anyJustPressed([FlxKey.P, FlxKey.ESCAPE]);
-		FULLSCREEN = FlxG.keys.anyJustPressed([FlxKey.F, FlxKey.F11]);
+		FULLSCREEN = FlxG.keys.anyJustPressed([FlxKey.F11]);
 	}
 }

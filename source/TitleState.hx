@@ -29,7 +29,7 @@ class TitleState extends FrameState
 	var emitterGrp:FlxTypedGroup<FlxEmitter>; // Particle group yaaaay
 
 	#if EASTER_EGG
-	var easterEggKeys:Array<String> = ['SLICK', 'MEEP', 'DANNY', 'LOGIC', 'POKI', 'JADIN'];
+	var easterEggKeys:Array<String> = ['SLICKFROMMARS', 'ALPHAMEEP', 'DANNY', 'LOGIC', 'POKIADOKI', 'JADIN', 'WISEGIRL'];
 	var allowedKeys:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	var easterEggKeysBuffer:String = '';
 	#end
@@ -132,7 +132,7 @@ class TitleState extends FrameState
 		}
 
 		// Check to see if the player has confirmed
-		if (Controls.CONFIRM && !stopSpam && beginText.alpha == 1)
+		if (FlxG.keys.anyJustPressed([ENTER]) && !stopSpam && beginText.alpha == 1)
 		{
 			// Stop people from spamming the button
 			stopSpam = true;

@@ -43,7 +43,7 @@
 	<assets path="assets" exclude="*.mp3"  unless="web"/>
 
 	<assets path="docs/README.txt" rename="readme.txt"/>
-	<assets path="docs/README.txt" rename="assets/data/_eggs/slick.txt"/>
+	<assets path="docs/README.txt" rename="assets/data/_eggs/slickfrommars.txt"/>
 	<assets path="LICENSE.md" rename="LICENSE.txt"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
