@@ -17,6 +17,9 @@ class ShapePuzzleSubstate extends FrameSubState
 	// UI STUFF
 	var keyGrp:FlxTypedGroup<ShapePuzzleKey>; // All of the key thingies
 
+	var upScroll:Bool;
+	var downScroll:Bool;
+
 	public function new()
 	{
 		super();
@@ -64,6 +67,9 @@ class ShapePuzzleSubstate extends FrameSubState
 	{
 		super.update(elapsed);
 
+		upScroll = FlxG.mouse.wheel > 0;
+		downScroll = FlxG.mouse.wheel < 0;
+
 		// Check to see if the player wants to exit
 		if (Controls.BACK)
 		{
@@ -89,7 +95,7 @@ class ShapePuzzleSubstate extends FrameSubState
 			}
 			changeAllKeys();
 		}
-		else if (Controls.DOWN_P && !meta.states.PlayState.door.isOpen)
+		else if ((Controls.DOWN_P || upScroll) && !meta.states.PlayState.door.isOpen)
 		{
 			currentEntry[curWacky] -= 1;
 			if (currentEntry[curWacky] < 0)
@@ -99,7 +105,7 @@ class ShapePuzzleSubstate extends FrameSubState
 
 			changeAllKeys();
 		}
-		else if (Controls.UP_P && !meta.states.PlayState.door.isOpen)
+		else if ((Controls.UP_P || downScroll) && !meta.states.PlayState.door.isOpen)
 		{
 			currentEntry[curWacky] += 1;
 			if (currentEntry[curWacky] > 4)
