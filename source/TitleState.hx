@@ -11,11 +11,11 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import lime.app.Application;
-#if (polymod && sys)
-import polymod.Polymod;
-#end
 #if DISCORD_RPC
 import Discord.DiscordClient;
+#end
+#if (polymod && sys && !neko)
+import polymod.Polymod;
 #end
 
 class TitleState extends FrameState
@@ -36,7 +36,10 @@ class TitleState extends FrameState
 
 	override public function create()
 	{
-		#if (polymod && sys)
+		// Hide the mouse if there is one
+		FlxG.mouse.visible = false;
+
+		#if (polymod && sys && !neko)
 		// Get all directories in the mod folder
 		var modDirectory:Array<String> = [];
 		var mods:Array<String> = sys.FileSystem.readDirectory("mods");
@@ -82,11 +85,6 @@ class TitleState extends FrameState
 			modText.color = FlxColor.WHITE;
 			add(modText);
 		}
-		#end
-
-		// Hide the mouse if there is one
-		#if FLX_MOUSE
-		FlxG.mouse.visible = false;
 		#end
 
 		#if DISCORD_RPC
