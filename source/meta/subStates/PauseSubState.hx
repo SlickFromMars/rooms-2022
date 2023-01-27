@@ -1,4 +1,4 @@
-package;
+package meta.subStates;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -86,9 +86,9 @@ class PauseSubState extends FrameSubState
 						regenMenu('Options');
 					case 'Exit To Menu':
 						FlxG.sound.music.stop();
-						FrameState.switchState(new TitleState());
+						FrameState.switchState(new meta.states.TitleState());
 					case 'Skip Level':
-						PlayState.completeLevel();
+						meta.states.PlayState.completeLevel();
 					case 'Toggle Fullscreen':
 						FlxG.fullscreen = !FlxG.fullscreen;
 					#if !mobile

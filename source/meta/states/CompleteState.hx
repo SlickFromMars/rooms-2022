@@ -1,11 +1,11 @@
-package;
+package meta.states;
 
 import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 #if DISCORD_RPC
-import Discord.DiscordClient;
+import meta.Discord.DiscordClient;
 #end
 
 class CompleteState extends FrameState

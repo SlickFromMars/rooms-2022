@@ -1,4 +1,4 @@
-package;
+package meta;
 
 #if DISCORD_RPC
 import Sys.sleep;

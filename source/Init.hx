@@ -108,7 +108,7 @@ class Init extends FrameState
 		{
 			FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
 			{
-				FrameState.switchState(new OpeningState());
+				FrameState.switchState(new meta.states.OpeningState());
 			});
 		});
 	}

@@ -1,7 +1,5 @@
-package;
+package meta.states;
 
-import Player;
-import Prop;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -13,8 +11,10 @@ import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import meta.states.gameObjects.Player;
+import meta.states.gameObjects.Prop;
 #if DISCORD_RPC
-import Discord.DiscordClient;
+import meta.Discord;
 #end
 
 class PlayState extends FrameState
@@ -176,7 +176,7 @@ class PlayState extends FrameState
 		// Check to see if the player needs help
 		if (Controls.PAUSE)
 		{
-			openSubState(new PauseSubState());
+			openSubState(new meta.subStates.PauseSubState());
 		}
 
 		// Collision stuff
@@ -295,7 +295,7 @@ class PlayState extends FrameState
 
 					if (Controls.CONFIRM)
 					{
-						openSubState(new ShapePuzzleSubstate());
+						openSubState(new meta.subStates.ShapePuzzleSubstate());
 					}
 				}
 				else
@@ -323,7 +323,7 @@ class PlayState extends FrameState
 						{
 							localHideKey = false;
 						}
-						openSubState(new HintSubstate(spr.hintType));
+						openSubState(new meta.subStates.HintSubstate(spr.hintType));
 					}
 				}
 				else
@@ -422,7 +422,7 @@ class PlayState extends FrameState
 
 			case 'shapelock':
 				propGrp.add(new Prop(startX - 8, startY, SHAPELOCK));
-				ShapePuzzleSubstate.shuffleCombo();
+				meta.subStates.ShapePuzzleSubstate.shuffleCombo();
 
 			case 'crate':
 				propGrp.add(new Prop(startX + 1, startY + 1, CRATE));

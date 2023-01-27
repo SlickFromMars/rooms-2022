@@ -12,7 +12,7 @@ import openfl.events.UncaughtErrorEvent;
 import openfl.display.FPS;
 #end
 #if DISCORD_RPC
-import Discord.DiscordClient;
+import meta.Discord.DiscordClient;
 #end
 
 class Main extends Sprite

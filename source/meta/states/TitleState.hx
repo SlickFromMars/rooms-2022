@@ -1,4 +1,4 @@
-package;
+package meta.states;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -12,7 +12,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import lime.app.Application;
 #if DISCORD_RPC
-import Discord.DiscordClient;
+import meta.Discord;
 #end
 
 class TitleState extends FrameState
@@ -129,11 +129,11 @@ class TitleState extends FrameState
 		// Check keys
 		if (FlxG.keys.anyJustPressed([TAB]))
 		{
-			openSubState(new InstructionsSubstate());
+			openSubState(new meta.subStates.InstructionsSubstate());
 		}
 		else if (FlxG.keys.anyJustPressed([SHIFT]))
 		{
-			openSubState(new SettingsSubState());
+			openSubState(new meta.subStates.SettingsSubState());
 		}
 		else if (FlxG.keys.anyJustPressed([ENTER]) && !stopSpam && beginText.alpha == 1)
 		{
@@ -173,7 +173,7 @@ class TitleState extends FrameState
 					{
 						// trace('$word is coolswag');
 						easterEggKeysBuffer = "";
-						openSubState(new EasterEggSubstate(wordRaw.toLowerCase()));
+						openSubState(new meta.subStates.EasterEggSubstate(wordRaw.toLowerCase()));
 					}
 				}
 			}

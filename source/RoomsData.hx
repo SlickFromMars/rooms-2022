@@ -1,6 +1,6 @@
 package;
 
-import Prop.PropType;
+import meta.states.gameObjects.Prop.PropType;
 
 class RoomsData
 {

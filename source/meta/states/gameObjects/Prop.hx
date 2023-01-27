@@ -1,4 +1,4 @@
-package;
+package meta.states.gameObjects;
 
 import flixel.FlxG;
 import flixel.FlxSprite;

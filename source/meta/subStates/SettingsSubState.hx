@@ -1,4 +1,4 @@
-package;
+package meta.subStates;
 
 import flixel.FlxG;
 import flixel.FlxSprite;

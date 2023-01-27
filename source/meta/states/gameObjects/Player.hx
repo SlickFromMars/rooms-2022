@@ -1,4 +1,4 @@
-package;
+package meta.states.gameObjects;
 
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
