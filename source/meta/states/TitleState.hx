@@ -166,6 +166,9 @@ class TitleState extends FrameState
 					easterEggKeysBuffer = easterEggKeysBuffer.substring(1);
 				}
 				// trace('EASTER EGG BUFFER ' + easterEggKeysBuffer);
+			}
+			else if (keyPressed == FlxKey.SEVEN)
+			{
 				for (wordRaw in easterEggKeys)
 				{
 					var word = wordRaw.toUpperCase();
