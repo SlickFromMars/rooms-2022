@@ -2,6 +2,7 @@ package meta.subStates;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.group.FlxSpriteGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -12,7 +13,7 @@ class EasterEggSubstate extends FrameSubState
 
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
-	var eggText:FlxText; // The sprite group that contains all stuff
+	var eggGrp:FlxSpriteGroup; // The sprite group that contains all stuff
 
 	public function new(name:String)
 	{
@@ -25,18 +26,32 @@ class EasterEggSubstate extends FrameSubState
 		bg.scrollFactor.set();
 		add(bg);
 
-		eggText = new FlxText(0, 0, 0, Paths.getText('data/_eggs/$name.txt'), 8);
-		eggText.alignment = CENTER;
-		eggText.screenCenter();
-		add(eggText);
+		eggGrp = new FlxSpriteGroup();
+		add(eggGrp);
 
-		// set alphas
-		bg.alpha = 0;
-		eggText.alpha = 0;
+		switch (name)
+		{
+			case 'sillybird': // in case you wanted to be silly
+				var eggImage = new FlxSprite();
+				eggImage.loadGraphic(Paths.image('sillybird'));
+				eggImage.screenCenter();
+				eggGrp.add(eggImage);
 
-		// tween things and cameras
-		FlxTween.tween(bg, {alpha: 1}, 0.3);
-		FlxTween.tween(eggText, {alpha: 1}, 0.3);
+				FlxG.camera.shake(0.5, 1);
+			default:
+				var eggText = new FlxText(0, 0, 0, Paths.getText('data/_eggs/$name.txt'), 8);
+				eggText.alignment = CENTER;
+				eggText.screenCenter();
+				eggGrp.add(eggText);
+
+				// set alphas
+				bg.alpha = 0;
+				eggGrp.alpha = 0;
+
+				// tween things and cameras
+				FlxTween.tween(bg, {alpha: 1}, 0.3);
+				FlxTween.tween(eggGrp, {alpha: 1}, 0.3);
+		}
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 	}
@@ -61,7 +76,7 @@ class EasterEggSubstate extends FrameSubState
 		else if (Controls.BACK)
 		{
 			stopSpam = true;
-			FlxTween.tween(eggText, {alpha: 0}, 0.3, {
+			FlxTween.tween(eggGrp, {alpha: 0}, 0.3, {
 				onComplete: function(twn:FlxTween)
 				{
 					close();
