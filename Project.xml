@@ -30,6 +30,8 @@
 	<assets path="docs/README.txt" rename="assets/data/_eggs/slick.txt"/>
 	<assets path="LICENSE.md" rename="LICENSE.txt"/>
 
+	<assets path='example_mods' rename='mods' embed='false' if="desktop"/>
+
 	<!-- ________________________________ Defines _______________________________ -->
 
 	<define name="FPS_COUNTER" unless="mobile" />
@@ -43,6 +45,7 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="hscript" />
 	<haxelib name="discord_rpc" if="desktop"/>
+	<haxelib name="polymod"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 

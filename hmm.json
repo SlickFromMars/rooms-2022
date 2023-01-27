@@ -41,6 +41,11 @@
         "dir": null,
         "ref": "master",
         "url": "https://github.com/Aidan63/linc_discord-rpc"
+      },
+      {
+        "name": "polymod",
+        "type": "haxelib",
+        "version": null
       }
     ]
   }
