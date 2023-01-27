@@ -59,7 +59,7 @@ class Init extends FrameState
 
 		if (modMetadata.length > 0)
 		{
-			var modText = new FlxText(2, 12, 0, "", 16);
+			var modText = new FlxText(2, 12, 0, "", 8);
 			modText.text = "Loaded Mods: " + loadedMods;
 			modText.color = FlxColor.WHITE;
 			add(modText);
