@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxState;
+import flixel.FlxSubState;
 
 class FrameState extends FlxState
 {
@@ -40,5 +41,17 @@ class FrameState extends FlxState
 	public static function resetState()
 	{
 		FrameState.switchState(FlxG.state);
+	}
+}
+
+class FrameSubState extends FlxSubState
+{
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		// Check keys
+		Controls.updateKeys();
+		FrameState.backgroundKeys();
 	}
 }

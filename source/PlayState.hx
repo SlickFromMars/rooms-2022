@@ -78,11 +78,11 @@ class PlayState extends FrameState
 		denyText.cameras = [camUI];
 		denyText.alpha = 0;
 
-		levelText.text = '- Room ' + CoolData.roomNumber + ' -';
+		levelText.text = '- Room ' + RoomsData.roomNumber + ' -';
 		levelText.screenCenter(X);
 
 		// Build the level
-		var swagArray = Paths.getCoolText('data/_gen/' + Std.string(CoolData.roomNumber) + '.txt');
+		var swagArray = Paths.getCoolText('data/_gen/' + Std.string(RoomsData.roomNumber) + '.txt');
 		var swagItem:String = FlxG.random.getObject(swagArray);
 		trace('Chose $swagItem from $swagArray');
 
@@ -92,9 +92,9 @@ class PlayState extends FrameState
 		walls2 = map.loadTilemap(Paths.image('tileset'), "no_collision");
 
 		// Setup the collision
-		for (i in 0...CoolData.tileCount)
+		for (i in 0...RoomsData.tileCount)
 		{
-			if (CoolData.doTileCollision.contains(i))
+			if (RoomsData.doTileCollision.contains(i))
 			{
 				walls.setTileProperties(i, ANY);
 			}
@@ -131,7 +131,7 @@ class PlayState extends FrameState
 		#if DISCORD_RPC
 		// Updating Discord Rich Presence.
 		var stateText:String = '';
-		switch (CoolData.roomNumber)
+		switch (RoomsData.roomNumber)
 		{
 			case 1:
 				stateText = 'Learning How To Play';
@@ -144,12 +144,12 @@ class PlayState extends FrameState
 			case 5:
 				stateText = 'Approaching The Exit';
 		}
-		DiscordClient.changePresence('On Room ' + CoolData.roomNumber, stateText);
+		DiscordClient.changePresence('On Room ' + RoomsData.roomNumber, stateText);
 		#end
 
 		super.create();
 		stopCompleteSpam = false;
-		if (CoolData.roomNumber == 1)
+		if (RoomsData.roomNumber == 1)
 		{
 			localHideKey = true;
 		}
@@ -159,7 +159,7 @@ class PlayState extends FrameState
 		}
 
 		// Play some music
-		if (CoolData.roomNumber == 1)
+		if (RoomsData.roomNumber == 1)
 		{
 			FlxG.sound.music.stop();
 			FlxG.sound.playMusic(Paths.music('november'), 0.7, true);
@@ -204,7 +204,7 @@ class PlayState extends FrameState
 		propGrp.forEach(function(spr:Prop)
 		{
 			// If this prop is to be ignored, ignore it
-			if (!CoolData.allowPropCollision.contains(spr.my_type) && !player.lockMovement)
+			if (!RoomsData.allowPropCollision.contains(spr.my_type) && !player.lockMovement)
 			{
 				FlxG.collide(player, spr);
 			}
@@ -232,7 +232,7 @@ class PlayState extends FrameState
 					{
 						player.lockMovement = true;
 
-						if (CoolData.roomNumber == 5)
+						if (RoomsData.roomNumber == 5)
 						{
 							FlxG.cameras.list[FlxG.cameras.list.length - 1].fade(FlxColor.WHITE, 5, false, function()
 							{
@@ -469,12 +469,12 @@ class PlayState extends FrameState
 		stopCompleteSpam = true;
 
 		// TO THE NEXT LEVEL WOOOOOOOO
-		CoolData.roomNumber += 1;
+		RoomsData.roomNumber += 1;
 
 		if (skipTrans)
 		{
 			// Check to see if a file exists, and then go to the next level if it does
-			if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
+			if (Paths.fileExists('data/_gen/' + RoomsData.roomNumber + '.txt'))
 			{
 				FrameState.resetState();
 			}
@@ -489,7 +489,7 @@ class PlayState extends FrameState
 			FlxG.cameras.list[FlxG.cameras.list.length - 1].fade(FlxColor.BLACK, 0.1, false, function()
 			{
 				// Check to see if a file exists, and then go to the next level if it does
-				if (Paths.fileExists('data/_gen/' + CoolData.roomNumber + '.txt'))
+				if (Paths.fileExists('data/_gen/' + RoomsData.roomNumber + '.txt'))
 				{
 					FrameState.resetState();
 				}

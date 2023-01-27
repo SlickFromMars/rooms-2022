@@ -4,8 +4,11 @@ import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+#if (polymod && sys && !neko)
+import polymod.Polymod;
+#end
 
-class CacheState extends FrameState
+class Init extends FrameState
 {
 	var precacheList:Map<String, String> = new Map<String, String>();
 
@@ -14,6 +17,54 @@ class CacheState extends FrameState
 	override function create()
 	{
 		FlxG.mouse.visible = false;
+
+		#if (polymod && sys && !neko)
+		// Get all directories in the mod folder
+		var modDirectory:Array<String> = [];
+		var mods:Array<String> = sys.FileSystem.readDirectory("mods");
+
+		for (fileText in mods)
+		{
+			if (sys.FileSystem.isDirectory("mods/" + fileText))
+			{
+				modDirectory.push(fileText);
+			}
+		}
+		trace(modDirectory);
+
+		// Handle mod errors
+		var errors = (error:PolymodError) ->
+		{
+			trace(error.severity + ": " + error.code + " - " + error.message + " - ORIGIN: " + error.origin);
+		};
+
+		// Initialize polymod
+		var modMetadata = Polymod.init({
+			modRoot: "mods",
+			dirs: modDirectory,
+			errorCallback: errors,
+			framework: OPENFL,
+			ignoredFiles: Polymod.getDefaultIgnoreList(),
+			frameworkParams: {
+				assetLibraryPaths: ["data" => "data", "images" => "images", "music" => "music", "sounds" => "sounds"]
+			}
+		});
+
+		// Display active mods
+		var loadedMods = "";
+		for (modData in modMetadata)
+		{
+			loadedMods += modData.title + "";
+		}
+
+		if (modMetadata.length > 0)
+		{
+			var modText = new FlxText(2, 12, 0, "", 16);
+			modText.text = "Loaded Mods: " + loadedMods;
+			modText.color = FlxColor.WHITE;
+			add(modText);
+		}
+		#end
 
 		infoText = new FlxText(0, 0, FlxG.width, 'CACHING ASSETS', 16);
 		infoText.screenCenter(Y);

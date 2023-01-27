@@ -2,7 +2,7 @@ package;
 
 import Prop.PropType;
 
-class CoolData
+class RoomsData
 {
 	// PROGRESS STUFF
 	public static var roomNumber:Int = 1; // Room number
