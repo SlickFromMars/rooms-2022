@@ -34,7 +34,6 @@
 
 	<!-- ________________________________ Defines _______________________________ -->
 
-	<define name="FPS_COUNTER" unless="mobile" />
 	<define name="DISCORD_RPC" if="desktop" unless="neko" />
 	<define name="EASTER_EGG" />
 

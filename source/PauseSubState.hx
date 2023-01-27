@@ -20,7 +20,7 @@ class PauseSubState extends FrameSubState
 	{
 		super();
 
-		#if FPS_COUNTER
+		#if !mobile
 		optionItemsOG.insert(1, 'Toggle FPS Counter');
 		#end
 
@@ -91,7 +91,7 @@ class PauseSubState extends FrameSubState
 						PlayState.completeLevel();
 					case 'Toggle Fullscreen':
 						FlxG.fullscreen = !FlxG.fullscreen;
-					#if FPS_COUNTER
+					#if !mobile
 					case 'Toggle FPS Counter':
 						Main.fpsVar.visible = !Main.fpsVar.visible;
 					#end
