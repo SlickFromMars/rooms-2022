@@ -40,7 +40,7 @@ class SettingsSubState extends FrameSubState
 		};
 
 		#if !mobile
-		var check_fps = new FlxUICheckBox(0, check_fullscreen.height + check_fullscreen.height + 5, null, null, 'Show FPS', 100);
+		var check_fps = new FlxUICheckBox(0, check_fullscreen.height + check_fullscreen.height + 7, null, null, 'Show FPS', 100);
 		check_fps.checked = Main.fpsVar.visible;
 		check_fps.callback = function()
 		{
