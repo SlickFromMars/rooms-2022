@@ -125,7 +125,7 @@ class TitleState extends FrameState
 		logo.antialiasing = true;
 		logo.screenCenter();
 
-		beginText = new FlxText(0, FlxG.height - 10, 0, 'Press ENTER to Begin\nPress TAB for Instructions', 8);
+		beginText = new FlxText(0, FlxG.height - 10, 0, 'Press ENTER to Begin\nPress TAB for Instructions\nPress SHIFT for Settings', 8);
 		beginText.alignment = CENTER;
 		beginText.screenCenter(X);
 		beginText.alpha = 0;
@@ -177,14 +177,16 @@ class TitleState extends FrameState
 	{
 		super.update(elapsed);
 
-		// Check to see if the player needs help
+		// Check keys
 		if (FlxG.keys.anyJustPressed([TAB]))
 		{
 			openSubState(new InstructionsSubstate());
 		}
-
-		// Check to see if the player has confirmed
-		if (FlxG.keys.anyJustPressed([ENTER]) && !stopSpam && beginText.alpha == 1)
+		else if (FlxG.keys.anyJustPressed([SHIFT]))
+		{
+			openSubState(new SettingsSubState());
+		}
+		else if (FlxG.keys.anyJustPressed([ENTER]) && !stopSpam && beginText.alpha == 1)
 		{
 			// Stop people from spamming the button
 			stopSpam = true;
