@@ -54,7 +54,7 @@ class TitleState extends FrameState
 		#if EASTER_EGG
 		// get this stuff
 		easterEggKeys = Paths.getCoolText('data/eggList.txt');
-		trace('Loaded eggs ' + easterEggKeys);
+		// trace('Loaded eggs ' + easterEggKeys);
 		#end
 
 		// do the save stuff
@@ -174,7 +174,7 @@ class TitleState extends FrameState
 					var word = wordRaw.toUpperCase();
 					if (easterEggKeysBuffer.endsWith(word))
 					{
-						trace('$word is coolswag');
+						// trace('$word is coolswag');
 						easterEggKeysBuffer = "";
 						openSubState(new EasterEggSubstate(wordRaw.toLowerCase()));
 					}
