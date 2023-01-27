@@ -7,8 +7,6 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 
-using StringTools;
-
 class HintSubstate extends FrameSubState
 {
 	// UI STUFF

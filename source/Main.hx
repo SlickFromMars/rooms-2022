@@ -8,9 +8,6 @@ import openfl.Lib;
 import openfl.display.Sprite;
 import openfl.display.StageScaleMode;
 import openfl.events.UncaughtErrorEvent;
-
-using StringTools;
-
 #if FPS_COUNTER
 import openfl.display.FPS;
 #end

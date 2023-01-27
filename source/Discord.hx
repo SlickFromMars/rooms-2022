@@ -4,8 +4,6 @@ package;
 import Sys.sleep;
 import discord_rpc.DiscordRpc;
 
-using StringTools;
-
 class DiscordClient
 {
 	public static var isInitialized:Bool = false;

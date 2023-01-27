@@ -11,9 +11,6 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import lime.app.Application;
-
-using StringTools;
-
 #if DISCORD_RPC
 import Discord.DiscordClient;
 #end

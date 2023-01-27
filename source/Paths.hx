@@ -5,8 +5,6 @@ import flixel.graphics.FlxGraphic;
 import openfl.media.Sound;
 import openfl.utils.Assets as OpenFlAssets;
 
-using StringTools;
-
 /**
  * `Paths` is the custom pathing system for ROOMS.
  * Has various inlined functions for getting assets easily.

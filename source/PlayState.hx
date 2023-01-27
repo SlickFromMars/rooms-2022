@@ -13,9 +13,6 @@ import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-
-using StringTools;
-
 #if DISCORD_RPC
 import Discord.DiscordClient;
 #end
