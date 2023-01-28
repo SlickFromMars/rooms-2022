@@ -44,7 +44,7 @@ class Paths
 	}
 
 	/**
-	 * Gets the path for a sound file and returns the sound asset.
+	 * Gets the path for a sound file and returns the `Sound`.
 	 * @param key The file title.
 	 * @return Returns the `Sound`.
 	 */
@@ -55,7 +55,7 @@ class Paths
 	}
 
 	/**
-	 * Gets the path for a music file and returns the sound asset.
+	 * Gets the path for a music file and returns the `Sound`.
 	 * @param key The file title.
 	 * @return Returns the `Sound`.
 	 */
@@ -77,7 +77,7 @@ class Paths
 	}
 
 	/**
-	 * Gets the path of a font file from the data folder.
+	 * Gets the path of a font file.
 	 * Note: Uses .ttf filetype
 	 * @param key The file title.
 	 * @return The new path.
