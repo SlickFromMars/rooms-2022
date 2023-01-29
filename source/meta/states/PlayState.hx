@@ -23,27 +23,25 @@ class PlayState extends FrameState
 	var camGame:FlxCamera;
 	var camUI:FlxCamera;
 
-	// The world variables
+	// The game variables
 	public static var map:FlxOgmo3Loader;
 	public static var walls:FlxTilemap;
 	public static var walls2:FlxTilemap;
-
-	public static var door:Prop;
-	public static var propGrp:FlxTypedGroup<Prop>;
-
-	var jumpEmitter:FlxEmitter;
-
-	var localEndState:Bool = false;
-	var localHideKey:Bool = false;
-
-	// The player variable
 	public static var player:Player;
+	public static var door:Prop;
+
+	var propGrp:FlxTypedGroup<Prop>;
+	var jumpEmitter:FlxEmitter;
 
 	// The UI stuff
 	var overlay:FlxSprite;
 	var levelText:FlxText;
 	var denyText:FlxText;
 	var denyTween:FlxTween;
+
+	// Conditions and things
+	var localEndState:Bool = false;
+	var localHideKey:Bool = false;
 
 	override public function create()
 	{
