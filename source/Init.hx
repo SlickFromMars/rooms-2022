@@ -30,7 +30,7 @@ class Init extends FrameState
 				modDirectory.push(fileText);
 			}
 		}
-		trace(modDirectory);
+		// trace(modDirectory);
 
 		// Handle mod errors
 		var errors = (error:PolymodError) ->
