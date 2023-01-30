@@ -31,11 +31,12 @@
 	<assets path="docs/README.txt" rename="assets/data/_eggs/slick.txt"/>
 	<assets path="LICENSE.md" rename="LICENSE.txt"/>
 
-	<assets path='example_mods' rename='mods' embed='false' if="desktop"/>
+	<assets path='example_mods' rename='mods' if="MODS_ALLOWED"/>
 
 	<!-- ________________________________ Defines _______________________________ -->
 
 	<define name="DISCORD_RPC" if="desktop" unless="neko" />
+	<define name="MODS_ALLOWED" if="desktop" unless="neko" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
@@ -44,7 +45,7 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="hscript" />
 	<haxelib name="discord_rpc" if="DISCORD_RPC"/>
-	<haxelib name="polymod"/>
+	<haxelib name="polymod" if="MODS_ALLOWED"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 

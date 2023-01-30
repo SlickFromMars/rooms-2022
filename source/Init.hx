@@ -5,7 +5,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import meta.Frame.FrameState;
-#if (polymod && sys && !neko)
+#if polymod
 import polymod.Polymod;
 #end
 
@@ -19,7 +19,7 @@ class Init extends FrameState
 	{
 		FlxG.mouse.visible = false;
 
-		#if (polymod && sys && !neko)
+		#if polymod
 		// Get all directories in the mod folder
 		var modDirectory:Array<String> = [];
 		var mods:Array<String> = sys.FileSystem.readDirectory("mods");
