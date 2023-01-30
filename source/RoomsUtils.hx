@@ -7,12 +7,6 @@ using StringTools;
 
 class RoomsUtils
 {
-	/**
-	 * Adds the prefix to a file using `getPath`.
-	 * Returns the file text contents
-	 * @param key The file path.
-	 * @return The text from the file.
-	**/
 	inline static public function getText(key:String):String
 	{
 		return OpenFlAssets.getText(Paths.getPath('$key'));
