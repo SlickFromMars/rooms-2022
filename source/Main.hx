@@ -48,17 +48,9 @@ class Main extends Sprite
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
-
-		if (FlxG.save.data.fps != null)
-		{
-			fpsVar.visible = FlxG.save.data.fps;
-		}
-		else
-		{
-			#if !debug
-			fpsVar.visible = false;
-			#end
-		}
+		#if !debug
+		Main.fpsVar.visible = false;
+		#end
 		#end
 
 		#if html5
@@ -95,6 +87,7 @@ class Main extends Sprite
 	// do things when closing
 	function onClose():Void
 	{
+		trace('SHUTTING DOWN');
 		FlxG.save.data.fullscreen = FlxG.fullscreen;
 		#if !mobile
 		FlxG.save.data.fps = fpsVar.visible;

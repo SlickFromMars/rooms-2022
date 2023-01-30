@@ -65,6 +65,10 @@ class TitleState extends FrameState
 		{
 			FlxG.fullscreen = FlxG.save.data.fullscreen;
 		}
+		if (FlxG.save.data.fps != null)
+		{
+			Main.fpsVar.visible = FlxG.save.data.fps;
+		}
 
 		// Setup the UI
 		emitterGrp = new FlxTypedGroup<FlxEmitter>();
