@@ -13,8 +13,6 @@ class Player extends FlxSprite
 
 	public var lockMovement:Bool = false;
 
-	// Physics stuff
-
 	public function new(x:Float = 0, y:Float = 0)
 	{
 		super(x, y);
@@ -26,14 +24,12 @@ class Player extends FlxSprite
 		animation.add('r', [2], 4, true);
 		animation.add('u', [3], 4, true);
 
-		// Setup the physics
-		drag.x = drag.y = 1600;
-
-		setSize(8, 8);
-		offset.set((16 - width) / 2, (16 - height) / 2);
-
 		animation.play('r');
 
+		// Setup the physics
+		drag.x = drag.y = 1600;
+		setSize(8, 8);
+		offset.set((16 - width) / 2, (16 - height) / 2);
 		angle = 0;
 	}
 
