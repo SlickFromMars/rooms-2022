@@ -29,11 +29,9 @@ class TitleState extends FrameState
 
 	var emitterGrp:FlxTypedGroup<FlxEmitter>; // Particle group yaaaay
 
-	#if EASTER_EGG
 	var easterEggKeys:Array<String>;
 	var allowedKeys:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	var easterEggKeysBuffer:String = '';
-	#end
 
 	override public function create()
 	{
@@ -50,11 +48,9 @@ class TitleState extends FrameState
 		FlxG.sound.volumeDownKeys = [NUMPADMINUS, MINUS];
 		FlxG.sound.volumeUpKeys = [NUMPADPLUS, PLUS];
 
-		#if EASTER_EGG
 		// get this stuff
 		easterEggKeys = RoomsUtils.getCoolText('data/eggList.txt');
 		// trace('Loaded eggs ' + easterEggKeys);
-		#end
 
 		// do the save stuff
 		if (FlxG.save.data.volume != null)
@@ -156,7 +152,7 @@ class TitleState extends FrameState
 				});
 			});
 		}
-		#if EASTER_EGG
+
 		// the funny little silly secret
 		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
 		{
@@ -185,6 +181,5 @@ class TitleState extends FrameState
 				}
 			}
 		}
-		#end
 	}
 }

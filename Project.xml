@@ -20,6 +20,7 @@
 
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
+	<set name="BUILD_DIR" value="export/final" if="final" />
 	
 	<classpath name="source" />
 	
@@ -35,7 +36,6 @@
 	<!-- ________________________________ Defines _______________________________ -->
 
 	<define name="DISCORD_RPC" if="desktop" unless="neko" />
-	<define name="EASTER_EGG" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
