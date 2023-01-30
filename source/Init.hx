@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import meta.Frame.FrameState;
 #if (polymod && sys && !neko)
 import polymod.Polymod;
 #end

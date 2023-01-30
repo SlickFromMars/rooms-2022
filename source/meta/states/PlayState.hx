@@ -11,6 +11,7 @@ import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import meta.Frame.FrameState;
 import meta.states.gameObjects.Player;
 import meta.states.gameObjects.Prop;
 #if DISCORD_RPC
@@ -80,7 +81,7 @@ class PlayState extends FrameState
 		levelText.screenCenter(X);
 
 		// Build the level
-		var swagArray = Paths.getCoolText('data/_gen/' + Std.string(RoomsData.roomNumber) + '.txt');
+		var swagArray = RoomsUtils.getCoolText('data/_gen/' + Std.string(RoomsData.roomNumber) + '.txt');
 		var swagItem:String = FlxG.random.getObject(swagArray);
 		trace('Chose $swagItem from $swagArray');
 

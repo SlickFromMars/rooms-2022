@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import meta.Frame.FrameState;
 
 class OpeningState extends FrameState
 {

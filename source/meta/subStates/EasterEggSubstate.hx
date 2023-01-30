@@ -6,6 +6,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import meta.Frame.FrameSubState;
 
 class EasterEggSubstate extends FrameSubState
 {
@@ -39,7 +40,7 @@ class EasterEggSubstate extends FrameSubState
 
 				FlxG.camera.shake(0.5, 1);
 			default:
-				var eggText = new FlxText(0, 0, 0, Paths.getText('data/_eggs/$name.txt'), 8);
+				var eggText = new FlxText(0, 0, 0, RoomsUtils.getText('data/_eggs/$name.txt'), 8);
 				eggText.alignment = CENTER;
 				eggText.screenCenter();
 				eggGrp.add(eggText);

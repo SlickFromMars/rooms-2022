@@ -6,6 +6,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import meta.Frame.FrameSubState;
 
 class HintSubstate extends FrameSubState
 {

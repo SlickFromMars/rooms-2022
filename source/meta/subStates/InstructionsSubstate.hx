@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import meta.Frame.FrameSubState;
 
 class InstructionsSubstate extends FrameSubState
 {
@@ -21,7 +22,7 @@ class InstructionsSubstate extends FrameSubState
 		bg.scrollFactor.set();
 		add(bg);
 
-		helpText = new FlxText(0, 0, 0, Paths.getText('data/keybinds.txt'), 8);
+		helpText = new FlxText(0, 0, 0, RoomsUtils.getText('data/keybinds.txt'), 8);
 		helpText.alignment = CENTER;
 		helpText.screenCenter();
 		add(helpText);

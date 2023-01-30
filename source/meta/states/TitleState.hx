@@ -11,6 +11,10 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import lime.app.Application;
+import meta.Frame.FrameState;
+
+using StringTools;
+
 #if DISCORD_RPC
 import meta.Discord;
 #end
@@ -48,7 +52,7 @@ class TitleState extends FrameState
 
 		#if EASTER_EGG
 		// get this stuff
-		easterEggKeys = Paths.getCoolText('data/eggList.txt');
+		easterEggKeys = RoomsUtils.getCoolText('data/eggList.txt');
 		// trace('Loaded eggs ' + easterEggKeys);
 		#end
 

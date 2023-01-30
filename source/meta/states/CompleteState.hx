@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import meta.Frame.FrameState;
 #if DISCORD_RPC
 import meta.Discord.DiscordClient;
 #end
