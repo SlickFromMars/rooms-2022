@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import openfl.utils.Assets as OpenFlAssets;
 
 using StringTools;
@@ -27,5 +28,14 @@ class RoomsUtils
 		}
 
 		return daList;
+	}
+
+	public static function openURL(site:String)
+	{
+		#if linux
+		Sys.command('/usr/bin/xdg-open', [site]);
+		#else
+		FlxG.openURL(site);
+		#end
 	}
 }

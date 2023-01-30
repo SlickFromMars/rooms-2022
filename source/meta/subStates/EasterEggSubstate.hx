@@ -69,13 +69,13 @@ class EasterEggSubstate extends FrameSubState
 			switch (eggName.toUpperCase())
 			{
 				case 'BENSOUND':
-					FlxG.openURL('https://www.bensound.com/');
+					RoomsUtils.openURL('https://www.bensound.com/');
 				case 'GITHUB':
-					FlxG.openURL('https://github.com/BHS-TSA/rooms-2022');
+					RoomsUtils.openURL('https://github.com/BHS-TSA/rooms-2022');
 				case 'OGMO':
-					FlxG.openURL('https://ogmo-editor-3.github.io/');
+					RoomsUtils.openURL('https://ogmo-editor-3.github.io/');
 				case 'PISKEL':
-					FlxG.openURL('https://www.piskelapp.com/');
+					RoomsUtils.openURL('https://www.piskelapp.com/');
 				default:
 					trace('CONFIRMED ON $eggName');
 			}
