@@ -38,10 +38,15 @@ class EasterEggSubstate extends FrameSubState
 				eggImage.screenCenter();
 				eggGrp.add(eggImage);
 
-				FlxG.camera.shake(0.5, 1);
+				FlxG.camera.shake(0.3, 1);
 			default:
+				var paper = new FlxSprite().loadGraphic(Paths.image('hint/paper'));
+				paper.screenCenter();
+				eggGrp.add(paper);
+
 				var eggText = new FlxText(0, 0, 0, RoomsUtils.getText('data/_eggs/$name.txt'), 8);
 				eggText.alignment = CENTER;
+				eggText.color = 0x403C3C;
 				eggText.screenCenter();
 				eggGrp.add(eggText);
 
