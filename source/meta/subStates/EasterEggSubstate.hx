@@ -69,6 +69,12 @@ class EasterEggSubstate extends FrameSubState
 			{
 				case 'BENSOUND':
 					FlxG.openURL('https://www.bensound.com/');
+				case 'GITHUB':
+					FlxG.openURL('https://github.com/BHS-TSA/rooms-2022');
+				case 'OGMO':
+					FlxG.openURL('https://ogmo-editor-3.github.io/');
+				case 'PISKEL':
+					FlxG.openURL('https://www.piskelapp.com/');
 				default:
 					trace('CONFIRMED ON $eggName');
 			}
