@@ -179,7 +179,7 @@ class TitleState extends FrameState
 					if (easterEggKeysBuffer.endsWith(word))
 					{
 						// trace('$word is coolswag');
-						easterEggKeysBuffer = "";
+						// easterEggKeysBuffer = "";
 						openSubState(new meta.subStates.EasterEggSubstate(wordRaw.toLowerCase()));
 					}
 				}
