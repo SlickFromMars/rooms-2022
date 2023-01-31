@@ -24,7 +24,7 @@ class EasterEggSubstate extends FrameSubState
 
 		// setup the UI
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-		bg.scrollFactor.set();
+		bg.scrollFactor.set(0, 0);
 		add(bg);
 
 		eggGrp = new FlxSpriteGroup();
@@ -39,7 +39,25 @@ class EasterEggSubstate extends FrameSubState
 				eggGrp.add(eggImage);
 
 				FlxG.camera.shake(0.3, 1);
-			default:
+				FlxG.sound.music.pause();
+				FlxG.sound.play(Paths.sound('funni'));
+
+			case 'alex': // lean
+				var leanText = new FlxText(0, 0, 0, RoomsUtils.getText('data/_eggs/alex.txt'), 16);
+				leanText.alignment = CENTER;
+				leanText.color = 0xFF00F2;
+				leanText.screenCenter();
+				eggGrp.add(leanText);
+				FlxG.camera.shake(0.05, 1);
+
+			case 'orange': // orange
+				var eggImage = new FlxSprite();
+				eggImage.loadGraphic(Paths.image('lethimcook'));
+				eggImage.setGraphicSize(Std.int(FlxG.width * 0.8));
+				eggImage.screenCenter();
+				eggGrp.add(eggImage);
+
+			default: // for lame people
 				var paper = new FlxSprite().loadGraphic(Paths.image('hint/paper'));
 				paper.screenCenter();
 				eggGrp.add(paper);
@@ -49,16 +67,18 @@ class EasterEggSubstate extends FrameSubState
 				eggText.color = 0x403C3C;
 				eggText.screenCenter();
 				eggGrp.add(eggText);
-
-				// set alphas
-				bg.alpha = 0;
-				eggGrp.alpha = 0;
-
-				// tween things and cameras
-				FlxTween.tween(bg, {alpha: 1}, 0.3);
-				FlxTween.tween(eggGrp, {alpha: 1}, 0.3);
 		}
 
+		if (name != 'sillybird')
+		{
+			// set alphas
+			bg.alpha = 0;
+			eggGrp.alpha = 0;
+
+			// tween things and cameras
+			FlxTween.tween(bg, {alpha: 1}, 0.3);
+			FlxTween.tween(eggGrp, {alpha: 1}, 0.3);
+		}
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 	}
 
@@ -91,6 +111,10 @@ class EasterEggSubstate extends FrameSubState
 			FlxTween.tween(eggGrp, {alpha: 0}, 0.3, {
 				onComplete: function(twn:FlxTween)
 				{
+					if (FlxG.sound.music.playing)
+					{
+						FlxG.sound.music.play();
+					}
 					close();
 				}
 			});
