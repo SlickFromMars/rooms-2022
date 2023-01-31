@@ -33,14 +33,6 @@ class Init extends FrameState
 		{
 			FlxG.sound.muted = FlxG.save.data.mute;
 		}
-		if (FlxG.save.data.fullscreen != null)
-		{
-			FlxG.fullscreen = FlxG.save.data.fullscreen;
-		}
-		if (FlxG.save.data.fps != null)
-		{
-			Main.fpsVar.visible = FlxG.save.data.fps;
-		}
 
 		#if polymod
 		// Get all directories in the mod folder

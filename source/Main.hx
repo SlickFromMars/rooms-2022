@@ -88,11 +88,6 @@ class Main extends Sprite
 	function onClose():Void
 	{
 		trace('SHUTTING DOWN');
-		FlxG.save.data.fullscreen = FlxG.fullscreen;
-		#if !mobile
-		FlxG.save.data.fps = fpsVar.visible;
-		#end
-		FlxG.save.flush();
 
 		#if discord_rpc
 		DiscordClient.shutdown();
