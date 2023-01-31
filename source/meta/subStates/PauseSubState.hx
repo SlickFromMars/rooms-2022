@@ -22,9 +22,7 @@ class PauseSubState extends FrameSubState
 	{
 		super();
 
-		#if !mobile
 		optionItemsOG.insert(1, 'Toggle FPS Counter');
-		#end
 
 		#if debug
 		menuItemsOG.insert(1, 'Skip Level');
@@ -93,10 +91,8 @@ class PauseSubState extends FrameSubState
 						meta.states.PlayState.completeLevel();
 					case 'Toggle Fullscreen':
 						FlxG.fullscreen = !FlxG.fullscreen;
-					#if !mobile
 					case 'Toggle FPS Counter':
 						Main.fpsVar.visible = !Main.fpsVar.visible;
-					#end
 					case 'Back':
 						regenMenu();
 				}

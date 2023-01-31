@@ -11,6 +11,9 @@ import meta.Frame.FrameSubState;
 
 class SettingsSubState extends FrameSubState
 {
+	var menuItems:Array<String> = ['Fullscreen', 'Show FPS'];
+	var menuHold:Int = 4;
+
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
 	var grpUI:FlxSpriteGroup; // the ui group
@@ -32,31 +35,44 @@ class SettingsSubState extends FrameSubState
 		titleText.alignment = CENTER;
 		titleText.screenCenter(X);
 
-		var check_fullscreen = new FlxUICheckBox(0, titleText.height + 7, null, null, 'Fullscreen', 100);
-		check_fullscreen.checked = FlxG.fullscreen;
-		check_fullscreen.callback = function()
-		{
-			FlxG.fullscreen = check_fullscreen.checked;
-			// trace('CHECKED!');
-		};
-
-		#if !mobile
-		var check_fps = new FlxUICheckBox(0, check_fullscreen.height + check_fullscreen.height + 7, null, null, 'Show FPS', 100);
-		check_fps.checked = Main.fpsVar.visible;
-		check_fps.callback = function()
-		{
-			Main.fpsVar.visible = check_fps.checked;
-			// trace('CHECKED!');
-		};
+		#if debug
+		menuItems.push('Redirect Traces');
 		#end
+
+		var startY = 5 + titleText.y + titleText.height;
+		for (item in menuItems)
+		{
+			var spr:FlxUICheckBox = new FlxUICheckBox(0, startY, null, null, item, 100);
+			switch (item)
+			{
+				case 'Fullscreen':
+					spr.checked = FlxG.fullscreen;
+					spr.callback = function()
+					{
+						FlxG.fullscreen = spr.checked;
+					}
+
+				case 'Show FPS':
+					spr.checked = Main.fpsVar.visible;
+					spr.callback = function()
+					{
+						Main.fpsVar.visible = spr.checked;
+					}
+				case 'Redirect Traces':
+					spr.checked = FlxG.log.redirectTraces;
+					spr.callback = function()
+					{
+						FlxG.log.redirectTraces = spr.checked;
+					}
+			}
+			spr.screenCenter(X);
+			grpUI.add(spr);
+			startY += spr.height + 5;
+		}
 
 		grpUI.add(titleText);
-		grpUI.add(check_fullscreen);
-		#if !mobile
-		grpUI.add(check_fps);
-		#end
-		grpUI.screenCenter();
-		titleText.screenCenter(X);
+		if (menuItems.length <= menuHold)
+			grpUI.screenCenter(Y);
 		add(grpUI);
 
 		// set alpha

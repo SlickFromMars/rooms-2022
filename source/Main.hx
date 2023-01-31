@@ -5,12 +5,10 @@ import flixel.FlxGame;
 import flixel.FlxState;
 import lime.app.Application;
 import openfl.Lib;
+import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.display.StageScaleMode;
 import openfl.events.UncaughtErrorEvent;
-#if !mobile
-import openfl.display.FPS;
-#end
 #if discord_rpc
 import meta.Discord.DiscordClient;
 #end
@@ -27,9 +25,7 @@ class Main extends Sprite
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 
 	// Define the FPS counter variable
-	#if !mobile
 	public static var fpsVar:FPS;
-	#end
 
 	public function new()
 	{
@@ -43,14 +39,12 @@ class Main extends Sprite
 		#end
 
 		// Initiate the FPS counter as long as you aren't on mobile
-		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
 		#if !debug
 		Main.fpsVar.visible = false;
-		#end
 		#end
 
 		#if html5
