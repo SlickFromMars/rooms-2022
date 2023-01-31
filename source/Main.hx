@@ -81,7 +81,7 @@ class Main extends Sprite
 	// do things when closing
 	function onClose():Void
 	{
-		trace('SHUTTING DOWN');
+		// trace('SHUTTING DOWN');
 
 		#if discord_rpc
 		DiscordClient.shutdown();
