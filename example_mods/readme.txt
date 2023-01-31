@@ -1,3 +1,6 @@
-this stuff probably doesn't work yet
+this stuff WORKS!
 
-be patient
+yippee I did something
+
+basically put the files where they would go in the main folder,
+and use the append folder to append to text files
