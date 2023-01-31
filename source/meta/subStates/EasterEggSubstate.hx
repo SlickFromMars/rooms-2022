@@ -100,6 +100,8 @@ class EasterEggSubstate extends FrameSubState
 		{
 			switch (eggName.toUpperCase())
 			{
+				case 'SILLYBIRD': // hehehehehe
+					RoomsUtils.openURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 				case 'BENSOUND':
 					RoomsUtils.openURL('https://www.bensound.com/');
 				case 'GITHUB':
