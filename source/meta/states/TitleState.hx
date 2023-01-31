@@ -155,7 +155,7 @@ class TitleState extends FrameState
 					var word = wordRaw.toUpperCase();
 					if (easterEggKeysBuffer.endsWith(word))
 					{
-						// trace('$word is coolswag');
+						trace('$word is coolswag');
 						// easterEggKeysBuffer = "";
 						openSubState(new meta.subStates.EasterEggSubstate(wordRaw.toLowerCase()));
 					}
