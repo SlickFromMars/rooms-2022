@@ -38,37 +38,14 @@ class TitleState extends FrameState
 		// Hide the mouse if there is one
 		FlxG.mouse.visible = false;
 
-		#if discord_rpc
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
-		#end
-
-		// Initiate the volume keys
-		FlxG.sound.muteKeys = [NUMPADZERO, ZERO];
-		FlxG.sound.volumeDownKeys = [NUMPADMINUS, MINUS];
-		FlxG.sound.volumeUpKeys = [NUMPADPLUS, PLUS];
-
 		// get this stuff
 		easterEggKeys = RoomsUtils.getCoolText('data/eggList.txt');
 		// trace('Loaded eggs ' + easterEggKeys);
 
-		// do the save stuff
-		if (FlxG.save.data.volume != null)
-		{
-			FlxG.sound.volume = FlxG.save.data.volume;
-		}
-		if (FlxG.save.data.mute != null)
-		{
-			FlxG.sound.muted = FlxG.save.data.mute;
-		}
-		if (FlxG.save.data.fullscreen != null)
-		{
-			FlxG.fullscreen = FlxG.save.data.fullscreen;
-		}
-		if (FlxG.save.data.fps != null)
-		{
-			Main.fpsVar.visible = FlxG.save.data.fps;
-		}
+		#if discord_rpc
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
+		#end
 
 		// Setup the UI
 		emitterGrp = new FlxTypedGroup<FlxEmitter>();

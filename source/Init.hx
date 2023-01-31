@@ -19,6 +19,29 @@ class Init extends FrameState
 	{
 		FlxG.mouse.visible = false;
 
+		// Initiate the volume keys
+		FlxG.sound.muteKeys = [NUMPADZERO, ZERO];
+		FlxG.sound.volumeDownKeys = [NUMPADMINUS, MINUS];
+		FlxG.sound.volumeUpKeys = [NUMPADPLUS, PLUS];
+
+		// do the save stuff
+		if (FlxG.save.data.volume != null)
+		{
+			FlxG.sound.volume = FlxG.save.data.volume;
+		}
+		if (FlxG.save.data.mute != null)
+		{
+			FlxG.sound.muted = FlxG.save.data.mute;
+		}
+		if (FlxG.save.data.fullscreen != null)
+		{
+			FlxG.fullscreen = FlxG.save.data.fullscreen;
+		}
+		if (FlxG.save.data.fps != null)
+		{
+			Main.fpsVar.visible = FlxG.save.data.fps;
+		}
+
 		#if polymod
 		// Get all directories in the mod folder
 		var modDirectory:Array<String> = [];
