@@ -3,6 +3,7 @@ package meta.subStates;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
+import flixel.system.FlxSound;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -11,6 +12,8 @@ import meta.Frame.FrameSubState;
 class EasterEggSubstate extends FrameSubState
 {
 	var eggName:String;
+
+	var sillySound:FlxSound;
 
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
@@ -40,7 +43,8 @@ class EasterEggSubstate extends FrameSubState
 
 				FlxG.camera.shake(0.1, 1);
 				FlxG.sound.music.pause();
-				FlxG.sound.play(Paths.sound('funni'));
+				sillySound = new FlxSound().loadEmbedded(Paths.sound('funni'));
+				sillySound.play();
 
 			case 'alex': // lean
 				var spr = new FlxText(0, 0, 0, RoomsUtils.getText('data/_eggs/alex.txt'), 16);
@@ -48,7 +52,10 @@ class EasterEggSubstate extends FrameSubState
 				spr.color = 0xFF00F2;
 				spr.screenCenter();
 				eggGrp.add(spr);
-				FlxG.camera.shake(0.05, 1);
+
+				FlxG.sound.music.pause();
+				sillySound = new FlxSound().loadEmbedded(Paths.sound('drip'), true);
+				sillySound.play();
 
 			case 'orange': // orange
 				var spr = new FlxSprite();
@@ -111,9 +118,13 @@ class EasterEggSubstate extends FrameSubState
 			FlxTween.tween(eggGrp, {alpha: 0}, 0.3, {
 				onComplete: function(twn:FlxTween)
 				{
-					if (FlxG.sound.music.playing)
+					if (!FlxG.sound.music.playing)
 					{
 						FlxG.sound.music.play();
+					}
+					if (sillySound.playing)
+					{
+						sillySound.stop();
 					}
 					close();
 				}
