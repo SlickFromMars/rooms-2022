@@ -227,7 +227,7 @@ class PlayState extends FrameState
 		}
 		else
 		{
-			if (Controls.BACK)
+			if (FlxG.keys.anyJustPressed([SPACE]))
 			{
 				if (skipText.alpha == 0)
 				{
