@@ -29,6 +29,7 @@ class PlayState extends FrameState
 	public var camFollowPos:FlxObject;
 
 	var startTween:FlxTween;
+	var startTween2:FlxTween;
 
 	// The game variables
 	public static var map:FlxOgmo3Loader;
@@ -188,16 +189,22 @@ class PlayState extends FrameState
 
 		if (RoomsData.roomNumber != 5)
 		{
+			camGame.zoom = 0.8;
 			var dist = FlxMath.distanceBetween(door, player);
+			var transTime = dist / 80;
+			var delay = 1;
 			// trace(dist);
 
-			startTween = FlxTween.tween(camFollowPos, {x: player.x + player.width / 2, y: player.y + player.height / 2}, dist / 80, {
-				startDelay: 1.5,
+			startTween = FlxTween.tween(camFollowPos, {x: player.x + player.width / 2, y: player.y + player.height / 2}, transTime, {
+				startDelay: delay,
 				onComplete: function(twn:FlxTween)
 				{
 					skipText.alpha = 0;
 					localDoingOpening = false;
 				}
+			});
+			startTween2 = FlxTween.tween(camGame, {zoom: 1}, transTime, {
+				startDelay: delay
 			});
 		}
 		else
@@ -236,7 +243,9 @@ class PlayState extends FrameState
 				else
 				{
 					startTween.cancel();
+					startTween2.cancel();
 					skipText.alpha = 0;
+					camGame.zoom = 1;
 					localDoingOpening = false;
 				}
 			}
