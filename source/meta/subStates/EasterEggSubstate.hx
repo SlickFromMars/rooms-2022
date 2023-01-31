@@ -38,7 +38,7 @@ class EasterEggSubstate extends FrameSubState
 				eggImage.screenCenter();
 				eggGrp.add(eggImage);
 
-				FlxG.camera.shake(0.3, 1);
+				FlxG.camera.shake(0.1, 1);
 				FlxG.sound.music.pause();
 				FlxG.sound.play(Paths.sound('funni'));
 

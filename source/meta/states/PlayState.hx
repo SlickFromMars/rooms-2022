@@ -2,10 +2,12 @@ package meta.states;
 
 import flixel.FlxCamera;
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.addons.editors.ogmo.FlxOgmo3Loader;
 import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
@@ -24,6 +26,10 @@ class PlayState extends FrameState
 	var camGame:FlxCamera;
 	var camUI:FlxCamera;
 
+	public var camFollowPos:FlxObject;
+
+	var startTween:FlxTween;
+
 	// The game variables
 	public static var map:FlxOgmo3Loader;
 	public static var walls:FlxTilemap;
@@ -39,16 +45,38 @@ class PlayState extends FrameState
 	var levelText:FlxText;
 	var denyText:FlxText;
 	var denyTween:FlxTween;
+	var skipText:FlxText;
 
 	// Conditions and things
 	var localEndState:Bool = false;
 	var localHideKey:Bool = false;
+
+	public static var localDoingOpening:Bool = true;
 
 	override public function create()
 	{
 		// Hide the mouse if there is one
 		#if FLX_MOUSE
 		FlxG.mouse.visible = false;
+		#end
+
+		#if discord_rpc
+		// Updating Discord Rich Presence.
+		var stateText:String = '';
+		switch (RoomsData.roomNumber)
+		{
+			case 1:
+				stateText = 'Learning How To Play';
+			case 2:
+				stateText = 'Finding A Key';
+			case 3:
+				stateText = 'Solving A Shape Puzzle';
+			case 4:
+				stateText = 'Crossing The Chasm';
+			case 5:
+				stateText = 'Approaching The Exit';
+		}
+		DiscordClient.changePresence('On Room ' + RoomsData.roomNumber, stateText);
 		#end
 
 		// Set up the cameras
@@ -61,10 +89,15 @@ class PlayState extends FrameState
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
+		camFollowPos = new FlxObject(0, 0, 1, 1);
+		add(camFollowPos);
+		camGame.follow(camFollowPos, LOCKON, 1);
+
 		// UI stuffs
 		overlay = new FlxSprite();
 		overlay.loadGraphic(Paths.image('overlay'));
 		overlay.cameras = [camUI];
+		overlay.screenCenter();
 
 		levelText = new FlxText(0, 5, 0, "- LEVEL ??? -", 10);
 		levelText.alignment = CENTER;
@@ -77,6 +110,12 @@ class PlayState extends FrameState
 		denyText.cameras = [camUI];
 		denyText.alpha = 0;
 
+		skipText = new FlxText(FlxG.width, FlxG.height, 0, 'Press ENTER To Skip', 8);
+		skipText.x -= skipText.width;
+		skipText.y -= skipText.height;
+		skipText.cameras = [camUI];
+		skipText.alpha = 0;
+
 		levelText.text = '- Room ' + RoomsData.roomNumber + ' -';
 		levelText.screenCenter(X);
 
@@ -87,7 +126,7 @@ class PlayState extends FrameState
 
 		map = new FlxOgmo3Loader(Paths.getOgmo(), Paths.json('_levels/$swagItem'));
 		walls = map.loadTilemap(Paths.image('tileset'), "walls");
-		walls.follow(camGame);
+		walls.follow(camGame, -5);
 		walls2 = map.loadTilemap(Paths.image('tileset'), "no_collision");
 
 		// Setup the collision
@@ -123,28 +162,7 @@ class PlayState extends FrameState
 		add(overlay);
 		add(levelText);
 		add(denyText);
-
-		// Finish setting up the camera
-		camGame.follow(player, TOPDOWN_TIGHT, 1);
-
-		#if discord_rpc
-		// Updating Discord Rich Presence.
-		var stateText:String = '';
-		switch (RoomsData.roomNumber)
-		{
-			case 1:
-				stateText = 'Learning How To Play';
-			case 2:
-				stateText = 'Finding A Key';
-			case 3:
-				stateText = 'Solving A Shape Puzzle';
-			case 4:
-				stateText = 'Crossing The Chasm';
-			case 5:
-				stateText = 'Approaching The Exit';
-		}
-		DiscordClient.changePresence('On Room ' + RoomsData.roomNumber, stateText);
-		#end
+		add(skipText);
 
 		super.create();
 		stopCompleteSpam = false;
@@ -156,6 +174,7 @@ class PlayState extends FrameState
 		{
 			localHideKey = false;
 		}
+		localDoingOpening = true;
 
 		// Play some music
 		if (RoomsData.roomNumber == 1)
@@ -166,6 +185,25 @@ class PlayState extends FrameState
 
 		// Epic transition
 		camUI.fade(FlxColor.BLACK, 0.1, true);
+
+		if (RoomsData.roomNumber != 5)
+		{
+			var dist = FlxMath.distanceBetween(door, player);
+			// trace(dist);
+
+			startTween = FlxTween.tween(camFollowPos, {x: player.x + player.width / 2, y: player.y + player.height / 2}, dist / 80, {
+				startDelay: 1.5,
+				onComplete: function(twn:FlxTween)
+				{
+					skipText.alpha = 0;
+					localDoingOpening = false;
+				}
+			});
+		}
+		else
+		{
+			localDoingOpening = false;
+		}
 	}
 
 	override public function update(elapsed:Float)
@@ -181,15 +219,27 @@ class PlayState extends FrameState
 		// Collision stuff
 		checkPlayerCollision();
 
-		// Update the overlay
-		if (PlayState.player != null)
+		// Update the camera position
+		if (!localDoingOpening)
 		{
-			overlay.x = PlayState.player.getScreenPosition().x - overlay.width / 2;
-			overlay.y = PlayState.player.getScreenPosition().y - overlay.height / 2;
+			camFollowPos.x = player.x + player.width / 2;
+			camFollowPos.y = player.y + player.height / 2;
 		}
 		else
 		{
-			overlay.screenCenter();
+			if (Controls.BACK)
+			{
+				if (skipText.alpha == 0)
+				{
+					skipText.alpha = 1;
+				}
+				else
+				{
+					startTween.cancel();
+					skipText.alpha = 0;
+					localDoingOpening = false;
+				}
+			}
 		}
 	}
 
@@ -415,6 +465,8 @@ class PlayState extends FrameState
 				door = new Prop(startX - 8, startY, DOOR);
 				door.isOpen = !entity.values.locked;
 				add(door);
+				camFollowPos.x = door.x + door.width / 2;
+				camFollowPos.y = door.y + door.height / 2;
 
 			case 'torch':
 				propGrp.add(new Prop(startX, startY, TORCH));

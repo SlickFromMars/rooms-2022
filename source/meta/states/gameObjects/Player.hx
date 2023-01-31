@@ -36,7 +36,7 @@ class Player extends FlxSprite
 	override function update(elapsed:Float)
 	{
 		// Update the movement
-		if (!lockMovement)
+		if (!lockMovement && !PlayState.localDoingOpening)
 		{
 			updateMovement();
 		}
