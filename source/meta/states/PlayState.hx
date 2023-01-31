@@ -14,7 +14,7 @@ import flixel.util.FlxTimer;
 import meta.Frame.FrameState;
 import meta.states.gameObjects.Player;
 import meta.states.gameObjects.Prop;
-#if DISCORD_RPC
+#if discord_rpc
 import meta.Discord;
 #end
 
@@ -127,7 +127,7 @@ class PlayState extends FrameState
 		// Finish setting up the camera
 		camGame.follow(player, TOPDOWN_TIGHT, 1);
 
-		#if DISCORD_RPC
+		#if discord_rpc
 		// Updating Discord Rich Presence.
 		var stateText:String = '';
 		switch (RoomsData.roomNumber)

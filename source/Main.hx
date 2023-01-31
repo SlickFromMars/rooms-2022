@@ -11,7 +11,7 @@ import openfl.events.UncaughtErrorEvent;
 #if !mobile
 import openfl.display.FPS;
 #end
-#if DISCORD_RPC
+#if discord_rpc
 import meta.Discord.DiscordClient;
 #end
 
@@ -61,7 +61,7 @@ class Main extends Sprite
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		Application.current.window.onClose.add(onClose);
 
-		#if DISCORD_RPC
+		#if discord_rpc
 		if (!DiscordClient.isInitialized)
 		{
 			DiscordClient.initialize();
@@ -94,7 +94,7 @@ class Main extends Sprite
 		#end
 		FlxG.save.flush();
 
-		#if DISCORD_RPC
+		#if discord_rpc
 		DiscordClient.shutdown();
 		#end
 	}

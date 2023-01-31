@@ -15,7 +15,7 @@ import meta.Frame.FrameState;
 
 using StringTools;
 
-#if DISCORD_RPC
+#if discord_rpc
 import meta.Discord;
 #end
 
@@ -38,7 +38,7 @@ class TitleState extends FrameState
 		// Hide the mouse if there is one
 		FlxG.mouse.visible = false;
 
-		#if DISCORD_RPC
+		#if discord_rpc
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end

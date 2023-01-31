@@ -5,7 +5,7 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import meta.Frame.FrameState;
-#if DISCORD_RPC
+#if discord_rpc
 import meta.Discord.DiscordClient;
 #end
 
@@ -21,7 +21,7 @@ class CompleteState extends FrameState
 		FlxG.mouse.visible = false;
 		#end
 
-		#if DISCORD_RPC
+		#if discord_rpc
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence('In The Completed Screen', null);
 		#end
