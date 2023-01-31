@@ -34,7 +34,7 @@ class EasterEggSubstate extends FrameSubState
 		{
 			case 'sillybird': // in case you wanted to be silly
 				var eggImage = new FlxSprite();
-				eggImage.loadGraphic(Paths.image('sillybird'));
+				eggImage.loadGraphic(Paths.image('eggs/sillybird'));
 				eggImage.screenCenter();
 				eggGrp.add(eggImage);
 
@@ -52,7 +52,7 @@ class EasterEggSubstate extends FrameSubState
 
 			case 'orange': // orange
 				var eggImage = new FlxSprite();
-				eggImage.loadGraphic(Paths.image('lethimcook'));
+				eggImage.loadGraphic(Paths.image('eggs/lethimcook'));
 				eggImage.setGraphicSize(Std.int(FlxG.width * 0.8));
 				eggImage.screenCenter();
 				eggGrp.add(eggImage);
