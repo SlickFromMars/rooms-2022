@@ -124,10 +124,7 @@ class EasterEggSubstate extends FrameSubState
 					{
 						FlxG.sound.music.play();
 					}
-					if (sillySound.playing)
-					{
-						sillySound.stop();
-					}
+					sillySound.stop();
 					close();
 				}
 			});
