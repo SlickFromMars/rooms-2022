@@ -42,7 +42,7 @@ class EasterEggSubstate extends FrameSubState
 		var lineArray = RoomsUtils.getCoolText('data/_eggs/$name.txt');
 		if (lineArray[lineArray.length - 1].startsWith('LINK--'))
 		{
-			myLink = lineArray[lineArray.length - 1];
+			myLink = lineArray[lineArray.length - 1].split('LINK--')[1];
 			myText = myText.split('\nLINK--')[0];
 			trace('Has a link $myLink');
 		}
