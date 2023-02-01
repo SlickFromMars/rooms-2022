@@ -9,9 +9,12 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import meta.Frame.FrameSubState;
 
+using StringTools;
+
 class EasterEggSubstate extends FrameSubState
 {
 	var eggName:String;
+	var myLink:String = null; // the link thingy
 
 	var sillySound:FlxSound;
 
@@ -32,6 +35,17 @@ class EasterEggSubstate extends FrameSubState
 
 		eggGrp = new FlxSpriteGroup();
 		add(eggGrp);
+
+		var myText:String = RoomsUtils.getText('data/_eggs/$name.txt');
+
+		// I hate this code so much
+		var lineArray = RoomsUtils.getCoolText('data/_eggs/$name.txt');
+		if (lineArray[lineArray.length - 1].startsWith('https://'))
+		{
+			myLink = lineArray[lineArray.length - 1];
+			myText = myText.split('\nhttps://')[0];
+			trace('Has a link $myLink');
+		}
 
 		switch (name)
 		{
@@ -69,7 +83,7 @@ class EasterEggSubstate extends FrameSubState
 				paper.screenCenter();
 				eggGrp.add(paper);
 
-				var spr = new FlxText(0, 0, 0, RoomsUtils.getText('data/_eggs/$name.txt'), 8);
+				var spr = new FlxText(0, 0, 0, myText, 8);
 				spr.alignment = CENTER;
 				spr.color = 0x403C3C;
 				spr.screenCenter();
@@ -96,23 +110,9 @@ class EasterEggSubstate extends FrameSubState
 		super.update(elapsed);
 
 		// Check stuff
-		if (Controls.CONFIRM)
+		if (Controls.CONFIRM && myLink != null)
 		{
-			switch (eggName.toUpperCase())
-			{
-				case 'SILLYBIRD': // hehehehehe
-					RoomsUtils.openURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-				case 'BENSOUND':
-					RoomsUtils.openURL('https://www.bensound.com/');
-				case 'GITHUB':
-					RoomsUtils.openURL('https://github.com/BHS-TSA/rooms-2022');
-				case 'OGMO':
-					RoomsUtils.openURL('https://ogmo-editor-3.github.io/');
-				case 'PISKEL':
-					RoomsUtils.openURL('https://www.piskelapp.com/');
-				default:
-					trace('CONFIRMED ON $eggName');
-			}
+			RoomsUtils.openURL(myLink);
 		}
 		else if (Controls.BACK)
 		{
@@ -124,7 +124,11 @@ class EasterEggSubstate extends FrameSubState
 					{
 						FlxG.sound.music.play();
 					}
-					sillySound.stop();
+					if (sillySound != null)
+					{
+						sillySound.stop();
+					}
+
 					close();
 				}
 			});
