@@ -33,6 +33,10 @@
 
 	<assets path='example_mods' rename='mods' if="MODS_ALLOWED"/>
 
+	<!-- ________________________________ Defines _______________________________ -->
+
+	<define name="EASTER_EGG" />
+
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />

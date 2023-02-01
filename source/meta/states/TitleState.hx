@@ -29,10 +29,11 @@ class TitleState extends FrameState
 
 	var emitterGrp:FlxTypedGroup<FlxEmitter>; // Particle group yaaaay
 
-	var allowEasterEggs:Bool = true;
+	#if EASTER_EGG
 	var easterEggKeys:Array<String>;
 	var allowedKeys:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	var easterEggKeysBuffer:String = '';
+	#end
 
 	override public function create()
 	{
@@ -134,7 +135,8 @@ class TitleState extends FrameState
 				});
 			});
 		}
-		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE && allowEasterEggs)
+		#if EASTER_EGG
+		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
 		{
 			var keyPressed:FlxKey = FlxG.keys.firstJustPressed();
 			var keyName:String = Std.string(keyPressed);
@@ -161,5 +163,6 @@ class TitleState extends FrameState
 				}
 			}
 		}
+		#end
 	}
 }
