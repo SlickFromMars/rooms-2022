@@ -16,6 +16,10 @@
 	<window if="html5" resizable="true" fullscreen="false"/>
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
+	<!-- ________________________________ Defines _______________________________ -->
+
+	<define name="EASTER_EGG" />
+
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
@@ -32,10 +36,6 @@
 	<assets path="LICENSE.md" rename="LICENSE.txt"/>
 
 	<assets path='example_mods' rename='mods' if="desktop" unless="neko"/>
-
-	<!-- ________________________________ Defines _______________________________ -->
-
-	<define name="EASTER_EGG" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
