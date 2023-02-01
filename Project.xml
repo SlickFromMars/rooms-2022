@@ -31,7 +31,7 @@
 	<assets path="docs/README.txt" rename="assets/data/_eggs/slick.txt"/>
 	<assets path="LICENSE.md" rename="LICENSE.txt"/>
 
-	<assets path='example_mods' if="desktop" unless="neko"/>
+	<assets path='example_mods' rename='mods' if="desktop" unless="neko"/>
 
 	<!-- ________________________________ Defines _______________________________ -->
 
