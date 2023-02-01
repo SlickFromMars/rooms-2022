@@ -40,10 +40,10 @@ class EasterEggSubstate extends FrameSubState
 
 		// I hate this code so much
 		var lineArray = RoomsUtils.getCoolText('data/_eggs/$name.txt');
-		if (lineArray[lineArray.length - 1].startsWith('https://'))
+		if (lineArray[lineArray.length - 1].startsWith('LINK--'))
 		{
 			myLink = lineArray[lineArray.length - 1];
-			myText = myText.split('\nhttps://')[0];
+			myText = myText.split('\nLINK--')[0];
 			trace('Has a link $myLink');
 		}
 
@@ -61,7 +61,7 @@ class EasterEggSubstate extends FrameSubState
 				sillySound.play();
 
 			case 'alex': // lean
-				var spr = new FlxText(0, 0, 0, RoomsUtils.getText('data/_eggs/alex.txt'), 16);
+				var spr = new FlxText(0, 0, 0, myText, 16);
 				spr.alignment = CENTER;
 				spr.color = 0xFF00F2;
 				spr.screenCenter();
