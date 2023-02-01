@@ -29,6 +29,7 @@ class TitleState extends FrameState
 
 	var emitterGrp:FlxTypedGroup<FlxEmitter>; // Particle group yaaaay
 
+	var allowEasterEggs:Bool = true;
 	var easterEggKeys:Array<String>;
 	var allowedKeys:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	var easterEggKeysBuffer:String = '';
@@ -133,9 +134,7 @@ class TitleState extends FrameState
 				});
 			});
 		}
-
-		// the funny little silly secret
-		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
+		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE && allowEasterEggs)
 		{
 			var keyPressed:FlxKey = FlxG.keys.firstJustPressed();
 			var keyName:String = Std.string(keyPressed);
