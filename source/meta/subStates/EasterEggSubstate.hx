@@ -36,15 +36,24 @@ class EasterEggSubstate extends FrameSubState
 		eggGrp = new FlxSpriteGroup();
 		add(eggGrp);
 
-		var myText:String = RoomsUtils.getText('data/_eggs/$name.txt');
-
-		// I hate this code so much
-		var lineArray = RoomsUtils.getCoolText('data/_eggs/$name.txt');
-		if (lineArray[lineArray.length - 1].startsWith('LINK--'))
+		var myText = '';
+		if (Paths.fileExists('data/_eggs/$name.txt'))
 		{
-			myLink = lineArray[lineArray.length - 1].split('LINK--')[1];
-			myText = myText.split('\nLINK--')[0];
-			trace('Has a link $myLink');
+			myText = RoomsUtils.getText('data/_eggs/$name.txt');
+
+			// I hate this code so much
+			var lineArray = RoomsUtils.getCoolText('data/_eggs/$name.txt');
+			if (lineArray[lineArray.length - 1].startsWith('LINK--'))
+			{
+				myLink = lineArray[lineArray.length - 1].split('LINK--')[1];
+				myText = myText.split('\nLINK--')[0];
+				trace('Has a link $myLink');
+			}
+		}
+		else
+		{
+			trace('There is no text file for egg $name');
+			myText = 'Error finding file:\ndata/_eggs/$name.txt';
 		}
 
 		switch (name)
