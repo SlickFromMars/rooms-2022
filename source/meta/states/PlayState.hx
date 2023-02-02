@@ -16,6 +16,8 @@ import flixel.util.FlxTimer;
 import meta.Frame.FrameState;
 import meta.states.gameObjects.Player;
 import meta.states.gameObjects.Prop;
+import meta.states.shaders.RetroShader;
+import openfl.filters.ShaderFilter;
 #if discord_rpc
 import meta.Discord;
 #end
@@ -40,6 +42,8 @@ class PlayState extends FrameState
 
 	var propGrp:FlxTypedGroup<Prop>;
 	var jumpEmitter:FlxEmitter;
+
+	var retroShader:RetroShader;
 
 	// The UI stuff
 	var overlay:FlxSprite;
@@ -93,6 +97,14 @@ class PlayState extends FrameState
 		camFollowPos = new FlxObject(0, 0, 1, 1);
 		add(camFollowPos);
 		camGame.follow(camFollowPos, LOCKON, 1);
+
+		if (RoomsData.retroMode)
+		{
+			retroShader = new RetroShader();
+			add(retroShader);
+			var filter:ShaderFilter = new ShaderFilter(retroShader.shader);
+			camGame.setFilters([filter]);
+		}
 
 		// UI stuffs
 		overlay = new FlxSprite();

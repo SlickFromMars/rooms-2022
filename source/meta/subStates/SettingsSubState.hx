@@ -11,7 +11,7 @@ import meta.Frame.FrameSubState;
 
 class SettingsSubState extends FrameSubState
 {
-	var menuItems:Array<String> = ['Fullscreen', 'Show FPS'];
+	var menuItems:Array<String> = ['Fullscreen', 'Show FPS', 'Retro Mode'];
 	var menuHold:Int = 4;
 
 	// UI STUFF
@@ -58,6 +58,14 @@ class SettingsSubState extends FrameSubState
 					{
 						Main.fpsVar.visible = spr.checked;
 					}
+
+				case 'Retro Mode':
+					spr.checked = RoomsData.retroMode;
+					spr.callback = function()
+					{
+						RoomsData.retroMode = spr.checked;
+					}
+
 				case 'Redirect Traces':
 					spr.checked = FlxG.log.redirectTraces;
 					spr.callback = function()
