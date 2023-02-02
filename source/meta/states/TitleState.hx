@@ -40,9 +40,11 @@ class TitleState extends FrameState
 		// Hide the mouse if there is one
 		FlxG.mouse.visible = false;
 
+		#if EASTER_EGG
 		// get this stuff
 		easterEggKeys = RoomsUtils.getCoolText('data/eggList.txt');
 		// trace('Loaded eggs ' + easterEggKeys);
+		#end
 
 		#if discord_rpc
 		// Updating Discord Rich Presence
