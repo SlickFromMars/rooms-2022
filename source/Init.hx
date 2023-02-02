@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxG;
+import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
@@ -11,7 +12,8 @@ import polymod.Polymod;
 
 class Init extends FrameState
 {
-	var precacheList:Map<String, String> = new Map<String, String>();
+	var nextState:FlxState = new meta.states.OpeningState();
+	var precacheList:Map<String, String> = new Map<String, String>(); // file name, then type
 
 	var infoText:FlxText;
 
@@ -124,7 +126,7 @@ class Init extends FrameState
 		{
 			FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
 			{
-				FrameState.switchState(new meta.states.OpeningState());
+				FrameState.switchState(nextState);
 			});
 		});
 	}
