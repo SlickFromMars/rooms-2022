@@ -2,4 +2,4 @@ The source code of
 this game is
 stored on GitHub.
 Press ENTER To Go There
-LINK--https://github.com/BHS-TSA/rooms-2022
+LINK--https://github.com/SlickFromMars/rooms-2022
