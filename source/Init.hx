@@ -13,7 +13,7 @@ import polymod.Polymod;
 class Init extends FrameState
 {
 	var nextState:FlxState = new meta.states.OpeningState();
-	var precacheList:Map<String, String> = new Map<String, String>(); // file name, then type
+	var precacheList:Map<String, CacheFileType> = new Map<String, CacheFileType>(); // file name, then type
 
 	var infoText:FlxText;
 
@@ -89,11 +89,13 @@ class Init extends FrameState
 		infoText.alignment = CENTER;
 
 		// make the list
-		precacheList.set('player', 'image');
-		precacheList.set('tileset', 'image');
-		precacheList.set('littleplanet', 'music');
-		precacheList.set('newdawn', 'music');
-		precacheList.set('november', 'music');
+		precacheList.set('logo', IMAGE);
+		precacheList.set('player', IMAGE);
+		precacheList.set('tileset', IMAGE);
+		precacheList.set('hint/paper', IMAGE);
+		precacheList.set('littleplanet', MUSIC);
+		precacheList.set('newdawn', MUSIC);
+		precacheList.set('november', MUSIC);
 
 		super.create();
 
@@ -113,16 +115,14 @@ class Init extends FrameState
 			// trace('Key $key is type $type');
 			switch (type)
 			{
-				case 'image':
+				case IMAGE:
 					Paths.image(key);
-				case 'sound':
-					Paths.sound(key);
-				case 'music':
+				case MUSIC:
 					Paths.music(key);
 			}
 		}
 
-		new FlxTimer().start(1, function(tmr:FlxTimer)
+		new FlxTimer().start(1.5, function(tmr:FlxTimer)
 		{
 			FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
 			{
@@ -130,4 +130,10 @@ class Init extends FrameState
 			});
 		});
 	}
+}
+
+enum CacheFileType
+{
+	IMAGE;
+	MUSIC;
 }
