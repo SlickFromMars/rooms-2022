@@ -15,6 +15,12 @@
 	"files.exclude": {
 		"art/": true,
 		"export/": true,
-		".haxelib/": true
+		".haxelib/": true,
+		"assets/data/_levels/": true,
+		"assets/levels.ogmo": true
+	},
+	"[json]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnPaste": true
 	}
 }
