@@ -15,6 +15,7 @@ class EasterEggSubstate extends FrameSubState
 {
 	var eggName:String;
 	var myLink:String = null; // the link thingy
+	var skipNameList:Array<String> = ['sillybird', 'orange']; // things to ignore text searching
 
 	var sillySound:FlxSound;
 
@@ -52,8 +53,11 @@ class EasterEggSubstate extends FrameSubState
 		}
 		else
 		{
-			trace('There is no text file for egg $name');
-			myText = 'Error finding file:\ndata/_eggs/$name.txt';
+			if (!skipNameList.contains(name))
+			{
+				trace('There is no text file for egg $name');
+				myText = 'Error finding file:\ndata/_eggs/$name.txt';
+			}
 		}
 
 		switch (name)
