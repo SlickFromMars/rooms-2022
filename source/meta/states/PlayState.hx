@@ -137,7 +137,7 @@ class PlayState extends FrameState
 		var swagItem:String = FlxG.random.getObject(swagArray);
 		trace('Chose $swagItem from $swagArray');
 
-		map = new FlxOgmo3Loader(Paths.getOgmo(), Paths.json('_levels/$swagItem'));
+		map = new FlxOgmo3Loader(Paths.getPath('levels.ogmo'), Paths.json('_levels/$swagItem'));
 		walls = map.loadTilemap(Paths.image('tileset'), "walls");
 		walls.follow(camGame, -5);
 		walls2 = map.loadTilemap(Paths.image('tileset'), "no_collision");

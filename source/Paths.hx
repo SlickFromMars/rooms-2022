@@ -88,14 +88,6 @@ class Paths
 	}
 
 	/**
-		Returns the path to the ogmo file
-	**/
-	inline static public function getOgmo():String
-	{
-		return getPath('levels.ogmo');
-	}
-
-	/**
 	 * Adds the prefix to a file using `getPath`.
 	 * Returns whether the file exists or not
 	 * @param key The path to the file
