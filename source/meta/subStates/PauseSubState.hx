@@ -65,11 +65,11 @@ class PauseSubState extends FrameSubState
 				close();
 			}
 		}
-		else if (Controls.UP_P)
+		else if (Controls.UI_UP)
 		{
 			changeSelection(-1);
 		}
-		else if (Controls.DOWN_P)
+		else if (Controls.UI_DOWN)
 		{
 			changeSelection(1);
 		}

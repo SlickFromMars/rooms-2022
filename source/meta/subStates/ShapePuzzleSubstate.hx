@@ -78,7 +78,7 @@ class ShapePuzzleSubstate extends FrameSubState
 		}
 
 		// Do the changing thingy
-		if (Controls.LEFT_P && !meta.states.PlayState.door.isOpen)
+		if (Controls.UI_LEFT && !meta.states.PlayState.door.isOpen)
 		{
 			curWacky -= 1;
 			if (curWacky < 0)
@@ -87,7 +87,7 @@ class ShapePuzzleSubstate extends FrameSubState
 			}
 			changeAllKeys();
 		}
-		else if (Controls.RIGHT_P && !meta.states.PlayState.door.isOpen)
+		else if (Controls.UI_RIGHT && !meta.states.PlayState.door.isOpen)
 		{
 			curWacky += 1;
 			if (curWacky > 3)
@@ -96,7 +96,7 @@ class ShapePuzzleSubstate extends FrameSubState
 			}
 			changeAllKeys();
 		}
-		else if ((Controls.DOWN_P || upScroll) && !meta.states.PlayState.door.isOpen)
+		else if ((Controls.UI_DOWN || upScroll) && !meta.states.PlayState.door.isOpen)
 		{
 			currentEntry[curWacky] -= 1;
 			if (currentEntry[curWacky] < 0)
@@ -106,7 +106,7 @@ class ShapePuzzleSubstate extends FrameSubState
 
 			changeAllKeys();
 		}
-		else if ((Controls.UP_P || downScroll) && !meta.states.PlayState.door.isOpen)
+		else if ((Controls.UI_UP || downScroll) && !meta.states.PlayState.door.isOpen)
 		{
 			currentEntry[curWacky] += 1;
 			if (currentEntry[curWacky] > 4)

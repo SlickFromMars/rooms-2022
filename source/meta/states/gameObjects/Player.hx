@@ -46,13 +46,11 @@ class Player extends FlxSprite
 
 	function updateMovement()
 	{
-		// If on desktop, check the keybinds
-		#if FLX_KEYBOARD
-		up = Controls.UP;
-		down = Controls.DOWN;
-		left = Controls.LEFT;
-		right = Controls.RIGHT;
-		#end
+		// Check the keybinds
+		up = Controls.PLAYER_UP;
+		down = Controls.PLAYER_DOWN;
+		left = Controls.PLAYER_LEFT;
+		right = Controls.PLAYER_RIGHT;
 
 		// Diagonal movement math
 		if (up && down)
