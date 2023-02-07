@@ -11,7 +11,7 @@ class Player extends FlxSprite
 	var left:Bool = false;
 	var right:Bool = false;
 
-	public var lockMovement:Bool = false;
+	public var lockMovement:Bool = true;
 
 	public function new(x:Float = 0, y:Float = 0)
 	{
@@ -36,7 +36,7 @@ class Player extends FlxSprite
 	override function update(elapsed:Float)
 	{
 		// Update the movement
-		if (!lockMovement && !PlayState.localDoingOpening)
+		if (!lockMovement)
 		{
 			updateMovement();
 		}

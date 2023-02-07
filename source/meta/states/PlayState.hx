@@ -13,6 +13,7 @@ import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import lime.app.Application;
 import meta.Frame.FrameState;
 import meta.states.gameObjects.Player;
 import meta.states.gameObjects.Prop;
@@ -24,26 +25,31 @@ import meta.Discord;
 
 class PlayState extends FrameState
 {
-	// Camera stuff
-	var camGame:FlxCamera;
-	var camUI:FlxCamera;
+	// Conditions and stuff
+	public var currentMap:String;
+	public var localEndState:Bool = false;
+	public var localHideKey:Bool = false;
+	public var localDoingOpening:Bool = true;
 
+	// Camera stuff
+	public var camGame:FlxCamera;
+	public var camUI:FlxCamera;
 	public var camFollowPos:FlxObject;
 
 	var startTween:FlxTween;
 	var startTween2:FlxTween;
 
 	// The game variables
-	public static var map:FlxOgmo3Loader;
-	public static var walls:FlxTilemap;
-	public static var walls2:FlxTilemap;
-	public static var player:Player;
+	public var map:FlxOgmo3Loader;
+	public var walls:FlxTilemap;
+	public var walls2:FlxTilemap;
+	public var player:Player;
+	public var propGrp:FlxTypedGroup<Prop>;
+	public var jumpEmitter:FlxEmitter;
+
+	public var retroShader:RetroShader;
+
 	public static var door:Prop;
-
-	var propGrp:FlxTypedGroup<Prop>;
-	var jumpEmitter:FlxEmitter;
-
-	var retroShader:RetroShader;
 
 	// The UI stuff
 	var overlay:FlxSprite;
@@ -51,12 +57,7 @@ class PlayState extends FrameState
 	var denyText:FlxText;
 	var denyTween:FlxTween;
 	var skipText:FlxText;
-
-	// Conditions and things
-	var localEndState:Bool = false;
-	var localHideKey:Bool = false;
-
-	public static var localDoingOpening:Bool = true;
+	var debugText:FlxText;
 
 	override public function create()
 	{
@@ -129,15 +130,21 @@ class PlayState extends FrameState
 		skipText.cameras = [camUI];
 		skipText.alpha = 0;
 
+		debugText = new FlxText(0, FlxG.height, 0, 'DEBUG v' + Application.current.meta.get('version'), 8);
+		debugText.y -= debugText.height;
+		debugText.cameras = [camUI];
+
 		levelText.text = '- Room ' + RoomsData.roomNumber + ' -';
 		levelText.screenCenter(X);
 
 		// Build the level
 		var swagArray = RoomsUtils.getCoolText('data/_gen/' + Std.string(RoomsData.roomNumber) + '.txt');
 		var swagItem:String = FlxG.random.getObject(swagArray);
-		trace('Chose $swagItem from $swagArray');
+		currentMap = swagItem;
+		debugText.text += ' - ' + currentMap;
+		trace('Chose $currentMap from $swagArray');
 
-		map = new FlxOgmo3Loader(Paths.getPath('levels.ogmo'), Paths.json('_levels/$swagItem'));
+		map = new FlxOgmo3Loader(Paths.getPath('levels.ogmo'), Paths.json('_levels/$currentMap'));
 		walls = map.loadTilemap(Paths.image('tileset'), "walls");
 		walls.follow(camGame, -5);
 		walls2 = map.loadTilemap(Paths.image('tileset'), "no_collision");
@@ -176,6 +183,9 @@ class PlayState extends FrameState
 		add(levelText);
 		add(denyText);
 		add(skipText);
+		#if debug
+		add(debugText);
+		#end
 
 		super.create();
 		stopCompleteSpam = false;
@@ -213,6 +223,7 @@ class PlayState extends FrameState
 				{
 					skipText.alpha = 0;
 					localDoingOpening = false;
+					player.lockMovement = false;
 				}
 			});
 			startTween2 = FlxTween.tween(camGame, {zoom: 1}, transTime, {
@@ -222,6 +233,7 @@ class PlayState extends FrameState
 		else
 		{
 			localDoingOpening = false;
+			player.lockMovement = false;
 		}
 	}
 
@@ -259,6 +271,7 @@ class PlayState extends FrameState
 					skipText.alpha = 0;
 					camGame.zoom = 1;
 					localDoingOpening = false;
+					player.lockMovement = false;
 				}
 			}
 		}
