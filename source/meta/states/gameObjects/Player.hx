@@ -1,15 +1,10 @@
 package meta.states.gameObjects;
 
 import flixel.FlxSprite;
-import flixel.math.FlxPoint;
 
 class Player extends FlxSprite
 {
-	// Control variables
-	var up:Bool = false;
-	var down:Bool = false;
-	var left:Bool = false;
-	var right:Bool = false;
+	var speed:Float = 100;
 
 	public var lockMovement:Bool = true;
 
@@ -46,62 +41,28 @@ class Player extends FlxSprite
 
 	function updateMovement()
 	{
-		// Check the keybinds
-		up = Controls.PLAYER_UP;
-		down = Controls.PLAYER_DOWN;
-		left = Controls.PLAYER_LEFT;
-		right = Controls.PLAYER_RIGHT;
+		var velX = Controls.PLAYER_X;
+		var velY = Controls.PLAYER_Y;
 
-		// Diagonal movement math
-		if (up && down)
-			up = down = false;
-		if (left && right)
-			left = right = false;
-
-		if (up || down || left || right)
+		if (velX != 0 || velY != 0)
 		{
-			var newAngle:Float = 0;
-			if (up)
+			if (velX != 0 && velY != 0)
 			{
-				newAngle = -90;
-				if (left)
-					newAngle -= 45;
-				else if (right)
-					newAngle += 45;
+				velX = velX * 0.7;
+				velY = velY * 0.7;
 			}
-			else if (down)
-			{
-				newAngle = 90;
-				if (left)
-					newAngle += 45;
-				else if (right)
-					newAngle -= 45;
-			}
-			else if (left)
-				newAngle = 180;
-			else if (right)
-				newAngle = 0;
 
-			velocity.set(125, 0);
-			velocity.pivotDegrees(FlxPoint.weak(0, 0), newAngle);
+			velocity.set(velX * speed, velY * speed);
 		}
 
 		// Play animations
-		if (right)
-		{
-			animation.play('r');
-		}
-		else if (left)
-		{
-			animation.play('l');
-		}
-		else if (up)
-		{
+		if (velY < 0)
 			animation.play('u');
-		}
-		else if (down)
-		{
+		else if (velY > 0)
 			animation.play('d');
-		}
+		else if (velX < 0)
+			animation.play('l');
+		else if (velX > 0)
+			animation.play('r');
 	}
 }
