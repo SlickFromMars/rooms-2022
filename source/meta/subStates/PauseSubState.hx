@@ -15,14 +15,12 @@ class PauseSubState extends FrameSubState
 
 	var menuItems:Array<String> = [];
 	var menuItemsOG:Array<String> = ['Resume', 'Options', 'Exit To Menu'];
-	var optionItemsOG:Array<String> = ['Toggle Fullscreen'];
+	var optionItemsOG:Array<String> = ['Toggle Fullscreen', 'Toggle FPS Counter'];
 	var curSelected:Int = 0;
 
 	public function new()
 	{
 		super();
-
-		optionItemsOG.insert(1, 'Toggle FPS Counter');
 
 		#if debug
 		menuItemsOG.insert(1, 'Skip Level');
