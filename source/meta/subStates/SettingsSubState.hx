@@ -7,12 +7,13 @@ import flixel.group.FlxSpriteGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
 import meta.Frame.FrameSubState;
 
 class SettingsSubState extends FrameSubState
 {
 	var menuItems:Array<String> = ['Fullscreen', 'Show FPS', 'Retro Mode'];
-	var menuHold:Int = 4;
+	var menuHold:Int = 5;
 
 	// UI STUFF
 	var bg:FlxSprite; // The bg for the state
@@ -89,14 +90,21 @@ class SettingsSubState extends FrameSubState
 		// tween things and cameras
 		FlxTween.tween(bg, {alpha: 1}, 0.3);
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+
+		new FlxTimer().start(1, function(tmr:FlxTimer)
+		{
+			allowConfirm = true;
+		});
 	}
+
+	var allowConfirm:Bool = false;
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
 		// Check to see if the player wants to exit
-		if (Controls.BACK || Controls.CONFIRM_TERTIARY)
+		if ((Controls.BACK || Controls.CONFIRM_TERTIARY) && allowConfirm)
 		{
 			FlxG.mouse.visible = false;
 			close();

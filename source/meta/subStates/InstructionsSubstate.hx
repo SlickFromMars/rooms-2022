@@ -45,7 +45,7 @@ class InstructionsSubstate extends FrameSubState
 		super.update(elapsed);
 
 		// Check to see if the player wants to exit
-		if (Controls.BACK || Controls.CONFIRM_SECONDARY)
+		if ((Controls.BACK || Controls.CONFIRM_SECONDARY) && helpText.alpha == 1)
 		{
 			stopSpam = true;
 			FlxTween.tween(helpText, {alpha: 0}, 0.3, {

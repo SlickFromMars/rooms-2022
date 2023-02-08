@@ -4,7 +4,7 @@ import flixel.FlxSprite;
 
 class Player extends FlxSprite
 {
-	var speed:Float = 100;
+	var speed:Float = 125;
 
 	public var lockMovement:Bool = true;
 
