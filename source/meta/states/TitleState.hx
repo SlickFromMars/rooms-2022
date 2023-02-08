@@ -120,7 +120,7 @@ class TitleState extends FrameState
 		{
 			openSubState(new meta.subStates.SettingsSubState());
 		}
-		else if (FlxG.keys.anyJustPressed([ENTER]) && !stopSpam && beginText.alpha == 1)
+		else if ((FlxG.keys.anyJustPressed([ENTER]) || Controls.CONFIRM) && !stopSpam && beginText.alpha == 1)
 		{
 			// Stop people from spamming the button
 			stopSpam = true;

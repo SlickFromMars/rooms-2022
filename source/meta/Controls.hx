@@ -54,7 +54,7 @@ class Controls
 			UI_LEFT = gamepad.justPressed.DPAD_LEFT || left;
 			UI_RIGHT = gamepad.justPressed.DPAD_RIGHT || right;
 			CONFIRM = gamepad.justPressed.X || gamepad.justPressed.A;
-			BACK = gamepad.justPressed.GUIDE;
+			BACK = gamepad.justPressed.B;
 			PAUSE = gamepad.justPressed.START;
 			FULLSCREEN = false;
 		}
