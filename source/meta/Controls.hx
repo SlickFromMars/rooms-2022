@@ -17,6 +17,8 @@ class Controls
 	public static var UI_LEFT:Bool = false;
 	public static var UI_RIGHT:Bool = false;
 	public static var CONFIRM:Bool = false;
+	public static var CONFIRM_SECONDARY:Bool = false;
+	public static var CONFIRM_TERTIARY:Bool = false;
 	public static var BACK:Bool = false;
 	public static var PAUSE:Bool = false;
 	public static var FULLSCREEN:Bool = false;
@@ -53,7 +55,9 @@ class Controls
 			UI_DOWN = gamepad.justPressed.DPAD_DOWN || down;
 			UI_LEFT = gamepad.justPressed.DPAD_LEFT || left;
 			UI_RIGHT = gamepad.justPressed.DPAD_RIGHT || right;
-			CONFIRM = gamepad.justPressed.X || gamepad.justPressed.A;
+			CONFIRM = gamepad.justPressed.X;
+			CONFIRM_SECONDARY = gamepad.justPressed.Y;
+			CONFIRM_TERTIARY = gamepad.justPressed.A;
 			BACK = gamepad.justPressed.B;
 			PAUSE = gamepad.justPressed.START;
 			FULLSCREEN = false;
@@ -72,6 +76,8 @@ class Controls
 			UI_LEFT = FlxG.keys.anyJustPressed([FlxKey.LEFT, FlxKey.A]);
 			UI_RIGHT = FlxG.keys.anyJustPressed([FlxKey.RIGHT, FlxKey.D]);
 			CONFIRM = FlxG.keys.anyJustPressed([FlxKey.ENTER, FlxKey.E]);
+			CONFIRM_SECONDARY = FlxG.keys.anyJustPressed([FlxKey.TAB]);
+			CONFIRM_TERTIARY = FlxG.keys.anyJustPressed([FlxKey.SHIFT]);
 			BACK = FlxG.keys.anyJustPressed([FlxKey.ESCAPE, FlxKey.SPACE]);
 			PAUSE = FlxG.keys.anyJustPressed([FlxKey.P, FlxKey.ESCAPE]);
 			FULLSCREEN = FlxG.keys.anyJustPressed([FlxKey.F11]);

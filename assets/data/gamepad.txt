@@ -1,0 +1,5 @@
+Movement - Left Stick or DPAD
+Interact - X
+Interact With Glowing Objects
+Go Back - B
+Pause - START

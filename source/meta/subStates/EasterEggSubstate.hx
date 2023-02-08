@@ -60,6 +60,11 @@ class EasterEggSubstate extends FrameSubState
 			}
 		}
 
+		if (Controls.CONTROL_SCHEME == GAMEPAD)
+		{
+			myText = myText.replace('ENTER', 'X');
+		}
+
 		switch (name)
 		{
 			case 'sillybird': // in case you wanted to be silly

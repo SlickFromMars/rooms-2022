@@ -96,7 +96,7 @@ class SettingsSubState extends FrameSubState
 		super.update(elapsed);
 
 		// Check to see if the player wants to exit
-		if (Controls.BACK || FlxG.keys.anyJustPressed([SHIFT]))
+		if (Controls.BACK || Controls.CONFIRM_TERTIARY)
 		{
 			FlxG.mouse.visible = false;
 			close();

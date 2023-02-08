@@ -59,9 +59,9 @@ class TitleState extends FrameState
 		logo.antialiasing = true;
 		logo.screenCenter();
 
-		beginText = new FlxText(0, FlxG.height - 10, 0, 'Press ENTER to Begin\nPress TAB for Instructions\nPress SHIFT for Settings', 8);
+		beginText = new FlxText(0, FlxG.height - 10, FlxG.width, '', 8);
+		updateUIText();
 		beginText.alignment = CENTER;
-		beginText.screenCenter(X);
 		beginText.alpha = 0;
 
 		// Based off code from VSRetro, thanks guys
@@ -112,15 +112,15 @@ class TitleState extends FrameState
 		super.update(elapsed);
 
 		// Check keys
-		if (FlxG.keys.anyJustPressed([TAB]))
+		if (Controls.CONFIRM_SECONDARY)
 		{
 			openSubState(new meta.subStates.InstructionsSubstate());
 		}
-		else if (FlxG.keys.anyJustPressed([SHIFT]))
+		else if (Controls.CONFIRM_TERTIARY)
 		{
 			openSubState(new meta.subStates.SettingsSubState());
 		}
-		else if ((FlxG.keys.anyJustPressed([ENTER]) || Controls.CONFIRM) && !stopSpam && beginText.alpha == 1)
+		else if (Controls.CONFIRM && !stopSpam && beginText.alpha == 1)
 		{
 			// Stop people from spamming the button
 			stopSpam = true;
@@ -166,5 +166,18 @@ class TitleState extends FrameState
 			}
 		}
 		#end
+	}
+
+	override function updateUIText()
+	{
+		lastTextUpdate = Controls.CONTROL_SCHEME;
+
+		switch (Controls.CONTROL_SCHEME)
+		{
+			case KEYBOARD:
+				beginText.text = 'Press ENTER to Begin\nPress TAB for Instructions\nPress SHIFT for Settings';
+			case GAMEPAD:
+				beginText.text = 'Press X to Begin\nPress Y for Instructions\nPress A for Settings';
+		}
 	}
 }

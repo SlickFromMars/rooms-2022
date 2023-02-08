@@ -27,7 +27,8 @@ class CompleteState extends FrameState
 		#end
 
 		// Setup the UI
-		winText = new FlxText(0, 0, 0, 'To Be Continued...\nYou escaped the dungeon.\nPress ENTER to return to the menu.', 8);
+		winText = new FlxText(0, 0, 0, '', 8);
+		updateUIText();
 		winText.alignment = CENTER;
 		winText.screenCenter();
 		winText.alpha = 0;
@@ -62,5 +63,16 @@ class CompleteState extends FrameState
 			RoomsData.roomNumber = 1;
 			FrameState.switchState(new TitleState());
 		});
+	}
+
+	override function updateUIText()
+	{
+		switch (Controls.CONTROL_SCHEME)
+		{
+			case KEYBOARD:
+				winText.text = 'To Be Continued...\nYou escaped the dungeon.\nPress ENTER to return to the menu.';
+			case GAMEPAD:
+				winText.text = 'To Be Continued...\nYou escaped the dungeon.\nPress X to return to the menu.';
+		}
 	}
 }

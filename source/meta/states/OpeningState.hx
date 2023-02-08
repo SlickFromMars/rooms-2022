@@ -24,8 +24,7 @@ class OpeningState extends FrameState
 		text2.alignment = text1.alignment;
 		text2.alpha = text1.alpha;
 
-		skipText = new FlxText(FlxG.width, FlxG.height, 0, 'Press ENTER To Skip', 8);
-		skipText.x -= skipText.width;
+		skipText = new FlxText(FlxG.width, FlxG.height, 0, '', 8);
 		skipText.y -= skipText.height;
 		skipText.alpha = text2.alpha;
 
@@ -76,6 +75,19 @@ class OpeningState extends FrameState
 			}
 		}
 		super.update(elapsed);
+	}
+
+	override function updateUIText()
+	{
+		switch (Controls.CONTROL_SCHEME)
+		{
+			case KEYBOARD:
+				skipText.text = 'Press ENTER To Skip';
+			case GAMEPAD:
+				skipText.text = 'Press X To Skip';
+		}
+
+		skipText.x = FlxG.width - skipText.width;
 	}
 
 	var stopSpam:Bool = false;

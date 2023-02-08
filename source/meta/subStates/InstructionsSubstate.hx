@@ -22,9 +22,9 @@ class InstructionsSubstate extends FrameSubState
 		bg.scrollFactor.set();
 		add(bg);
 
-		helpText = new FlxText(0, 0, 0, RoomsUtils.getText('data/keybinds.txt'), 8);
+		helpText = new FlxText(0, 0, FlxG.width, '', 8);
 		helpText.alignment = CENTER;
-		helpText.screenCenter();
+		updateUIText();
 		add(helpText);
 
 		// set alphas
@@ -45,7 +45,7 @@ class InstructionsSubstate extends FrameSubState
 		super.update(elapsed);
 
 		// Check to see if the player wants to exit
-		if (Controls.BACK || FlxG.keys.anyJustPressed([TAB]))
+		if (Controls.BACK || Controls.CONFIRM_SECONDARY)
 		{
 			stopSpam = true;
 			FlxTween.tween(helpText, {alpha: 0}, 0.3, {
@@ -55,5 +55,18 @@ class InstructionsSubstate extends FrameSubState
 				}
 			});
 		}
+	}
+
+	override function updateUIText()
+	{
+		switch (Controls.CONTROL_SCHEME)
+		{
+			case KEYBOARD:
+				helpText.text = RoomsUtils.getText('data/keybinds.txt');
+			case GAMEPAD:
+				helpText.text = RoomsUtils.getText('data/gamepad.txt');
+		}
+
+		helpText.screenCenter(Y);
 	}
 }

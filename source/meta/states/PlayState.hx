@@ -124,7 +124,7 @@ class PlayState extends FrameState
 		denyText.cameras = [camUI];
 		denyText.alpha = 0;
 
-		skipText = new FlxText(FlxG.width, FlxG.height, 0, 'Press ENTER To Skip', 8);
+		skipText = new FlxText(FlxG.width, FlxG.height, 0, '', 8);
 		skipText.x -= skipText.width;
 		skipText.y -= skipText.height;
 		skipText.cameras = [camUI];
@@ -258,7 +258,7 @@ class PlayState extends FrameState
 		}
 		else
 		{
-			if (FlxG.keys.anyJustPressed([SPACE]))
+			if (Controls.CONFIRM)
 			{
 				if (skipText.alpha == 0)
 				{
@@ -275,6 +275,19 @@ class PlayState extends FrameState
 				}
 			}
 		}
+	}
+
+	override function updateUIText()
+	{
+		switch (Controls.CONTROL_SCHEME)
+		{
+			case KEYBOARD:
+				skipText.text = 'Press ENTER To Skip';
+			case GAMEPAD:
+				skipText.text = 'Press X To Skip';
+		}
+
+		skipText.x = FlxG.width - skipText.width;
 	}
 
 	function checkPlayerCollision()
