@@ -33,47 +33,22 @@ class HintSubstate extends FrameSubState
 		switch (hintType)
 		{
 			case 'default':
-				var spr:FlxText = new FlxText(0, 0, 0, 'This is a hint.\n:)', 16);
-				spr.color = 0x403C3C;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
+				textHotCreate('This is a hint.\n:)', 16);
 
 			case 'welcome':
-				var spr:FlxText = new FlxText(0, 0, 0, 'Welcome To ROOMS!\nThis is a hint.\nRead hints to learn\nabout the puzzles.', 16);
-				spr.color = 0x403C3C;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
+				textHotCreate('Welcome To ROOMS!\nThis is a hint.\nRead hints to learn\nabout the puzzles.', 16);
 
 			case 'items':
-				var spr:FlxText = new FlxText(0, 0, 0, 'You can interact with\ncertain items like\nthe key up ahead.\nGo collect it.', 14);
-				spr.color = 0x403C3C;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
+				textHotCreate('You can interact with\ncertain items like\nthe key up ahead.\nGo collect it.', 14);
 
 			case 'ready':
-				var spr:FlxText = new FlxText(0, 0, 0, 'You now know the basics.\nGo to the door to proceed.\nGood luck!', 14);
-				spr.color = 0x403C3C;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
+				textHotCreate('You now know the basics.\nGo to the door to proceed.\nGood luck!', 14);
 
 			case 'keyInst':
-				var spr:FlxText = new FlxText(0, 0, 0, 'Collect The Hidden Key\nThen Proceed To The\nDoor To Continue.', 14);
-				spr.color = 0x403C3C;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
+				textHotCreate('Collect The Hidden Key\nThen Proceed To The\nDoor To Continue.', 14);
 
 			case 'shapeInst':
-				var spr:FlxText = new FlxText(0, 0, 0, 'Locate Hints To Decipher\nThe Shape Combination.\nEnter The Combo In The\nTerminal Near The Door.',
-					14);
-				spr.color = 0x403C3C;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
+				textHotCreate('Locate Hints To Decipher\nThe Shape Combination.\nEnter The Combo In The\nTerminal Near The Door.', 14);
 
 			case 'solution':
 				var spr:FlxText = new FlxText(0, 0, 0, '', 26);
@@ -109,18 +84,10 @@ class HintSubstate extends FrameSubState
 				}
 
 			case 'jumpInst':
-				var spr:FlxText = new FlxText(0, 0, 0, 'Interact With Red Arrows\nTo Fly Across The Chasm.\nFirst Find The Key\nThen Locate The Door', 14);
-				spr.color = 0x403C3C;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
+				textHotCreate('Interact With Red Arrows\nTo Fly Across The Chasm.\nFirst Find The Key\nThen Locate The Door', 14);
 
 			case 'ending':
-				var spr:FlxText = new FlxText(0, 0, 0, 'The Exit Is Near.\nContinue Forward, Player!', 14);
-				spr.color = 0x403C3C;
-				spr.alignment = CENTER;
-				spr.screenCenter();
-				decorGrp.add(spr);
+				textHotCreate('The Exit Is Near.\nContinue Forward, Player!', 14);
 
 			default:
 				FlxG.log.warn('No listed ui for hint ' + hintType);
@@ -154,5 +121,14 @@ class HintSubstate extends FrameSubState
 				}
 			});
 		}
+	}
+
+	function textHotCreate(text:String, size:Int)
+	{
+		var spr:FlxText = new FlxText(0, 0, 0, text, size);
+		spr.color = 0x403C3C;
+		spr.alignment = CENTER;
+		spr.screenCenter();
+		decorGrp.add(spr);
 	}
 }
