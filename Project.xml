@@ -43,7 +43,6 @@
 	<library name="shared" preload="true" />
 
 	<assets path="assets/levels" library="levels" />
-	<assets path="assets/levels" library="levels" />
 	<assets path="assets/shared" library="shared" exclude="*.ogg" if="web" />
 	<assets path="assets/shared" library="shared" exclude="*.mp3" unless="web" />
 	<assets path="assets/levels.ogmo" />
