@@ -26,6 +26,7 @@ class TitleState extends FrameState
 
 	// UI variables
 	var logo:FlxSprite; // The wacky logo
+	var logoTween:FlxTween; // silly tween
 	var beginText:FlxText; // The prompt to press start
 	var versionText:FlxText; // The version
 	var screen:FlxSprite; // Funky gradient
@@ -111,7 +112,8 @@ class TitleState extends FrameState
 		}
 
 		// Epic stuff
-		FlxTween.tween(logo, {angle: 3}, 3, {type: PINGPONG, ease: FlxEase.quadInOut});
+		logoTween = FlxTween.tween(logo, {angle: 3}, 3, {type: PINGPONG, ease: FlxEase.quadInOut});
+		logoTween.start();
 
 		if (playIntro)
 		{
@@ -159,13 +161,9 @@ class TitleState extends FrameState
 			// Do Funky Effects and then go to PlayState
 			FlxG.sound.music.fadeOut(1.1);
 
-			FlxFlicker.flicker(beginText, 1.1, 0.15, false, true, function(flick:FlxFlicker)
+			FlxFlicker.flicker(beginText, 1.1, 0.15, true, true, function(flick:FlxFlicker)
 			{
-				FlxG.sound.music.stop();
-				FlxG.camera.fade(FlxColor.BLACK, 0.5, false, function()
-				{
-					FrameState.switchState(new PlayState());
-				});
+				epicExit();
 			});
 		}
 		#if EASTER_EGG
@@ -197,6 +195,26 @@ class TitleState extends FrameState
 			}
 		}
 		#end
+	}
+
+	function epicExit()
+	{
+		// DO COOL STUFF!
+		logoTween.cancel();
+
+		FlxTween.tween(versionText, {y: -versionText.height}, 0.5, {ease: FlxEase.quadIn});
+		FlxTween.tween(logo, {angle: 0}, 0.5, {ease: FlxEase.quadIn});
+		FlxTween.tween(beginText, {y: FlxG.height}, 1, {startDelay: 0.5, ease: FlxEase.quadIn});
+		FlxTween.tween(logo, {y: FlxG.height}, 1.5, {startDelay: 2, ease: FlxEase.quadIn});
+
+		FlxG.sound.music.fadeOut(3, 0, function(twn:FlxTween)
+		{
+			FlxG.sound.music.stop();
+			FlxG.camera.fade(FlxColor.BLACK, 1, false, function()
+			{
+				FrameState.switchState(new meta.states.PlayState());
+			});
+		});
 	}
 
 	override function updateUIText()
