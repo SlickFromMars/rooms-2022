@@ -6,14 +6,6 @@
 		"LICENSE.md": true,
 		"assets/preload/data/_eggs/*": true
 	},
-	"[haxe]": {
-		"editor.formatOnSave": true,
-		"editor.formatOnPaste": true,
-		"editor.codeActionsOnSave": {
-			"source.sortImports": true
-		}
-	},
-	"haxe.enableExtendedIndentation": true,
 	"files.exclude": {
 		"art/": true,
 		"export/": true,
@@ -21,6 +13,14 @@
 		"assets/data/_levels/": true,
 		"assets/levels.ogmo": true
 	},
+	"[haxe]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnPaste": true,
+		"editor.codeActionsOnSave": {
+			"source.sortImports": true
+		},
+	},
+	"haxe.enableExtendedIndentation": true,
 	"[json]": {
 		"editor.formatOnSave": true,
 		"editor.formatOnPaste": true
@@ -28,6 +28,6 @@
 	"[xml]": {
 		"editor.defaultFormatter": "redhat.vscode-xml",
 		"editor.formatOnSave": true,
-		"editor.formatOnPaste": true
+		"editor.formatOnPaste": true,
 	}
 }
