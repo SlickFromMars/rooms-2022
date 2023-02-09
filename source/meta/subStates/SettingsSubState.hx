@@ -36,10 +36,6 @@ class SettingsSubState extends FrameSubState
 		titleText.alignment = CENTER;
 		titleText.screenCenter(X);
 
-		#if debug
-		menuItems.push('Redirect Traces');
-		#end
-
 		var startY = 5 + titleText.y + titleText.height;
 		for (item in menuItems)
 		{
@@ -65,13 +61,6 @@ class SettingsSubState extends FrameSubState
 					spr.callback = function()
 					{
 						RoomsData.retroMode = spr.checked;
-					}
-
-				case 'Redirect Traces':
-					spr.checked = FlxG.log.redirectTraces;
-					spr.callback = function()
-					{
-						FlxG.log.redirectTraces = spr.checked;
 					}
 			}
 			spr.screenCenter(X);
