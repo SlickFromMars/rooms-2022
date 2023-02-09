@@ -88,13 +88,13 @@ class SettingsSubState extends FrameSubState
 		bg.alpha = 0;
 
 		// tween things and cameras
-		FlxTween.tween(bg, {alpha: 1}, 0.3);
-		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
-
-		new FlxTimer().start(1, function(tmr:FlxTimer)
-		{
-			allowConfirm = true;
+		FlxTween.tween(bg, {alpha: 1}, 0.3, {
+			onComplete: function(twn:FlxTween)
+			{
+				allowConfirm = true;
+			}
 		});
+		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 	}
 
 	var allowConfirm:Bool = false;
