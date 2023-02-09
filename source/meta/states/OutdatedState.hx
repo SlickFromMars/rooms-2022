@@ -8,6 +8,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import meta.Frame.FrameState;
 
+#if CHECK_FOR_UPDATES
 class OutdatedState extends FrameState
 {
 	var leftState:Bool = false;
@@ -84,3 +85,4 @@ class OutdatedState extends FrameState
 		warnText.screenCenter(Y);
 	}
 }
+#end

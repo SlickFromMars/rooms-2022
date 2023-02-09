@@ -7,10 +7,12 @@ import flixel.util.FlxTimer;
 import lime.app.Application;
 import meta.Frame.FrameState;
 import meta.states.OpeningState;
-import meta.states.OutdatedState;
 
 using StringTools;
 
+#if CHECK_FOR_UPDATES
+import meta.states.OutdatedState;
+#end
 #if polymod
 import polymod.Polymod;
 #end
@@ -160,10 +162,14 @@ class Init extends FrameState
 		{
 			FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
 			{
+				#if CHECK_FOR_UPDATES
 				if (mustUpdate)
 					FrameState.switchState(new OutdatedState());
 				else
 					FrameState.switchState(new OpeningState());
+				#else
+				FrameState.switchState(new OpeningState());
+				#end
 			});
 		});
 	}
