@@ -11,7 +11,6 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
-import lime.app.Application;
 import meta.Frame.FrameState;
 
 using StringTools;
@@ -97,7 +96,7 @@ class TitleState extends FrameState
 		add(beginText);
 		add(logo);
 
-		versionText = new FlxText(0, 12, 0, 'v' + Application.current.meta.get('version'), 8);
+		versionText = new FlxText(0, 12, 0, 'v' + Init.gameVersion, 8);
 		versionText.x = FlxG.width - (versionText.width + 2);
 		add(versionText);
 

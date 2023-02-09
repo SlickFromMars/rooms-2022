@@ -13,7 +13,6 @@ import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import lime.app.Application;
 import meta.Frame.FrameState;
 import meta.states.gameObjects.Player;
 import meta.states.gameObjects.Prop;
@@ -130,7 +129,7 @@ class PlayState extends FrameState
 		skipText.cameras = [camUI];
 		skipText.alpha = 0;
 
-		debugText = new FlxText(0, FlxG.height, 0, 'DEBUG v' + Application.current.meta.get('version'), 8);
+		debugText = new FlxText(0, FlxG.height, 0, 'DEBUG v' + Init.gameVersion, 8);
 		debugText.y -= debugText.height;
 		debugText.cameras = [camUI];
 

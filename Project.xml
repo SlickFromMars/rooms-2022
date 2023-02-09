@@ -21,6 +21,7 @@
 	<!-- ________________________________ Defines _______________________________ -->
 
 	<define name="EASTER_EGG" />
+	<define name="CHECK_FOR_UPDATES" if="desktop release" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 

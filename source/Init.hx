@@ -1,18 +1,25 @@
 package;
 
 import flixel.FlxG;
-import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import lime.app.Application;
 import meta.Frame.FrameState;
+import meta.states.OpeningState;
+import meta.states.OutdatedState;
+
+using StringTools;
+
 #if polymod
 import polymod.Polymod;
 #end
 
 class Init extends FrameState
 {
-	var nextState:FlxState = new meta.states.OpeningState();
+	public static var gameVersion:String;
+
+	var mustUpdate:Bool = false;
 	var precacheList:Map<String, CacheFileType> = new Map<String, CacheFileType>(); // file name, then type
 
 	var infoText:FlxText;
@@ -35,6 +42,33 @@ class Init extends FrameState
 		{
 			FlxG.sound.muted = FlxG.save.data.mute;
 		}
+
+		gameVersion = Application.current.meta.get('version');
+
+		#if CHECK_FOR_UPDATES
+		trace('Checking for update.');
+		var http = new haxe.Http("https://raw.githubusercontent.com/SlickFromMars/rooms-2022/main/gitVersion.txt");
+
+		http.onData = function(data:String)
+		{
+			OutdatedState.updateVersion = data.split('\n')[0].trim();
+			var curVersion:String = Init.gameVersion;
+			trace('version online: ' + OutdatedState.updateVersion + ', your version: ' + curVersion);
+
+			if (OutdatedState.updateVersion != curVersion)
+			{
+				trace('versions arent matching!');
+				mustUpdate = true;
+			}
+		}
+
+		http.onError = function(error)
+		{
+			trace('error: $error');
+		}
+
+		http.request();
+		#end
 
 		#if polymod
 		// Get all directories in the mod folder
@@ -126,7 +160,10 @@ class Init extends FrameState
 		{
 			FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
 			{
-				FrameState.switchState(nextState);
+				if (mustUpdate)
+					FrameState.switchState(new OutdatedState());
+				else
+					FrameState.switchState(new OpeningState());
 			});
 		});
 	}
