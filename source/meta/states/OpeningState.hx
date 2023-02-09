@@ -52,7 +52,7 @@ class OpeningState extends FrameState
 							startDelay: 5,
 							onComplete: function(twn:FlxTween)
 							{
-								FrameState.switchState(new TitleState());
+								FrameState.switchState(new TitleState(true));
 							}
 						});
 					}
@@ -101,7 +101,7 @@ class OpeningState extends FrameState
 			FlxG.camera.fade(FlxColor.BLACK, 0.5, false, function()
 			{
 				FlxG.sound.music.volume = 0.7;
-				FrameState.switchState(new TitleState());
+				FrameState.switchState(new TitleState(true));
 			});
 		}
 	}

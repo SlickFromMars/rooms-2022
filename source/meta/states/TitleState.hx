@@ -22,6 +22,8 @@ import meta.Discord;
 
 class TitleState extends FrameState
 {
+	var playIntro:Bool;
+
 	// UI variables
 	var logo:FlxSprite; // The wacky logo
 	var beginText:FlxText; // The prompt to press start
@@ -35,6 +37,12 @@ class TitleState extends FrameState
 	var allowedKeys:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	var easterEggKeysBuffer:String = '';
 	#end
+
+	public function new(?playIntro:Bool = false)
+	{
+		this.playIntro = playIntro;
+		super();
+	}
 
 	override public function create()
 	{
@@ -102,8 +110,17 @@ class TitleState extends FrameState
 		}
 
 		// Epic transition
-		FlxG.camera.fade(FlxColor.BLACK, 3, true);
-		FlxTween.tween(beginText, {alpha: 1, y: beginText.y - beginText.height}, 3);
+		if (playIntro)
+		{
+			FlxG.camera.fade(FlxColor.BLACK, 3, true);
+			FlxTween.tween(beginText, {alpha: 1, y: beginText.y - beginText.height}, 3);
+		}
+		else
+		{
+			FlxG.camera.fade(FlxColor.BLACK, 0.1, true);
+			beginText.alpha = 1;
+			beginText.y = beginText.y - beginText.height;
+		}
 	}
 
 	var stopSpam:Bool = false;
