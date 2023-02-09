@@ -36,6 +36,7 @@
 	<section if="EASTER_EGG">
 		<assets path="assets/secret" rename="assets" exclude="*.ogg" if="web" />
 		<assets path="assets/secret" rename="assets" exclude="*.mp3" unless="web" />
+		<assets path="docs/README.txt" rename="assets/data/_eggs/slick.txt" />
 	</section>
 
 	<library name="levels" preload="true" />
@@ -48,7 +49,6 @@
 	<assets path="assets/levels.ogmo" />
 
 	<assets path="docs/README.txt" rename="readme.txt" />
-	<assets path="docs/README.txt" rename="assets/data/_eggs/slick.txt" />
 	<assets path="LICENSE.md" rename="LICENSE.txt" />
 
 	<assets path='example_mods' rename='mods' if="desktop" unless="neko" />
