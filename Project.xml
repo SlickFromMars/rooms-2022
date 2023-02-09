@@ -39,7 +39,7 @@
 	</section>
 
 	<library name="levels" preload="true" />
-	<library name="shared" preload="false" />
+	<library name="shared" preload="true" />
 
 	<assets path="assets/levels" library="levels" />
 	<assets path="assets/levels" library="levels" />
