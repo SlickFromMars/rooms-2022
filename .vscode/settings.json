@@ -28,6 +28,6 @@
 	"[xml]": {
 		"editor.defaultFormatter": "redhat.vscode-xml",
 		"editor.formatOnSave": true,
-		"editor.formatOnPaste": true,
+		"editor.formatOnPaste": true
 	}
 }
