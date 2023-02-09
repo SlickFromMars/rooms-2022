@@ -12,6 +12,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import lime.app.Application;
+import lime.system.System;
 import meta.Frame.FrameState;
 
 using StringTools;
@@ -112,6 +113,14 @@ class TitleState extends FrameState
 	{
 		super.update(elapsed);
 
+		#if desktop
+		// Check if you want to close
+		if (Controls.BACK)
+		{
+			System.exit(0);
+		}
+		#end
+
 		var pressedEnter = Controls.CONFIRM;
 		if (Controls.CONTROL_SCHEME == GAMEPAD)
 		{
@@ -190,5 +199,15 @@ class TitleState extends FrameState
 			case GAMEPAD:
 				beginText.text = 'Press START to Begin\nPress Y for Instructions\nPress A for Settings';
 		}
+
+		#if desktop
+		switch (Controls.CONTROL_SCHEME)
+		{
+			case KEYBOARD:
+				beginText.text += '\nPress ESC to Close';
+			case GAMEPAD:
+				beginText.text += '\nPress B to Close';
+		}
+		#end
 	}
 }
