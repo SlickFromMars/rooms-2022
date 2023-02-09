@@ -11,11 +11,11 @@ import meta.Frame.FrameSubState;
 
 using StringTools;
 
+#if EASTER_EGG
 class EasterEggSubstate extends FrameSubState
 {
 	var eggName:String;
 	var myLink:String = null; // the link thingy
-	var skipNameList:Array<String> = ['sillybird', 'orange']; // things to ignore text searching
 
 	var sillySound:FlxSound;
 
@@ -51,25 +51,12 @@ class EasterEggSubstate extends FrameSubState
 				trace('Has a link $myLink');
 			}
 		}
-		else
-		{
-			if (!skipNameList.contains(name))
-			{
-				trace('There is no text file for egg $name');
-				myText = 'Error finding file:\ndata/_eggs/$name.txt';
-			}
-		}
-
-		if (Controls.CONTROL_SCHEME == GAMEPAD)
-		{
-			myText = myText.replace('ENTER', 'X');
-		}
 
 		switch (name)
 		{
 			case 'sillybird': // in case you wanted to be silly
 				var spr = new FlxSprite();
-				spr.loadGraphic(Paths.image('eggs/sillybird'));
+				spr.loadGraphic(Paths.image('sillybird'));
 				spr.screenCenter();
 				eggGrp.add(spr);
 
@@ -91,7 +78,7 @@ class EasterEggSubstate extends FrameSubState
 
 			case 'orange': // orange
 				var spr = new FlxSprite();
-				spr.loadGraphic(Paths.image('eggs/lethimcook'));
+				spr.loadGraphic(Paths.image('lethimcook'));
 				spr.setGraphicSize(Std.int(FlxG.width * 0.8));
 				spr.screenCenter();
 				eggGrp.add(spr);
@@ -153,3 +140,4 @@ class EasterEggSubstate extends FrameSubState
 		}
 	}
 }
+#end

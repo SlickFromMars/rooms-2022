@@ -7,14 +7,14 @@ using StringTools;
 
 class RoomsUtils
 {
-	inline static public function getText(key:String):String
+	inline static public function getText(key:String, ?library:String):String
 	{
-		return OpenFlAssets.getText(Paths.getPath('$key'));
+		return OpenFlAssets.getText(Paths.getPath(key, library));
 	}
 
-	inline static public function getCoolText(key:String):Array<String>
+	inline static public function getCoolText(key:String, ?library:String):Array<String>
 	{
-		var daList:Array<String> = getText(key).trim().split('\n');
+		var daList:Array<String> = getText(key, library).trim().split('\n');
 
 		for (i in 0...daList.length)
 		{

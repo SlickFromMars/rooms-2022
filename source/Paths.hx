@@ -18,7 +18,32 @@ class Paths
 	 * @param file The path of the file.
 	 * @return The new path.
 	 */
-	inline public static function getPath(file:String):String
+	inline public static function getPath(file:String, ?library:Null<String> = null):String
+	{
+		if (library != null)
+			return getLibraryPath(file, library);
+
+		var sharedPath:String = getLibraryPathForce(file, 'shared');
+		if (OpenFlAssets.exists(sharedPath))
+			return sharedPath;
+
+		return getPreloadPath(file);
+	}
+
+	inline public static function getLibraryPath(file:String, library:String = "preload"):String
+	{
+		if (library == "preload" || library == "default")
+			return getPreloadPath(file);
+
+		return getLibraryPathForce(file, library);
+	}
+
+	inline static function getLibraryPathForce(file:String, library:String):String
+	{
+		return '$library:assets/$library/$file';
+	}
+
+	inline public static function getPreloadPath(file:String):String
 	{
 		return 'assets/$file';
 	}
@@ -28,9 +53,9 @@ class Paths
 	 * @param key The file title.
 	 * @return The new path.
 	 */
-	inline static public function txt(key:String):String
+	inline static public function txt(key:String, ?library:String):String
 	{
-		return getPath('data/$key.txt');
+		return getPath('data/$key.txt', library);
 	}
 
 	/**
@@ -38,9 +63,9 @@ class Paths
 	 * @param key The file title.
 	 * @return The new path.
 	 */
-	inline static public function json(key:String):String
+	inline static public function json(key:String, ?library:String):String
 	{
-		return getPath('data/$key.json');
+		return getPath('$key.json', library);
 	}
 
 	/**
@@ -48,9 +73,9 @@ class Paths
 	 * @param key The file title.
 	 * @return Returns the `Sound`.
 	 */
-	inline static public function sound(key:String):Sound
+	inline static public function sound(key:String, ?library:String):Sound
 	{
-		var sound:Sound = returnSound('sounds', key);
+		var sound:Sound = returnSound('sounds', key, library);
 		return sound;
 	}
 
@@ -59,9 +84,9 @@ class Paths
 	 * @param key The file title.
 	 * @return Returns the `Sound`.
 	 */
-	inline static public function music(key:String):Sound
+	inline static public function music(key:String, ?library:String):Sound
 	{
-		var music:Sound = returnSound('music', key);
+		var music:Sound = returnSound('music', key, library);
 		return music;
 	}
 
@@ -70,9 +95,9 @@ class Paths
 	 * @param key The file title.
 	 * @return Returns the `FlxGraphic`.
 	 */
-	inline static public function image(key:String):FlxGraphic
+	inline static public function image(key:String, ?library:String):FlxGraphic
 	{
-		var returnAsset:FlxGraphic = returnGraphic(key);
+		var returnAsset:FlxGraphic = returnGraphic(key, library);
 		return (returnAsset);
 	}
 
@@ -93,9 +118,9 @@ class Paths
 	 * @param key The path to the file
 	 * @return Does it exist?	
 	**/
-	inline static public function fileExists(key:String):Bool
+	inline static public function fileExists(key:String, ?library:String):Bool
 	{
-		if (OpenFlAssets.exists(getPath(key)))
+		if (OpenFlAssets.exists(getPath(key, library)))
 		{
 			return true;
 		}
@@ -104,9 +129,9 @@ class Paths
 
 	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
 
-	static function returnGraphic(key:String)
+	static function returnGraphic(key:String, ?library:String)
 	{
-		var path = getPath('images/$key.png');
+		var path = getPath('images/$key.png', library);
 		if (OpenFlAssets.exists(path, IMAGE))
 		{
 			if (!currentTrackedAssets.exists(path))
@@ -123,10 +148,10 @@ class Paths
 
 	public static var currentTrackedSounds:Map<String, Sound> = [];
 
-	static function returnSound(path:String, key:String)
+	static function returnSound(path:String, key:String, ?library:String)
 	{
 		// oh the misery
-		var gottenPath:String = getPath('$path/$key.$SOUND_EXT');
+		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', library);
 		if (OpenFlAssets.exists(gottenPath, SOUND))
 		{
 			if (!currentTrackedSounds.exists(gottenPath))

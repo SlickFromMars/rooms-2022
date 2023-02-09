@@ -144,7 +144,7 @@ class PlayState extends FrameState
 		debugText.text += ' - ' + currentMap;
 		trace('Chose $currentMap from $swagArray');
 
-		map = new FlxOgmo3Loader(Paths.getPath('levels.ogmo'), Paths.json('_levels/$currentMap'));
+		map = new FlxOgmo3Loader(Paths.getPath('levels.ogmo'), Paths.json('$currentMap', 'levels'));
 		walls = map.loadTilemap(Paths.image('tileset'), "walls");
 		walls.follow(camGame, -5);
 		walls2 = map.loadTilemap(Paths.image('tileset'), "no_collision");
