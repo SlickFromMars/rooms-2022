@@ -7,7 +7,6 @@ import flixel.group.FlxSpriteGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
 import meta.Frame.FrameSubState;
 
 class SettingsSubState extends FrameSubState
