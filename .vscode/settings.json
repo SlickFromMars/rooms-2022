@@ -1,10 +1,10 @@
 {
 	"search.exclude": {
-		"export/**/*.hx": true,
+		"export/*": true,
 		"docs/*": true,
 		"README.md": true,
 		"LICENSE.md": true,
-		"assets/data/_eggs/*": true
+		"assets/preload/data/_eggs/*": true
 	},
 	"[haxe]": {
 		"editor.formatOnSave": true,
@@ -22,6 +22,11 @@
 		"assets/levels.ogmo": true
 	},
 	"[json]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnPaste": true
+	},
+	"[xml]": {
+		"editor.defaultFormatter": "redhat.vscode-xml",
 		"editor.formatOnSave": true,
 		"editor.formatOnPaste": true
 	}

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project xmlns="http://lime.software/project/1.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://lime.software/project/1.0.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://lime.software/project/1.0.2">
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="ROOMS" file="ROOMS" main="Main" package="com.slickfrommars.rooms" packageName="com.slickfrommars.rooms" version="1.0.1" company="SlickFromMars" />
+	<app title="ROOMS" file="ROOMS" main="Main" package="com.slickfrommars.rooms"
+		packageName="com.slickfrommars.rooms" version="1.0.1" company="SlickFromMars" />
 
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
 	<app preloader="flixel.system.FlxPreloader" />
@@ -13,8 +15,8 @@
 	<!-- ____________________________ Window Settings ___________________________ -->
 
 	<window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="false" />
-	<window if="html5" resizable="true" fullscreen="false"/>
-	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
+	<window if="html5" resizable="true" fullscreen="false" />
+	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false" />
 
 	<!-- ________________________________ Defines _______________________________ -->
 
@@ -25,31 +27,31 @@
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
 	<set name="BUILD_DIR" value="export/final" if="final" />
-	
+
 	<classpath name="source" />
 
-	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
-	<assets path="assets/preload" rename="assets" exclude="*.mp3"  unless="web"/>
+	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web" />
+	<assets path="assets/preload" rename="assets" exclude="*.mp3" unless="web" />
 
 	<section if="EASTER_EGG">
-		<assets path="assets/secret" rename="assets" exclude="*.ogg" if="web"/>
-		<assets path="assets/secret" rename="assets" exclude="*.mp3"  unless="web"/>
+		<assets path="assets/secret" rename="assets" exclude="*.ogg" if="web" />
+		<assets path="assets/secret" rename="assets" exclude="*.mp3" unless="web" />
 	</section>
 
-	<library name="levels"	preload="true" />
-	<library name="shared"	preload="false" />
+	<library name="levels" preload="true" />
+	<library name="shared" preload="false" />
 
-	<assets path="assets/levels"         library="levels" />
-	<assets path="assets/levels"         library="levels" />
-	<assets path="assets/shared"        library="shared"        exclude="*.ogg" if="web"/>
-	<assets path="assets/shared"        library="shared"        exclude="*.mp3" unless="web"/>
-	<assets path="assets/levels.ogmo"/>
+	<assets path="assets/levels" library="levels" />
+	<assets path="assets/levels" library="levels" />
+	<assets path="assets/shared" library="shared" exclude="*.ogg" if="web" />
+	<assets path="assets/shared" library="shared" exclude="*.mp3" unless="web" />
+	<assets path="assets/levels.ogmo" />
 
-	<assets path="docs/README.txt" rename="readme.txt"/>
-	<assets path="docs/README.txt" rename="assets/data/_eggs/slick.txt"/>
-	<assets path="LICENSE.md" rename="LICENSE.txt"/>
+	<assets path="docs/README.txt" rename="readme.txt" />
+	<assets path="docs/README.txt" rename="assets/data/_eggs/slick.txt" />
+	<assets path="LICENSE.md" rename="LICENSE.txt" />
 
-	<assets path='example_mods' rename='mods' if="desktop" unless="neko"/>
+	<assets path='example_mods' rename='mods' if="desktop" unless="neko" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
@@ -70,9 +72,9 @@
 	<haxedef name="no-deprecation-warnings" />
 
 	<!-- _________________________________ Custom _______________________________ -->
-	
-	<icon path="docs/icon16.png" size='16'/>
-	<icon path="docs/icon32.png" size='32'/>
-	<icon path="docs/icon64.png" size='64'/>
+
+	<icon path="docs/icon16.png" size='16' />
+	<icon path="docs/icon32.png" size='32' />
+	<icon path="docs/icon64.png" size='64' />
 	<icon path="docs/icon.png" />
 </project>
