@@ -278,13 +278,15 @@ class PlayState extends FrameState
 
 	override function updateUIText()
 	{
+		skipText.text = 'Press ';
 		switch (Controls.CONTROL_SCHEME)
 		{
 			case KEYBOARD:
-				skipText.text = 'Press ENTER To Skip';
+				skipText.text += 'ENTER';
 			case GAMEPAD:
-				skipText.text = 'Press X To Skip';
+				skipText.text += 'X';
 		}
+		skipText.text += ' To Skip';
 
 		skipText.x = FlxG.width - skipText.width;
 	}

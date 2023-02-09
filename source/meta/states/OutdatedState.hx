@@ -72,15 +72,16 @@ class OutdatedState extends FrameState
 			+ Init.gameVersion
 			+ "),\nplease update to "
 			+ updateVersion
-			+ "!\n";
+			+ "!\nPress ";
 
 		switch (Controls.CONTROL_SCHEME)
 		{
 			case KEYBOARD:
-				warnText.text += 'Press ESC To Proceed';
+				warnText.text += 'ESC';
 			case GAMEPAD:
-				warnText.text += 'Press B To Proceed';
+				warnText.text += 'B';
 		}
+		warnText.text += ' To Proceed';
 
 		warnText.screenCenter(Y);
 	}

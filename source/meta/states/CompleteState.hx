@@ -67,12 +67,14 @@ class CompleteState extends FrameState
 
 	override function updateUIText()
 	{
+		winText.text = 'To Be Continued...\nYou escaped the dungeon.\nPress ';
 		switch (Controls.CONTROL_SCHEME)
 		{
 			case KEYBOARD:
-				winText.text = 'To Be Continued...\nYou escaped the dungeon.\nPress ENTER to return to the menu.';
+				winText.text += 'ENTER';
 			case GAMEPAD:
-				winText.text = 'To Be Continued...\nYou escaped the dungeon.\nPress X to return to the menu.';
+				winText.text += 'X';
 		}
+		winText.text += ' to return to the menu.';
 	}
 }
