@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
 import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.input.gamepad.FlxGamepad;
 import flixel.input.keyboard.FlxKey;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
@@ -111,6 +112,16 @@ class TitleState extends FrameState
 	{
 		super.update(elapsed);
 
+		var pressedEnter = Controls.CONFIRM;
+		if (Controls.CONTROL_SCHEME == GAMEPAD)
+		{
+			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
+			if (gamepad.justPressed.START)
+			{
+				pressedEnter = true;
+			}
+		}
+
 		// Check keys
 		if (Controls.CONFIRM_SECONDARY)
 		{
@@ -120,7 +131,7 @@ class TitleState extends FrameState
 		{
 			openSubState(new meta.subStates.SettingsSubState());
 		}
-		else if (Controls.CONFIRM && !stopSpam && beginText.alpha == 1)
+		else if (pressedEnter && !stopSpam && beginText.alpha == 1)
 		{
 			// Stop people from spamming the button
 			stopSpam = true;
@@ -177,7 +188,7 @@ class TitleState extends FrameState
 			case KEYBOARD:
 				beginText.text = 'Press ENTER to Begin\nPress TAB for Instructions\nPress SHIFT for Settings';
 			case GAMEPAD:
-				beginText.text = 'Press X to Begin\nPress Y for Instructions\nPress A for Settings';
+				beginText.text = 'Press START to Begin\nPress Y for Instructions\nPress A for Settings';
 		}
 	}
 }

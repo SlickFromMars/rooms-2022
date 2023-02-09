@@ -1,4 +1,5 @@
-Movement - Left Stick or DPAD
+Player Movement - Left Stick
+UI Movement - DPAD
 Interact - X
 Interact With Glowing Objects
 Go Back - B

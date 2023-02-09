@@ -40,23 +40,12 @@ class Controls
 
 		if (CONTROL_SCHEME == GAMEPAD && gamepad != null)
 		{
-			var x:Float = gamepad.analog.value.LEFT_STICK_X;
-			var y:Float = gamepad.analog.value.LEFT_STICK_Y;
-			if (gamepad.justPressed.DPAD_UP)
-				y = -1;
-			if (gamepad.justPressed.DPAD_DOWN)
-				y = 1;
-			if (gamepad.justPressed.DPAD_LEFT)
-				x = -1;
-			if (gamepad.justPressed.DPAD_RIGHT)
-				x = 1;
-
-			PLAYER_X = x;
-			PLAYER_Y = y;
-			UI_UP = y < 0;
-			UI_DOWN = y > 0;
-			UI_LEFT = x < 0;
-			UI_RIGHT = x > 0;
+			PLAYER_X = gamepad.analog.value.LEFT_STICK_X;
+			PLAYER_Y = gamepad.analog.value.LEFT_STICK_Y;
+			UI_UP = gamepad.justPressed.DPAD_UP;
+			UI_DOWN = gamepad.justPressed.DPAD_DOWN;
+			UI_LEFT = gamepad.justPressed.DPAD_LEFT;
+			UI_RIGHT = gamepad.justPressed.DPAD_RIGHT;
 			CONFIRM = gamepad.justPressed.X;
 			CONFIRM_SECONDARY = gamepad.justPressed.Y;
 			CONFIRM_TERTIARY = gamepad.justPressed.A;
