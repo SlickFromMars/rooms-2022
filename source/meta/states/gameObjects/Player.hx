@@ -56,13 +56,19 @@ class Player extends FlxSprite
 		}
 
 		// Play animations
-		if (velY < 0)
-			animation.play('u');
-		else if (velY > 0)
-			animation.play('d');
-		else if (velX < 0)
-			animation.play('l');
-		else if (velX > 0)
-			animation.play('r');
+		if (Math.abs(velX) >= Math.abs(velY))
+		{
+			if (velX < 0)
+				animation.play('l');
+			else if (velX > 0)
+				animation.play('r');
+		}
+		else
+		{
+			if (velY < 0)
+				animation.play('u');
+			else if (velY > 0)
+				animation.play('d');
+		}
 	}
 }
