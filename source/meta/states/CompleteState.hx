@@ -27,10 +27,10 @@ class CompleteState extends FrameState
 		#end
 
 		// Setup the UI
-		winText = new FlxText(0, 0, 0, '', 8);
+		winText = new FlxText(0, 0, FlxG.width, '', 8);
 		updateUIText();
 		winText.alignment = CENTER;
-		winText.screenCenter();
+		winText.screenCenter(Y);
 		winText.alpha = 0;
 		add(winText);
 
