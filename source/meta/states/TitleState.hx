@@ -8,6 +8,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.input.keyboard.FlxKey;
 import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
@@ -65,6 +66,7 @@ class TitleState extends FrameState
 		logo = new FlxSprite();
 		logo.loadGraphic(Paths.image('logo'));
 		logo.antialiasing = true;
+		logo.angle = -3;
 		logo.screenCenter();
 
 		beginText = new FlxText(0, FlxG.height - 10, FlxG.width, '', 8);
@@ -108,7 +110,9 @@ class TitleState extends FrameState
 			FlxG.sound.playMusic(Paths.music('newdawn'), 0.7);
 		}
 
-		// Epic transition
+		// Epic stuff
+		FlxTween.tween(logo, {angle: 3}, 3, {type: PINGPONG, ease: FlxEase.quadInOut});
+
 		if (playIntro)
 		{
 			FlxG.camera.fade(FlxColor.BLACK, 3, true);
