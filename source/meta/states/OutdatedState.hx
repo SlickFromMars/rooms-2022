@@ -46,7 +46,7 @@ class OutdatedState extends FrameState
 			if (Controls.CONFIRM)
 			{
 				leftState = true;
-				RoomsUtils.openURL("https://github.com/SlickFromMars/rooms-2022");
+				RoomsUtils.openURL("https://github.com/SlickFromMars/rooms-2022/releases/tag/v" + updateVersion);
 			}
 			else if (Controls.BACK)
 			{
@@ -55,11 +55,10 @@ class OutdatedState extends FrameState
 
 			if (leftState)
 			{
-				FlxTween.tween(warnText, {alpha: 0}, 1, {
-					onComplete: function(twn:FlxTween)
-					{
-						FrameState.switchState(new meta.states.OpeningState());
-					}
+				FlxTween.tween(warnText, {alpha: 0}, 1);
+				FlxG.camera.fade(FlxColor.BLACK, 1, false, function()
+				{
+					FrameState.switchState(new meta.states.OpeningState());
 				});
 			}
 		}
