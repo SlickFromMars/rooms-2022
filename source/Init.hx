@@ -100,7 +100,14 @@ class Init extends FrameState
 			framework: OPENFL,
 			ignoredFiles: Polymod.getDefaultIgnoreList(),
 			frameworkParams: {
-				assetLibraryPaths: ["data" => "data", "images" => "images", "music" => "music", "sounds" => "sounds"]
+				assetLibraryPaths: [
+					"data" => "data",
+					"images" => "images",
+					"music" => "music",
+					"sounds" => "sounds",
+					"levels" => "levels",
+					"shared" => "shared"
+				]
 			}
 		});
 
