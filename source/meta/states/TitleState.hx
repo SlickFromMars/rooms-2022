@@ -164,7 +164,7 @@ class TitleState extends FrameState
 			// Stop people from spamming the button
 			stopSpam = true;
 
-			// Do Funky Effects and then go to PlayState
+			// Do Funky Effects and then go
 			FlxG.sound.music.fadeOut(1.1);
 
 			FlxFlicker.flicker(beginText, 1.1, 0.15, true, true, function(flick:FlxFlicker)
@@ -182,7 +182,7 @@ class TitleState extends FrameState
 					FlxG.sound.music.stop();
 					FlxG.camera.fade(FlxColor.BLACK, 1, false, function()
 					{
-						FrameState.switchState(new meta.states.PlayState());
+						FrameState.switchState(new meta.states.LoadingState());
 					});
 				});
 			});

@@ -1,9 +1,6 @@
 package;
 
 import flixel.FlxG;
-import flixel.text.FlxText;
-import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
 import lime.app.Application;
 import meta.Frame.FrameState;
 import meta.states.OpeningState;
@@ -22,9 +19,6 @@ class Init extends FrameState
 	public static var gameVersion:String;
 
 	var mustUpdate:Bool = false;
-	var precacheList:Map<String, CacheFileType> = new Map<String, CacheFileType>(); // file name, then type
-
-	var infoText:FlxText;
 
 	override function create()
 	{
@@ -127,63 +121,15 @@ class Init extends FrameState
 		}
 		#end
 
-		infoText = new FlxText(0, 0, FlxG.width, 'CACHING ASSETS', 16);
-		infoText.screenCenter(Y);
-		infoText.alignment = CENTER;
-
-		// make the list
-		precacheList.set('logo', IMAGE);
-		precacheList.set('player', IMAGE);
-		precacheList.set('tileset', IMAGE);
-		precacheList.set('hint/paper', IMAGE);
-		precacheList.set('littleplanet', MUSIC);
-		precacheList.set('newdawn', MUSIC);
-		precacheList.set('november', MUSIC);
-
 		super.create();
 
-		add(infoText);
-
-		// cache the stuff I think
-		var cacheCap:Int = 0;
-		for (i in precacheList)
-		{
-			cacheCap++;
-		}
-		var cacheCount:Int = 0;
-		for (key => type in precacheList)
-		{
-			cacheCount++;
-			infoText.text = 'CACHING ASSETS ' + cacheCount + '/' + cacheCap;
-			// trace('Key $key is type $type');
-			switch (type)
-			{
-				case IMAGE:
-					Paths.image(key);
-				case MUSIC:
-					Paths.music(key);
-			}
-		}
-
-		new FlxTimer().start(1.5, function(tmr:FlxTimer)
-		{
-			FlxG.camera.fade(FlxColor.BLACK, 0.1, false, function()
-			{
-				#if CHECK_FOR_UPDATES
-				if (mustUpdate)
-					FrameState.switchState(new OutdatedState());
-				else
-					FrameState.switchState(new OpeningState());
-				#else
-				FrameState.switchState(new OpeningState());
-				#end
-			});
-		});
+		#if CHECK_FOR_UPDATES
+		if (mustUpdate)
+			FrameState.switchState(new OutdatedState());
+		else
+			FrameState.switchState(new OpeningState());
+		#else
+		FrameState.switchState(new OpeningState());
+		#end
 	}
-}
-
-enum CacheFileType
-{
-	IMAGE;
-	MUSIC;
 }
