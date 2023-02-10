@@ -1,6 +1,8 @@
 package;
 
 import flixel.FlxG;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
 import lime.app.Application;
 import meta.Frame.FrameState;
 import meta.states.OpeningState;
