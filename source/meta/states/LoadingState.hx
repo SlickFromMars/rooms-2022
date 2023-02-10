@@ -5,8 +5,6 @@ import openfl.utils.Assets;
 
 class LoadingState extends FrameState
 {
-	inline static var MIN_TIME = 1.0;
-
 	override function create()
 	{
 		super.create();
