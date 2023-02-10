@@ -117,18 +117,24 @@ class TitleState extends FrameState
 
 		if (playIntro)
 		{
-			FlxG.camera.fade(FlxColor.BLACK, 3, true);
+			FlxG.camera.fade(FlxColor.BLACK, 3, true, function()
+			{
+				stopSpam = false;
+			});
 			FlxTween.tween(beginText, {alpha: 1, y: beginText.y - beginText.height}, 3);
 		}
 		else
 		{
-			FlxG.camera.fade(FlxColor.BLACK, 0.1, true);
+			FlxG.camera.fade(FlxColor.BLACK, 0.5, true, function()
+			{
+				stopSpam = false;
+			});
 			beginText.alpha = 1;
 			beginText.y = beginText.y - beginText.height;
 		}
 	}
 
-	var stopSpam:Bool = false;
+	var stopSpam:Bool = true;
 
 	override public function update(elapsed:Float)
 	{
