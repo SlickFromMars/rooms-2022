@@ -182,7 +182,7 @@ class TitleState extends FrameState
 					FlxG.sound.music.stop();
 					FlxG.camera.fade(FlxColor.BLACK, 1, false, function()
 					{
-						FrameState.switchState(new meta.states.LoadingState());
+						FrameState.switchState(new meta.states.PlayState());
 					});
 				});
 			});

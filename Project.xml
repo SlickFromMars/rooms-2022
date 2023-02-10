@@ -40,8 +40,8 @@
 		<assets path="docs/README.txt" rename="assets/data/_eggs/slick.txt" />
 	</section>
 
-	<library name="levels" preload="false" />
-	<library name="shared" preload="false" />
+	<library name="levels" preload="true" />
+	<library name="shared" preload="true" />
 
 	<assets path="assets/levels" library="levels" />
 	<assets path="assets/shared" library="shared" exclude="*.ogg" if="web" />
