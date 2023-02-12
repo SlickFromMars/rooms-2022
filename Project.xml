@@ -22,7 +22,7 @@
 
 	<define name="EASTER_EGG" />
 	<define name="CHECK_FOR_UPDATES" if="desktop release" />
-	<define name="CRASH_HANDLER" if="desktop" unless="neko" />
+	<define name="CRASH_LOGGER" if="desktop" unless="neko" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -41,8 +41,19 @@
 		<assets path="docs/README.txt" rename="assets/data/_eggs/slick.txt" />
 	</section>
 
-	<library name="levels" preload="true" />
-	<library name="shared" preload="true" />
+	<define name="PRELOAD_ALL" unless="desktop" />
+	<define name="PRELOAD_ALL" if="neko" />
+	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL" />
+
+	<section if="PRELOAD_ALL">
+		<library name="levels" preload="true" />
+		<library name="shared" preload="true" />
+	</section>
+
+	<section if="NO_PRELOAD_ALL">
+		<library name="levels" preload="false" />
+		<library name="shared" preload="false" />
+	</section>
 
 	<assets path="assets/levels" library="levels" />
 	<assets path="assets/shared" library="shared" exclude="*.ogg" if="web" />

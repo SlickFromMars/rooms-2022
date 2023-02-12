@@ -3,18 +3,18 @@ package;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
+import lime.app.Application;
 import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.display.StageScaleMode;
+import openfl.events.UncaughtErrorEvent;
 
 using StringTools;
 
-#if CRASH_HANDLER
+#if CRASH_LOGGER
 import haxe.CallStack;
 import haxe.io.Path;
-import lime.app.Application;
-import openfl.events.UncaughtErrorEvent;
 import sys.FileSystem;
 import sys.io.File;
 #end
@@ -62,9 +62,7 @@ class Main extends Sprite
 		#end
 
 		// Add event listners
-		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
-		#end
 
 		#if discord_rpc
 		if (!DiscordClient.isInitialized)
@@ -78,11 +76,11 @@ class Main extends Sprite
 		#end
 	}
 
-	#if CRASH_HANDLER
 	// Based off of code by squirra-rng
 	function onCrash(e:UncaughtErrorEvent):Void
 	{
 		var errMsg:String = "";
+		#if CRASH_LOGGER
 		var path:String;
 		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
 		var dateNow:String = Date.now().toString();
@@ -102,11 +100,13 @@ class Main extends Sprite
 					Sys.println(stackItem);
 			}
 		}
+		#end
 
 		errMsg += "\nUncaught Error: "
 			+ e.error
 			+ "\nPlease report this error to the GitHub page: https://github.com/SlickFromMars/rooms-2022\n\n> Crash Handler written by: sqirra-rng";
 
+		#if CRASH_LOGGER
 		if (!FileSystem.exists("./crash/"))
 			FileSystem.createDirectory("./crash/");
 
@@ -114,12 +114,14 @@ class Main extends Sprite
 
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));
+		#end
 
 		Application.current.window.alert(errMsg, "Error!");
 		#if discord_rpc
 		DiscordClient.shutdown();
 		#end
+		#if CRASH_LOGGER
 		Sys.exit(1);
+		#end
 	}
-	#end
 }
