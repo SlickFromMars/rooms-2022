@@ -22,6 +22,7 @@
 
 	<define name="EASTER_EGG" />
 	<define name="CHECK_FOR_UPDATES" if="desktop release" />
+	<define name="CRASH_HANDLER" if="desktop" unless="neko" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 

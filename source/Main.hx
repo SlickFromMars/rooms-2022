@@ -3,12 +3,21 @@ package;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
-import lime.app.Application;
 import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.display.StageScaleMode;
+
+using StringTools;
+
+#if CRASH_HANDLER
+import haxe.CallStack;
+import haxe.io.Path;
+import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
+import sys.FileSystem;
+import sys.io.File;
+#end
 #if discord_rpc
 import meta.Discord.DiscordClient;
 #end
@@ -49,11 +58,13 @@ class Main extends Sprite
 
 		#if html5
 		FlxG.autoPause = false;
+		FlxG.mouse.visible = false;
 		#end
 
 		// Add event listners
+		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
-		Application.current.window.onClose.add(onClose);
+		#end
 
 		#if discord_rpc
 		if (!DiscordClient.isInitialized)
@@ -67,24 +78,48 @@ class Main extends Sprite
 		#end
 	}
 
+	#if CRASH_HANDLER
 	// Based off of code by squirra-rng
 	function onCrash(e:UncaughtErrorEvent):Void
 	{
-		var errMsg:String = "Uncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/BHS-TSA/video-game-design";
+		var errMsg:String = "";
+		var path:String;
+		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
+		var dateNow:String = Date.now().toString();
+
+		dateNow = dateNow.replace(" ", "_");
+		dateNow = dateNow.replace(":", "'");
+
+		path = "./crash/" + "Rooms_" + dateNow + ".txt";
+
+		for (stackItem in callStack)
+		{
+			switch (stackItem)
+			{
+				case FilePos(s, file, line, column):
+					errMsg += file + " (line " + line + ")\n";
+				default:
+					Sys.println(stackItem);
+			}
+		}
+
+		errMsg += "\nUncaught Error: "
+			+ e.error
+			+ "\nPlease report this error to the GitHub page: https://github.com/SlickFromMars/rooms-2022\n\n> Crash Handler written by: sqirra-rng";
+
+		if (!FileSystem.exists("./crash/"))
+			FileSystem.createDirectory("./crash/");
+
+		File.saveContent(path, errMsg + "\n");
+
+		Sys.println(errMsg);
+		Sys.println("Crash dump saved in " + Path.normalize(path));
+
 		Application.current.window.alert(errMsg, "Error!");
-		onClose(); // save some things
-		#if sys
-		Sys.exit(1);
-		#end
-	}
-
-	// do things when closing
-	function onClose():Void
-	{
-		// trace('SHUTTING DOWN');
-
 		#if discord_rpc
 		DiscordClient.shutdown();
 		#end
+		Sys.exit(1);
 	}
+	#end
 }
