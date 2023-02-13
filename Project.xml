@@ -20,7 +20,7 @@
 
 	<!-- ________________________________ Defines _______________________________ -->
 
-	<define name="EASTER_EGG" unless="web" />
+	<define name="EASTER_EGG" if="desktop" />
 	<define name="CHECK_FOR_UPDATES" if="desktop release" />
 	<define name="CRASH_LOGGER" if="desktop" unless="neko" />
 
