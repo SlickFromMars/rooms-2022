@@ -11,7 +11,7 @@ import meta.Frame.FrameSubState;
 
 class SettingsSubState extends FrameSubState
 {
-	var menuItems:Array<String> = ['Fullscreen', 'Show FPS', 'Retro Mode'];
+	var menuItems:Array<String> = ['Fullscreen', 'Show FPS'];
 	var menuHold:Int = 5;
 
 	// UI STUFF
@@ -21,6 +21,10 @@ class SettingsSubState extends FrameSubState
 	public function new()
 	{
 		super();
+
+		#if debug
+		menuItems.push('Retro Mode');
+		#end
 
 		FlxG.mouse.visible = true;
 
