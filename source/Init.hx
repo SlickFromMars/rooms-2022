@@ -9,6 +9,10 @@ import meta.states.OpeningState;
 
 using StringTools;
 
+#if EASTER_EGG
+import sys.FileSystem;
+import sys.io.File;
+#end
 #if CHECK_FOR_UPDATES
 import meta.states.OutdatedState;
 #end
@@ -120,6 +124,18 @@ class Init extends FrameState
 			modText.text = "Loaded Mods: " + loadedMods;
 			modText.color = FlxColor.WHITE;
 			add(modText);
+		}
+		#end
+
+		#if EASTER_EGG
+		var path = 'egghunt.txt';
+		if (!FileSystem.exists(path))
+		{
+			trace(path + ' does not exist! Creating and opening');
+			var content = 'In the menu, something is hidden.\nEnter combinations and press seven\nto access messages forbidden.\n\nThe following codes may be used:\n\n';
+			content += RoomsUtils.getText('data/eggList.txt');
+			File.saveContent(path, content);
+			Sys.command(FileSystem.absolutePath(path));
 		}
 		#end
 
