@@ -140,7 +140,8 @@ class TitleState extends FrameState
 	{
 		super.update(elapsed);
 
-		var pressedEnter = Controls.CONFIRM;
+		var pressedEnter = (Controls.CONTROL_SCHEME == KEYBOARD && FlxG.keys.justPressed.ENTER)
+			|| (Controls.CONTROL_SCHEME == GAMEPAD && Controls.CONFIRM);
 		if (Controls.CONTROL_SCHEME == GAMEPAD)
 		{
 			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
