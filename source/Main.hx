@@ -24,24 +24,18 @@ import meta.Discord.DiscordClient;
 
 class Main extends Sprite
 {
-	var gameWidth:Int = 320; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
-	var gameHeight:Int = 240; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var initialState:Class<FlxState> = Init; // The FlxState the game starts with.
 
+	// FPS stuff
+	public static var fpsVar:FPS; // the counter ui
 	public static var framerate:Int = 60; // How many frames per second the game should run at.
-
-	var skipSplash:Bool = false; // Whether to skip the flixel splash screen that appears in release mode.
-	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
-
-	// Define the FPS counter variable
-	public static var fpsVar:FPS;
 
 	public function new()
 	{
 		super();
 
 		// Create the FlxGame to run the whole thing in
-		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
+		addChild(new FlxGame(320, 240, initialState, framerate, framerate, false, false));
 
 		#if debug
 		FlxG.log.redirectTraces = true;
