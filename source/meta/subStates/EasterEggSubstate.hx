@@ -48,7 +48,7 @@ class EasterEggSubstate extends FrameSubState
 			{
 				myLink = lineArray[lineArray.length - 1].split('LINK--')[1];
 				myText = myText.split('\nLINK--')[0];
-				trace('Has a link $myLink');
+				// trace('Has a link $myLink');
 			}
 		}
 
