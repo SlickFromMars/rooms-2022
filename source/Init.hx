@@ -154,7 +154,7 @@ class Init extends FrameState
 	#if EASTER_EGG
 	function hintPop(file:String, content:String)
 	{
-		var path = 'hints/$file.txt';
+		var path = './hints/$file.txt';
 		var exists = FileSystem.exists(path);
 		File.saveContent(path, content);
 		if (!exists)
