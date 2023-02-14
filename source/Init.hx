@@ -128,15 +128,15 @@ class Init extends FrameState
 		#end
 
 		#if EASTER_EGG
-		var path = 'egghunt.txt';
-		if (!FileSystem.exists(path))
+		if (!FileSystem.exists('./hints/'))
 		{
-			trace(path + ' does not exist! Creating and opening');
-			var content = 'In the menu, something is hidden.\nEnter combinations and press seven\nto access messages forbidden.\n\nThe following codes may be used:\n\n';
-			content += RoomsUtils.getText('data/eggList.txt');
-			File.saveContent(path, content);
-			Sys.command(FileSystem.absolutePath(path));
+			trace('Creating hints directory since it does not exist');
+			FileSystem.createDirectory('./hints/');
 		}
+
+		hintPop('EGGHUNT',
+			'In the menu, something is hidden.\nEnter combinations and press seven\nto access messages forbidden.\n\nThe following codes may be used:\n\n' +
+			RoomsUtils.getText('data/eggList.txt'));
 		#end
 
 		super.create();
@@ -150,4 +150,17 @@ class Init extends FrameState
 		FrameState.switchState(new OpeningState());
 		#end
 	}
+
+	#if EASTER_EGG
+	function hintPop(file:String, content:String)
+	{
+		var path = 'hints/$file.txt';
+		var exists = FileSystem.exists(path);
+		File.saveContent(path, content);
+		if (!exists)
+		{
+			Sys.command(FileSystem.absolutePath(path));
+		}
+	}
+	#end
 }
