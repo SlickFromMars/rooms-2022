@@ -98,7 +98,7 @@ class Main extends Sprite
 
 		errMsg += "\nUncaught Error: "
 			+ e.error
-			+ "\nPlease report this error to the GitHub page: https://github.com/SlickFromMars/rooms-2022\n\n> Crash Handler written by: sqirra-rng";
+			+ "\nPlease report this error to the GitHub page: https://github.com/SlickFromMars/rooms-2022 \n\n> Crash Handler written by: sqirra-rng";
 
 		#if CRASH_LOGGER
 		if (!FileSystem.exists("./crash/"))
