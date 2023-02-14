@@ -25,6 +25,7 @@ class Init extends FrameState
 	public static var gameVersion:String;
 
 	var mustUpdate:Bool = false;
+	var hintRoot:String = './';
 
 	override function create()
 	{
@@ -128,10 +129,10 @@ class Init extends FrameState
 		#end
 
 		#if EASTER_EGG
-		if (!FileSystem.exists('./hints/'))
+		if (!FileSystem.exists('$hintRoot/'))
 		{
 			trace('Creating hints directory since it does not exist');
-			FileSystem.createDirectory('./hints/');
+			FileSystem.createDirectory('$hintRoot/');
 		}
 
 		hintPop('EGGHUNT',
@@ -154,7 +155,7 @@ class Init extends FrameState
 	#if EASTER_EGG
 	function hintPop(file:String, content:String)
 	{
-		var path = './hints/$file.txt';
+		var path = '$hintRoot/$file.txt';
 		var exists = FileSystem.exists(path);
 		File.saveContent(path, content);
 		if (!exists)
