@@ -46,9 +46,6 @@ class Main extends Sprite
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
-		#if !debug
-		Main.fpsVar.visible = false;
-		#end
 
 		#if html5
 		FlxG.autoPause = false;

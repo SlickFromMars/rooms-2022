@@ -98,7 +98,7 @@ class PlayState extends FrameState
 		add(camFollowPos);
 		camGame.follow(camFollowPos, LOCKON, 1);
 
-		if (RoomsData.retroMode)
+		if (Preferences.retroMode)
 		{
 			retroShader = new RetroShader();
 			add(retroShader);

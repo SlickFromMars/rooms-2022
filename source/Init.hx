@@ -5,6 +5,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.app.Application;
 import meta.Frame.FrameState;
+import meta.Preferences;
 import meta.states.OpeningState;
 
 using StringTools;
@@ -31,20 +32,16 @@ class Init extends FrameState
 	{
 		FlxG.mouse.visible = false;
 
-		// Initiate the volume keys
+		// Initiate stuff
 		FlxG.sound.muteKeys = [NUMPADZERO, ZERO];
 		FlxG.sound.volumeDownKeys = [NUMPADMINUS, MINUS];
 		FlxG.sound.volumeUpKeys = [NUMPADPLUS, PLUS];
 
+		super.create();
+
 		// do the save stuff
-		if (FlxG.save.data.volume != null)
-		{
-			FlxG.sound.volume = FlxG.save.data.volume;
-		}
-		if (FlxG.save.data.mute != null)
-		{
-			FlxG.sound.muted = FlxG.save.data.mute;
-		}
+		FlxG.save.bind('everchanging');
+		Preferences.loadPrefs();
 
 		gameVersion = Application.current.meta.get('version');
 
@@ -139,8 +136,6 @@ class Init extends FrameState
 			'In the menu, something is hidden.\nEnter combinations and press seven\nto access messages forbidden.\n\nThe following codes may be used:\n\n' +
 			RoomsUtils.getText('data/eggList.txt'));
 		#end
-
-		super.create();
 
 		#if CHECK_FOR_UPDATES
 		if (mustUpdate)

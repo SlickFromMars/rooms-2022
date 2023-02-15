@@ -56,6 +56,7 @@ class PauseSubState extends FrameSubState
 		{
 			if (menuItems.contains('Back'))
 			{
+				Preferences.savePrefs();
 				regenMenu();
 			}
 			else
@@ -90,10 +91,12 @@ class PauseSubState extends FrameSubState
 					case 'Toggle Fullscreen':
 						FlxG.fullscreen = !FlxG.fullscreen;
 					case 'Toggle FPS Counter':
-						Main.fpsVar.visible = !Main.fpsVar.visible;
+						Preferences.showFPS = !Preferences.showFPS;
 					case 'Back':
+						Preferences.savePrefs();
 						regenMenu();
 				}
+				Preferences.savePrefs();
 			}
 		}
 		else if (!Controls.CONFIRM && stopSpam)
