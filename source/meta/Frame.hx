@@ -30,7 +30,7 @@ class FrameState extends FlxState
 	}
 
 	// for states with help tips
-	function updateUIText()
+	public function updateUIText()
 	{
 		// trace('Updating UI');
 	}
