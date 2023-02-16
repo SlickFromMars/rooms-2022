@@ -44,6 +44,7 @@ class Main extends Sprite
 		// Initiate the FPS counter as long as you aren't on mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
+		fpsVar.visible = false;
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
 
