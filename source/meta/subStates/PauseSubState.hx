@@ -56,7 +56,7 @@ class PauseSubState extends FrameSubState
 		{
 			if (menuItems.contains('Back'))
 			{
-				Preferences.savePrefs();
+				RoomsData.saveData();
 				regenMenu();
 			}
 			else
@@ -91,12 +91,12 @@ class PauseSubState extends FrameSubState
 					case 'Toggle Fullscreen':
 						FlxG.fullscreen = !FlxG.fullscreen;
 					case 'Toggle FPS Counter':
-						Preferences.showFPS = !Preferences.showFPS;
+						RoomsData.showFPS = !RoomsData.showFPS;
 					case 'Back':
-						Preferences.savePrefs();
+						RoomsData.saveData();
 						regenMenu();
 				}
-				Preferences.savePrefs();
+				RoomsData.saveData();
 			}
 		}
 		else if (!Controls.CONFIRM && stopSpam)

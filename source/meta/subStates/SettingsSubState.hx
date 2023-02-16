@@ -53,19 +53,19 @@ class SettingsSubState extends FrameSubState
 					}
 
 				case 'Show FPS':
-					spr.checked = Preferences.showFPS;
+					spr.checked = RoomsData.showFPS;
 					spr.callback = function()
 					{
-						Preferences.showFPS = spr.checked;
-						Preferences.savePrefs();
+						RoomsData.showFPS = spr.checked;
+						RoomsData.saveData();
 					}
 
 				case 'Retro Mode':
-					spr.checked = Preferences.retroMode;
+					spr.checked = RoomsData.retroMode;
 					spr.callback = function()
 					{
-						Preferences.retroMode = spr.checked;
-						Preferences.savePrefs();
+						RoomsData.retroMode = spr.checked;
+						RoomsData.saveData();
 					}
 			}
 			spr.screenCenter(X);
@@ -101,7 +101,7 @@ class SettingsSubState extends FrameSubState
 		if ((Controls.BACK || Controls.CONFIRM_TERTIARY) && allowConfirm)
 		{
 			FlxG.mouse.visible = false;
-			Preferences.savePrefs();
+			RoomsData.saveData();
 			close();
 		}
 	}

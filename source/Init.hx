@@ -5,7 +5,6 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.app.Application;
 import meta.Frame.FrameState;
-import meta.Preferences;
 import meta.states.OpeningState;
 
 using StringTools;
@@ -41,7 +40,7 @@ class Init extends FrameState
 
 		// do the save stuff
 		FlxG.save.bind('everchanging');
-		Preferences.loadPrefs();
+		RoomsData.loadData();
 
 		gameVersion = Application.current.meta.get('version');
 

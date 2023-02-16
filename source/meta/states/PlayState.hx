@@ -50,6 +50,11 @@ class PlayState extends FrameState
 
 	public static var door:Prop;
 
+	// COLLISION STUFF
+	var doTileCollision:Array<Int> = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 27, 28, 29, 30, 31, 32]; // ID for each tile that the player should collide with
+	var tileCount:Int = 33; // Amount of tiles in the tileset
+	var allowPropCollision:Array<PropType> = [SHAPELOCK, HINT, KEY, ARROW, FINALETRIP]; // Props that ignore collision
+
 	// The UI stuff
 	var overlay:FlxSprite;
 	var levelText:FlxText;
@@ -98,7 +103,7 @@ class PlayState extends FrameState
 		add(camFollowPos);
 		camGame.follow(camFollowPos, LOCKON, 1);
 
-		if (Preferences.retroMode)
+		if (RoomsData.retroMode)
 		{
 			retroShader = new RetroShader();
 			add(retroShader);
@@ -149,9 +154,9 @@ class PlayState extends FrameState
 		walls2 = map.loadTilemap(Paths.image('tileset'), "no_collision");
 
 		// Setup the collision
-		for (i in 0...RoomsData.tileCount)
+		for (i in 0...tileCount)
 		{
-			if (RoomsData.doTileCollision.contains(i))
+			if (doTileCollision.contains(i))
 			{
 				walls.setTileProperties(i, ANY);
 			}
@@ -301,7 +306,7 @@ class PlayState extends FrameState
 		propGrp.forEach(function(spr:Prop)
 		{
 			// If this prop is to be ignored, ignore it
-			if (!RoomsData.allowPropCollision.contains(spr.my_type) && !player.lockMovement)
+			if (!allowPropCollision.contains(spr.my_type) && !player.lockMovement)
 			{
 				FlxG.collide(player, spr);
 			}
