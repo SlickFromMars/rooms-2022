@@ -8,13 +8,13 @@ class RoomsData
 	public static var roomNumber:Int = 1; // Room number
 
 	// PREFS STUFF
-	public static var retroMode:Bool = false; // enable the bw shader in gameplay
 	public static var showFPS:Bool = false; // show the FPS counter
+	public static var retroMode:Bool = false; // enable the bw shader in gameplay
 
 	public static function saveData()
 	{
-		FlxG.save.data.retroMode = retroMode;
 		FlxG.save.data.showFPS = showFPS;
+		FlxG.save.data.retroMode = retroMode;
 
 		applyPrefs();
 
@@ -24,12 +24,10 @@ class RoomsData
 
 	public static function loadData()
 	{
+		if (FlxG.save.data.showFPS != null)
+			showFPS = FlxG.save.data.showFPS;
 		if (FlxG.save.data.retroMode != null)
 			retroMode = FlxG.save.data.retroMode;
-		if (FlxG.save.data.showFPS != null)
-		{
-			showFPS = FlxG.save.data.showFPS;
-		}
 
 		if (FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;
