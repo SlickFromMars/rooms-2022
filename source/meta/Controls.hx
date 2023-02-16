@@ -29,12 +29,14 @@ class Controls
 			if (CONTROL_SCHEME != GAMEPAD && gamepad.justPressed.ANY)
 			{
 				CONTROL_SCHEME = GAMEPAD;
+				RoomsData.saveData();
 				trace('GAMEPAD CONNECTED');
 			}
 
 		if (CONTROL_SCHEME != KEYBOARD && FlxG.keys.justPressed.ANY)
 		{
 			CONTROL_SCHEME = KEYBOARD;
+			RoomsData.saveData();
 			trace('KEYBOARD CONNECTED');
 		}
 

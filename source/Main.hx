@@ -56,6 +56,11 @@ class Main extends Sprite
 		// Add event listners
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 
+		Application.current.window.onClose.add(function()
+		{
+			RoomsData.saveData();
+		});
+
 		#if discord_rpc
 		if (!DiscordClient.isInitialized)
 		{
@@ -112,6 +117,7 @@ class Main extends Sprite
 		#if discord_rpc
 		DiscordClient.shutdown();
 		#end
+		RoomsData.saveData();
 		#if CRASH_LOGGER
 		Sys.exit(1);
 		#end

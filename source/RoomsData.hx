@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxG;
+import meta.Controls;
 
 class RoomsData
 {
@@ -13,6 +14,7 @@ class RoomsData
 
 	public static function saveData()
 	{
+		FlxG.save.data.scheme = Controls.CONTROL_SCHEME;
 		FlxG.save.data.showFPS = showFPS;
 		FlxG.save.data.retroMode = retroMode;
 
@@ -24,6 +26,8 @@ class RoomsData
 
 	public static function loadData()
 	{
+		if (FlxG.save.data.scheme != null)
+			Controls.CONTROL_SCHEME = FlxG.save.data.scheme;
 		if (FlxG.save.data.showFPS != null)
 			showFPS = FlxG.save.data.showFPS;
 		if (FlxG.save.data.retroMode != null)
@@ -35,6 +39,8 @@ class RoomsData
 			FlxG.sound.muted = FlxG.save.data.mute;
 
 		applyPrefs();
+
+		FlxG.log.add("Settings loaded!");
 	}
 
 	public static function applyPrefs()
