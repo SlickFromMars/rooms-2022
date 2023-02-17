@@ -11,7 +11,7 @@ import meta.Frame.FrameSubState;
 
 class SettingsSubState extends FrameSubState
 {
-	var menuItems:Array<String> = ['Fullscreen', 'Show FPS'];
+	var menuItems:Array<String> = ['Fullscreen', 'Show FPS', 'Check For Updates'];
 	var menuHold:Int = 5;
 
 	// UI STUFF
@@ -65,6 +65,14 @@ class SettingsSubState extends FrameSubState
 					spr.callback = function()
 					{
 						RoomsData.retroMode = spr.checked;
+						RoomsData.saveData();
+					}
+
+				case 'Check For Updates':
+					spr.checked = RoomsData.checkForUpdates;
+					spr.callback = function()
+					{
+						RoomsData.checkForUpdates = spr.checked;
 						RoomsData.saveData();
 					}
 			}

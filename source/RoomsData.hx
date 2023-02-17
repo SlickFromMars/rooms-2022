@@ -11,12 +11,14 @@ class RoomsData
 	// PREFS STUFF
 	public static var showFPS:Bool = false; // show the FPS counter
 	public static var retroMode:Bool = false; // enable the bw shader in gameplay
+	public static var checkForUpdates:Bool = true; // should it check for updates
 
 	public static function saveData()
 	{
 		FlxG.save.data.scheme = Controls.CONTROL_SCHEME;
 		FlxG.save.data.showFPS = showFPS;
 		FlxG.save.data.retroMode = retroMode;
+		FlxG.save.data.checkForUpdates = checkForUpdates;
 
 		applyPrefs();
 
@@ -32,6 +34,8 @@ class RoomsData
 			showFPS = FlxG.save.data.showFPS;
 		if (FlxG.save.data.retroMode != null)
 			retroMode = FlxG.save.data.retroMode;
+		if (FlxG.save.data.checkForUpdates != null)
+			checkForUpdates = FlxG.save.data.checkForUpdates;
 
 		if (FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;

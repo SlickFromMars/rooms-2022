@@ -39,34 +39,40 @@ class Init extends FrameState
 		super.create();
 
 		// do the save stuff
-		FlxG.save.bind('everchanging');
 		RoomsData.loadData();
 
 		gameVersion = Application.current.meta.get('version');
 
 		#if CHECK_FOR_UPDATES
-		trace('Checking for update.');
-		var http = new haxe.Http("https://raw.githubusercontent.com/SlickFromMars/rooms-2022/main/gitVersion.txt");
-
-		http.onData = function(data:String)
+		if (RoomsData.checkForUpdates)
 		{
-			OutdatedState.updateVersion = data.split('\n')[0].trim();
-			var curVersion:String = Init.gameVersion;
-			trace('version online: ' + OutdatedState.updateVersion + ', your version: ' + curVersion);
+			trace('Checking for update.');
+			var http = new haxe.Http("https://raw.githubusercontent.com/SlickFromMars/rooms-2022/main/gitVersion.txt");
 
-			if (OutdatedState.updateVersion != curVersion)
+			http.onData = function(data:String)
 			{
-				trace('versions arent matching!');
-				mustUpdate = true;
+				OutdatedState.updateVersion = data.split('\n')[0].trim();
+				var curVersion:String = Init.gameVersion;
+				trace('version online: ' + OutdatedState.updateVersion + ', your version: ' + curVersion);
+
+				if (OutdatedState.updateVersion != curVersion)
+				{
+					trace('versions arent matching!');
+					mustUpdate = true;
+				}
 			}
-		}
 
-		http.onError = function(error)
+			http.onError = function(error)
+			{
+				trace('error: $error');
+			}
+
+			http.request();
+		}
+		else
 		{
-			trace('error: $error');
+			trace('Check for updates is disabled.');
 		}
-
-		http.request();
 		#end
 
 		#if polymod
