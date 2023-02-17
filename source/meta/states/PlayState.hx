@@ -13,6 +13,7 @@ import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import haxe.Exception;
 import meta.Frame.FrameState;
 import meta.states.gameObjects.Player;
 import meta.states.gameObjects.Prop;
@@ -561,7 +562,7 @@ class PlayState extends FrameState
 				propGrp.add(new Prop(startX, startY, FINALETRIP));
 
 			default:
-				FlxG.log.warn('Unrecognized actor type ' + entity.name);
+				throw new Exception('Unrecognized actor type ' + entity.name);
 		}
 		add(propGrp);
 	}

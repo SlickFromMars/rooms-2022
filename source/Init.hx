@@ -64,6 +64,7 @@ class Init extends FrameState
 
 			http.onError = function(error)
 			{
+				Application.current.window.alert(error, "Error!");
 				trace('error: $error');
 			}
 

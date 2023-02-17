@@ -46,6 +46,7 @@ class DiscordClient
 
 	static function onError(_code:Int, _message:String)
 	{
+		Application.current.window.alert('$_code : $_message', "Error!");
 		trace('Error! $_code : $_message');
 	}
 
