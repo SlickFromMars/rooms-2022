@@ -72,7 +72,6 @@
 	<haxedef name="FLX_NO_TOUCH" if="desktop" />
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
-	<haxedef name="no-deprecation-warnings" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
