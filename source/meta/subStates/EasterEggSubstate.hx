@@ -83,13 +83,6 @@ class EasterEggSubstate extends FrameSubState
 				spr.screenCenter();
 				eggGrp.add(spr);
 
-			case 'mothmilk': // the silly moth
-				var spr = new FlxSprite();
-				spr.loadGraphic(Paths.image('hey'));
-				spr.setGraphicSize(FlxG.width);
-				spr.screenCenter();
-				eggGrp.add(spr);
-
 			default: // for lame people
 				var paper = new FlxSprite().loadGraphic(Paths.image('hint/paper'));
 				paper.screenCenter();
