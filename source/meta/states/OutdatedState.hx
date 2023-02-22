@@ -7,6 +7,9 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import meta.Frame.FrameState;
+#if DISCORD_RPC
+import meta.Discord.DiscordClient;
+#end
 
 #if CHECK_FOR_UPDATES
 class OutdatedState extends FrameState
@@ -22,6 +25,10 @@ class OutdatedState extends FrameState
 	override function create()
 	{
 		super.create();
+
+		#if DISCORD_RPC
+		DiscordClient.changePresence('TELL THIS USER TO UPDATE', updateVersion + ' if ur curious');
+		#end
 
 		quickBG();
 
