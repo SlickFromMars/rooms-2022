@@ -9,6 +9,9 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import meta.Controls.ControlScheme;
+#if SCREENSHOTS_ALLOWED
+import meta.ScreenGrab;
+#end
 
 class FrameState extends FlxState
 {
@@ -70,6 +73,12 @@ class FrameState extends FlxState
 		{
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}
+		#if SCREENSHOTS_ALLOWED
+		else if (Controls.SCREENSHOT)
+		{
+			ScreenGrab.grab();
+		}
+		#end
 	}
 
 	// Switch state function

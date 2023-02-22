@@ -7,3 +7,4 @@ Pause - P/ESCAPE
 Toggle Fullscreen - F11
 Adjust Volume - PLUS/MINUS
 Toggle Mute Volume - ZERO
+Screenshot - GRAVE ACCENT

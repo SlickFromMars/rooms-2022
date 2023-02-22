@@ -20,6 +20,7 @@ class Controls
 	public static var BACK:Bool = false;
 	public static var PAUSE:Bool = false;
 	public static var FULLSCREEN:Bool = false;
+	public static var SCREENSHOT:Bool = false;
 
 	public static function updateKeys()
 	{
@@ -54,6 +55,7 @@ class Controls
 			BACK = gamepad.justPressed.B;
 			PAUSE = gamepad.justPressed.START;
 			FULLSCREEN = false;
+			SCREENSHOT = false;
 		}
 		else if (CONTROL_SCHEME == KEYBOARD)
 		{
@@ -89,6 +91,7 @@ class Controls
 			BACK = FlxG.keys.anyJustPressed([FlxKey.ESCAPE, FlxKey.SPACE]);
 			PAUSE = FlxG.keys.anyJustPressed([FlxKey.P, FlxKey.ESCAPE]);
 			FULLSCREEN = FlxG.keys.anyJustPressed([FlxKey.F11]);
+			SCREENSHOT = FlxG.keys.anyJustPressed([FlxKey.GRAVEACCENT]);
 		}
 	}
 }

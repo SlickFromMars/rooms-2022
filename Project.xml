@@ -23,6 +23,7 @@
 	<define name="EASTER_EGG" if="desktop" />
 	<define name="CHECK_FOR_UPDATES" if="desktop release" />
 	<define name="CRASH_LOGGER" if="desktop" />
+	<define name="SCREENSHOTS_ALLOWED" if="desktop" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
