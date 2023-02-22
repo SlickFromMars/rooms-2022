@@ -57,7 +57,7 @@ class OutdatedState extends FrameState
 			if (Controls.CONFIRM)
 			{
 				leftState = true;
-				RoomsUtils.openURL("https://github.com/SlickFromMars/rooms-2022/releases/tag/v" + updateVersion);
+				RoomsUtils.openURL("https://gamejolt.com/games/tsarooms/788793");
 			}
 			else if (Controls.BACK)
 			{

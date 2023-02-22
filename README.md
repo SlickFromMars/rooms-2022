@@ -4,7 +4,7 @@
 
 Cubee has fallen into the Everchanging Dungeon! Each room generates based off of pre-designed levels. Complete them all to help Cubee escape!
 
-### [Play The Game](http://65.127.189.132:3000/)
+### [Get The Game](https://gamejolt.com/games/tsarooms/788793)
 
 ## Things You'll Be Using
 
