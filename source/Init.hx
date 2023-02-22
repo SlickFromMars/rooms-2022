@@ -16,7 +16,7 @@ import sys.io.File;
 #if CHECK_FOR_UPDATES
 import meta.states.OutdatedState;
 #end
-#if polymod
+#if MODS_ALLOWED
 import polymod.Polymod;
 #end
 
@@ -76,7 +76,7 @@ class Init extends FrameState
 		}
 		#end
 
-		#if polymod
+		#if MODS_ALLOWED
 		// Get all directories in the mod folder
 		var modDirectory:Array<String> = [];
 		var mods:Array<String> = sys.FileSystem.readDirectory("mods");

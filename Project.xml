@@ -20,10 +20,12 @@
 
 	<!-- ________________________________ Defines _______________________________ -->
 
+	<define name="DISCORD_RPC" if="desktop" unless="neko" />
+	<define name="MODS_ALLOWED" if="desktop" unless="neko" />
+	<define name="SCREENSHOTS_ALLOWED" if="desktop" />
 	<define name="EASTER_EGG" if="desktop" />
 	<define name="CHECK_FOR_UPDATES" if="desktop release" />
 	<define name="CRASH_LOGGER" if="desktop" />
-	<define name="SCREENSHOTS_ALLOWED" if="desktop" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -55,7 +57,7 @@
 	<assets path="docs/README.txt" rename="readme.txt" />
 	<assets path="LICENSE.md" rename="LICENSE.txt" />
 
-	<assets path='example_mods' rename='mods' if="desktop" unless="neko" />
+	<assets path='example_mods' rename='mods' if="MODS_ALLOWED" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
@@ -63,8 +65,8 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="hscript" />
-	<haxelib name="discord_rpc" if="desktop" unless="neko" />
-	<haxelib name="polymod" if="desktop" unless="neko" />
+	<haxelib name="discord_rpc" if="DISCORD_RPC" />
+	<haxelib name="polymod" if="MODS_ALLOWED" />
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 

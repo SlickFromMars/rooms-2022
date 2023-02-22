@@ -19,7 +19,7 @@ import meta.states.gameObjects.Player;
 import meta.states.gameObjects.Prop;
 import meta.states.shaders.RetroShader;
 import openfl.filters.ShaderFilter;
-#if discord_rpc
+#if DISCORD_RPC
 import meta.Discord;
 #end
 
@@ -66,12 +66,10 @@ class PlayState extends FrameState
 
 	override public function create()
 	{
-		// Hide the mouse if there is one
-		#if FLX_MOUSE
+		// Hide the mouse
 		FlxG.mouse.visible = false;
-		#end
 
-		#if discord_rpc
+		#if DISCORD_RPC
 		// Updating Discord Rich Presence.
 		var stateText:String = '';
 		switch (RoomsData.roomNumber)

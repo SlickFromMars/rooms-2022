@@ -13,7 +13,7 @@ import meta.Frame.FrameState;
 
 using StringTools;
 
-#if discord_rpc
+#if DISCORD_RPC
 import meta.Discord;
 #end
 
@@ -50,7 +50,7 @@ class TitleState extends FrameState
 		// trace('Loaded eggs ' + easterEggKeys);
 		#end
 
-		#if discord_rpc
+		#if DISCORD_RPC
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end

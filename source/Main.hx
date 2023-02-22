@@ -18,7 +18,7 @@ import haxe.io.Path;
 import sys.FileSystem;
 import sys.io.File;
 #end
-#if discord_rpc
+#if DISCORD_RPC
 import meta.Discord.DiscordClient;
 #end
 
@@ -61,7 +61,7 @@ class Main extends Sprite
 			RoomsData.saveData();
 		});
 
-		#if discord_rpc
+		#if DISCORD_RPC
 		if (!DiscordClient.isInitialized)
 		{
 			DiscordClient.initialize();
@@ -114,7 +114,7 @@ class Main extends Sprite
 		#end
 
 		Application.current.window.alert(errMsg, "Error!");
-		#if discord_rpc
+		#if DISCORD_RPC
 		DiscordClient.shutdown();
 		#end
 		RoomsData.saveData();
