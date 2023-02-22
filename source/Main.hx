@@ -80,8 +80,12 @@ class Main extends Sprite
 		#if CRASH_LOGGER
 		var path:String;
 		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
+		var dateNow:String = Date.now().toString();
 
-		path = "./crash/" + "Rooms_" + RoomsUtils.normalDateStr() + ".txt";
+		dateNow = dateNow.replace(" ", "_");
+		dateNow = dateNow.replace(":", "'");
+
+		path = "./crash/" + "Rooms_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{

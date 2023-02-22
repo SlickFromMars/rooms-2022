@@ -7,16 +7,6 @@ using StringTools;
 
 class RoomsUtils
 {
-	inline static public function normalDateStr():String
-	{
-		var dateNow:String = Date.now().toString();
-
-		dateNow = dateNow.replace(" ", "_");
-		dateNow = dateNow.replace(":", "'");
-
-		return dateNow;
-	}
-
 	inline static public function getText(key:String, ?library:String):String
 	{
 		return OpenFlAssets.getText(Paths.getPath(key, library));
