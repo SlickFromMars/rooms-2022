@@ -6,7 +6,7 @@
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app title="ROOMS" file="ROOMS" main="Main" package="com.slickfrommars.rooms"
-		packageName="com.slickfrommars.rooms" version="1.0.1" company="SlickFromMars" />
+		packageName="com.slickfrommars.rooms" version="1.1.0" company="SlickFromMars" />
 
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
 	<app preloader="flixel.system.FlxPreloader" />
