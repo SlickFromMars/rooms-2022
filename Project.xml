@@ -55,7 +55,7 @@
 	</section>
 
 	<assets path="docs/README.txt" rename="readme.txt" />
-	<assets path="LICENSE.md" rename="LICENSE.txt" />
+	<assets path="LICENSE.txt" />
 
 	<assets path='example_mods' rename='mods' if="MODS_ALLOWED" />
 
