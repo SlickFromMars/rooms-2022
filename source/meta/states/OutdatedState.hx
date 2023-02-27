@@ -17,6 +17,7 @@ class OutdatedState extends FrameState
 	var leftState:Bool = false;
 
 	public static var updateVersion:String = '';
+	public static var updateState:CompResult = NONE;
 
 	var warnText:FlxText;
 	var sillySprite:FlxSprite;
@@ -26,9 +27,12 @@ class OutdatedState extends FrameState
 	{
 		super.create();
 
-		#if DISCORD_RPC
-		DiscordClient.changePresence('TELL THIS USER TO UPDATE', updateVersion + ' if ur curious');
-		#end
+		if (updateState == MUSTUPDATE)
+		{
+			#if DISCORD_RPC
+			DiscordClient.changePresence('TELL THIS USER TO UPDATE', updateVersion + ' if ur curious');
+			#end
+		}
 
 		quickBG();
 
@@ -80,11 +84,24 @@ class OutdatedState extends FrameState
 
 	override function updateUIText()
 	{
-		warnText.text = "Hey, looks like you're playing an\nold version of ROOMS ("
-			+ Init.gameVersion
-			+ "),\nplease update to "
-			+ updateVersion
-			+ "!\nPress ";
+		if (updateState == MUSTUPDATE)
+		{
+			warnText.text = "Hey, looks like you're playing an\nold version of ROOMS ("
+				+ Init.gameVersion
+				+ "),\nplease update to "
+				+ updateVersion
+				+ "!";
+		}
+		else if (updateState == UNRELEASED)
+		{
+			warnText.text = "Hey, looks like you're playing an\nunreleased version of ROOMS ("
+				+ Init.gameVersion
+				+ ")\nThe latest stable release\nis "
+				+ updateVersion
+				+ "!";
+		}
+
+		warnText.text += "\nPress ";
 
 		switch (Controls.CONTROL_SCHEME)
 		{
@@ -99,3 +116,10 @@ class OutdatedState extends FrameState
 	}
 }
 #end
+
+enum CompResult
+{
+	NONE;
+	MUSTUPDATE;
+	UNRELEASED;
+}

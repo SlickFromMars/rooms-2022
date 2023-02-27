@@ -6,6 +6,7 @@ import flixel.util.FlxColor;
 import lime.app.Application;
 import meta.Frame.FrameState;
 import meta.states.OpeningState;
+import thx.semver.Version;
 
 using StringTools;
 
@@ -24,7 +25,6 @@ class Init extends FrameState
 {
 	public static var gameVersion:String;
 
-	var mustUpdate:Bool = false;
 	var hintRoot:String = './';
 
 	override function create()
@@ -53,12 +53,20 @@ class Init extends FrameState
 			{
 				OutdatedState.updateVersion = data.split('\n')[0].trim();
 				var curVersion:String = Init.gameVersion;
-				trace('version online: ' + OutdatedState.updateVersion + ', your version: ' + curVersion);
 
-				if (OutdatedState.updateVersion != curVersion)
+				var compUpdateVersion:Version = OutdatedState.updateVersion.replace('v', '');
+				var compCurVersion:Version = curVersion.replace('v', '');
+				trace('version online: ' + compUpdateVersion + ', your version: ' + compCurVersion);
+
+				if (compUpdateVersion > compCurVersion)
 				{
-					trace('versions arent matching!');
-					mustUpdate = true;
+					trace('Game is outdated!');
+					OutdatedState.updateState = MUSTUPDATE;
+				}
+				else if (compUpdateVersion < compCurVersion)
+				{
+					trace('Higher version??');
+					OutdatedState.updateState = UNRELEASED;
 				}
 			}
 
@@ -144,7 +152,7 @@ class Init extends FrameState
 		#end
 
 		#if CHECK_FOR_UPDATES
-		if (mustUpdate)
+		if (OutdatedState.updateState != NONE)
 			FrameState.switchState(new OutdatedState());
 		else
 			FrameState.switchState(new OpeningState());

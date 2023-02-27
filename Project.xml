@@ -65,6 +65,7 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="hscript" />
+	<haxelib name="thx.semver" />
 	<haxelib name="discord_rpc" if="DISCORD_RPC" />
 	<haxelib name="polymod" if="MODS_ALLOWED" />
 

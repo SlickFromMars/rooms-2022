@@ -43,6 +43,11 @@
       "url": "https://github.com/Aidan63/linc_discord-rpc"
     },
     {
+      "name": "thx.semver",
+      "type": "haxelib",
+      "version": null
+    },
+    {
       "name": "polymod",
       "type": "haxelib",
       "version": null
