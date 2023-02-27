@@ -25,8 +25,6 @@ class Init extends FrameState
 {
 	public static var gameVersion:String;
 
-	var hintRoot:String = './';
-
 	override function create()
 	{
 		FlxG.mouse.visible = false;
@@ -140,12 +138,6 @@ class Init extends FrameState
 		#end
 
 		#if EASTER_EGG
-		if (!FileSystem.exists('$hintRoot/'))
-		{
-			trace('Creating hints directory since it does not exist');
-			FileSystem.createDirectory('$hintRoot/');
-		}
-
 		hintPop('EGGHUNT',
 			'In the menu, something is hidden.\nEnter combinations and press seven\nto access messages forbidden.\n\nThe following codes may be used:\n\n' +
 			RoomsUtils.getText('data/eggList.txt'));
@@ -164,7 +156,7 @@ class Init extends FrameState
 	#if EASTER_EGG
 	function hintPop(file:String, content:String)
 	{
-		var path = '$hintRoot/$file.txt';
+		var path = './$file.txt';
 		var exists = FileSystem.exists(path);
 		File.saveContent(path, content);
 		if (!exists)
