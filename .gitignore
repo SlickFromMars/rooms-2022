@@ -1,6 +1,3 @@
 # Haxe
 export/*
 .haxelib/*
-
-# Specific Assets
-assets/levels/wip/*
